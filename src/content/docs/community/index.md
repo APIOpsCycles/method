@@ -4,13 +4,14 @@ draft: false
 ---
 
 
-![APIOps Cycles users around the world](/src/assets/apiopscycles-users-2025-nobg.png)
+![APIOps Cycles users around the world](../../../assets/apiopscycles-users-2025-nobg.png)
 
 **Our current partners:**
 
 * **Osaango** (https://www.osaango.com) – Coordinates the global APIOps Cycles community and method development. Osaango provides API & Agile consulting, coaching and training. If you are interested in API strategies, development guidelines or training made to work for your organization contact us. 
-* **Codecentric** (https://www.codecentric.de/) – Provides expert content and promotes the method in the DACH region
-* **Konneqt** ([formerly QriarLabs](https://qriarlabs.com/qap-canvas/)) – Offers advanced API + integration platforms and supports QAP Canvas tool development, which uses some of the APIOps Cycles canvases to automate creating APIs.
+* **Codecentric** (https://www.codecentric.de/) – Provides expert content, consulting, and promotes the method in the DACH region
+* **APIsFirst** (https://www.apisfirst.com) - Provides expert content, consulting, and promotes the method globally, specifically in UK and Australia
+* **Konneqt** ([formerly QriarLabs](https://qriarlabs.com/qap-canvas/)) – Based in Brazil, operatest globally. Offers advanced API + integration platforms and supports QAP Canvas tool development, which uses some of the APIOps Cycles canvases to automate creating APIs.
 
 ### Partner with Us to Evolve the APIOps Cycles Method
 

@@ -4,48 +4,18 @@ draft: false
 slug: the-method
 ---
 
-### About the method
-
 The APIOps Cycles is a method and a set of canvases, checklists and tools for designing API Management compatible APIs with clear business and product management orientation, architecture principles and DevOps, or rather APIOps culture and mindset.
-
-<details>
-<summary>Is it free, what can I do with it?</summary>
-The method is licensed with CC-BY-SA 4.0 license, so you may use them for commercial purposes and even modify if you share your versions with the same license. Osaango Oy (a Finnish private limited company) owns the trademarks for APIOps Cycles and APIOps and allows the use in relationship to the the method and canvases with trademark ownership and relationship and licensing of the method mentioned.
-</details>
-<details>
-<summary>How can I learn more about it?</summary>
-
-Learn more and participate in adopting and developing the method from our partners and by following our [LinkedIn page](https://www.linkedin.com/company/apiopscycles/about/) for information on meetups, training, consulting and certification programs.
-</details>
-<details>
-<summary>What is APIOps?</summary>
-The method highlights the unique nature of developing and operating APIs compared to other software. APIOps, like DevOps, has roots in Lean management.
-</details>
-<details>
-<summary>Why trademark if it's free?</summary>
-
-APIOps and APIOps Cycles are registered trademarks. [Osaango Ltd](https://www.osaango.com) is one of the trademark holders for software development methods, community, and training. 
-
-Why trademark? Mostly to protect the term so companies couldn't use it for their own promotion, but that it would be used for the community. The term was coined 2015 from DevOps by Jarkko Moilanen. In August that year, APIOps community was kickstarted.
-
-In the beginning, the idea of APIOps was formulated to stand for: APIOps goal is to design, build, test and release APIs more rapidly, frequently and reliably.
-</details>
-<details>
-<summary>Who developed it?</summary>
-Between since 2022 the method was used in many organizations and client initatives by members of The API Collective as well as partners such as the current sponsors of the method listed at the partners section. 
-
-In October 2022, The API Collective members from Osaango and APIsFirst used all experiences gained from client and partner projects and workshops to do a major rewrite of the APIOps Cycles method. All the method descriptions were improved, canvases got a fresh new look and checklists were modified and simplified.
-
-Early 2018 Osaango Ltd. was established by [Marjukka Niinioja](https://www.linkedin.com/in/marjukkaniinioja/) with the help from other API and training gurus to take APIOps Cycles to the next level and beyond.
-
-APIOps Cycles -method is developed originally at Digia Plc in 2017.
-</details>
 
 APIOps Cycles is an open method licensed under CC-BY-SA 4.0. The basic method is free; you can use it as-is, extend it, or suggest improvements. Since the method was created in 2017, it has been adopted in organizations big and small - worldwide.
 
-By focusing on the right things at the right time, we get better APIs faster. The method has its roots in product management, design thinking, DevOps, and Lean management. Its purpose is to help reduce lifetime costs and increase API benefits.
-
 The method standardizes API capabilities: a mix of processes, templates, and guidelines —that can be developed as a “green field” or integrated into an organization’s existing practices. 
+
+
+## APIOps Cycles connects API work to the big picture
+
+Each foundational capability is supported by a suite of capabilities, like “suburbs” on a map. These suites or “suburbs” represent a broader domain beyond APIs, guiding you through the strategic, customer-centric, technical, and operational landscapes where APIs create value. Most of these capabilities are already present in any organization. Some may be the “API-relevant” part of an organization’s wider technology, data, AI, and digital management practices and activities. They may be used to expand existing capabilities or set an approach and scope for other technologies that are enabled centrally and done (or federated) locally.
+
+By focusing on the right things at the right time, we get better APIs faster. The method has its roots in product management, design thinking, DevOps, and Lean management. Its purpose is to help reduce lifetime costs and increase API benefits.
 
 In the APIOps Cycles 2025 revised version, the APIOps Cycle method organizes API work in a way that supports: 
 
@@ -95,29 +65,61 @@ There are eight foundational capabilities ("stations" on the "metro lines") for 
 
 ### Suburb Stations
 
-- [API Consumer Adoption](/suburb-stations/api-consumer-adoption/)
-- [API Mindset](/suburb-stations/api-mindset/)
-- [API Promotion](/suburb-stations/api-promotion/)
-- [Budget and Resource Management](/suburb-stations/budget-and-resource-management/)
-- [Business Goals](/suburb-stations/business-goals/)
-- [CI/CD](/suburb-stations/ci-cd/)
-- [Competitive Analysis](/suburb-stations/competitive-analysis/)
-- [Contract Design](/suburb-stations/contract-design/)
-- [Design Standards](/suburb-stations/design-standards/)
-- [Development](/suburb-stations/development/)
-- [Ecosystem Vision](/suburb-stations/ecosystem-vision/)
-- [Legal and Compliance](/suburb-stations/legal-and-compliance/)
-- [Market Insights](/suburb-stations/market-insights/)
-- [Operating Guidelines](/suburb-stations/operating-guidelines/)
-- [Partner Integration](/suburb-stations/partner-integration/)
-- [Portfolio Management](/suburb-stations/portfolio-management/)
-- [Release Management](/suburb-stations/release-management/)
-- [Roles and responsibilities](/suburb-stations/roles-and-responsibilities/)
-- [Scalable Infrastructure](/suburb-stations/scalable-infrastructure/)
-- [Security and Privacy](/suburb-stations/security-and-privacy/)
-- [Service Agreements](/suburb-stations/service-agreements/)
-- [Test Automation](/suburb-stations/test-automation/)
-- [Upskilling](/suburb-stations/upskilling/)
-- [User Experience](/suburb-stations/user-experience/)
-- [Vendor Management](/suburb-stations/vendor-management/)
+- [API Consumer Adoption](/method/api-consumer-adoption/)
+- [API Mindset](/method/api-mindset/)
+- [API Promotion](/method/api-promotion/)
+- [Budget and Resource Management](/method/budget-and-resource-management/)
+- [Business Goals](/method/business-goals/)
+- [CI/CD](/method/ci-cd/)
+- [Competitive Analysis](/method/competitive-analysis/)
+- [Contract Design](/method/contract-design/)
+- [Design Standards](/method/design-standards/)
+- [Development](/method/development/)
+- [Ecosystem Vision](/method/ecosystem-vision/)
+- [Legal and Compliance](/method/legal-and-compliance/)
+- [Market Insights](/method/market-insights/)
+- [Operating Guidelines](/method/operating-guidelines/)
+- [Partner Integration](/method/partner-integration/)
+- [Portfolio Management](/method/portfolio-management/)
+- [Release Management](/method/release-management/)
+- [Roles and responsibilities](/method/roles-and-responsibilities/)
+- [Scalable Infrastructure](/method/scalable-infrastructure/)
+- [Security and Privacy](/method/security-and-privacy/)
+- [Service Agreements](/method/service-agreements/)
+- [Test Automation](/method/test-automation/)
+- [Upskilling](/method/upskilling/)
+- [User Experience](/method/user-experience/)
+- [Vendor Management](/method/vendor-management/)
 
+<details>
+<summary>Is it free, what can I do with it?</summary>
+The method is licensed with CC-BY-SA 4.0 license, so you may use them for commercial purposes and even modify if you share your versions with the same license. Osaango Oy (a Finnish private limited company) owns the trademarks for APIOps Cycles and APIOps and allows the use in relationship to the the method and canvases with trademark ownership and relationship and licensing of the method mentioned.
+</details>
+<details>
+<summary>How can I learn more about it?</summary>
+
+Learn more and participate in adopting and developing the method from our partners and by following our [LinkedIn page](https://www.linkedin.com/company/apiopscycles/about/) for information on meetups, training, consulting and certification programs.
+</details>
+<details>
+<summary>What is APIOps?</summary>
+The method highlights the unique nature of developing and operating APIs compared to other software. APIOps, like DevOps, has roots in Lean management.
+</details>
+<details>
+<summary>Why trademark if it's free?</summary>
+
+APIOps and APIOps Cycles are registered trademarks. [Osaango Ltd](https://www.osaango.com) is one of the trademark holders for software development methods, community, and training. 
+
+Why trademark? Mostly to protect the term so companies couldn't use it for their own promotion, but that it would be used for the community. The term was coined 2015 from DevOps by Jarkko Moilanen. In August that year, APIOps community was kickstarted.
+
+In the beginning, the idea of APIOps was formulated to stand for: APIOps goal is to design, build, test and release APIs more rapidly, frequently and reliably.
+</details>
+<details>
+<summary>Who developed it?</summary>
+Between since 2022 the method was used in many organizations and client initatives by members of The API Collective as well as partners such as the current sponsors of the method listed at the partners section. 
+
+In October 2022, The API Collective members from Osaango and APIsFirst used all experiences gained from client and partner projects and workshops to do a major rewrite of the APIOps Cycles method. All the method descriptions were improved, canvases got a fresh new look and checklists were modified and simplified.
+
+Early 2018 Osaango Ltd. was established by [Marjukka Niinioja](https://www.linkedin.com/in/marjukkaniinioja/) with the help from other API and training gurus to take APIOps Cycles to the next level and beyond.
+
+APIOps Cycles -method is developed originally at Digia Plc in 2017.
+</details>

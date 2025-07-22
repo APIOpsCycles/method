@@ -1,11 +1,7 @@
 ---
-title: Advanced Topics
+title: Scaling the method
 draft: false
 ---
-
-## APIOps Cycles connects API work to the big picture
-
-Each foundational capability is supported by a suite of capabilities, like “suburbs” on a map. These suites or “suburbs” represent a broader domain beyond APIs, guiding you through the strategic, customer-centric, technical, and operational landscapes where APIs create value. Most of these capabilities are already present in any organization. Some may be the “API-relevant” part of an organization’s wider technology, data, AI, and digital management practices and activities. They may be used to expand existing capabilities or set an approach and scope for other technologies that are enabled centrally and done (or federated) locally.
 
 ## Smooth, right-sized, and enabled journeys for API doing
 
