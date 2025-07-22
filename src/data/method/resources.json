@@ -438,7 +438,7 @@
       "icon": "dashboard-outline",
       "order": 152,
       "description": "A modeling tool to define and communicate the key entities and relationships in your domain, ensuring semantic consistency across APIs.",
-      "image": "",
+      "image": "/assets/resource/Canvas_domainCanvas_en-US.svg",
       "outcomes": [
         "Better understanding of domain canvas principles",
         "Standardized approach using Domain Canvas",
