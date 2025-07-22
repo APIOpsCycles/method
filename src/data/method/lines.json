@@ -1,0 +1,97 @@
+{
+"lines": {
+  "title": "Metro Lines",
+  "slug": "lines",
+  "order": 0,
+  "description": "A collection of API lines that guide the development and management of APIs.",
+    "items": [
+      {"id": "business-opportunities-line",
+        "title": "Business Opportunities Line",
+        "slug": "business-opportunities-line",
+        "order": 1,
+        "description": "Focuses on identifying and leveraging business opportunities through APIs.",
+        "stations": [
+          "monitoring-and-improving",
+          "api-product-strategy",
+          "user-experience",
+          "market-insights",
+          "business-goals",
+          "competitive-analysis",
+          "ecosystem-vision"
+        ]
+      },
+      {"id": "platform-architecture-line",
+        "title": "Platform Architecture Line",
+        "slug": "platform-architecture-line",
+        "order": 2,
+        "description": "Covers the architectural aspects of API platforms.",
+        "stations": [
+          "api-product-strategy",
+          "api-consumer-experience",
+          "api-platform-architecture",
+          "scalable-infrastructure",
+          "legal-and-compliance",
+          "security-and-privacy",
+          "design-standards",
+          "vendor-management"
+        ]
+      },
+      {"id": "api-design-line",
+        "title": "API Design Line",
+        "slug": "api-design-line",
+        "order": 3,
+        "description": "Focuses on the design principles and practices for APIs.",
+        "stations": [
+          "api-platform-architecture",
+          "api-design",
+          "api-delivery",
+          "api-audit"
+        ]
+      },
+      {"id": "delivery-line",
+        "title": "Delivery Line",
+        "slug": "delivery-line",
+        "order": 4,
+        "description": "Covers the delivery processes and practices for APIs.",
+        "stations": [
+          "api-delivery",
+          "contract-design",
+          "development",
+          "ci-cd",
+          "test-automation",
+          "release-management"
+        ]
+      },
+      {"id": "publishing-and-adoption-line",
+        "title": "Publishing and Adoption Line",
+        "slug": "publishing-and-adoption-line",
+        "order": 5,
+        "description": "Focuses on publishing APIs and ensuring their adoption by consumers.",
+        "stations": [
+          "api-audit",
+          "api-publishing",
+          "monitoring-and-improving",
+          "service-agreements",
+          "api-consumer-adoption",
+          "api-promotion",
+          "partner-integration"
+        ]
+      },
+      {"id": "operating-model-line",
+        "title": "Operating Model Line",
+        "slug": "operating-model-line",
+        "order": 6,
+        "description": "Covers the operating model for API management and governance.",
+        "stations": [
+          "api-product-strategy",
+          "api-mindset",
+          "roles-and-responsibilities",
+          "upskilling",
+          "operating-guidelines",
+          "portfolio-management",
+          "budget-and-resource-management"
+        ]
+      }      
+    ]
+  }
+}

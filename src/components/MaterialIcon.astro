@@ -1,0 +1,12 @@
+---
+import { materialIcons } from './material-icons';
+interface Props {
+  name: string;
+  class?: string;
+  size?: string;
+}
+
+const { name, ...attrs } = Astro.props as Props;
+const IconComponent = materialIcons[name];
+---
+{IconComponent ? <IconComponent {...attrs} /> : null}

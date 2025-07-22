@@ -1,0 +1,24 @@
+---
+const PAGE_TITLE_ID = '_top';
+import MaterialIcon from './MaterialIcon.astro';
+
+const { title, icon } = Astro.locals.starlightRoute.entry.data;
+---
+
+<h1 id={PAGE_TITLE_ID} class="sl-flex page-title">
+  {icon && <MaterialIcon name={icon} class="title-icon" size="1.5em" />} {title}
+</h1>
+
+<style>
+  @layer starlight.core {
+    h1.page-title {
+      margin-top: 1rem;
+      font-size: var(--sl-text-h1);
+      line-height: var(--sl-line-height-headings);
+      font-weight: 600;
+      color: var(--sl-color-white);
+      gap: 0.5em;
+      align-items: center;
+    }
+  }
+</style>

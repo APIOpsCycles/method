@@ -1,0 +1,74 @@
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap') layer(base);
+
+@theme {
+/* Generated accent color palettes. */
+--color-accent-200: #b5caea;
+--color-accent-600: #3069c1;
+--color-accent-900: #193258;
+--color-accent-950: #15243c;
+/* Generated gray color palettes. */
+--color-gray-100: #f5f6f8;
+--color-gray-200: #eceef2;
+--color-gray-300: #c0c2c7;
+--color-gray-400: #888b96;
+--color-gray-500: #545861;
+--color-gray-700: #353841;
+--color-gray-800: #24272f;
+--color-gray-900: #17181c;
+/* Border radius for cards and buttons */
+--border-radius: 1.5rem; 
+/* Background gradient for homepage cards */
+--bg-gradient-diagonal: linear-gradient(151deg, var(--color-accent-100) 0%, transparent 25%);
+--bg-gradient-dark: linear-gradient(200deg, var(--color-accent-950) 0%, var(--color-black) 25%);
+--bg-gradient-light: linear-gradient(200deg, var(--color-accent-200) 0%, var(--color-white) 25%);
+}
+
+@layer components {
+  .page {
+    background: var(--bg-gradient-light);
+  }
+  [data-theme='dark'] .page {
+    background: var(--bg-gradient-dark);
+  }
+
+  /* Light gradient for homepage cards */
+  /* Card styling */
+  .card {
+    background-image: var(--bg-gradient-diagonal);
+    border-radius: var(--border-radius);
+    border-color: var(--color-gray-100);
+  }
+  .icon {
+    color: var(--color-accent-600);
+    background-color: transparent;
+    border: 0;
+  }
+
+  [data-theme='dark'] .card {
+    background-image: linear-gradient(151deg, var(--color-accent-600) 0%, transparent 25%);
+    border-color: var(--color-gray-700);
+  }
+  [data-theme='dark'] .icon {
+        color: var(--color-gray-100);
+        background-color: transparent;
+        border: 0;
+    }
+  [aria-current='page'] {
+    background-color: var(--color-accent-100);
+    color: var(--color-accent-600);
+  }
+  .pagination-links a {
+    background-color: var(--color-accent-100);
+    border: 0;
+    border-radius: var(--border-radius);
+  }
+    [data-theme='dark'] .pagination-links a{
+      background-color: var(--color-accent-950);
+      color: var(--color-gray-100);
+    }
+}
