@@ -26,3 +26,7 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 scripts/.method-checksums.json
+
+# Cloudflare wrangler preview files
+.wrangler
+.dev.vars*

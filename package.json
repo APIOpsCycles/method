@@ -23,5 +23,9 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.9.6",
+    "wrangler": "^4.25.0"
   }
 }

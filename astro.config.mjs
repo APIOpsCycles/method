@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import Icons from 'unplugin-icons/vite';
+import { cloudflare } from "@cloudflare/vite-plugin";
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -135,6 +136,6 @@ export default defineConfig({
 
   vite: {
     // @ts-ignore
-    plugins: [tailwindcss(),Icons({ compiler: 'astro' })],
+    plugins: [tailwindcss(),Icons({ compiler: 'astro' }),cloudflare()],
   },
 });
