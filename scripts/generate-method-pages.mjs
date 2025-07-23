@@ -107,6 +107,14 @@ async function ensureDir(dir) {
   await fsPromises.mkdir(dir, { recursive: true });
 }
 
+function htmlEncode(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 function t(key, localeLabels) {
   return (localeLabels && localeLabels[key]) || baseLabels[key] || key;
 }
@@ -142,7 +150,9 @@ function stationBody(data, resources, labels = baseLabels, locale = '') {
       if (step.resource && resources[step.resource]) {
         const res = resources[step.resource];
         const prefix = locale ? `/${locale}` : '';
-        out += ` <LinkCard title="${translate(res.title, labels)}" href="${prefix}/${res.slug}/" description="${translate(res.description || '', labels)}" />`;
+        const title = htmlEncode(translate(res.title, labels));
+        const desc = htmlEncode(translate(res.description || '', labels));
+        out += ` <LinkCard title="${title}" href="${prefix}/${res.slug}/" description="${desc}" />`;
       }
       out += '\n';
       stepNum += 1;
@@ -184,7 +194,8 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
         }
       }
       const prefix = locale ? '../../../../' : '../../../';
-      out += `![${res.title}](${prefix}${img})\n\n`;
+      const alt = htmlEncode(res.title);
+      out += `![${alt}](${prefix}${img})\n\n`;
     }
     if (Array.isArray(res.how_it_works.steps) && res.how_it_works.steps.length) {
       out += `### ${t('steps', labels)}\n\n`;
