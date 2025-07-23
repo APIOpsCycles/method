@@ -8,8 +8,74 @@ import { dump } from 'js-yaml';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'src/data/method');
+const defaultLocale = 'en';
+const defaultLocaleDir = path.join(dataDir, defaultLocale);
 const docsDir = path.join(rootDir, 'src/content/docs');
 const cacheFile = path.join(__dirname, '.method-checksums.json');
+
+const baseLabels = {
+  stations: 'Stations',
+  why_it_matters: 'Why it matters',
+  outcomes: 'Outcomes',
+  how_it_works: 'How it works',
+  steps: 'Steps',
+  apply_in_work: 'Apply in your work',
+};
+
+function flatten(obj, prefix = '', out = {}) {
+  for (const [key, val] of Object.entries(obj)) {
+    const full = prefix ? `${prefix}.${key}` : key;
+    if (val && typeof val === 'object' && !Array.isArray(val)) {
+      flatten(val, full, out);
+    } else {
+      out[full] = val;
+    }
+  }
+  return out;
+}
+
+function translate(value, labels) {
+  if (!labels) return value;
+  let result = labels[value];
+  if (typeof result === 'undefined') {
+    const m = value.match(/^(.*)\.(\d+)$/);
+    if (m && Array.isArray(labels[m[1]])) {
+      result = labels[m[1]][Number(m[2])];
+    }
+  }
+  return typeof result === 'undefined' ? value : result;
+}
+
+function translateItem(key, index, labels) {
+  if (!labels) return key;
+  let val = labels[key];
+  if (typeof val !== 'undefined') {
+    if (Array.isArray(val)) return val[index] ?? val[0];
+    return val;
+  }
+  const m = key.match(/^(.*)\.(\d+)$/);
+  if (m && Array.isArray(labels[m[1]])) {
+    return labels[m[1]][Number(m[2])] ?? key;
+  }
+  return key;
+}
+
+function expandTranslations(keys, labels) {
+  const baseKeys = new Set();
+  for (const k of keys) {
+    const m = /^(.+)\.\d+$/.exec(k);
+    if (!m) baseKeys.add(k);
+  }
+  const out = [];
+  for (const k of keys) {
+    const m = /^(.+)\.(\d+)$/.exec(k);
+    if (m && baseKeys.has(m[1])) continue;
+    const tr = translate(k, labels);
+    if (Array.isArray(tr)) out.push(...tr);
+    else out.push(tr);
+  }
+  return out;
+}
 
 const defaultBody = 'Content coming soon.';
 
@@ -41,6 +107,10 @@ async function ensureDir(dir) {
   await fsPromises.mkdir(dir, { recursive: true });
 }
 
+function t(key, localeLabels) {
+  return (localeLabels && localeLabels[key]) || baseLabels[key] || key;
+}
+
 function frontmatter(obj) {
   return `---\n${dump(obj)}---\n`;
 }
@@ -51,64 +121,105 @@ async function writeMarkdown(file, fm, body) {
   await fsPromises.writeFile(file, content);
 }
 
-function stationBody(data, resources) {
+function stationBody(data, resources, labels = baseLabels, locale = '') {
   let out = "import { Steps, LinkCard } from '@astrojs/starlight/components';\n\n";
-  if (data.description) out += `${data.description}\n\n`;
-  if (data.why_it_matters) out += `## Why it matters\n\n${data.why_it_matters}\n\n`;
+  if (data.description) out += `${translate(data.description, labels)}\n\n`;
+  if (data.why_it_matters) out += `## ${t('why_it_matters', labels)}\n\n${translate(data.why_it_matters, labels)}\n\n`;
   if (Array.isArray(data.outcomes) && data.outcomes.length) {
-    out += '## Outcomes\n\n';
-    out += data.outcomes.map((o) => `- ${o}`).join('\n');
+    out += `## ${t('outcomes', labels)}\n\n`;
+    const items = expandTranslations(data.outcomes, labels).map((i) => `- ${i}`);
+    out += items.join('\n');
     out += '\n\n';
   }
   const how = data.how_it_works || data['how-it-works'];
   if (Array.isArray(how) && how.length) {
-    out += '## How it works\n\n';
+    out += `## ${t('how_it_works', labels)}\n\n`;
     out += '<Steps>\n';
+    let stepNum = 1;
     how.forEach((step, i) => {
-      out += `${i + 1}. ${step.step}`;
+      const text = translateItem(step.step, i, labels);
+      out += `${stepNum}. ${text}`;
       if (step.resource && resources[step.resource]) {
         const res = resources[step.resource];
-        out += ` <LinkCard title="${res.title}" href="/${res.slug}/" description="${res.description || ''}" />`;
+        const prefix = locale ? `/${locale}` : '';
+        out += ` <LinkCard title="${translate(res.title, labels)}" href="${prefix}/${res.slug}/" description="${translate(res.description || '', labels)}" />`;
       }
       out += '\n';
+      stepNum += 1;
     });
     out += '</Steps>\n\n';
   }
-  if (data.apply_in_work) out += `## Apply in your work\n\n${data.apply_in_work}\n`;
+  if (data.apply_in_work) out += `## ${t('apply_in_work', labels)}\n\n${translate(data.apply_in_work, labels)}\n`;
   return out.trim();
 }
 
-async function resourceBody(res) {
+async function resourceBody(res, labels = baseLabels, locale = '') {
   let out = "import { Aside } from '@astrojs/starlight/components';\n\n";
-  if (res.description) out += `${res.description}\n\n`;
+  if (res.description) out += `${translate(res.description, labels)}\n\n`;
   if (Array.isArray(res.outcomes) && res.outcomes.length) {
-    out += '## Outcomes\n\n';
-    out += res.outcomes.map((o) => `- ${o}`).join('\n');
+    out += `## ${t('outcomes', labels)}\n\n`;
+    const items = expandTranslations(res.outcomes, labels).map((i) => `- ${i}`);
+    out += items.join('\n');
     out += '\n\n';
   }
   if (res.how_it_works && (res.how_it_works.steps || res.how_it_works.tips)) {
-    out += '## How it works\n\n';
+    out += `## ${t('how_it_works', labels)}\n\n`;
     if (res.image) {
-      const img = res.image.replace(/^\/?/, '');
-      out += `![${res.title}](../../../${img})\n\n`;
+      let img = res.image.replace(/^\//, '');
+      if (locale) {
+        const baseImg = img.startsWith('assets/resource/')
+          ? img.slice('assets/resource/'.length)
+          : img;
+        const locImgPath = path.join(
+          rootDir,
+          'src/assets/resource',
+          locale,
+          baseImg
+        );
+        try {
+          await fsPromises.access(locImgPath);
+          img = path.join('assets/resource', locale, baseImg);
+        } catch {
+          // use default image path
+        }
+      }
+      const prefix = locale ? '../../../../' : '../../../';
+      out += `![${res.title}](${prefix}${img})\n\n`;
     }
     if (Array.isArray(res.how_it_works.steps) && res.how_it_works.steps.length) {
-      out += '### Steps\n\n';
+      out += `### ${t('steps', labels)}\n\n`;
+      let stepNum = 1;
       res.how_it_works.steps.forEach((s, i) => {
-        out += `${i + 1}. ${s}\n`;
+        const text = translateItem(s, i, labels);
+        out += `${stepNum}. ${text}\n`;
+        stepNum += 1;
       });
       out += '\n';
     }
     if (Array.isArray(res.how_it_works.tips) && res.how_it_works.tips.length) {
       out += '<Aside type="tip">\n\n';
-      res.how_it_works.tips.forEach((t) => {
-        out += `- ${t}\n`;
+      res.how_it_works.tips.forEach((t, i) => {
+        const tip = translateItem(t, i, labels);
+        out += `- ${tip}\n`;
       });
       out += '</Aside>\n\n';
     }
   }
   if (res.snippet) {
-    const snippetPath = path.join(rootDir, 'src', res.snippet.replace(/^\//, ''));
+    const baseSnippet = res.snippet.replace(/^\//, '');
+    let snippetPath = path.join(rootDir, 'src', baseSnippet);
+    if (locale) {
+      const rel = baseSnippet.startsWith('snippets/')
+        ? baseSnippet.slice('snippets/'.length)
+        : baseSnippet;
+      const locPath = path.join(rootDir, 'src/snippets', locale, rel);
+      try {
+        await fsPromises.access(locPath);
+        snippetPath = locPath;
+      } catch {
+        // fall back to default path
+      }
+    }
     try {
       const snippetContent = await fsPromises.readFile(snippetPath, 'utf8');
       out += '\n\n' + snippetContent.trim();
@@ -119,15 +230,16 @@ async function resourceBody(res) {
   return out.trim();
 }
 
-function lineBody(line, stationMap) {
+function lineBody(line, stationMap, labels = baseLabels, locale = '') {
   let out = "import { Steps } from '@astrojs/starlight/components';\n\n";
-  if (line.description) out += `${line.description}\n\n`;
+  if (line.description) out += `${translate(line.description, labels)}\n\n`;
   if (Array.isArray(line.stations) && line.stations.length) {
-    out += '## Stations\n\n';
+    out += `## ${t('stations', labels)}\n\n`;
     out += '<Steps>\n';
     line.stations.forEach((id, i) => {
       const st = stationMap[id];
-      const link = st ? `[${st.title.split(' - ')[0]}](/${st.slug}/)` : id;
+      const prefix = locale ? `/${locale}` : '';
+      const link = st ? `[${translate(st.title, labels).split(' - ')[0]}](${prefix}/${st.slug}/)` : id;
       out += `${i + 1}. ${link}\n`;
     });
     out += '</Steps>';
@@ -135,11 +247,13 @@ function lineBody(line, stationMap) {
   return out.trim();
 }
 
-async function generateIndex(info, folder) {
-  const fm = { title: info.title };
+async function generateIndex(info, folder, locale, labels = baseLabels) {
+  const fm = { title: translate(info.title, labels) };
   if (typeof info.order !== 'undefined') fm.sidebar = { order: info.order };
-  const file = path.join(docsDir, folder, 'index.mdx');
-  await writeMarkdown(file, fm, info.description || '');
+  fm.slug = locale ? `${locale}/${folder}` : folder;
+  const dir = locale ? path.join(docsDir, locale, folder) : path.join(docsDir, folder);
+  const file = path.join(dir, 'index.mdx');
+  await writeMarkdown(file, fm, translate(info.description || '', labels));
 }
 
 async function generate() {
@@ -149,10 +263,27 @@ async function generate() {
   const stationsPath = path.join(dataDir, 'stations.json');
   const linesPath = path.join(dataDir, 'lines.json');
   const resourcesPath = path.join(dataDir, 'resources.json');
+  const baseLabelFiles = [
+    'labels.json',
+    'labels.lines.json',
+    'labels.stations.json',
+    'labels.resources.json',
+  ];
 
   const stationsDataRaw = await fsPromises.readFile(stationsPath, 'utf8');
   const linesDataRaw = await fsPromises.readFile(linesPath, 'utf8');
   const resourcesDataRaw = await fsPromises.readFile(resourcesPath, 'utf8');
+
+  for (const lf of baseLabelFiles) {
+    const full = path.join(defaultLocaleDir, lf);
+    try {
+      const raw = await fsPromises.readFile(full, 'utf8');
+      Object.assign(baseLabels, flatten(JSON.parse(raw)));
+      newCache[lf] = checksum(raw);
+    } catch {
+      // ignore missing files
+    }
+  }
 
   newCache['stations.json'] = checksum(stationsDataRaw);
   newCache['lines.json'] = checksum(linesDataRaw);
@@ -191,26 +322,46 @@ async function generate() {
   if (
     cache['stations.json'] !== newCache['stations.json'] ||
     cache['lines.json'] !== newCache['lines.json'] ||
-    cache['resources.json'] !== newCache['resources.json']
+    cache['resources.json'] !== newCache['resources.json'] ||
+    cache['labels.json'] !== newCache['labels.json']
   ) {
     regenerate = true;
   }
 
-  const files = await fsPromises.readdir(dataDir);
-  const localizedData = {};
-  for (const file of files) {
-    if (!file.endsWith('.json') || file === 'stations.json' || file === 'lines.json' || file === 'resources.json') continue;
-    const match = file.match(/^(.*)\.([a-z]{2}-[A-Z]{2})\.json$/);
-    if (!match) continue;
-    const [, id, locale] = match;
-    const fullPath = path.join(dataDir, file);
-    const content = await fsPromises.readFile(fullPath, 'utf8');
-    newCache[file] = checksum(content);
-    if (cache[file] !== newCache[file]) {
-      regenerate = true;
+  const entries = await fsPromises.readdir(dataDir, { withFileTypes: true });
+  const locales = [];
+  const labelsLocales = {};
+
+  for (const entry of entries) {
+    if (
+      entry.isDirectory() &&
+      /^[a-z]{2}(?:-[A-Z]{2})?$/.test(entry.name) &&
+      entry.name !== defaultLocale
+    ) {
+      const locale = entry.name;
+      const localeDir = path.join(dataDir, locale);
+      const labelFiles = [
+        'labels.json',
+        'labels.lines.json',
+        'labels.stations.json',
+        'labels.resources.json',
+      ];
+      const labels = {};
+      for (const lf of labelFiles) {
+        const full = path.join(localeDir, lf);
+        try {
+          const content = await fsPromises.readFile(full, 'utf8');
+          Object.assign(labels, flatten(JSON.parse(content)));
+          const key = path.join(locale, lf);
+          newCache[key] = checksum(content);
+          if (cache[key] !== newCache[key]) regenerate = true;
+        } catch {
+          // ignore missing
+        }
+      }
+      labelsLocales[locale] = labels;
+      locales.push(locale);
     }
-    if (!localizedData[id]) localizedData[id] = {};
-    localizedData[id][locale] = JSON.parse(content);
   }
 
   if (!regenerate) {
@@ -227,24 +378,50 @@ async function generate() {
   }
 
   await generateIndex(linesData.lines, 'lines');
+  for (const locale of locales) {
+    const labels = labelsLocales[locale];
+    await generateIndex(linesData.lines, 'lines', locale, labels);
+  }
+
   await generateIndex(stationsData['core-stations'], 'core-stations');
+  for (const locale of locales) {
+    const labels = labelsLocales[locale];
+    await generateIndex(stationsData['core-stations'], 'core-stations', locale, labels);
+  }
+
   await generateIndex(stationsData['sub-stations'], 'suburb-stations');
+  for (const locale of locales) {
+    const labels = labelsLocales[locale];
+    await generateIndex(stationsData['sub-stations'], 'suburb-stations', locale, labels);
+  }
 
   for (const line of linesData.lines.items) {
-    await generateLine(line, stationMap, localizedData[line.id]);
+    await generateLine(line, stationMap, labelsLocales);
   }
 
   for (const station of stationsData['core-stations'].items) {
-    await generateStation(station, 'core-stations', stationLines[station.id], resourceMap, localizedData[station.id]);
+    await generateStation(
+      station,
+      'core-stations',
+      stationLines[station.id],
+      resourceMap,
+      labelsLocales
+    );
   }
   for (const station of stationsData['sub-stations'].items) {
-    await generateStation(station, 'suburb-stations', stationLines[station.id], resourceMap, localizedData[station.id]);
+    await generateStation(
+      station,
+      'suburb-stations',
+      stationLines[station.id],
+      resourceMap,
+      labelsLocales
+    );
   }
 
   if (Array.isArray(resourcesData.resources)) {
     for (const res of resourcesData.resources) {
       const processed = resourceMap[res.id];
-      await generateResource(processed, localizedData[res.id]);
+      await generateResource(processed, labelsLocales);
     }
   }
 
@@ -252,79 +429,77 @@ async function generate() {
   console.log('Method pages generated.');
 }
 
-async function generateLine(line, stationMap, locales) {
+async function generateLine(line, stationMap, labelsLocales) {
+  const baseSlug = `lines/${line.slug || line.id}`;
   const base = {
-    title: line.title,
+    title: translate(line.title, baseLabels),
     stations: line.stations,
+    slug: baseSlug,
   };
   const file = path.join(docsDir, 'lines', `${line.id}.mdx`);
-  await writeMarkdown(file, base, lineBody(line, stationMap));
-  if (locales) {
-    for (const locale of Object.keys(locales)) {
-      const data = locales[locale];
-      const fm = {
-        title: data.title || line.title,
-        stations: data.stations || line.stations,
-      };
-      const dest = path.join(docsDir, locale, 'lines', `${line.id}.md`);
-      await writeMarkdown(dest, fm, lineBody({ ...line, ...data }, stationMap));
-    }
+  await writeMarkdown(file, base, lineBody(line, stationMap, baseLabels));
+  for (const locale of Object.keys(labelsLocales)) {
+    const labels = labelsLocales[locale] || baseLabels;
+    const fm = {
+      title: translate(line.title, labels),
+      stations: line.stations,
+      slug: `${locale}/${baseSlug}`,
+    };
+    const dest = path.join(docsDir, locale, 'lines', `${line.id}.mdx`);
+    await writeMarkdown(dest, fm, lineBody(line, stationMap, labels, locale));
   }
 }
 
-async function generateStation(station, folder, lines, resources, locales) {
+async function generateStation(station, folder, lines, resources, labelsLocales) {
+  const baseSlug = station.slug;
   const fm = {
-    title: station.title.split(' - ')[0],
-    slug: station.slug,
+    title: translate(station.title, baseLabels).split(' - ')[0],
+    slug: baseSlug,
     sidebar: { order: station.order },
     icon: station.icon,
   };
   if (lines && lines.length) fm.metrolines = lines;
   const file = path.join(docsDir, folder, `${station.id}.mdx`);
-  await writeMarkdown(file, fm, stationBody(station, resources));
-  if (locales) {
-    for (const locale of Object.keys(locales)) {
-      const data = locales[locale];
-      const locFm = {
-        title: (data.title || station.title).split(' - ')[0],
-        slug: station.slug,
-        sidebar: { order: station.order },
-        icon: station.icon,
-      };
-      if (lines && lines.length) locFm.metrolines = lines;
-      const dest = path.join(docsDir, locale, folder, `${station.id}.mdx`);
-      await writeMarkdown(dest, locFm, stationBody({ ...station, ...data }, resources));
-    }
+  await writeMarkdown(file, fm, stationBody(station, resources, baseLabels));
+  for (const locale of Object.keys(labelsLocales)) {
+    const labels = labelsLocales[locale] || baseLabels;
+    const locFm = {
+      title: translate(station.title, labels).split(' - ')[0],
+      slug: `${locale}/${baseSlug}`,
+      sidebar: { order: station.order },
+      icon: station.icon,
+    };
+    if (lines && lines.length) locFm.metrolines = lines;
+    const dest = path.join(docsDir, locale, folder, `${station.id}.mdx`);
+    await writeMarkdown(dest, locFm, stationBody(station, resources, labels, locale));
   }
 }
 
-async function generateResource(resource, locales) {
-  const slug = resource.slug;
-  const fileSlug = slug.toLowerCase();
+async function generateResource(resource, labelsLocales) {
+  const baseSlug = resource.slug;
+  const fileSlug = baseSlug.toLowerCase();
   const fm = {
-    title: resource.title,
-    slug,
+    title: translate(resource.title, baseLabels),
+    slug: baseSlug,
     sidebar: { order: resource.order },
     icon: resource.icon,
   };
   if (resource.category) fm.category = resource.category;
   if (resource.image) fm.image = resource.image;
   const file = path.join(docsDir, `${fileSlug}.mdx`);
-  await writeMarkdown(file, fm, await resourceBody(resource));
-  if (locales) {
-    for (const locale of Object.keys(locales)) {
-      const data = locales[locale];
-      const locFm = {
-        title: data.title || resource.title,
-        slug,
-        sidebar: { order: resource.order },
-        icon: resource.icon,
-      };
-      if (resource.category) locFm.category = resource.category;
-      if (resource.image) locFm.image = resource.image;
-      const dest = path.join(docsDir, locale, `${fileSlug}.mdx`);
-      await writeMarkdown(dest, locFm, await resourceBody({ ...resource, ...data }));
-    }
+  await writeMarkdown(file, fm, await resourceBody(resource, baseLabels));
+  for (const locale of Object.keys(labelsLocales)) {
+    const labels = labelsLocales[locale] || baseLabels;
+    const locFm = {
+      title: translate(resource.title, labels),
+      slug: `${locale}/${baseSlug}`,
+      sidebar: { order: resource.order },
+      icon: resource.icon,
+    };
+    if (resource.category) locFm.category = resource.category;
+    if (resource.image) locFm.image = resource.image;
+    const dest = path.join(docsDir, locale, `${fileSlug}.mdx`);
+    await writeMarkdown(dest, locFm, await resourceBody(resource, labels, locale));
   }
 }
 

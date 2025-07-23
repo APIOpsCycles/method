@@ -7,6 +7,7 @@ import iconsData from '@iconify-json/material-symbols-light/icons.json' with { t
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const docsDir = path.join(rootDir, 'src/content/docs');
+const dataDir = path.join(rootDir, 'src/data/method/');
 const outFile = path.join(rootDir, 'src/components/material-icons.ts');
 const available = new Set(Object.keys(iconsData.icons));
 
@@ -40,8 +41,34 @@ async function gatherIcons(dir, set) {
   }
 }
 
+function extractIcons(obj, set) {
+  if (Array.isArray(obj)) {
+    for (const item of obj) extractIcons(item, set);
+  } else if (obj && typeof obj === 'object') {
+    for (const [k, v] of Object.entries(obj)) {
+      if (k === 'icon' && typeof v === 'string' && available.has(v)) {
+        set.add(v);
+      } else {
+        extractIcons(v, set);
+      }
+    }
+  }
+}
+
+async function gatherIconsFromData(dir, set) {
+  const files = ['stations.json', 'resources.json', 'lines.json'];
+  for (const file of files) {
+    try {
+      const content = await fs.readFile(path.join(dir, file), 'utf8');
+      const data = JSON.parse(content);
+      extractIcons(data, set);
+    } catch {}
+  }
+}
+
 async function generate() {
   const icons = new Set();
+  await gatherIconsFromData(dataDir, icons);
   await gatherIcons(docsDir, icons);
   const names = Array.from(icons).sort();
 

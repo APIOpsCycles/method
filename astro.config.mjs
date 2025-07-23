@@ -33,10 +33,7 @@ export default defineConfig({
                 },
         ],
           title: {
-                'en-US': 'APIOps Cycles Method',
-                'fi-FI': 'APIOps Cycles -menetelmä',
-                'fr-FR': 'Méthode APIOps Cycles',
-                'de-DE': 'Methode APIOps Cycles',
+                'en': 'APIOps Cycles'
         },
           logo: {
                 light: './src/assets/apiops-cycles-logo2025-blue.svg',
@@ -57,72 +54,76 @@ export default defineConfig({
           locales: {
                         root: {
                         label: 'English',
-                        lang: 'en-US',
+                        lang: 'en',
                         },
-                        'fi-fi': {
+                        'fi': {
                         label: 'Suomi',
-                        lang: 'fi-FI',
+                        lang: 'fi',
                         },
-                        'fr-fr': {
+                        'fr': {
                         label: 'Français',
-                        lang: 'fr-FR',
+                        lang: 'fr',
                         },
-                        'de-de': {
+                        'de': {
                         label: 'Deutsch',
-                        lang: 'de-DE',
+                        lang: 'de',
+                        },                        
+                        'pt': {
+                        label: 'Português',
+                        lang: 'pt',
                         },
                 },
                       sidebar: [
                               {
                                       label: 'Start Here',
-                                      translations: { 'fi-FI': 'Aloita tästä', 'fr-FR': 'Commencez ici', 'de-DE': 'Hier anfangen' },
+                                      translations: { 'fi': 'Aloita tästä', 'fr': 'Commencez ici', 'de': 'Hier anfangen', 'pt': 'Comece aqui' },
                                       items: [
                                                 { 
                                                 label: 'Getting Started', 
-                                                translations: { 'fi-FI': 'Kuinka pääset alkuun', 'fr-FR': 'Comment commencer', 'de-DE': 'Erste Schritte' }, 
+                                                translations: { 'fi': 'Kuinka pääset alkuun', 'fr': 'Comment commencer', 'de': 'Erste Schritte', 'pt': 'Começando' }, 
                                                 slug: 'the-method'
                                                 },
                                                 {
                                                         label: 'Advanced Topics',
-                                                        translations: { 'fi-FI': 'Edistyneet aiheet', 'fr-FR': 'Sujets avancés', 'de-DE': 'Fortgeschrittene Themen' },
+                                                        translations: { 'fi': 'Edistyneet aiheet', 'fr': 'Sujets avancés', 'de': 'Fortgeschrittene Themen', 'pt': 'Tópicos Avançados' },
                                                         link: '/advanced-topics/',
                                                 },
                                                 {
                                                         label: 'Partners & Community',
-                                                        translations: { 'fi-FI': 'Yhteisö ja tuki', 'fr-FR': 'Communauté et support', 'de-DE': 'Community und Support' },
+                                                        translations: { 'fi': 'Kumppanit ja yhteisö', 'fr': 'Partenaires et communauté', 'de': 'Partner & Gemeinschaft', 'pt': 'Parceiros e Comunidade' },
                                                         link: '/community/',
                                                 },
                                                 {
                                                         label: 'Changelog',
-                                                        translations: { 'fi-FI': 'Muutokset', 'fr-FR': 'Journal des modifications', 'de-DE': 'Änderungsprotokoll' },
+                                                        translations: { 'fi': 'Muutokset', 'fr': 'Journal des modifications', 'de': 'Änderungsprotokoll', 'pt': 'Registro de alterações' },
                                                         link: '/changelog/',
                                                 }
                                         ],
                                 },
                                 {
                                       label: 'Method',
-                                      translations: { 'fi-FI': 'Menetelmä', 'fr-FR': 'Méthode', 'de-DE': 'Methode' },
+                                      translations: { 'fi': 'Menetelmä', 'fr': 'Méthode', 'de': 'Methode', 'pt': 'Método' },
                                           items: [
 
                                                         {
                                                                 label: 'Metro Lines',
-                                                                translations: { 'fi-FI': 'Metrolinjat', 'fr-FR': 'Lignes de métro', 'de-DE': 'Metro-Linien' },
+                                                                translations: { 'fi': 'Metrolinjat', 'fr': 'Lignes de métro', 'de': 'Metro-Linien', 'pt': 'Linhas de metrô' },
                                                                 collapsed: true,
                                                                 autogenerate: { directory: 'lines' },
                                                         },                                                {
                                                                 label: 'Core Stations',
-                                                                translations: { 'fi-FI': 'Ydinasemat', 'fr-FR': 'Stations principales', 'de-DE': 'Kernstationen' },
+                                                                translations: { 'fi': 'Ydinasemat', 'fr': 'Stations principales', 'de': 'Kernstationen', 'pt': 'Estações principais' },
                                                                 autogenerate: { directory: 'core-stations' },
                                                         },
                                                         {
                                                                 label: 'Suburb Stations',
-                                                                translations: { 'fi-FI': 'Lähiöasemat', 'fr-FR': 'Stations suburbaines', 'de-DE': 'Vorortstationen' },
+                                                                translations: { 'fi': 'Lähiöasemat', 'fr': 'Stations suburbaines', 'de': 'Vorortstationen', 'pt': 'Estações suburbanas' },
                                                                 collapsed: true,
                                                                 autogenerate: { directory: 'suburb-stations' },
                                                         },
                                                         {
                                                                 label: 'Resources',
-                                                                translations: { 'fi-FI': 'Resurssit', 'fr-FR': 'Ressources', 'de-DE': 'Ressourcen' },
+                                                                translations: { 'fi': 'Resurssit', 'fr': 'Ressources', 'de': 'Ressourcen', 'pt': 'Recursos' },
                                                                 collapsed: true,
                                                                 autogenerate: { directory: 'resources' },
                                                         },

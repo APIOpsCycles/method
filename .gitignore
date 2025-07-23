@@ -1,8 +1,17 @@
 # generated pages
+# root en-US
 src/content/docs/lines/
 src/content/docs/core-stations/
 src/content/docs/suburb-stations/
 src/content/docs/resources/
+# localized folders
+src/content/docs/*/lines/
+src/content/docs/*/core-stations/
+src/content/docs/*/suburb-stations/
+src/content/docs/*/resources/
+# translation cache and temporary translation folder
+.json-autotranslate-cache
+src/data/locales/
 
 # build output
 dist/

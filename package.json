@@ -17,6 +17,8 @@
     "@iconify-json/material-symbols-light": "^1.2.30",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.6.1",
+    "flat": "^6.0.1",
+    "json-autotranslate": "^1.16.1",
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.11",
     "unplugin-icons": "^22.1.0"

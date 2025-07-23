@@ -1,15 +1,16 @@
 {
-"lines": {
-  "title": "Metro Lines",
-  "slug": "lines",
-  "order": 0,
-  "description": "A collection of API lines that guide the development and management of APIs.",
+  "lines": {
+    "title": "lines.title",
+    "slug": "lines",
+    "order": 0,
+    "description": "lines.description",
     "items": [
-      {"id": "business-opportunities-line",
-        "title": "Business Opportunities Line",
+      {
+        "id": "business-opportunities-line",
+        "title": "line.business-opportunities-line.title",
         "slug": "business-opportunities-line",
         "order": 1,
-        "description": "Focuses on identifying and leveraging business opportunities through APIs.",
+        "description": "line.business-opportunities-line.description",
         "stations": [
           "monitoring-and-improving",
           "api-product-strategy",
@@ -20,11 +21,12 @@
           "ecosystem-vision"
         ]
       },
-      {"id": "platform-architecture-line",
-        "title": "Platform Architecture Line",
+      {
+        "id": "platform-architecture-line",
+        "title": "line.platform-architecture-line.title",
         "slug": "platform-architecture-line",
         "order": 2,
-        "description": "Covers the architectural aspects of API platforms.",
+        "description": "line.platform-architecture-line.description",
         "stations": [
           "api-product-strategy",
           "api-consumer-experience",
@@ -36,11 +38,12 @@
           "vendor-management"
         ]
       },
-      {"id": "api-design-line",
-        "title": "API Design Line",
+      {
+        "id": "api-design-line",
+        "title": "line.api-design-line.title",
         "slug": "api-design-line",
         "order": 3,
-        "description": "Focuses on the design principles and practices for APIs.",
+        "description": "line.api-design-line.description",
         "stations": [
           "api-platform-architecture",
           "api-design",
@@ -48,11 +51,12 @@
           "api-audit"
         ]
       },
-      {"id": "delivery-line",
-        "title": "Delivery Line",
+      {
+        "id": "delivery-line",
+        "title": "line.delivery-line.title",
         "slug": "delivery-line",
         "order": 4,
-        "description": "Covers the delivery processes and practices for APIs.",
+        "description": "line.delivery-line.description",
         "stations": [
           "api-delivery",
           "contract-design",
@@ -62,11 +66,12 @@
           "release-management"
         ]
       },
-      {"id": "publishing-and-adoption-line",
-        "title": "Publishing and Adoption Line",
+      {
+        "id": "publishing-and-adoption-line",
+        "title": "line.publishing-and-adoption-line.title",
         "slug": "publishing-and-adoption-line",
         "order": 5,
-        "description": "Focuses on publishing APIs and ensuring their adoption by consumers.",
+        "description": "line.publishing-and-adoption-line.description",
         "stations": [
           "api-audit",
           "api-publishing",
@@ -77,11 +82,12 @@
           "partner-integration"
         ]
       },
-      {"id": "operating-model-line",
-        "title": "Operating Model Line",
+      {
+        "id": "operating-model-line",
+        "title": "line.operating-model-line.title",
         "slug": "operating-model-line",
         "order": 6,
-        "description": "Covers the operating model for API management and governance.",
+        "description": "line.operating-model-line.description",
         "stations": [
           "api-product-strategy",
           "api-mindset",
@@ -91,7 +97,7 @@
           "portfolio-management",
           "budget-and-resource-management"
         ]
-      }      
+      }
     ]
   }
 }

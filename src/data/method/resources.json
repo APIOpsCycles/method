@@ -2,82 +2,82 @@
   "resources": [
     {
       "id": "api-community-engagement-strategies",
-      "title": "API Community Engagement Strategies",
+      "title": "resource.api-community-engagement-strategies.title",
       "slug": "resources/api-community-engagement-strategies",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 103,
-      "description": "A playbook for fostering API adoption by cultivating communities through content, support channels, feedback loops, and social engagement strategies.",
+      "description": "resource.api-community-engagement-strategies.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API community engagement strategies principles",
-        "Standardized approach using API Community Engagement Strategies",
-        "Improved implementation of related API practices"
+        "resource.api-community-engagement-strategies.outcomes",
+        "resource.api-community-engagement-strategies.outcomes.1",
+        "resource.api-community-engagement-strategies.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Develop marketing strategies to promote APIs to target audiences, including social media, blogs, and webinars.",
-          "Create promotional materials (e.g., case studies, success stories) that highlight the value and benefits of APIs.",
-          "Create educational materials (e.g., tutorials, documentation) that explain API features, benefits, and usage patterns.",
-          "Engage with API consumers through feedback loops, support channels, and community forums to understand their needs and improve API adoption.",
-          "Analyze API usage metrics and incorporate user feedback into API iterations."
+          "resource.api-community-engagement-strategies.steps",
+          "resource.api-community-engagement-strategies.steps.1",
+          "resource.api-community-engagement-strategies.steps.2",
+          "resource.api-community-engagement-strategies.steps.3",
+          "resource.api-community-engagement-strategies.steps.4"
         ],
         "tips": [
-          "Customize the API Community Engagement Strategies for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-community-engagement-strategies.tips",
+          "resource.api-community-engagement-strategies.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-compliance-best-practices",
-      "title": "API Compliance Best Practices",
+      "title": "resource.api-compliance-best-practices.title",
       "slug": "resources/api-compliance-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 104,
-      "description": "Ensure APIs meet legal, regulatory, and internal compliance through documentation, controls, and automated validations.",
+      "description": "resource.api-compliance-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API compliance best practices principles",
-        "Standardized approach using API Compliance Best Practices",
-        "Improved implementation of related API practices"
+        "resource.api-compliance-best-practices.outcomes",
+        "resource.api-compliance-best-practices.outcomes.1",
+        "resource.api-compliance-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Document compliance measures and ensure they are communicated to stakeholders and consumers.",
-          "Implement measures to ensure APIs comply with these requirements, including data encryption, access controls, and audit trails.",
-          "Use checklists, linters, and testing tools to verify consistency and conformance with standards."
+          "resource.api-compliance-best-practices.steps",
+          "resource.api-compliance-best-practices.steps.1",
+          "resource.api-compliance-best-practices.steps.2"
         ],
         "tips": [
-          "Customize the API Compliance Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-compliance-best-practices.tips",
+          "resource.api-compliance-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-development-best-practices",
-      "title": "API Development Best Practices",
+      "title": "resource.api-development-best-practices.title",
       "slug": "resources/api-development-best-practices",
       "icon": "edit-document-outline",
       "daft": "true",
       "order": 112,
-      "description": "Guidelines promoting consistent, maintainable API codebases using standard libraries, reusable patterns, and aligned development workflows.",
+      "description": "resource.api-development-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API development best practices principles",
-        "Standardized approach using API Development Best Practices",
-        "Improved implementation of related API practices"
+        "resource.api-development-best-practices.outcomes",
+        "resource.api-development-best-practices.outcomes.1",
+        "resource.api-development-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Use established frameworks and libraries to implement APIs, ensuring they are reusable and maintainable.",
-          "Follow coding standards and best practices to ensure consistent and high-quality API development."
+          "resource.api-development-best-practices.steps",
+          "resource.api-development-best-practices.steps.1"
         ],
         "tips": [
-          "Customize the API Development Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-development-best-practices.tips",
+          "resource.api-development-best-practices.tips.1"
         ]
       },
       "category": "guideline",
@@ -85,27 +85,27 @@
     },
     {
       "id": "api-metrics-and-analytics",
-      "title": "API Metrics And Analytics",
+      "title": "resource.api-metrics-and-analytics.title",
       "slug": "resources/api-metrics-and-analytics",
       "icon": "edit-document-outline",
       "daft": "true",
       "order": 119,
-      "description": "A resource for defining, collecting, and analyzing API performance and usage data to align technical KPIs with business outcomes.",
+      "description": "resource.api-metrics-and-analytics.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API metrics and analytics principles",
-        "Standardized approach using API Metrics And Analytics",
-        "Improved implementation of related API practices"
+        "resource.api-metrics-and-analytics.outcomes",
+        "resource.api-metrics-and-analytics.outcomes.1",
+        "resource.api-metrics-and-analytics.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Identify key performance indicators (KPIs) to measure API success against business goals.",
-          "Define and monitor performance metrics (e.g., API calls, latency, error rates) and adoption metrics (e.g., NPS).",
-          "Monitor API initiatives to ensure adherence to operating guidelines and governance practices"
+          "resource.api-metrics-and-analytics.steps",
+          "resource.api-metrics-and-analytics.steps.1",
+          "resource.api-metrics-and-analytics.steps.2"
         ],
         "tips": [
-          "Customize the API Metrics And Analytics for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-metrics-and-analytics.tips",
+          "resource.api-metrics-and-analytics.tips.1"
         ]
       },
       "category": "guideline",
@@ -113,935 +113,932 @@
     },
     {
       "id": "api-onboarding-best-practices",
-      "title": "API Onboarding Best Practices",
+      "title": "resource.api-onboarding-best-practices.title",
       "slug": "resources/api-onboarding-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 121,
-      "description": "Best practices to streamline API consumer onboarding journeys with step-by-step registration, discovery, and first-call guidance.",
+      "description": "resource.api-onboarding-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API onboarding best practices principles",
-        "Standardized approach using API Onboarding Best Practices",
-        "Improved implementation of related API practices"
+        "resource.api-onboarding-best-practices.outcomes",
+        "resource.api-onboarding-best-practices.outcomes.1",
+        "resource.api-onboarding-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Define the API consumer journey from discovery to troubleshooting, identifying key touchpoints and pain points.",
-          "Develop onboarding processes and resources to help API consumers understand how to use APIs effectively.",
-          "Document how consumers find and use the API, including onboarding processes and registration."
-          
+          "resource.api-onboarding-best-practices.steps",
+          "resource.api-onboarding-best-practices.steps.1",
+          "resource.api-onboarding-best-practices.steps.2"
         ],
         "tips": [
-          "Customize the API Onboarding Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-onboarding-best-practices.tips",
+          "resource.api-onboarding-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-portfolio-management-guidelines",
-      "title": "API Portfolio Management Guidelines",
+      "title": "resource.api-portfolio-management-guidelines.title",
       "slug": "resources/api-portfolio-management-guidelines",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 123,
-      "description": "A guide to strategically manage an organization's API suite—prioritizing APIs, allocating resources, and monitoring performance across lifecycles.",
+      "description": "resource.api-portfolio-management-guidelines.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API portfolio management guidelines principles",
-        "Standardized approach using API Portfolio Management Guidelines",
-        "Improved implementation of related API practices"
+        "resource.api-portfolio-management-guidelines.outcomes",
+        "resource.api-portfolio-management-guidelines.outcomes.1",
+        "resource.api-portfolio-management-guidelines.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Define portfolio management practices that outline the processes for managing the API portfolio, including prioritization, monitoring, and optimization.",
-          "Define budget and resource management practices that outline the processes for managing budgets and resources for API initiatives.",
-          "Establish criteria for evaluating and prioritizing budget allocations based on business value, impact, and alignment with strategic initiatives.",
-          "Monitor the API portfolio to ensure APIs are delivering value, meeting performance expectations, and aligning with business goals."
+          "resource.api-portfolio-management-guidelines.steps",
+          "resource.api-portfolio-management-guidelines.steps.1",
+          "resource.api-portfolio-management-guidelines.steps.2",
+          "resource.api-portfolio-management-guidelines.steps.3"
         ],
         "tips": [
-          "Customize the API Portfolio Management Guidelines for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-portfolio-management-guidelines.tips",
+          "resource.api-portfolio-management-guidelines.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-security-best-practices",
-      "title": "API Security Best Practices",
+      "title": "resource.api-security-best-practices.title",
       "slug": "resources/api-security-best-practices",
-      "icon": "edit-document-outline",      
+      "icon": "edit-document-outline",
       "draft": "true",
       "order": 130,
-      "description": "A set of actionable controls for securing APIs, including authentication, authorization, encryption, rate-limiting, and pipeline-level compliance checks.",
+      "description": "resource.api-security-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API security best practices principles",
-        "Standardized approach using API Security Best Practices",
-        "Improved implementation of related API practices"
+        "resource.api-security-best-practices.outcomes",
+        "resource.api-security-best-practices.outcomes.1",
+        "resource.api-security-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Ensure APIs meet security and compliance requirements through automated checks and audits.",
-          "Implement security measures such as authentication, authorization, encryption, and rate limiting to protect APIs from threats.",
-          "Implement automated security checks and compliance validations in the CI/CD pipeline to ensure APIs are secure and compliant."
+          "resource.api-security-best-practices.steps",
+          "resource.api-security-best-practices.steps.1",
+          "resource.api-security-best-practices.steps.2"
         ],
         "tips": [
-          "Customize the API Security Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-security-best-practices.tips",
+          "resource.api-security-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-team-structure-guidelines",
-      "title": "API Team Structure Guidelines",
+      "title": "resource.api-team-structure-guidelines.title",
       "slug": "resources/api-team-structure-guidelines",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 132,
-      "description": "Organizational guidance for defining roles and responsibilities within API teams to ensure clarity, collaboration, and accountability.",
+      "description": "resource.api-team-structure-guidelines.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API team structure guidelines principles",
-        "Standardized approach using API Team Structure Guidelines",
-        "Improved implementation of related API practices"
+        "resource.api-team-structure-guidelines.outcomes",
+        "resource.api-team-structure-guidelines.outcomes.1",
+        "resource.api-team-structure-guidelines.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Define team structures and roles for API teams, including API product owners, developers, architects, and operations."
+          "resource.api-team-structure-guidelines.steps"
         ],
         "tips": [
-          "Customize the API Team Structure Guidelines for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-team-structure-guidelines.tips",
+          "resource.api-team-structure-guidelines.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-testing-best-practices",
-      "title": "API Testing Best Practices",
+      "title": "resource.api-testing-best-practices.title",
       "slug": "resources/api-testing-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 133,
-      "description": "Guidelines for implementing automated functional, performance, and security testing throughout the API lifecycle.",
+      "description": "resource.api-testing-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API testing best practices principles",
-        "Standardized approach using API Testing Best Practices",
-        "Improved implementation of related API practices"
+        "resource.api-testing-best-practices.outcomes",
+        "resource.api-testing-best-practices.outcomes.1",
+        "resource.api-testing-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Test APIs for functionality, security, and performance using automated testing tools.",
-          "Integrate functional and non-functional testing into the CI/CD pipeline to ensure APIs meet quality standards.",
-          "Use automated testing tools to validate API functionality, security, and performance."
+          "resource.api-testing-best-practices.steps",
+          "resource.api-testing-best-practices.steps.1",
+          "resource.api-testing-best-practices.steps.2"
         ],
         "tips": [
-          "Customize the API Testing Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-testing-best-practices.tips",
+          "resource.api-testing-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-training-programs",
-      "title": "API Training Programs",
+      "title": "resource.api-training-programs.title",
       "slug": "resources/api-training-programs",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 134,
-      "description": "A roadmap for upskilling teams with structured learning paths in API design, governance, performance, and security.",
+      "description": "resource.api-training-programs.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API training programs principles",
-        "Standardized approach using API Training Programs",
-        "Improved implementation of related API practices"
+        "resource.api-training-programs.outcomes",
+        "resource.api-training-programs.outcomes.1",
+        "resource.api-training-programs.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Identify key API skills and knowledge areas that need enhancement, such as API design, security, and performance.",
-          "Encourage continuous learning through online courses, certifications, and community engagement.",
-          "Provide training and resources to help teams adopt an API-first mindset and understand the benefits of APIs.",
-          "Provide training programs, workshops, and resources to help teams enhance their API skills and knowledge."
+          "resource.api-training-programs.steps",
+          "resource.api-training-programs.steps.1",
+          "resource.api-training-programs.steps.2",
+          "resource.api-training-programs.steps.3"
         ],
         "tips": [
-          "Customize the API Training Programs for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-training-programs.tips",
+          "resource.api-training-programs.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-versioning-best-practices",
-      "title": "API Versioning Best Practices",
+      "title": "resource.api-versioning-best-practices.title",
       "slug": "resources/api-versioning-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 138,
-      "description": "Strategies for introducing, maintaining, and retiring API versions while preserving backward compatibility and consumer trust.",
+      "description": "resource.api-versioning-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of API versioning best practices principles",
-        "Standardized approach using API Versioning Best Practices",
-        "Improved implementation of related API practices"
+        "resource.api-versioning-best-practices.outcomes",
+        "resource.api-versioning-best-practices.outcomes.1",
+        "resource.api-versioning-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Define versioning strategies for APIs to manage changes and ensure backward compatibility."
+          "resource.api-versioning-best-practices.steps"
         ],
         "tips": [
-          "Customize the API Versioning Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-versioning-best-practices.tips",
+          "resource.api-versioning-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "apiops-CI-CD-for-apis",
-      "title": "APIOps CI/CD For APIs",
+      "title": "resource.apiops-CI-CD-for-apis.title",
       "slug": "resources/apiops-CI-CD-for-apis",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 140,
-      "description": "Deployment guidance that integrates API lifecycle tasks—design, testing, governance—into continuous integration and delivery pipelines.",
+      "description": "resource.apiops-CI-CD-for-apis.description",
       "image": "",
       "outcomes": [
-        "Better understanding of CI/CDfor APIs principles",
-        "Standardized approach using CI/CD For APIs",
-        "Improved implementation of related API practices"
+        "resource.apiops-CI-CD-for-apis.outcomes",
+        "resource.apiops-CI-CD-for-apis.outcomes.1",
+        "resource.apiops-CI-CD-for-apis.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Use CI/CD pipelines to automate build, test, and deployment processes, ensuring consistent quality and traceability.",
-          "Integrate automated tests into the CI/CD pipeline to ensure continuous validation of API quality.",
-          "Implement deployment strategies (e.g., blue-green deployments, canary releases) to minimize risks during API releases.",
-          "Establish a habit of reviewing metrics and planning continuous improvement activities."
-
+          "resource.apiops-CI-CD-for-apis.steps",
+          "resource.apiops-CI-CD-for-apis.steps.1",
+          "resource.apiops-CI-CD-for-apis.steps.2",
+          "resource.apiops-CI-CD-for-apis.steps.3"
         ],
         "tips": [
-          "Customize the CI/CD For APIs for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.apiops-CI-CD-for-apis.tips",
+          "resource.apiops-CI-CD-for-apis.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "competitor-analysis-template",
-      "title": "Competitor Analysis Template",
+      "title": "resource.competitor-analysis-template.title",
       "slug": "resources/competitor-analysis-template",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 143,
-      "description": "A structured worksheet to benchmark your API offerings against competitors by mapping strengths, weaknesses, and value differentiators.",
+      "description": "resource.competitor-analysis-template.description",
       "image": "",
       "outcomes": [
-        "Better understanding of competitor analysis template principles",
-        "Standardized approach using Competitor Analysis Template",
-        "Improved implementation of related API practices"
+        "resource.competitor-analysis-template.outcomes",
+        "resource.competitor-analysis-template.outcomes.1",
+        "resource.competitor-analysis-template.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Conduct a competitive analysis to identify key competitors, and their API offerings.",
-          "Analyze competitor APIs to understand their strengths, weaknesses, and unique selling points."
+          "resource.competitor-analysis-template.steps",
+          "resource.competitor-analysis-template.steps.1"
         ],
         "tips": [
-          "Customize the Competitor Analysis Template for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.competitor-analysis-template.tips",
+          "resource.competitor-analysis-template.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "contract-first-design",
-      "title": "Contract First Design",
+      "title": "resource.contract-first-design.title",
       "slug": "resources/contract-first-design",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 146,
-      "description": "A guideline advocating for API-first approaches using formal contracts (e.g., OpenAPI) to align stakeholders before development.",
+      "description": "resource.contract-first-design.description",
       "image": "",
       "outcomes": [
-        "Better understanding of contract first design principles",
-        "Standardized approach using Contract First Design",
-        "Improved implementation of related API practices"
+        "resource.contract-first-design.outcomes",
+        "resource.contract-first-design.outcomes.1",
+        "resource.contract-first-design.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Apply contract-first or design-first approaches to ensure API contracts are validated before implementation.",
-          "Define API contracts that outline the expectations, responsibilities, and usage guidelines for each API.",
-          "Use standardized formats (e.g., OpenAPI, AsyncAPI) to create machine-readable API contracts that are easy to share and validate."
+          "resource.contract-first-design.steps",
+          "resource.contract-first-design.steps.1",
+          "resource.contract-first-design.steps.2"
         ],
         "tips": [
-          "Customize the Contract First Design for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.contract-first-design.tips",
+          "resource.contract-first-design.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "cross-functional-collaboration-best-practices",
-      "title": "Cross Functional Collaboration Best Practices",
+      "title": "resource.cross-functional-collaboration-best-practices.title",
       "slug": "resources/cross-functional-collaboration-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 147,
-      "description": "Practices to facilitate communication and alignment between business and tech teams when planning or delivering APIs.",
+      "description": "resource.cross-functional-collaboration-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of cross functional collaboration best practices principles",
-        "Standardized approach using Cross Functional Collaboration Best Practices",
-        "Improved implementation of related API practices"
+        "resource.cross-functional-collaboration-best-practices.outcomes",
+        "resource.cross-functional-collaboration-best-practices.outcomes.1",
+        "resource.cross-functional-collaboration-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Encourage cross-functional collaboration between API teams, business units, and stakeholders to align API initiatives with business goals."
+          "resource.cross-functional-collaboration-best-practices.steps"
         ],
         "tips": [
-          "Customize the Cross Functional Collaboration Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.cross-functional-collaboration-best-practices.tips",
+          "resource.cross-functional-collaboration-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "data-privacy-guidelines",
-      "title": "Data Privacy Guidelines",
+      "title": "resource.data-privacy-guidelines.title",
       "slug": "resources/data-privacy-guidelines",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 148,
-      "description": "Design considerations to ensure APIs meet data protection regulations like GDPR through anonymization and access controls.",
+      "description": "resource.data-privacy-guidelines.description",
       "image": "",
       "outcomes": [
-        "Better understanding of data privacy guidelines principles",
-        "Standardized approach using Data Privacy Guidelines",
-        "Improved implementation of related API practices"
+        "resource.data-privacy-guidelines.outcomes",
+        "resource.data-privacy-guidelines.outcomes.1",
+        "resource.data-privacy-guidelines.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Ensure user data privacy by implementing data protection measures, such as anonymization and access controls."
+          "resource.data-privacy-guidelines.steps"
         ],
         "tips": [
-          "Customize the Data Privacy Guidelines for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.data-privacy-guidelines.tips",
+          "resource.data-privacy-guidelines.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "domain-canvas",
-      "title": "Domain Canvas",
+      "title": "resource.domain-canvas.title",
       "slug": "resources/domain-canvas",
       "icon": "dashboard-outline",
       "order": 152,
-      "description": "A modeling tool to define and communicate the key entities and relationships in your domain, ensuring semantic consistency across APIs.",
-      "image": "/assets/resource/Canvas_domainCanvas_en-US.svg",
+      "description": "resource.domain-canvas.description",
+      "image": "",
       "outcomes": [
-        "Better understanding of domain canvas principles",
-        "Standardized approach using Domain Canvas",
-        "Improved implementation of related API practices"
+        "resource.domain-canvas.outcomes",
+        "resource.domain-canvas.outcomes.1",
+        "resource.domain-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Define core entities, their attributes, and relationships to create a shared conceptual understanding across APIs."
+          "resource.domain-canvas.steps"
         ],
         "tips": [
-          "Customize the Domain Canvas for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.domain-canvas.tips",
+          "resource.domain-canvas.tips.1"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "ecosystem-vision-template",
-      "title": "Ecosystem Vision Template",
+      "title": "resource.ecosystem-vision-template.title",
       "slug": "resources/ecosystem-vision-template",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 154,
-      "description": "A strategic planning tool to define the API ecosystem, including target partners, value chains, and integration opportunities.",
+      "description": "resource.ecosystem-vision-template.description",
       "image": "",
       "outcomes": [
-        "Better understanding of ecosystem vision template principles",
-        "Standardized approach using Ecosystem Vision Template",
-        "Improved implementation of related API practices"
+        "resource.ecosystem-vision-template.outcomes",
+        "resource.ecosystem-vision-template.outcomes.1",
+        "resource.ecosystem-vision-template.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Conduct market research to identify trends, opportunities, and threats in the API landscape.",
-          "Identify key ecosystem partners and stakeholders who will benefit from or contribute to the ecosystem.",
-          "Identify gaps in the market that your APIs can fill, based on competitor offerings.",
-          "Identify potential partners whose APIs can enhance your API capabilities and value proposition.",
-          "Develop a differentiation strategy that highlights unique features and benefits of your APIs.",
-          "Define the ecosystem vision for your APIs, including how they will interact with other systems and platforms.",
-          "Design APIs to enable seamless integration and collaboration within the ecosystem."
+          "resource.ecosystem-vision-template.steps",
+          "resource.ecosystem-vision-template.steps.1",
+          "resource.ecosystem-vision-template.steps.2",
+          "resource.ecosystem-vision-template.steps.3",
+          "resource.ecosystem-vision-template.steps.4",
+          "resource.ecosystem-vision-template.steps.5",
+          "resource.ecosystem-vision-template.steps.6"
         ],
         "tips": [
-          "Customize the Ecosystem Vision Template for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.ecosystem-vision-template.tips",
+          "resource.ecosystem-vision-template.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "industry-standards-and-best-practices",
-      "title": "Industry Standards And Best Practices",
+      "title": "resource.industry-standards-and-best-practices.title",
       "slug": "resources/industry-standards-and-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 157,
-      "description": "A reference resource for aligning API design and operation with widely recognized industry frameworks and specifications.",
+      "description": "resource.industry-standards-and-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of industry standards and best practices principles",
-        "Standardized approach using Industry Standards And Best Practices",
-        "Improved implementation of related API practices"
+        "resource.industry-standards-and-best-practices.outcomes",
+        "resource.industry-standards-and-best-practices.outcomes.1",
+        "resource.industry-standards-and-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Identify industry standards and best practices to ensure APIs are competitive and compliant."
+          "resource.industry-standards-and-best-practices.steps"
         ],
         "tips": [
-          "Customize the Industry Standards And Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.industry-standards-and-best-practices.tips",
+          "resource.industry-standards-and-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "partner-integration-guidelines",
-      "title": "Partner Integration Guidelines",
+      "title": "resource.partner-integration-guidelines.title",
       "slug": "resources/partner-integration-guidelines",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 164,
-      "description": "Integration checklists and communication patterns to manage technical and legal aspects of third-party API relationships.",
+      "description": "resource.partner-integration-guidelines.description",
       "image": "",
       "outcomes": [
-        "Better understanding of partner integration guidelines principles",
-        "Standardized approach using Partner Integration Guidelines",
-        "Improved implementation of related API practices"
+        "resource.partner-integration-guidelines.outcomes",
+        "resource.partner-integration-guidelines.outcomes.1",
+        "resource.partner-integration-guidelines.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Establish integration processes and guidelines for collaborating with partners, including technical integration, data sharing, and support.",
-          "Monitor partner API performance and compliance to ensure reliability and alignment with your API strategy."
+          "resource.partner-integration-guidelines.steps",
+          "resource.partner-integration-guidelines.steps.1"
         ],
         "tips": [
-          "Customize the Partner Integration Guidelines for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.partner-integration-guidelines.tips",
+          "resource.partner-integration-guidelines.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "role-communication-best-practices",
-      "title": "Role Communication Best Practices",
+      "title": "resource.role-communication-best-practices.title",
       "slug": "resources/role-communication-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 167,
-      "description": "Tools to define and document who is responsible for what within API initiatives, ensuring handoffs and accountability are clear.",
+      "description": "resource.role-communication-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of role communication best practices principles",
-        "Standardized approach using Role Communication Best Practices",
-        "Improved implementation of related API practices"
+        "resource.role-communication-best-practices.outcomes",
+        "resource.role-communication-best-practices.outcomes.1",
+        "resource.role-communication-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Establish clear responsibilities for each role, including API design, development, testing, and operations.",
-          "Ensure roles and responsibilities are communicated to all team members and stakeholders to ensure alignment."
+          "resource.role-communication-best-practices.steps",
+          "resource.role-communication-best-practices.steps.1"
         ],
         "tips": [
-          "Customize the Role Communication Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.role-communication-best-practices.tips",
+          "resource.role-communication-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "scalable-infrastructure-best-practices",
-      "title": "Scalable Infrastructure Best Practices",
+      "title": "resource.scalable-infrastructure-best-practices.title",
       "slug": "resources/scalable-infrastructure-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 168,
-      "description": "Architectural guidance to ensure APIs are deployed on infrastructure that can elastically handle usage spikes and growth.",
+      "description": "resource.scalable-infrastructure-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of scalable infrastructure best practices principles",
-        "Standardized approach using Scalable Infrastructure Best Practices",
-        "Improved implementation of related API practices"
+        "resource.scalable-infrastructure-best-practices.outcomes",
+        "resource.scalable-infrastructure-best-practices.outcomes.1",
+        "resource.scalable-infrastructure-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Design API infrastructure to be scalable and resilient, using cloud-native patterns and technologies.",
-          "Monitor infrastructure performance and capacity to ensure it can handle growing demand."
-
+          "resource.scalable-infrastructure-best-practices.steps",
+          "resource.scalable-infrastructure-best-practices.steps.1"
         ],
         "tips": [
-          "Customize the Scalable Infrastructure Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.scalable-infrastructure-best-practices.tips",
+          "resource.scalable-infrastructure-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "service-agreement-template",
-      "title": "Service Agreement Template",
+      "title": "resource.service-agreement-template.title",
       "slug": "resources/service-agreement-template",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 172,
-      "description": "A customizable agreement format that defines expectations, SLAs, responsibilities, and access terms for API consumption.",
+      "description": "resource.service-agreement-template.description",
       "image": "",
       "outcomes": [
-        "Better understanding of service agreement template principles",
-        "Standardized approach using Service Agreement Template",
-        "Improved implementation of related API practices"
+        "resource.service-agreement-template.outcomes",
+        "resource.service-agreement-template.outcomes.1",
+        "resource.service-agreement-template.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Define service agreements that outline the expectations, service levels, and responsibilities for each API.",
-          "Use standardized formats to create machine-readable service agreements that are easy to share and validate.",
-          "Ensure service agreements are reviewed and approved by stakeholders to ensure alignment and clarity."
+          "resource.service-agreement-template.steps",
+          "resource.service-agreement-template.steps.1",
+          "resource.service-agreement-template.steps.2"
         ],
         "tips": [
-          "Customize the Service Agreement Template for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.service-agreement-template.tips",
+          "resource.service-agreement-template.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "stakeholder-engagement-best-practices",
-      "title": "Stakeholder Engagement Best Practices",
+      "title": "resource.stakeholder-engagement-best-practices.title",
       "slug": "resources/stakeholder-engagement-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 173,
-      "description": "Engagement tactics for aligning internal and external stakeholders around shared API goals, value, and governance.",
+      "description": "resource.stakeholder-engagement-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of stakeholder engagement best practices principles",
-        "Standardized approach using Stakeholder Engagement Best Practices",
-        "Improved implementation of related API practices"
+        "resource.stakeholder-engagement-best-practices.outcomes",
+        "resource.stakeholder-engagement-best-practices.outcomes.1",
+        "resource.stakeholder-engagement-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Engage stakeholders to ensure alignment and support for API initiatives."
+          "resource.stakeholder-engagement-best-practices.steps"
         ],
         "tips": [
-          "Customize the Stakeholder Engagement Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.stakeholder-engagement-best-practices.tips",
+          "resource.stakeholder-engagement-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "test-automation-frameworks",
-      "title": "Test Automation Frameworks",
+      "title": "resource.test-automation-frameworks.title",
       "slug": "resources/test-automation-frameworks",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 174,
-      "description": "Recommended tools and patterns for automating API contract, regression, and integration testing across environments.",
+      "description": "resource.test-automation-frameworks.description",
       "image": "",
       "outcomes": [
-        "Better understanding of test automation frameworks principles",
-        "Standardized approach using Test Automation Frameworks",
-        "Improved implementation of related API practices"
+        "resource.test-automation-frameworks.outcomes",
+        "resource.test-automation-frameworks.outcomes.1",
+        "resource.test-automation-frameworks.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Implement test automation frameworks that support contract testing, integration testing, and end-to-end testing."
+          "resource.test-automation-frameworks.steps"
         ],
         "tips": [
-          "Customize the Test Automation Frameworks for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.test-automation-frameworks.tips",
+          "resource.test-automation-frameworks.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "vendor-management-best-practices",
-      "title": "Vendor Management Best Practices",
+      "title": "resource.vendor-management-best-practices.title",
       "slug": "resources/vendor-management-best-practices",
       "icon": "edit-document-outline",
       "draft": "true",
       "order": 178,
-      "description": "Framework for evaluating and managing external API vendors and third-party integrations based on risk, performance, and compliance.",
+      "description": "resource.vendor-management-best-practices.description",
       "image": "",
       "outcomes": [
-        "Better understanding of vendor management best practices principles",
-        "Standardized approach using Vendor Management Best Practices",
-        "Improved implementation of related API practices"
+        "resource.vendor-management-best-practices.outcomes",
+        "resource.vendor-management-best-practices.outcomes.1",
+        "resource.vendor-management-best-practices.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Establish vendor management processes to evaluate, onboard, and monitor third-party API vendors.",
-          "Define criteria for evaluating vendor APIs, including reliability, security, and compliance."
+          "resource.vendor-management-best-practices.steps",
+          "resource.vendor-management-best-practices.steps.1"
         ],
         "tips": [
-          "Customize the Vendor Management Best Practices for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.vendor-management-best-practices.tips",
+          "resource.vendor-management-best-practices.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-audit-checklist",
-      "title": "API Audit Checklist",
+      "title": "resource.api-audit-checklist.title",
       "slug": "resources/api-audit-checklist",
       "icon": "check-box-outline",
-      "order": 180,
-      "description": "A comprehensive checklist to verify API readiness before publishing, covering design, documentation, security, and policy compliance.",
+      "order": 13,
+      "description": "resource.api-audit-checklist.description",
       "image": "",
       "snippet": "/snippets/api-audit-checklist.md",
       "outcomes": [
-        "Better understanding of API audit checklist principles",
-        "Standardized approach using API Audit Checklist",
-        "Improved implementation of related API practices"
+        "resource.api-audit-checklist.outcomes",
+        "resource.api-audit-checklist.outcomes.1",
+        "resource.api-audit-checklist.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Use the API Audit Checklist to ensure the API design meets functional and non-functional requirements, including security, performance, and compliance.",
-          "Conduct audits to ensure APIs meet organizational, technical, and legal standards before publishing.",
-          "Ensure security models, gateway configuration, and legal terms are clear and accessible to consumers."
+          "resource.api-audit-checklist.steps",
+          "resource.api-audit-checklist.steps.1",
+          "resource.api-audit-checklist.steps.2"
         ],
         "tips": [
-          "Customize the API Audit Checklist for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-audit-checklist.tips",
+          "resource.api-audit-checklist.tips.1"
         ]
       },
       "category": "checklist"
     },
     {
       "id": "api-business-model-canvas",
-      "title": "API Business Model Canvas",
+      "title": "resource.api-business-model-canvas.title",
       "slug": "resources/api-business-model-canvas",
       "icon": "dashboard-outline",
       "order": 3,
-      "description": "Strategically assess API business viability by mapping value propositions, consumer segments, and key resources.",
-      "image": "/assets/resource/Canvas_apiBusinessModelCanvas_en-US.svg",
+      "description": "resource.api-business-model-canvas.description",
+      "image": "/assets/resource/Canvas_apiBusinessModelCanvas.svg",
       "outcomes": [
-        "Clear business strategy for APIs",
-        "Identification of key resources and partners",
-        "Alignment of API features with business goals"
+        "resource.api-business-model-canvas.outcomes",
+        "resource.api-business-model-canvas.outcomes.1",
+        "resource.api-business-model-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Summarize the API's value proposition",
-          "Define consumer segments",
-          "Identify developer relations strategies",
-          "Map distribution channels",
-          "document key resources and activities",
-          "Identify key partners and stakeholders",
-          "Highlight benefits and costs"
+          "resource.api-business-model-canvas.steps",
+          "resource.api-business-model-canvas.steps.1",
+          "resource.api-business-model-canvas.steps.2",
+          "resource.api-business-model-canvas.steps.3",
+          "resource.api-business-model-canvas.steps.4",
+          "resource.api-business-model-canvas.steps.5",
+          "resource.api-business-model-canvas.steps.6"
         ],
         "tips": [
-          "Start with a single API to ensure clarity",
-          "Use metrics like cost vs. benefit to prioritize opportunities",
-          "Validate outputs with key stakeholders"
+          "resource.api-business-model-canvas.tips",
+          "resource.api-business-model-canvas.tips.1",
+          "resource.api-business-model-canvas.tips.2"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "api-design-principles",
-      "title": "API Design Principles",
+      "title": "resource.api-design-principles.title",
       "slug": "resources/api-design-principles",
       "icon": "edit-document-outline",
-      "order": 183,
-      "description": "A concise guide to API usability, discoverability, and consistency grounded in proven design philosophies and user needs.",
+      "order": 14,
+      "description": "resource.api-design-principles.description",
       "image": "",
       "snippet": "/snippets/api-style-guide.md",
       "outcomes": [
-        "Better understanding of API design principles principles",
-        "Standardized approach using API Design Principles",
-        "Improved implementation of related API practices"
+        "resource.api-design-principles.outcomes",
+        "resource.api-design-principles.outcomes.1",
+        "resource.api-design-principles.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "**Consumer-first design:** start every APIOps cycle by gathering user goals and domain terms so APIs solve real problems.",
-          "**Consistent naming and behavior:** apply shared conventions for resources, errors and formats to make APIs predictable.",
-          "**Contract driven:** capture the interface with OpenAPI or AsyncAPI before coding to align teams and enable automation.",
-          "**Usability and discoverability:** provide clear documentation and examples so developers quickly understand how to use the API.",
-          "**Iterate safely:** evolve designs in small, versioned increments so changes do not disrupt existing consumers."
+          "resource.api-design-principles.steps",
+          "resource.api-design-principles.steps.1",
+          "resource.api-design-principles.steps.2",
+          "resource.api-design-principles.steps.3",
+          "resource.api-design-principles.steps.4"
         ],
         "tips": [
-          "Customize the API Design Principles for your domain",
-          "Use it collaboratively across business and tech roles"
+          "resource.api-design-principles.tips",
+          "resource.api-design-principles.tips.1"
         ]
       },
       "category": "guideline"
     },
     {
       "id": "api-value-proposition-canvas",
-      "title": "API Value Proposition Canvas",
+      "title": "resource.api-value-proposition-canvas.title",
       "slug": "resources/api-value-proposition-canvas",
       "icon": "dashboard-outline",
       "order": 2,
-      "description": "Align API features with user needs by mapping tasks, pains, and gains to API products.",
-      "image": "/assets/resource/Canvas_apiValuePropositionCanvas_en-US.svg",
+      "description": "resource.api-value-proposition-canvas.description",
+      "image": "/assets/resource/Canvas_apiValuePropositionCanvas.svg",
       "outcomes": [
-        "Focused feature development",
-        "Alignment with user needs",
-        "Improved API consumer satisfaction"
+        "resource.api-value-proposition-canvas.outcomes",
+        "resource.api-value-proposition-canvas.outcomes.1",
+        "resource.api-value-proposition-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "List user journey tasks",
-          "Identify features delivering expected gains",
-          "Define features addressing challenges",
-          "Map features to API products"
+          "resource.api-value-proposition-canvas.steps",
+          "resource.api-value-proposition-canvas.steps.1",
+          "resource.api-value-proposition-canvas.steps.2",
+          "resource.api-value-proposition-canvas.steps.3"
         ],
         "tips": [
-          "Use input from the Customer Journey Canvas",
-          "Highlight features that relieve pains or enhance gains",
-          "Validate features with API consumers to ensure alignment"
+          "resource.api-value-proposition-canvas.tips",
+          "resource.api-value-proposition-canvas.tips.1",
+          "resource.api-value-proposition-canvas.tips.2"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "business-impact-canvas",
-      "title": "Business Impact Canvas",
+      "title": "resource.business-impact-canvas.title",
       "slug": "resources/business-impact-canvas",
       "icon": "dashboard-outline",
       "order": 4,
-      "description": "Design a scalable and secure API platform architecture that meets business and technical requirements.",
-      "image": "/assets/resource/Canvas_businessImpactCanvas_en-US.svg",
+      "description": "resource.business-impact-canvas.description",
+      "image": "/assets/resource/Canvas_businessImpactCanvas.svg",
       "outcomes": [
-        "Scalable API infrastructure",
-        "Enhanced security and compliance",
-        "Improved API performance"
+        "resource.business-impact-canvas.outcomes",
+        "resource.business-impact-canvas.outcomes.1",
+        "resource.business-impact-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-        "Availability Risks: Identify risks and impacts.",
-        "Ways to Mitigate Availability Risks: Define mitigation measures.",
-        "Security Risks: Document security-related risks.",
-        "Ways to Mitigate Security Risks: Propose strategies to mitigate security risks.",
-        "Data Risks: Identify risks to data accuracy or availability.",
-        "Ways to Mitigate Data Risks: Plan strategies to address data risks."
+          "resource.business-impact-canvas.steps",
+          "resource.business-impact-canvas.steps.1",
+          "resource.business-impact-canvas.steps.2",
+          "resource.business-impact-canvas.steps.3",
+          "resource.business-impact-canvas.steps.4",
+          "resource.business-impact-canvas.steps.5"
         ],
         "tips": [
-          "Involve architects and developers in the design process",
-          "Use past incidents to identify potential risks",
-          "Prioritize critical APIs with the highest business impact"
+          "resource.business-impact-canvas.tips",
+          "resource.business-impact-canvas.tips.1",
+          "resource.business-impact-canvas.tips.2"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "capacity-canvas",
-      "title": "Capacity Canvas",
+      "title": "resource.capacity-canvas.title",
       "slug": "resources/capacity-canvas",
       "icon": "dashboard-outline",
       "order": 7,
-      "description": "Plan API capacity to meet current and future business demands, ensuring scalability and performance.",
-      "image": "/assets/resource/Canvas_capacityCanvas_en-US.svg",
+      "description": "resource.capacity-canvas.description",
+      "image": "/assets/resource/Canvas_capacityCanvas.svg",
       "outcomes": [
-        "Aligned API capacity with business volumes",
-        "Prepared for future consumption trends",
-        "Defined caching and rate-limiting strategies"
+        "resource.capacity-canvas.outcomes",
+        "resource.capacity-canvas.outcomes.1",
+        "resource.capacity-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Document current business volumes",
-          "Forecast future consumption trends",
-          "Plan for peak load and availability requirements",
-          "Define caching and rate-limiting strategies",
-          "Propose scaling strategies"
+          "resource.capacity-canvas.steps",
+          "resource.capacity-canvas.steps.1",
+          "resource.capacity-canvas.steps.2",
+          "resource.capacity-canvas.steps.3",
+          "resource.capacity-canvas.steps.4"
         ],
         "tips": [
-          "Use analytics to forecast growth trends",
-          "Define peak usage scenarios",
-          "Include scalability testing in the planning phase"
+          "resource.capacity-canvas.tips",
+          "resource.capacity-canvas.tips.1",
+          "resource.capacity-canvas.tips.2"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "customer-journey-canvas",
-      "title": "Customer Journey Canvas",
+      "title": "resource.customer-journey-canvas.title",
       "slug": "resources/customer-journey-canvas",
       "icon": "dashboard-outline",
       "order": 1,
-      "description": "Map customer journeys to identify needs and pain points, enhancing API design and user experience.",
-      "image": "/assets/resource/Canvas_customerJourneyCanvas_en-US.svg",
+      "description": "resource.customer-journey-canvas.description",
+      "image": "/assets/resource/Canvas_customerJourneyCanvas.svg",
       "outcomes": [
-        "Improved customer understanding",
-        "Enhanced API design",
-        "Better user experience"
+        "resource.customer-journey-canvas.outcomes",
+        "resource.customer-journey-canvas.outcomes.1",
+        "resource.customer-journey-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Define customer persona",
-          "Identify triggers for the journey",
-          "Describe the journey's end",
-          "Map journey steps with inputs/outputs",
-          "Identify customer pains",
-          "Summarize customer gains",
-          "Define necessary inputs and resulting outputs",
-          "Define API interactions for each step"
+          "resource.customer-journey-canvas.steps",
+          "resource.customer-journey-canvas.steps.1",
+          "resource.customer-journey-canvas.steps.2",
+          "resource.customer-journey-canvas.steps.3",
+          "resource.customer-journey-canvas.steps.4",
+          "resource.customer-journey-canvas.steps.5",
+          "resource.customer-journey-canvas.steps.6",
+          "resource.customer-journey-canvas.steps.7"
         ],
         "tips": [
-          "Iterate with team input to refine steps",
-          "Use outputs from this canvas to inform other canvases like the API Value Proposition Canvas"
+          "resource.customer-journey-canvas.tips",
+          "resource.customer-journey-canvas.tips.1"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "event-canvas",
-      "title": "Event Canvas",
+      "title": "resource.event-canvas.title",
       "slug": "resources/event-canvas",
       "icon": "dashboard-outline",
       "order": 12,
-      "description": "Design event-driven APIs by defining events, triggers, and processing logic.",
-      "image": "/assets/resource/Canvas_eventCanvas_en-US.svg",
+      "description": "resource.event-canvas.description",
+      "image": "/assets/resource/Canvas_eventCanvas.svg",
       "outcomes": [
-        "Defined event-driven architecture",
-        "Clear event triggers and processing logic",
-        "Improved responsiveness to real-time changes"
+        "resource.event-canvas.outcomes",
+        "resource.event-canvas.outcomes.1",
+        "resource.event-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Identify key events in the system",
-          "Define triggers for each event",
-          "Describe backend processing logic for events",
-          "Specify resulting outputs or acknowledgments"
+          "resource.event-canvas.steps",
+          "resource.event-canvas.steps.1",
+          "resource.event-canvas.steps.2",
+          "resource.event-canvas.steps.3"
         ],
         "tips": [
-          "Use event schemas to standardize event formats",
-          "document event flows and dependencies",
-          "Validate event processing with test cases"
+          "resource.event-canvas.tips",
+          "resource.event-canvas.tips.1",
+          "resource.event-canvas.tips.2"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "graphql-canvas",
-      "title": "GraphQL Canvas",
+      "title": "resource.graphql-canvas.title",
       "slug": "resources/graphql-canvas",
       "icon": "dashboard-outline",
       "draft": "true",
       "order": 11,
-      "description": "Design GraphQL APIs by defining types, queries, mutations, and subscriptions.",
-      "image": "/assets/resource/Canvas_graphqlCanvas_en-US.svg",
+      "description": "resource.graphql-canvas.description",
+      "image": "/assets/resource/Canvas_graphqlCanvas.svg",
       "outcomes": [
-        "Structured GraphQL API design",
-        "Defined types and their relationships",
-        "Clear queries, mutations, and subscriptions"
+        "resource.graphql-canvas.outcomes",
+        "resource.graphql-canvas.outcomes.1",
+        "resource.graphql-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "What problems are API consumers trying to solve? What data do they need?", 
-          "Define GraphQL types and their attributes: What are the core types exposed (e.g., User, Order, Product)?",
-          "Map relationships between types: How do types relate to each other in nested queries?",
-          "Specify queries for data retrieval",
-          "Define mutations for data modification: What operations will modify data (e.g., create, update, delete)?",
-          "Outline subscriptions for real-time updates",
-          "Define authentication and authorization: Who can access which fields or types?",
-          "Consider if there are any pagination, filtering, or rate-limiting constraints"
+          "resource.graphql-canvas.steps",
+          "resource.graphql-canvas.steps.1",
+          "resource.graphql-canvas.steps.2",
+          "resource.graphql-canvas.steps.3",
+          "resource.graphql-canvas.steps.4",
+          "resource.graphql-canvas.steps.5",
+          "resource.graphql-canvas.steps.6",
+          "resource.graphql-canvas.steps.7"
         ],
         "tips": [
-          "Use introspection to validate type definitions",
-          "document example queries and mutations",
-          "Ensure type names are descriptive and consistent"
+          "resource.graphql-canvas.tips",
+          "resource.graphql-canvas.tips.1",
+          "resource.graphql-canvas.tips.2"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "interaction-canvas",
-      "title": "Interaction Canvas",
+      "title": "resource.interaction-canvas.title",
       "slug": "resources/interaction-canvas",
       "icon": "dashboard-outline",
       "order": 9,
-      "description": "Define API interactions, workflows, and expected responses to ensure a consistent API consumer experience.",
-      "image": "/assets/resource/Canvas_interactionCanvas_en-US.svg",
+      "description": "resource.interaction-canvas.description",
+      "image": "/assets/resource/Canvas_interactionCanvas.svg",
       "outcomes": [
-        "Clear API interaction workflows",
-        "Defined inputs and outputs for each interaction",
-        "Consistent validation rules across interactions"
+        "resource.interaction-canvas.outcomes",
+        "resource.interaction-canvas.outcomes.1",
+        "resource.interaction-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Map API interactions to user tasks",
-          "Define endpoints for each interaction",
-          "document inputs and outputs for each interaction",
-          "Specify validation rules and constraints",
-          "Create interaction models for CRUD, query-driven, command-driven, and event-driven interactions"
+          "resource.interaction-canvas.steps",
+          "resource.interaction-canvas.steps.1",
+          "resource.interaction-canvas.steps.2",
+          "resource.interaction-canvas.steps.3",
+          "resource.interaction-canvas.steps.4"
         ],
         "tips": [
-          "Start with common use cases before handling edge cases",
-          "Simulate interactions with mock data to validate workflows",
-          "document expected responses for successful and unsuccessful interactions"
+          "resource.interaction-canvas.tips",
+          "resource.interaction-canvas.tips.1",
+          "resource.interaction-canvas.tips.2"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "location-canvas",
-      "title": "Location Canvas",
+      "title": "resource.location-canvas.title",
       "slug": "resources/location-canvas",
       "icon": "dashboard-outline",
       "order": 6,
-      "description": "Map API provider and consumer locations to ensure compliance and performance across regions.",
-      "image": "/assets/resource/Canvas_locationsCanvas_en-US.svg",
+      "description": "resource.location-canvas.description",
+      "image": "/assets/resource/Canvas_locationsCanvas.svg",
       "outcomes": [
-        "Compliance with local regulations",
-        "Optimized API performance across regions",
-        "Enhanced understanding of regional requirements"
+        "resource.location-canvas.outcomes",
+        "resource.location-canvas.outcomes.1",
+        "resource.location-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-        "Map locations of API providers.",
-        "Document where consumers are located.",
-        "Identify applicable regulations.",
-        "Document where data must reside.",
-        "nsure APIs are accessible in all intended network regions.",
-        "Validate network performance across regions."
+          "resource.location-canvas.steps",
+          "resource.location-canvas.steps.1",
+          "resource.location-canvas.steps.2",
+          "resource.location-canvas.steps.3",
+          "resource.location-canvas.steps.4",
+          "resource.location-canvas.steps.5"
         ],
         "tips": [
-          "Collaborate with legal and compliance teams",
-          "Validate network performance across key regions",
-          "Proactively resolve location-based constraints"
+          "resource.location-canvas.tips",
+          "resource.location-canvas.tips.1",
+          "resource.location-canvas.tips.2"
         ]
       },
       "category": "canvas"
     },
     {
       "id": "rest-canvas",
-      "title": "REST Canvas",
+      "title": "resource.rest-canvas.title",
       "slug": "resources/rest-canvas",
       "icon": "dashboard-outline",
       "order": 10,
-      "description": "Design APIs using RESTful principles, defining resources, verbs, and example requests and responses.",
-      "image": "/assets/resource/Canvas_restCanvas_en-US.svg",
+      "description": "resource.rest-canvas.description",
+      "image": "/assets/resource/Canvas_restCanvas.svg",
       "outcomes": [
-        "Consistent RESTful API design",
-        "Defined resources and their interactions",
-        "Example requests and responses for clarity"
+        "resource.rest-canvas.outcomes",
+        "resource.rest-canvas.outcomes.1",
+        "resource.rest-canvas.outcomes.2"
       ],
       "how_it_works": {
         "steps": [
-          "Identify key resources exposed by the API",
-          "Define the structure of the API resource model",
-          "Specify HTTP verbs used to interact with resources",
-          "Provide example requests and responses for each verb"
+          "resource.rest-canvas.steps",
+          "resource.rest-canvas.steps.1",
+          "resource.rest-canvas.steps.2",
+          "resource.rest-canvas.steps.3"
         ],
         "tips": [
-          "Use standard HTTP methods (GET, POST, PUT, DELETE)",
-          "Ensure resource URIs are intuitive and consistent",
-          "document error handling and response codes"
+          "resource.rest-canvas.tips",
+          "resource.rest-canvas.tips.1",
+          "resource.rest-canvas.tips.2"
         ]
       },
       "category": "canvas"
