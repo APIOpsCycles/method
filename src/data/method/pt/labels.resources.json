@@ -378,7 +378,7 @@
   "resource.interaction-canvas.tips": "Comece com casos de utilização comuns antes de lidar com casos extremos",
   "resource.interaction-canvas.tips.1": "Simular interações com dados simulados para validar fluxos de trabalho",
   "resource.interaction-canvas.tips.2": "documentar as respostas esperadas para interações bem e mal sucedidas",
-  "resource.location-canvas.title": "Tela de localização",
+  "resource.location-canvas.title": "Location Canvas",
   "resource.location-canvas.description": "Mapeie as localizações dos fornecedores e consumidores de API para garantir a conformidade e o desempenho em todas as regiões.",
   "resource.location-canvas.outcomes": "Conformidade com a regulamentação local",
   "resource.location-canvas.outcomes.1": "Desempenho optimizado da API em todas as regiões",

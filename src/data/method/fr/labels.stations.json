@@ -12,6 +12,8 @@
   "station.api-consumer-experience.title": "API Consumer Experience - Concevoir pour les vrais utilisateurs de votre API",
   "station.api-consumer-experience.description": "Veillez à ce que votre API soit découvrable, compréhensible et utilisable - avant et après le lancement.",
   "station.api-consumer-experience.why_it_matters": "Les meilleures API ne se contentent pas de fonctionner, elles sont intuitives. Que votre consommateur soit un développeur interne, un partenaire externe ou un agent d'intelligence artificielle, c'est son expérience qui détermine l'adoption.\n\nSans un plan d'expérience clair :\n- Les meilleures API restent inutilisées\n- Les équipes perdent du temps à deviner comment utiliser votre API.\n- Les boucles de rétroaction sont brisées ou manquantes.\n\nCette station vous aide à voir votre API à travers les yeux de ses consommateurs.",
+  "station.api-consumer-experience.how_it_works": "Cartographiez vos consommateurs d'API et leurs besoins d'intégration à l'aide d'un modèle de parcours d'intégration ou du Customer Journey Canvas.",
+ "station.api-consumer-experience.how_it_works.1": "Définissez le parcours client de l'API, de la découverte au dépannage, en identifiant les points de contact clés et les points faibles.",
   "station.api-consumer-experience.apply_in_work": "Fournir des lignes directrices, des outils et des mécanismes de retour d'information pour comprendre, analyser et améliorer l'expérience interne et externe des développeurs et des partenaires.",
   "station.api-consumer-experience.outcomes": "Identifier et hiérarchiser les consommateurs d'API",
   "station.api-platform-architecture.title": "Architecture de la plate-forme API - Architecturer les API pour l'évolutivité et la réutilisation",

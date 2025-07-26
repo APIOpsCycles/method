@@ -15,6 +15,8 @@
   "station.api-consumer-experience.title": "API Consumer Experience - Design for Your API’s Real Users",
   "station.api-consumer-experience.description": "Ensure your API is discoverable, understandable, and usable — before and after launch.",
   "station.api-consumer-experience.why_it_matters": "Great APIs don’t just work — they feel intuitive. Whether your consumer is an internal developer, external partner, or AI agent, their experience determines adoption.\n\nWithout a clear experience plan:\n- Great APIs go unused\n- Teams waste time guessing how to use your API\n- Feedback loops are broken or missing.\n\nThis station helps you see your API through the eyes of its consumers.",
+  "station.api-consumer-experience.how_it_works": "Map your API consumers and their needs for onboarding using an onboarding journey template or the Customer Journey Canvas.",
+  "station.api-consumer-experience.how_it_works.1": "Define the API consumer journey from discovery to troubleshooting, identifying key touchpoints and pain points.",
   "station.api-consumer-experience.apply_in_work": "Provide guidelines, tools, and feedback mechanisms for understanding, analyzing, and improving internal and external developer and partner experience.",
   "station.api-consumer-experience.outcomes": "Identify and prioritize your API consumers",
   "station.api-consumer-experience.outcomes.1": "Define the API experience journey",

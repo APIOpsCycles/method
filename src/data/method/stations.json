@@ -55,11 +55,11 @@
         ],
         "how-it-works": [
           {
-            "step": "Map your API consumers and their needs for onboarding using an onboarding journey template or the Customer Journey Canvas.",
+            "step": "station.api-consumer-experience.how_it_works",
             "resource": "customer-journey-canvas"
           },
           {
-            "step": "Define the API consumer journey from discovery to troubleshooting, identifying key touchpoints and pain points.",
+            "step": "station.api-consumer-experience.how_it_works.1",
             "resource": "api-onboarding-best-practices"
           }
         ],
