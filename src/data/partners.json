@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Osaango",
+    "href": "https://www.osaango.com",
+    "logo": "/assets/partners/osaango.svg",
+    "description": "Coordinates the global APIOps Cycles community and method development."
+  },
+  {
+    "title": "Codecentric",
+    "href": "https://www.codecentric.de/",
+    "logo": "/assets/partners/codecentric.svg",
+    "description": "Provides expert content, consulting, and promotes the method in the DACH region."
+  },
+  {
+    "title": "APIsFirst",
+    "href": "https://www.apisfirst.com",
+    "logo": "/assets/partners/apisfirst.svg",
+    "description": "Provides expert content, consulting, and promotes the method globally."
+  },
+  {
+    "title": "Konneqt",
+    "href": "https://qriarlabs.com/qap-canvas/",
+    "logo": "/assets/partners/konneqt.svg",
+    "description": "Offers advanced API and integration platforms and supports QAP Canvas development."
+  }
+]

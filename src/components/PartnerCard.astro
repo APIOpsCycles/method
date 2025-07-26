@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  logo: string;
+  description: string;
+}
+
+const { title, href, logo, description } = Astro.props as Props;
+---
+
+<a href={href} class="card flex flex-col items-center text-center p-4 gap-2">
+  <img src={logo} alt={`${title} logo`} class="h-16 w-auto" loading="lazy" />
+  <h3 class="text-lg font-semibold">{title}</h3>
+  <p class="text-sm">{description}</p>
+</a>
