@@ -21,7 +21,8 @@
     "json-autotranslate": "^1.16.1",
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.11",
-    "unplugin-icons": "^22.1.0"
+    "unplugin-icons": "^22.1.0",
+    "canvascreator": "^1.0.0"
   },
   "engines": {
     "node": ">=22"

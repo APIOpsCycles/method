@@ -164,7 +164,12 @@ function stationBody(data, resources, labels = baseLabels, locale = '') {
 }
 
 async function resourceBody(res, labels = baseLabels, locale = '') {
-  let out = "import { Aside } from '@astrojs/starlight/components';\n\n";
+  let out = "import { Aside } from '@astrojs/starlight/components';\n";
+  if (res.category === 'canvas') {
+    const prefix = locale ? '../../../../components' : '../../../components';
+    out += `import CanvasCreator from '${prefix}/CanvasCreator.astro';\n`;
+  }
+  out += "\n";
   if (res.description) out += `${translate(res.description, labels)}\n\n`;
   if (Array.isArray(res.outcomes) && res.outcomes.length) {
     out += `## ${t('outcomes', labels)}\n\n`;
@@ -234,9 +239,12 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
     try {
       const snippetContent = await fsPromises.readFile(snippetPath, 'utf8');
       out += '\n\n' + snippetContent.trim();
-    } catch {
+  } catch {
       console.warn(`Snippet file not found: ${snippetPath}`);
     }
+  }
+  if (res.category === 'canvas') {
+    out += `\n\n<CanvasCreator canvasId="${res.id}" />`;
   }
   return out.trim();
 }
