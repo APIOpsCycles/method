@@ -10,6 +10,8 @@ export const collections = {
                                 icon: z.string().optional(),
                                 metrolines: z.array(z.string()).optional(),
                                 stations: z.array(z.string()).optional(),
+                                category: z.string().optional(),
+                                canvasId: z.string().optional(),
                         }),
                 }),
         }),

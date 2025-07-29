@@ -15,6 +15,10 @@ Install dependencies once with:
 npm install
 ```
 
+### Canvas editor
+
+Interactive canvases on the site are powered by the [Canvas Creator](https://canvascreator.apiopscycles.com) tool. The component is installed from npm so make sure to run `npm install` before building or running the dev server.
+
 ## Local development
 
 Run a local dev server:

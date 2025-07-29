@@ -1,0 +1,14 @@
+---
+interface Props {
+  canvasId: string;
+}
+
+const { canvasId } = Astro.props as Props;
+const clientAddress = Astro.clientAddress;
+---
+
+<div id={canvasId}></div>
+<script define:vars={{ canvasId, clientAddress }} type="module" client:load>
+  import canvascreator from 'canvascreator';
+  canvascreator.initialize({ canvasId, clientAddress });
+</script>
