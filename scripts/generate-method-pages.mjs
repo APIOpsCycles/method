@@ -166,7 +166,7 @@ function stationBody(data, resources, labels = baseLabels, locale = '') {
 async function resourceBody(res, labels = baseLabels, locale = '') {
   let out = "import { Aside } from '@astrojs/starlight/components';\n";
   if (res.category === 'canvas') {
-    const prefix = locale ? '../../../components' : '../../components';
+    const prefix = locale ? '../../../../components' : '../../../components';
     out += `import CanvasCreator from '${prefix}/CanvasCreator.astro';\n`;
   }
   out += "\n";
