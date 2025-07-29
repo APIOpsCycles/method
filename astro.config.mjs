@@ -91,7 +91,7 @@ export default defineConfig({
                                                 {
                                                         label: 'Partners & Community',
                                                         translations: { 'fi': 'Kumppanit ja yhteisö', 'fr': 'Partenaires et communauté', 'de': 'Partner & Gemeinschaft', 'pt': 'Parceiros e Comunidade' },
-                                                        link: '/community/',
+                                                        link: '/partners/',
                                                 },
                                                 {
                                                         label: 'Changelog',
