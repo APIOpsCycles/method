@@ -27,19 +27,7 @@ hero:
       variant: secondary
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import PartnerGrid from '../../components/PartnerGrid.astro';
+import partners from '../../data/method/partners.json';
 
-<CardGrid>
-  <Card title="Osaango" icon="open-book">
-    Interesting content you want to highlight.
-  </Card>
-  <Card title="Codecentric AG" icon="information">
-    More information you want to share.
-  </Card>
-  <Card title="APIsFirst Ltd" icon="information">
-    More information you want to share.
-  </Card>
-   <Card title="Konnect" icon="information">
-    More information you want to share.
-  </Card>
-</CardGrid>
+<PartnerGrid partners={partners} />
