@@ -8,6 +8,6 @@ const { canvasId } = Astro.props as Props;
 
 <div id={canvasId}></div>
 <script define:vars={{ canvasId }} type="module" client:load>
-  import canvascreator from 'canvascreator';
+  import canvascreator from '/canvascreator/canvascreator.esm.min.js';
   canvascreator.initialize({ canvasId });
 </script>
