@@ -1,13 +1,87 @@
 ---
-interface Props {
-  canvasId: string;
-}
 
-const { canvasId } = Astro.props as Props;
 ---
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>.hidden { visibility: hidden; }</style>
+    <span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;</span>
+    <div id="toolContainer">
+      <h1>APIOps Cycles Canvas Creator</h1>
+      <div id="localeSelector" class="">
+        <label for="locale">Select Locale:</label>
+        <select id="locale"></select>
+      </div>
 
-<div id={canvasId}></div>
-<script define:vars={{ canvasId }} type="module" client:load>
-  import canvascreator from '/canvascreator/canvascreator.esm.min.js';
-  canvascreator.initialize({ canvasId });
+      <div id="canvasSelector" class="">
+        <label for="canvas">Select Canvas:</label>
+        <select id="canvas"></select>
+      </div>
+      <div id="canvasToolGroup">
+        <button id="metadataButton" class="canvas-tools">Edit Metadata</button>
+        <button class="canvas-tools" id="importButton">Import JSON</button>
+        <button id="exportButton" class="canvas-tools">Export JSON</button>
+        <button id="exportSVGButton" class="canvas-tools">Export SVGs</button>
+
+        <div id="colorPalette">
+          <button
+            class="colorSwatch"
+            style="background-color: #c0eb6a"
+            data-color="#C0EB6A"
+          ></button>
+          <button
+            class="colorSwatch"
+            style="background-color: #dfddc5"
+            data-color="#DFDDC5"
+          ></button>
+          <button
+            class="colorSwatch"
+            style="background-color: #ffafaf"
+            data-color="#FFAFAF"
+          ></button>
+          <button
+            class="colorSwatch"
+            style="background-color: #7dc9e7"
+            data-color="#7DC9E7"
+          ></button>
+          <button
+            class="colorSwatch"
+            style="background-color: #fff399"
+            data-color="#FFF399"
+          ></button>
+        </div>
+      </div>
+    </div>
+    <div id="canvasCreator">
+      <div id="metadataForm" style="display: none">
+        <h2>Content Metadata</h2>
+        <label for="source">Source:</label>
+        <input type="text" id="source" name="source" /><br /><br />
+        <label for="license">License:</label>
+        <input type="text" id="license" name="license" /><br /><br />
+        <label for="authors">Authors:</label>
+        <input type="text" id="authors" name="authors" /><br /><br />
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website" /><br /><br />
+        <button id="saveMetadata">Save Metadata</button>
+      </div>
+    </div>
+    <!-- Help Icon and Tooltip -->
+    <div class="help-container">
+      <div class="help-icon">?</div>
+      <div class="help-tooltip">
+        <strong>Canvas Help</strong>
+        <ul>
+          <li><b>Open:</b> Select locale & canvas.</li>
+          <li><b>Create/Edit:</b> Import JSON or double-click.</li>
+          <li><b>Change Color:</b> Click note, pick color.</li>
+          <li><b>Remove:</b> Right-click & confirm.</li>
+          <li><b>Save:</b> Export as JSON (local only).</li>
+          <li><b>Export:</b> Save as SVG for slides/web.</li>
+        </ul>
+      </div>
+    </div>
+
+<script type="module">
+  import CanvasCreator  from '/canvascreator/canvascreator.esm.min.js?v=1.1.3';
+      CanvasCreator.initCanvasCreator({ assetBase: '/canvascreator' });
+
 </script>
