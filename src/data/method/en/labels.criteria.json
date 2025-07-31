@@ -1,6 +1,6 @@
 {
-  "entry_criteria": "Entry criteria",
   "exit_criteria": "Exit criteria",
+  "entry_criteria": "Entry criteria",
   "criterion.metrics-feedback-available": "Insights from metrics and feedback are available to optimize existing APIs.",
   "criterion.business-goals-defined": "Business goals are defined.",
   "criterion.market-research-done": "Market research identifies API opportunities.",

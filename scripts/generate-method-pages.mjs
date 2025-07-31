@@ -142,32 +142,32 @@ function stationBody(
 ) {
   let out = "import { Steps, LinkCard } from '@astrojs/starlight/components';\n\n";
   if (data.description) out += `${translate(data.description, labels)}\n\n`;
+  if (Array.isArray(data.outcomes) && data.outcomes.length) {
+    out += `## ${t('outcomes', labels)}\n\n`;
+    const items = expandTranslations(data.outcomes, labels).map((i) => `- ${i}`);
+    out += items.join('\n');
+    out += '\n\n';
+  }
   if (data.why_it_matters) out += `## ${t('why_it_matters', labels)}\n\n${translate(data.why_it_matters, labels)}\n\n`;
   if (Array.isArray(entryCriteria) && entryCriteria.length) {
-    out += `## ${t('entry_criteria', labels)}\n\n`;
+    out += `:::note[${t('entry_criteria', labels)}]{icon="right-arrow"}\n\n`;
     const items = entryCriteria.map((id) => {
       const tr = translate('criterion.' + id, labels);
       const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
       return `- ${text}`;
     });
     out += items.join('\n');
-    out += '\n\n';
+    out += '\n:::\n\n';
   }
   if (Array.isArray(exitCriteria) && exitCriteria.length) {
-    out += `## ${t('exit_criteria', labels)}\n\n`;
+    out += `:::note[${t('exit_criteria', labels)}]{icon="left-arrow"}\n\n`;
     const items = exitCriteria.map((id) => {
       const tr = translate('criterion.' + id, labels);
       const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
       return `- ${text}`;
     });
     out += items.join('\n');
-    out += '\n\n';
-  }
-  if (Array.isArray(data.outcomes) && data.outcomes.length) {
-    out += `## ${t('outcomes', labels)}\n\n`;
-    const items = expandTranslations(data.outcomes, labels).map((i) => `- ${i}`);
-    out += items.join('\n');
-    out += '\n\n';
+    out += '\n:::\n\n';
   }
   const how = data.how_it_works || data['how-it-works'];
   if (Array.isArray(how) && how.length) {
