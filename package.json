@@ -22,7 +22,7 @@
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.11",
     "unplugin-icons": "^22.1.0",
-    "canvascreator": "^1.0.0"
+    "canvascreator": "^1.1.3"
   },
   "engines": {
     "node": ">=22"
