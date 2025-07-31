@@ -131,13 +131,31 @@ async function writeMarkdown(file, fm, body) {
   await fsPromises.writeFile(file, content);
 }
 
-function stationBody(data, resources, labels = baseLabels, locale = '', criteriaList = [], criteriaMap = {}) {
+function stationBody(
+  data,
+  resources,
+  labels = baseLabels,
+  locale = '',
+  entryCriteria = [],
+  exitCriteria = [],
+  criteriaMap = {}
+) {
   let out = "import { Steps, LinkCard } from '@astrojs/starlight/components';\n\n";
   if (data.description) out += `${translate(data.description, labels)}\n\n`;
   if (data.why_it_matters) out += `## ${t('why_it_matters', labels)}\n\n${translate(data.why_it_matters, labels)}\n\n`;
-  if (Array.isArray(criteriaList) && criteriaList.length) {
+  if (Array.isArray(entryCriteria) && entryCriteria.length) {
+    out += `## ${t('entry_criteria', labels)}\n\n`;
+    const items = entryCriteria.map((id) => {
+      const tr = translate('criterion.' + id, labels);
+      const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
+      return `- ${text}`;
+    });
+    out += items.join('\n');
+    out += '\n\n';
+  }
+  if (Array.isArray(exitCriteria) && exitCriteria.length) {
     out += `## ${t('exit_criteria', labels)}\n\n`;
-    const items = criteriaList.map((id) => {
+    const items = exitCriteria.map((id) => {
       const tr = translate('criterion.' + id, labels);
       const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
       return `- ${text}`;
@@ -295,7 +313,7 @@ async function generate() {
   const linesPath = path.join(dataDir, 'lines.json');
   const resourcesPath = path.join(dataDir, 'resources.json');
   const criteriaPath = path.join(dataDir, 'criteria.json');
-  const stationCriteriaPath = path.join(dataDir, 'stations-to-criteria.json');
+  const stationCriteriaPath = path.join(dataDir, 'station-criteria.json');
   const baseLabelFiles = [
     'labels.json',
     'labels.lines.json',
@@ -356,6 +374,14 @@ async function generate() {
   }
 
   const stationCriteria = stationCriteriaData || {};
+
+  const nextStationCriteria = {};
+  const coreItems = stationsData['core-stations'].items;
+  for (let i = 0; i < coreItems.length; i++) {
+    const currentId = coreItems[i].id;
+    const nextId = coreItems[(i + 1) % coreItems.length].id;
+    nextStationCriteria[currentId] = stationCriteria[nextId] || [];
+  }
 
   const stationMap = {};
   for (const st of stationsData['core-stations'].items) {
@@ -456,6 +482,7 @@ async function generate() {
       stationLines[station.id],
       resourceMap,
       stationCriteria[station.id],
+      nextStationCriteria[station.id],
       criteriaMap,
       labelsLocales
     );
@@ -467,6 +494,7 @@ async function generate() {
       stationLines[station.id],
       resourceMap,
       stationCriteria[station.id],
+      [],
       criteriaMap,
       labelsLocales
     );
@@ -504,7 +532,16 @@ async function generateLine(line, stationMap, labelsLocales) {
   }
 }
 
-async function generateStation(station, folder, lines, resources, criteriaList, criteriaMap, labelsLocales) {
+async function generateStation(
+  station,
+  folder,
+  lines,
+  resources,
+  entryCriteria,
+  exitCriteria,
+  criteriaMap,
+  labelsLocales
+) {
   const baseSlug = station.slug;
   const fm = {
     title: translate(station.title, baseLabels).split(' - ')[0],
@@ -514,7 +551,11 @@ async function generateStation(station, folder, lines, resources, criteriaList, 
   };
   if (lines && lines.length) fm.metrolines = lines;
   const file = path.join(docsDir, folder, `${station.id}.mdx`);
-  await writeMarkdown(file, fm, stationBody(station, resources, baseLabels, '', criteriaList, criteriaMap));
+  await writeMarkdown(
+    file,
+    fm,
+    stationBody(station, resources, baseLabels, '', entryCriteria, exitCriteria, criteriaMap)
+  );
   for (const locale of Object.keys(labelsLocales)) {
     const labels = labelsLocales[locale] || baseLabels;
     const locFm = {
@@ -525,7 +566,11 @@ async function generateStation(station, folder, lines, resources, criteriaList, 
     };
     if (lines && lines.length) locFm.metrolines = lines;
     const dest = path.join(docsDir, locale, folder, `${station.id}.mdx`);
-    await writeMarkdown(dest, locFm, stationBody(station, resources, labels, locale, criteriaList, criteriaMap));
+    await writeMarkdown(
+      dest,
+      locFm,
+      stationBody(station, resources, labels, locale, entryCriteria, exitCriteria, criteriaMap)
+    );
   }
 }
 

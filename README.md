@@ -61,6 +61,8 @@ If you spot a problem in the documentation or have an idea for new content, plea
 
 Most pages are generated from the JSON files in `src/data/method/`. These base files (`lines.json`, `stations.json`, `resources.json`, `criteria.json` and `station-criteria.json`) are not localized and live at the root of the folder. Textual values in them reference label keys. English labels are in `src/data/method/en-US` and translations are provided in `labels.lines.json`, `labels.stations.json`, `labels.resources.json` and `labels.criteria.json` under each locale folder. Some longer or more complex resource pages like the API Audit Checklist also use markdown snippets `src/snippets/` linked to the `resources.json`. Do not use any frontmatter in the snippet files. Any supported markdown markup is ok. See references from [Starlight markdown reference](https://starlight.astro.build/guides/authoring-content/) and [Extended markdown reference](https://www.markdownguide.org/extended-syntax/).
 
+Each station page lists the station's entry criteria followed by the next core station's criteria as exit criteria.
+
 After editing these files, run `npm run generate:method` to update the Markdown files in `src/content/docs/`. Note that the generated markdown files are not inlcuded in version control to avoid confusion on where editing should happen.
 
 For fixes in the Markdown files included in version control under `src/content/docs/`, edit them directly.
