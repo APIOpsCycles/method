@@ -20,6 +20,8 @@ const baseLabels = {
   how_it_works: 'How it works',
   steps: 'Steps',
   apply_in_work: 'Apply in your work',
+  entry_criteria: 'Entry criteria',
+  exit_criteria: 'Exit criteria',
 };
 
 function flatten(obj, prefix = '', out = {}) {
@@ -129,15 +131,43 @@ async function writeMarkdown(file, fm, body) {
   await fsPromises.writeFile(file, content);
 }
 
-function stationBody(data, resources, labels = baseLabels, locale = '') {
+function stationBody(
+  data,
+  resources,
+  labels = baseLabels,
+  locale = '',
+  entryCriteria = [],
+  exitCriteria = [],
+  criteriaMap = {}
+) {
   let out = "import { Steps, LinkCard } from '@astrojs/starlight/components';\n\n";
   if (data.description) out += `${translate(data.description, labels)}\n\n`;
-  if (data.why_it_matters) out += `## ${t('why_it_matters', labels)}\n\n${translate(data.why_it_matters, labels)}\n\n`;
   if (Array.isArray(data.outcomes) && data.outcomes.length) {
     out += `## ${t('outcomes', labels)}\n\n`;
     const items = expandTranslations(data.outcomes, labels).map((i) => `- ${i}`);
     out += items.join('\n');
     out += '\n\n';
+  }
+  if (data.why_it_matters) out += `## ${t('why_it_matters', labels)}\n\n${translate(data.why_it_matters, labels)}\n\n`;
+  if (Array.isArray(entryCriteria) && entryCriteria.length) {
+    out += `:::note[${t('entry_criteria', labels)}]{icon="right-arrow"}\n\n`;
+    const items = entryCriteria.map((id) => {
+      const tr = translate('criterion.' + id, labels);
+      const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
+      return `- ${text}`;
+    });
+    out += items.join('\n');
+    out += '\n:::\n\n';
+  }
+  if (Array.isArray(exitCriteria) && exitCriteria.length) {
+    out += `:::note[${t('exit_criteria', labels)}]{icon="left-arrow"}\n\n`;
+    const items = exitCriteria.map((id) => {
+      const tr = translate('criterion.' + id, labels);
+      const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
+      return `- ${text}`;
+    });
+    out += items.join('\n');
+    out += '\n:::\n\n';
   }
   const how = data.how_it_works || data['how-it-works'];
   if (Array.isArray(how) && how.length) {
@@ -282,16 +312,21 @@ async function generate() {
   const stationsPath = path.join(dataDir, 'stations.json');
   const linesPath = path.join(dataDir, 'lines.json');
   const resourcesPath = path.join(dataDir, 'resources.json');
+  const criteriaPath = path.join(dataDir, 'criteria.json');
+  const stationCriteriaPath = path.join(dataDir, 'station-criteria.json');
   const baseLabelFiles = [
     'labels.json',
     'labels.lines.json',
     'labels.stations.json',
     'labels.resources.json',
+    'labels.criteria.json',
   ];
 
   const stationsDataRaw = await fsPromises.readFile(stationsPath, 'utf8');
   const linesDataRaw = await fsPromises.readFile(linesPath, 'utf8');
   const resourcesDataRaw = await fsPromises.readFile(resourcesPath, 'utf8');
+  const criteriaDataRaw = await fsPromises.readFile(criteriaPath, 'utf8');
+  const stationCriteriaRaw = await fsPromises.readFile(stationCriteriaPath, 'utf8');
 
   for (const lf of baseLabelFiles) {
     const full = path.join(defaultLocaleDir, lf);
@@ -307,10 +342,14 @@ async function generate() {
   newCache['stations.json'] = checksum(stationsDataRaw);
   newCache['lines.json'] = checksum(linesDataRaw);
   newCache['resources.json'] = checksum(resourcesDataRaw);
+  newCache['criteria.json'] = checksum(criteriaDataRaw);
+  newCache['station-criteria.json'] = checksum(stationCriteriaRaw);
 
   const linesData = JSON.parse(linesDataRaw);
   const stationsData = JSON.parse(stationsDataRaw);
   const resourcesData = JSON.parse(resourcesDataRaw);
+  const criteriaData = JSON.parse(criteriaDataRaw);
+  const stationCriteriaData = JSON.parse(stationCriteriaRaw);
 
   const resourceMap = {};
   if (Array.isArray(resourcesData.resources)) {
@@ -329,6 +368,21 @@ async function generate() {
     }
   }
 
+  const criteriaMap = {};
+  for (const c of criteriaData) {
+    criteriaMap[c.id] = c.description;
+  }
+
+  const stationCriteria = stationCriteriaData || {};
+
+  const nextStationCriteria = {};
+  const coreItems = stationsData['core-stations'].items;
+  for (let i = 0; i < coreItems.length; i++) {
+    const currentId = coreItems[i].id;
+    const nextId = coreItems[(i + 1) % coreItems.length].id;
+    nextStationCriteria[currentId] = stationCriteria[nextId] || [];
+  }
+
   const stationMap = {};
   for (const st of stationsData['core-stations'].items) {
     stationMap[st.id] = st;
@@ -342,6 +396,8 @@ async function generate() {
     cache['stations.json'] !== newCache['stations.json'] ||
     cache['lines.json'] !== newCache['lines.json'] ||
     cache['resources.json'] !== newCache['resources.json'] ||
+    cache['criteria.json'] !== newCache['criteria.json'] ||
+    cache['station-criteria.json'] !== newCache['station-criteria.json'] ||
     cache['labels.json'] !== newCache['labels.json']
   ) {
     regenerate = true;
@@ -364,6 +420,7 @@ async function generate() {
         'labels.lines.json',
         'labels.stations.json',
         'labels.resources.json',
+        'labels.criteria.json',
       ];
       const labels = {};
       for (const lf of labelFiles) {
@@ -424,6 +481,9 @@ async function generate() {
       'core-stations',
       stationLines[station.id],
       resourceMap,
+      stationCriteria[station.id],
+      nextStationCriteria[station.id],
+      criteriaMap,
       labelsLocales
     );
   }
@@ -433,6 +493,9 @@ async function generate() {
       'suburb-stations',
       stationLines[station.id],
       resourceMap,
+      stationCriteria[station.id],
+      [],
+      criteriaMap,
       labelsLocales
     );
   }
@@ -469,7 +532,16 @@ async function generateLine(line, stationMap, labelsLocales) {
   }
 }
 
-async function generateStation(station, folder, lines, resources, labelsLocales) {
+async function generateStation(
+  station,
+  folder,
+  lines,
+  resources,
+  entryCriteria,
+  exitCriteria,
+  criteriaMap,
+  labelsLocales
+) {
   const baseSlug = station.slug;
   const fm = {
     title: translate(station.title, baseLabels).split(' - ')[0],
@@ -479,7 +551,11 @@ async function generateStation(station, folder, lines, resources, labelsLocales)
   };
   if (lines && lines.length) fm.metrolines = lines;
   const file = path.join(docsDir, folder, `${station.id}.mdx`);
-  await writeMarkdown(file, fm, stationBody(station, resources, baseLabels));
+  await writeMarkdown(
+    file,
+    fm,
+    stationBody(station, resources, baseLabels, '', entryCriteria, exitCriteria, criteriaMap)
+  );
   for (const locale of Object.keys(labelsLocales)) {
     const labels = labelsLocales[locale] || baseLabels;
     const locFm = {
@@ -490,7 +566,11 @@ async function generateStation(station, folder, lines, resources, labelsLocales)
     };
     if (lines && lines.length) locFm.metrolines = lines;
     const dest = path.join(docsDir, locale, folder, `${station.id}.mdx`);
-    await writeMarkdown(dest, locFm, stationBody(station, resources, labels, locale));
+    await writeMarkdown(
+      dest,
+      locFm,
+      stationBody(station, resources, labels, locale, entryCriteria, exitCriteria, criteriaMap)
+    );
   }
 }
 
