@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "npm run generate:method && npm run generate:icons && npm run generate:canvases && astro build",
+    "build": "npm run generate:method && npm run generate:icons && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "generate:method": "node scripts/generate-method-pages.mjs",
