@@ -279,19 +279,41 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
   return out.trim();
 }
 
-function lineBody(line, stationMap, labels = baseLabels, locale = '') {
+function lineBody(
+  line,
+  stationMap,
+  stationCriteria,
+  criteriaMap,
+  labels = baseLabels,
+  locale = ''
+) {
   let out = "import { Steps } from '@astrojs/starlight/components';\n\n";
   if (line.description) out += `${translate(line.description, labels)}\n\n`;
   if (Array.isArray(line.stations) && line.stations.length) {
     out += `## ${t('stations', labels)}\n\n`;
-    out += '<Steps>\n';
-    line.stations.forEach((id, i) => {
+    out += `<Steps>\n<ol class="line-steps" style="--line-color: ${line.color}">\n`;
+    line.stations.forEach((id) => {
       const st = stationMap[id];
       const prefix = locale ? `/${locale}` : '';
-      const link = st ? `[${translate(st.title, labels).split(' - ')[0]}](${prefix}/${st.slug}/)` : id;
-      out += `${i + 1}. ${link}\n`;
+      const link = st
+        ? `[${translate(st.title, labels).split(' - ')[0]}](${prefix}/${st.slug}/)`
+        : id;
+      out += `<li>\n${link}`;
+      const criteria = stationCriteria[id] || [];
+      if (criteria.length) {
+        out += `\n\n:::note[${t('entry_criteria', labels)}]{icon="right-arrow"}\n\n`;
+        const items = criteria
+          .map((c) => {
+            const tr = translate('criterion.' + c, labels);
+            const text = tr === 'criterion.' + c ? criteriaMap[c] || c : tr;
+            return `- ${text}`;
+          })
+          .join('\n');
+        out += items + '\n:::';
+      }
+      out += `\n</li>\n`;
     });
-    out += '</Steps>';
+    out += '</ol>\n</Steps>';
   }
   return out.trim();
 }
@@ -472,7 +494,7 @@ async function generate() {
   }
 
   for (const line of linesData.lines.items) {
-    await generateLine(line, stationMap, labelsLocales);
+    await generateLine(line, stationMap, stationCriteria, criteriaMap, labelsLocales);
   }
 
   for (const station of stationsData['core-stations'].items) {
@@ -511,24 +533,26 @@ async function generate() {
   console.log('Method pages generated.');
 }
 
-async function generateLine(line, stationMap, labelsLocales) {
+async function generateLine(line, stationMap, stationCriteria, criteriaMap, labelsLocales) {
   const baseSlug = `lines/${line.slug || line.id}`;
   const base = {
     title: translate(line.title, baseLabels),
     stations: line.stations,
     slug: baseSlug,
+    color: line.color,
   };
   const file = path.join(docsDir, 'lines', `${line.id}.mdx`);
-  await writeMarkdown(file, base, lineBody(line, stationMap, baseLabels));
+  await writeMarkdown(file, base, lineBody(line, stationMap, stationCriteria, criteriaMap, baseLabels));
   for (const locale of Object.keys(labelsLocales)) {
     const labels = labelsLocales[locale] || baseLabels;
     const fm = {
       title: translate(line.title, labels),
       stations: line.stations,
       slug: `${locale}/${baseSlug}`,
+      color: line.color,
     };
     const dest = path.join(docsDir, locale, 'lines', `${line.id}.mdx`);
-    await writeMarkdown(dest, fm, lineBody(line, stationMap, labels, locale));
+    await writeMarkdown(dest, fm, lineBody(line, stationMap, stationCriteria, criteriaMap, labels, locale));
   }
 }
 

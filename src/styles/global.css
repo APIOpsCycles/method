@@ -83,4 +83,11 @@
       background-color: var(--color-accent-950);
       color: var(--color-gray-100);
     }
+
+  .line-steps > li::before {
+    background-color: var(--line-color);
+  }
+  .line-steps > li::after {
+    background-color: var(--line-color);
+  }
 }
