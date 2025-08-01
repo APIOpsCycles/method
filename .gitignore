@@ -27,6 +27,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# copied resources
+public/assets/
+
 
 # environment variables
 .env

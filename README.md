@@ -27,11 +27,16 @@ Run a local dev server:
 npm run dev
 ```
 
+This command copies the resource files to `public/` so that links to canvas JSON
+files work during development.
+
 Build the production site:
 
 ```bash
 npm run build
 ```
+
+The build script also copies the resource files before generating the site.
 
 Preview the built site:
 

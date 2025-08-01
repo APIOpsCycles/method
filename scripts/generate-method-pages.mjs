@@ -211,15 +211,15 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
     out += `## ${t('how_it_works', labels)}\n\n`;
     if (res.canvas) {
       const prefix = locale ? '../../../../' : '../../../';
-      const baseDir = locale ? path.join('assets/resource', locale) : 'assets/resource';
+      const baseDir = locale ? path.posix.join('assets/resource', locale) : 'assets/resource';
       const fileBase = `Canvas_${res.canvas}`;
       const alt = htmlEncode(translate(res.title, labels));
-      const svg = `${prefix}${path.join(baseDir, fileBase + '.svg')}`;
+      const svg = `${prefix}${path.posix.join(baseDir, fileBase + '.svg')}`;
       out += `![${alt}](${svg})\n\n`;
       const links = [
         `[SVG](${svg})`,
-        `[PNG](${prefix}${path.join(baseDir, fileBase + '.png')})`,
-        `[JSON](${prefix}${path.join(baseDir, fileBase + '.json')})`,
+        `[PNG](${prefix}${path.posix.join(baseDir, fileBase + '.png')})`,
+        `[JSON](${prefix}${path.posix.join(baseDir, fileBase + '.json')})`,
       ].join(' | ');
       out += links + '\n\n';
     } else if (res.image) {
@@ -231,7 +231,7 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
         const locImgPath = path.join(rootDir, 'src/assets/resource', locale, baseImg);
         try {
           await fsPromises.access(locImgPath);
-          img = path.join('assets/resource', locale, baseImg);
+          img = path.posix.join('assets/resource', locale, baseImg);
         } catch {
           // use default image path
         }
@@ -337,7 +337,7 @@ async function generateIndex(info, folder, locale, labels = baseLabels) {
   let body = translate(info.description || '', labels);
   if (info.image) {
     const depth = locale ? 4 : 3;
-    const rel = path.join(...Array(depth).fill('..'), info.image.replace(/^\//, ''));
+    const rel = path.posix.join(...Array(depth).fill('..'), info.image.replace(/^\//, ''));
     body += `\n\n![Metro Map](${rel})`;
   }
   await writeMarkdown(file, fm, body);
