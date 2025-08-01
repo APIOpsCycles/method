@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "generate:method": "node scripts/generate-method-pages.mjs",
-    "generate:icons": "node scripts/generate-icon-imports.mjs"
+    "generate:icons": "node scripts/generate-icon-imports.mjs",
+    "generate:canvases": "node scripts/generate-canvases.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.35.0",
@@ -22,7 +23,7 @@
     "sharp": "^0.34.2",
     "tailwindcss": "^4.1.11",
     "unplugin-icons": "^22.1.0",
-    "canvascreator": "^1.1.3"
+    "canvascreator": "^1.2.0"
   },
   "engines": {
     "node": ">=22"

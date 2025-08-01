@@ -209,18 +209,26 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
   }
   if (res.how_it_works && (res.how_it_works.steps || res.how_it_works.tips)) {
     out += `## ${t('how_it_works', labels)}\n\n`;
-    if (res.image) {
+    if (res.canvas) {
+      const prefix = locale ? '../../../../' : '../../../';
+      const baseDir = locale ? path.join('assets/resource', locale) : 'assets/resource';
+      const fileBase = `Canvas_${res.canvas}`;
+      const alt = htmlEncode(translate(res.title, labels));
+      const svg = `${prefix}${path.join(baseDir, fileBase + '.svg')}`;
+      out += `![${alt}](${svg})\n\n`;
+      const links = [
+        `[SVG](${svg})`,
+        `[PNG](${prefix}${path.join(baseDir, fileBase + '.png')})`,
+        `[JSON](${prefix}${path.join(baseDir, fileBase + '.json')})`,
+      ].join(' | ');
+      out += links + '\n\n';
+    } else if (res.image) {
       let img = res.image.replace(/^\//, '');
       if (locale) {
         const baseImg = img.startsWith('assets/resource/')
           ? img.slice('assets/resource/'.length)
           : img;
-        const locImgPath = path.join(
-          rootDir,
-          'src/assets/resource',
-          locale,
-          baseImg
-        );
+        const locImgPath = path.join(rootDir, 'src/assets/resource', locale, baseImg);
         try {
           await fsPromises.access(locImgPath);
           img = path.join('assets/resource', locale, baseImg);
@@ -274,7 +282,8 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
     }
   }
   if (res.category === 'canvas') {
-    out += `\n\n<CanvasCreator canvasId="${res.id}" />`;
+    const id = res.canvas || res.id;
+    out += `\n\n<CanvasCreator canvasId="${id}" />`;
   }
   return out.trim();
 }
@@ -385,6 +394,7 @@ async function generate() {
     for (const res of resourcesData.resources) {
       const slug = res.slug;
       let image = res.image;
+      const canvas = res.canvas;
       if (image) {
         const imgPath = path.join(rootDir, 'src', image.replace(/^\//, ''));
         try {
@@ -393,7 +403,7 @@ async function generate() {
           image = undefined;
         }
       }
-      resourceMap[res.id] = { ...res, slug, image };
+      resourceMap[res.id] = { ...res, slug, image, canvas };
     }
   }
 
@@ -617,7 +627,12 @@ async function generateResource(resource, labelsLocales) {
     icon: resource.icon,
   };
   if (resource.category) fm.category = resource.category;
-  if (resource.image) fm.image = resource.image;
+  if (resource.canvas) {
+    fm.canvasId = resource.canvas;
+    fm.image = `/assets/resource/Canvas_${resource.canvas}.png`;
+  } else if (resource.image) {
+    fm.image = resource.image;
+  }
   const file = path.join(docsDir, `${fileSlug}.mdx`);
   await writeMarkdown(file, fm, await resourceBody(resource, baseLabels));
   for (const locale of Object.keys(labelsLocales)) {
@@ -629,7 +644,12 @@ async function generateResource(resource, labelsLocales) {
       icon: resource.icon,
     };
     if (resource.category) locFm.category = resource.category;
-    if (resource.image) locFm.image = resource.image;
+    if (resource.canvas) {
+      locFm.canvasId = resource.canvas;
+      locFm.image = `/assets/resource/${locale}/Canvas_${resource.canvas}.png`;
+    } else if (resource.image) {
+      locFm.image = resource.image;
+    }
     const dest = path.join(docsDir, locale, `${fileSlug}.mdx`);
     await writeMarkdown(dest, locFm, await resourceBody(resource, labels, locale));
   }

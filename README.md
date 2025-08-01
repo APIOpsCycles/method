@@ -45,6 +45,12 @@ If you add or change icons in the documentation, regenerate icon imports:
 npm run generate:icons
 ```
 
+If you modify canvas resources or their translations, regenerate canvas images (note: this can take some time, so it's not included in the build script. Instead, the canvases are saved in version control in all relevant formats, except PDF):
+
+```bash
+npm run generate:canvases
+```
+
 If you update any JSON under `src/data/method/` or markdown content under `src/snippets/` linked to the JSON files, regenerate the Markdown files:
 
 ```bash

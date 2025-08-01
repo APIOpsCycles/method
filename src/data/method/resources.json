@@ -436,7 +436,7 @@
       "icon": "dashboard-outline",
       "order": 152,
       "description": "resource.domain-canvas.description",
-      "image": "",
+      "canvas": "domainCanvas",
       "outcomes": [
         "resource.domain-canvas.outcomes",
         "resource.domain-canvas.outcomes.1",
@@ -724,7 +724,7 @@
       "icon": "dashboard-outline",
       "order": 3,
       "description": "resource.api-business-model-canvas.description",
-      "image": "/assets/resource/Canvas_apiBusinessModelCanvas.svg",
+      "canvas": "apiBusinessModelCanvas",
       "outcomes": [
         "resource.api-business-model-canvas.outcomes",
         "resource.api-business-model-canvas.outcomes.1",
@@ -784,7 +784,7 @@
       "icon": "dashboard-outline",
       "order": 2,
       "description": "resource.api-value-proposition-canvas.description",
-      "image": "/assets/resource/Canvas_apiValuePropositionCanvas.svg",
+      "canvas": "apiValuePropositionCanvas",
       "outcomes": [
         "resource.api-value-proposition-canvas.outcomes",
         "resource.api-value-proposition-canvas.outcomes.1",
@@ -812,7 +812,7 @@
       "icon": "dashboard-outline",
       "order": 4,
       "description": "resource.business-impact-canvas.description",
-      "image": "/assets/resource/Canvas_businessImpactCanvas.svg",
+      "canvas": "businessImpactCanvas",
       "outcomes": [
         "resource.business-impact-canvas.outcomes",
         "resource.business-impact-canvas.outcomes.1",
@@ -842,7 +842,7 @@
       "icon": "dashboard-outline",
       "order": 7,
       "description": "resource.capacity-canvas.description",
-      "image": "/assets/resource/Canvas_capacityCanvas.svg",
+      "canvas": "capacityCanvas",
       "outcomes": [
         "resource.capacity-canvas.outcomes",
         "resource.capacity-canvas.outcomes.1",
@@ -871,7 +871,7 @@
       "icon": "dashboard-outline",
       "order": 1,
       "description": "resource.customer-journey-canvas.description",
-      "image": "/assets/resource/Canvas_customerJourneyCanvas.svg",
+      "canvas": "customerJourneyCanvas",
       "outcomes": [
         "resource.customer-journey-canvas.outcomes",
         "resource.customer-journey-canvas.outcomes.1",
@@ -902,7 +902,7 @@
       "icon": "dashboard-outline",
       "order": 12,
       "description": "resource.event-canvas.description",
-      "image": "/assets/resource/Canvas_eventCanvas.svg",
+      "canvas": "eventCanvas",
       "outcomes": [
         "resource.event-canvas.outcomes",
         "resource.event-canvas.outcomes.1",
@@ -931,7 +931,7 @@
       "draft": "true",
       "order": 11,
       "description": "resource.graphql-canvas.description",
-      "image": "/assets/resource/Canvas_graphqlCanvas.svg",
+      "canvas": "graphqlCanvas",
       "outcomes": [
         "resource.graphql-canvas.outcomes",
         "resource.graphql-canvas.outcomes.1",
@@ -963,7 +963,7 @@
       "icon": "dashboard-outline",
       "order": 9,
       "description": "resource.interaction-canvas.description",
-      "image": "/assets/resource/Canvas_interactionCanvas.svg",
+      "canvas": "interactionCanvas",
       "outcomes": [
         "resource.interaction-canvas.outcomes",
         "resource.interaction-canvas.outcomes.1",
@@ -992,7 +992,7 @@
       "icon": "dashboard-outline",
       "order": 6,
       "description": "resource.location-canvas.description",
-      "image": "/assets/resource/Canvas_locationsCanvas.svg",
+      "canvas": "locationsCanvas",
       "outcomes": [
         "resource.location-canvas.outcomes",
         "resource.location-canvas.outcomes.1",
@@ -1022,7 +1022,7 @@
       "icon": "dashboard-outline",
       "order": 10,
       "description": "resource.rest-canvas.description",
-      "image": "/assets/resource/Canvas_restCanvas.svg",
+      "canvas": "restCanvas",
       "outcomes": [
         "resource.rest-canvas.outcomes",
         "resource.rest-canvas.outcomes.1",
