@@ -325,7 +325,13 @@ async function generateIndex(info, folder, locale, labels = baseLabels) {
   fm.slug = locale ? `${locale}/${folder}` : folder;
   const dir = locale ? path.join(docsDir, locale, folder) : path.join(docsDir, folder);
   const file = path.join(dir, 'index.mdx');
-  await writeMarkdown(file, fm, translate(info.description || '', labels));
+  let body = translate(info.description || '', labels);
+  if (info.image) {
+    const depth = locale ? 4 : 3;
+    const rel = path.join(...Array(depth).fill('..'), info.image.replace(/^\//, ''));
+    body += `\n\n![Metro Map](${rel})`;
+  }
+  await writeMarkdown(file, fm, body);
 }
 
 async function generate() {

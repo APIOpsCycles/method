@@ -3,7 +3,7 @@
     "title": "lines.title",
     "slug": "lines",
     "order": 0,
-    "image": "../../../assets/metro_map.svg",
+    "image": "/assets/metro_map.svg",
     "description": "lines.description",
     "items": [
       {
