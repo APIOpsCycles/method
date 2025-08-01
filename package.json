@@ -3,14 +3,15 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "npm run generate:method && npm run generate:icons && astro build",
+    "dev": "npm run copy:resources && astro dev",
+    "start": "npm run copy:resources && astro dev",
+    "build": "npm run copy:resources && npm run generate:method && npm run generate:icons && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "generate:method": "node scripts/generate-method-pages.mjs",
     "generate:icons": "node scripts/generate-icon-imports.mjs",
-    "generate:canvases": "node scripts/generate-canvases.mjs"
+    "generate:canvases": "node scripts/generate-canvases.mjs",
+    "copy:resources": "node scripts/copy-resources.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.35.0",
