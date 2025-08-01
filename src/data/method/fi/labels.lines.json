@@ -11,6 +11,6 @@
   "line.delivery-line.description": "Kattaa APIen toimitusprosessit ja -käytännöt.",
   "line.publishing-and-adoption-line.title": "Julkaisu- ja hyväksymislinja",
   "line.publishing-and-adoption-line.description": "Keskittyy API-rajapintojen julkaisemiseen ja sen varmistamiseen, että kuluttajat hyväksyvät ne.",
-  "line.operating-model-line.title": "Toimintamalli Line",
+  "line.operating-model-line.title": "Toimintamalli-linja",
   "line.operating-model-line.description": "Kattaa API-hallinnan ja -hallinnan toimintamallin."
 }
