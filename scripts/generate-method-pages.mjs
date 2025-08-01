@@ -22,6 +22,7 @@ const baseLabels = {
   apply_in_work: 'Apply in your work',
   entry_criteria: 'Entry criteria',
   exit_criteria: 'Exit criteria',
+  related_metrolines: 'Related metrolines',
 };
 
 function flatten(obj, prefix = '', out = {}) {
@@ -138,7 +139,9 @@ function stationBody(
   locale = '',
   entryCriteria = [],
   exitCriteria = [],
-  criteriaMap = {}
+  criteriaMap = {},
+  lines = [],
+  lineMap = {}
 ) {
   let out = "import { Steps, LinkCard } from '@astrojs/starlight/components';\n\n";
   if (data.description) out += `${translate(data.description, labels)}\n\n`;
@@ -147,6 +150,18 @@ function stationBody(
     const items = expandTranslations(data.outcomes, labels).map((i) => `- ${i}`);
     out += items.join('\n');
     out += '\n\n';
+  }
+  if (Array.isArray(lines) && lines.length) {
+    out += `## ${t('related_metrolines', labels)}\n\n`;
+    lines.forEach((id) => {
+      const line = lineMap[id];
+      if (!line) return;
+      const prefix = locale ? `/${locale}` : '';
+      const title = translate(line.title, labels);
+      const color = line.color || '#000';
+      out += `- <a href="${prefix}/lines/${line.slug}/" style="text-decoration-color:${color};text-decoration-thickness:4px">${title}</a>\n`;
+    });
+    out += '\n';
   }
   if (data.why_it_matters) out += `## ${t('why_it_matters', labels)}\n\n${translate(data.why_it_matters, labels)}\n\n`;
   if (Array.isArray(entryCriteria) && entryCriteria.length) {
@@ -412,6 +427,11 @@ async function generate() {
     criteriaMap[c.id] = c.description;
   }
 
+  const lineMap = {};
+  for (const ln of linesData.lines.items) {
+    lineMap[ln.id] = ln;
+  }
+
   const stationCriteria = stationCriteriaData || {};
 
   const nextStationCriteria = {};
@@ -519,6 +539,7 @@ async function generate() {
       station,
       'core-stations',
       stationLines[station.id],
+      lineMap,
       resourceMap,
       stationCriteria[station.id],
       nextStationCriteria[station.id],
@@ -531,6 +552,7 @@ async function generate() {
       station,
       'suburb-stations',
       stationLines[station.id],
+      lineMap,
       resourceMap,
       stationCriteria[station.id],
       [],
@@ -579,6 +601,7 @@ async function generateStation(
   station,
   folder,
   lines,
+  lineMap,
   resources,
   entryCriteria,
   exitCriteria,
@@ -597,7 +620,17 @@ async function generateStation(
   await writeMarkdown(
     file,
     fm,
-    stationBody(station, resources, baseLabels, '', entryCriteria, exitCriteria, criteriaMap)
+    stationBody(
+      station,
+      resources,
+      baseLabels,
+      '',
+      entryCriteria,
+      exitCriteria,
+      criteriaMap,
+      lines,
+      lineMap
+    )
   );
   for (const locale of Object.keys(labelsLocales)) {
     const labels = labelsLocales[locale] || baseLabels;
@@ -612,7 +645,17 @@ async function generateStation(
     await writeMarkdown(
       dest,
       locFm,
-      stationBody(station, resources, labels, locale, entryCriteria, exitCriteria, criteriaMap)
+      stationBody(
+        station,
+        resources,
+        labels,
+        locale,
+        entryCriteria,
+        exitCriteria,
+        criteriaMap,
+        lines,
+        lineMap
+      )
     );
   }
 }
