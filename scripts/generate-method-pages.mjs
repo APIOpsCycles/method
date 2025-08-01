@@ -321,6 +321,7 @@ function lineBody(
 async function generateIndex(info, folder, locale, labels = baseLabels) {
   const fm = { title: translate(info.title, labels) };
   if (typeof info.order !== 'undefined') fm.sidebar = { order: info.order };
+  if (info.image) fm.image = info.image;
   fm.slug = locale ? `${locale}/${folder}` : folder;
   const dir = locale ? path.join(docsDir, locale, folder) : path.join(docsDir, folder);
   const file = path.join(dir, 'index.mdx');
@@ -540,6 +541,7 @@ async function generateLine(line, stationMap, stationCriteria, criteriaMap, labe
     stations: line.stations,
     slug: baseSlug,
     color: line.color,
+    sidebar: { order: line.order },
   };
   const file = path.join(docsDir, 'lines', `${line.id}.mdx`);
   await writeMarkdown(file, base, lineBody(line, stationMap, stationCriteria, criteriaMap, baseLabels));
@@ -550,6 +552,7 @@ async function generateLine(line, stationMap, stationCriteria, criteriaMap, labe
       stations: line.stations,
       slug: `${locale}/${baseSlug}`,
       color: line.color,
+      sidebar: { order: line.order },
     };
     const dest = path.join(docsDir, locale, 'lines', `${line.id}.mdx`);
     await writeMarkdown(dest, fm, lineBody(line, stationMap, stationCriteria, criteriaMap, labels, locale));
