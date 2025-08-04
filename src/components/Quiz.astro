@@ -55,7 +55,7 @@ const { questions, id } = Astro.props as { questions: Question[]; id: string };
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const selected = Array.from(form.querySelectorAll('input:checked')).map((el) =>
-        Number((el as HTMLInputElement).value)
+        Number(el.value)
       );
       const correct = selected.length === q.answer.length && selected.every((v) => q.answer.includes(v));
       if (correct) score++;
