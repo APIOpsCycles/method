@@ -10,12 +10,22 @@ interface Question {
   incorrect: string;
   multiple?: boolean;
 }
-const { questions } = Astro.props as { questions: Question[] };
+const { questions, id } = Astro.props as { questions: Question[]; id: string };
 ---
 <div id="quiz"></div>
-<script type="module" client:load define:vars={{ questions }}>
+<script type="module" client:load define:vars={{ questions, id }}>
   let index = 0;
+  let score = 0;
+  const key = `quiz-${id}`;
   const container = document.getElementById('quiz');
+
+  const saved = localStorage.getItem(key);
+  if (saved) {
+    const { score: savedScore } = JSON.parse(saved);
+    showResults(savedScore);
+  } else {
+    renderQuestion();
+  }
 
   function renderQuestion() {
     const q = questions[index];
@@ -26,6 +36,7 @@ const { questions } = Astro.props as { questions: Question[] };
     form.appendChild(prompt);
     q.options.forEach((opt, i) => {
       const wrapper = document.createElement('div');
+      wrapper.className = 'option';
       const label = document.createElement('label');
       const input = document.createElement('input');
       input.type = q.multiple ? 'checkbox' : 'radio';
@@ -43,29 +54,62 @@ const { questions } = Astro.props as { questions: Question[] };
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const selected = Array.from(form.querySelectorAll('input:checked')).map((el) => Number(el.value));
+      const selected = Array.from(form.querySelectorAll('input:checked')).map((el) =>
+        Number((el as HTMLInputElement).value)
+      );
       const correct = selected.length === q.answer.length && selected.every((v) => q.answer.includes(v));
+      if (correct) score++;
+      Array.from(form.querySelectorAll('.option')).forEach((optEl, i) => {
+        const span = document.createElement('span');
+        span.textContent = q.answer.includes(i) ? '✅' : selected.includes(i) ? '❌' : '';
+        if (span.textContent) {
+          span.className = q.answer.includes(i) ? 'icon correct' : 'icon incorrect';
+          optEl.appendChild(span);
+        }
+      });
       const feedback = document.createElement('div');
       feedback.textContent = correct ? q.correct : q.incorrect;
-      container.innerHTML = '';
-      container.appendChild(feedback);
+      feedback.className = `explanation ${correct ? 'correct' : 'incorrect'}`;
+      form.appendChild(feedback);
+      submit.style.display = 'none';
       const next = document.createElement('button');
+      next.type = 'button';
       next.textContent = index === questions.length - 1 ? 'Finish' : 'Next';
       next.addEventListener('click', () => {
         index++;
         if (index < questions.length) {
           renderQuestion();
         } else {
-          container.innerHTML = '<p>Quiz complete!</p>';
+          finish();
         }
       });
-      container.appendChild(next);
+      form.appendChild(next);
     });
 
     container.appendChild(form);
   }
 
-  renderQuestion();
+  function finish() {
+    container.innerHTML = '';
+    localStorage.setItem(key, JSON.stringify({ score }));
+    showResults(score);
+  }
+
+  function showResults(finalScore) {
+    container.innerHTML = '';
+    const msg = document.createElement('p');
+    msg.textContent = `Quiz complete! You scored ${finalScore}/${questions.length}.`;
+    container.appendChild(msg);
+    const reset = document.createElement('button');
+    reset.textContent = 'Reset quiz';
+    reset.addEventListener('click', () => {
+      localStorage.removeItem(key);
+      index = 0;
+      score = 0;
+      renderQuestion();
+    });
+    container.appendChild(reset);
+  }
 </script>
 <style>
   #quiz form div {
@@ -73,5 +117,26 @@ const { questions } = Astro.props as { questions: Question[] };
   }
   #quiz button {
     margin-top: 1rem;
+  }
+  .icon {
+    margin-left: 0.5rem;
+  }
+  .icon.correct {
+    color: green;
+  }
+  .icon.incorrect {
+    color: red;
+  }
+  .explanation {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-left: 4px solid;
+    background: #f9f9f9;
+  }
+  .explanation.correct {
+    border-color: green;
+  }
+  .explanation.incorrect {
+    border-color: red;
   }
 </style>
