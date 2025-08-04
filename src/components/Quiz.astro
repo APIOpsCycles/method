@@ -1,0 +1,77 @@
+---
+interface Option {
+  text: string;
+}
+interface Question {
+  question: string;
+  options: string[];
+  answer: number[];
+  correct: string;
+  incorrect: string;
+  multiple?: boolean;
+}
+const { questions } = Astro.props as { questions: Question[] };
+---
+<div id="quiz"></div>
+<script type="module" client:load define:vars={{ questions }}>
+  let index = 0;
+  const container = document.getElementById('quiz');
+
+  function renderQuestion() {
+    const q = questions[index];
+    container.innerHTML = '';
+    const form = document.createElement('form');
+    const prompt = document.createElement('p');
+    prompt.textContent = q.question;
+    form.appendChild(prompt);
+    q.options.forEach((opt, i) => {
+      const wrapper = document.createElement('div');
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.type = q.multiple ? 'checkbox' : 'radio';
+      input.name = 'option';
+      input.value = i.toString();
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(opt));
+      wrapper.appendChild(label);
+      form.appendChild(wrapper);
+    });
+    const submit = document.createElement('button');
+    submit.type = 'submit';
+    submit.textContent = 'Submit';
+    form.appendChild(submit);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const selected = Array.from(form.querySelectorAll('input:checked')).map((el) => Number(el.value));
+      const correct = selected.length === q.answer.length && selected.every((v) => q.answer.includes(v));
+      const feedback = document.createElement('div');
+      feedback.textContent = correct ? q.correct : q.incorrect;
+      container.innerHTML = '';
+      container.appendChild(feedback);
+      const next = document.createElement('button');
+      next.textContent = index === questions.length - 1 ? 'Finish' : 'Next';
+      next.addEventListener('click', () => {
+        index++;
+        if (index < questions.length) {
+          renderQuestion();
+        } else {
+          container.innerHTML = '<p>Quiz complete!</p>';
+        }
+      });
+      container.appendChild(next);
+    });
+
+    container.appendChild(form);
+  }
+
+  renderQuestion();
+</script>
+<style>
+  #quiz form div {
+    margin: 0.5rem 0;
+  }
+  #quiz button {
+    margin-top: 1rem;
+  }
+</style>

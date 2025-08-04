@@ -1,0 +1,75 @@
+[
+  {
+    "question": "Why does a company offer an API?",
+    "options": [
+      "So developers can integrate systems easily",
+      "To help customers or partners achieve their goals",
+      "To appear modern and technical",
+      "Because guidelines require it"
+    ],
+    "answer": [1],
+    "incorrect": "If it’s just technological or internal, it may work—but not thrive. Value is what matters. Read: APIs as Business Tools, not just integration",
+    "correct": "Exactly—APIs must enable customers or partners to complete tasks or achieve results. Read on: Value proposition focus"
+  },
+  {
+    "question": "When should API design really begin?",
+    "options": [
+      "After backend systems are built",
+      "Once the API gateway is set up",
+      "After mapping stakeholder journeys",
+      "When the OpenAPI spec is drafted"
+    ],
+    "answer": [2],
+    "incorrect": "Premature design without context often misaligns with user needs. Explore: APIOps Cycles design-first approach",
+    "correct": "Correct—you design APIs from use cases and journeys, not backend implementation. Read: Start with user journeys in APIOps"
+  },
+  {
+    "question": "Which is NOT a sign of a successful API?",
+    "options": [
+      "It’s RESTful",
+      "Customers use it with no support needed",
+      "It drives revenue or cuts costs",
+      "Customers report time saved using it"
+    ],
+    "answer": [0],
+    "incorrect": "Many APIs are technically elegant—and still fail. The real test is whether they solve problems, save time, or make money. Insights: API product lifecycle",
+    "correct": "REST is important—but real success is about solving user and business problems. Value over format: API product thinking"
+  },
+  {
+    "question": "What defines an API value proposition?\n\nSelect all that apply:",
+    "options": [
+      "The OpenAPI spec format",
+      "The customer job the API helps accomplish",
+      "Why someone chooses your API over others",
+      "The revenue your organization earns"
+    ],
+    "answer": [1, 2],
+    "incorrect": "Specs and revenue are important—but they come after the value is defined. Read: Business-first mindset in APIOps",
+    "correct": "Yes—a value prop connects user jobs to why the API is valuable vs. alternatives. API Value Proposition Canvas guide",
+    "multiple": true
+  },
+  {
+    "question": "What should happen before any coding?",
+    "options": [
+      "Between selecting tools",
+      "Writing a prototype",
+      "Gathering stakeholder insights",
+      "Setting up the developer portal"
+    ],
+    "answer": [2],
+    "incorrect": "Tech-first locks you into solutions before confirming they solve actual needs. APIOps overview article",
+    "correct": "Exactly—APIOps Cycles insists you start with stakeholder alignment and user context. APIOps method emphasis: business meets technical"
+  },
+  {
+    "question": "Who benefits from API product thinking?",
+    "options": [
+      "Developers",
+      "Product managers",
+      "Sales and marketing teams",
+      "All of the above"
+    ],
+    "answer": [3],
+    "incorrect": "Limiting product thinking to dev or product misses the cross-functional reality of API success. Exploring APIOps stakeholder alignment",
+    "correct": "Right—developers, strategists, and business folks all benefit from product-oriented API thinking. APIOps Cycles bridges business and tech"
+  }
+]

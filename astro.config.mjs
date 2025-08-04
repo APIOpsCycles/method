@@ -84,6 +84,11 @@ export default defineConfig({
                                                 slug: 'the-method'
                                                 },
                                                 {
+                                                        label: 'API Value Quiz',
+                                                        translations: { 'fi': 'API Value Quiz', 'fr': 'Quiz de valeur API', 'de': 'API-Wert-Quiz', 'pt': 'Quiz de valor de API' },
+                                                        slug: 'api-value-quiz'
+                                                },
+                                                {
                                                         label: 'Advanced Topics',
                                                         translations: { 'fi': 'Edistyneet aiheet', 'fr': 'Sujets avancés', 'de': 'Fortgeschrittene Themen', 'pt': 'Tópicos Avançados' },
                                                         link: '/advanced-topics/',
