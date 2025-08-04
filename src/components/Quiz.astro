@@ -57,20 +57,25 @@ const { questions, id } = Astro.props as { questions: Question[]; id: string };
       const selected = Array.from(form.querySelectorAll('input:checked')).map((el) =>
         Number(el.value)
       );
-      const correct = selected.length === q.answer.length && selected.every((v) => q.answer.includes(v));
+      const correct =
+        selected.length === q.answer.length && selected.every((v) => q.answer.includes(v));
       if (correct) score++;
+
       Array.from(form.querySelectorAll('.option')).forEach((optEl, i) => {
+        const input = optEl.querySelector('input');
+        if (input) input.disabled = true;
         const span = document.createElement('span');
-        span.textContent = q.answer.includes(i) ? '✅' : selected.includes(i) ? '❌' : '';
-        if (span.textContent) {
-          span.className = q.answer.includes(i) ? 'icon correct' : 'icon incorrect';
-          optEl.appendChild(span);
-        }
+        span.textContent = q.answer.includes(i) ? '✅' : '❌';
+        span.className = q.answer.includes(i) ? 'icon correct' : 'icon incorrect';
+        optEl.appendChild(span);
+        if (selected.includes(i)) optEl.classList.add('chosen');
       });
+
       const feedback = document.createElement('div');
-      feedback.textContent = correct ? q.correct : q.incorrect;
+      feedback.innerHTML = correct ? q.correct : q.incorrect;
       feedback.className = `explanation ${correct ? 'correct' : 'incorrect'}`;
       form.appendChild(feedback);
+
       submit.style.display = 'none';
       const next = document.createElement('button');
       next.type = 'button';
@@ -126,6 +131,9 @@ const { questions, id } = Astro.props as { questions: Question[]; id: string };
   }
   .icon.incorrect {
     color: red;
+  }
+  .option.chosen {
+    font-weight: bold;
   }
   .explanation {
     margin-top: 1rem;
