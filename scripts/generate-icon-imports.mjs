@@ -7,7 +7,7 @@ import iconsData from '@iconify-json/material-symbols-light/icons.json' with { t
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const docsDir = path.join(rootDir, 'src/content/docs');
-const dataDir = path.join(rootDir, 'src/data/method/');
+const dataDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/src/data/method/');
 const outFile = path.join(rootDir, 'src/components/material-icons.ts');
 const available = new Set(Object.keys(iconsData.icons));
 
@@ -55,7 +55,7 @@ function extractIcons(obj, set) {
   }
 }
 
-async function gatherIconsFromData(dir, set) {
+async function gatherIconsFromData(dataDir, set) {
   const files = ['stations.json', 'resources.json', 'lines.json'];
   for (const file of files) {
     try {
