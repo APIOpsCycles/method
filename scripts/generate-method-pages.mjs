@@ -7,7 +7,8 @@ import { dump } from 'js-yaml';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const dataDir = path.join(rootDir, 'src/data/method');
+const dataDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/src/data/method');
+const snippetDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/src/snippets');
 const defaultLocale = 'en';
 const defaultLocaleDir = path.join(dataDir, defaultLocale);
 const docsDir = path.join(rootDir, 'src/content/docs');
@@ -276,12 +277,12 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
   }
   if (res.snippet) {
     const baseSnippet = res.snippet.replace(/^\//, '');
-    let snippetPath = path.join(rootDir, 'src', baseSnippet);
+    let snippetPath = path.join(snippetDir, baseSnippet);
     if (locale) {
       const rel = baseSnippet.startsWith('snippets/')
         ? baseSnippet.slice('snippets/'.length)
         : baseSnippet;
-      const locPath = path.join(rootDir, 'src/snippets', locale, rel);
+      const locPath = path.join(snippetDir, locale, rel);
       try {
         await fsPromises.access(locPath);
         snippetPath = locPath;
