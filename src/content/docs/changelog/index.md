@@ -39,7 +39,17 @@ draft: false
 **Sep 2023**
 * [API Audit Checklist](../resources/api-audit-checklist) with OWASP Top 10 2023 API Vulnerabilities and Async API checklist published
 
----
+**October 2022**
+
+The [API Collective members](https://www.theapicollective.com/) from Osaango and APIsFirst used all experiences gained from client and partner projects and workshops to do a major rewrite of the APIOps Cycles method. All the method descriptions were improved, canvases got a fresh new look and checklists were modified and simplified.
+
+**Early 2018**
+
+Osaango Ltd. was established by [Marjukka Niinioja](https://www.linkedin.com/in/marjukkaniinioja/) with the help from other API and training gurus to take APIOps Cycles to the next level and beyond.
+
+**2017**
+
+APIOps Cycles -method is developed originally at Digia Plc by Marjukka Niinioja, and team.
 
 
 
