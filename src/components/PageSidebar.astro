@@ -4,7 +4,7 @@ import TableOfContents from 'virtual:starlight/components/TableOfContents';
 import AdBanner from './AdBanner.astro';
 import { selectAd } from '../data/ads';
 
-const ad = selectAd(Astro.url.pathname, Astro.locals.starlightRoute?.entry);
+const ad = selectAd(Astro.locals.starlightRoute?.entry);
 ---
 {Astro.locals.starlightRoute.toc && (
   <>

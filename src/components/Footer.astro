@@ -7,7 +7,7 @@ import { Icon } from '@astrojs/starlight/components';
 import AdBanner from './AdBanner.astro';
 import { selectAd } from '../data/ads';
 
-const ad = selectAd(Astro.url.pathname, Astro.locals.starlightRoute?.entry);
+const ad = selectAd(Astro.locals.starlightRoute?.entry);
 ---
 {ad && (
   <div class="lg:sl-hidden">

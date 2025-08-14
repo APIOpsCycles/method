@@ -10,8 +10,8 @@ export interface Ad {
   ctaText: string;
   images?: { src: ImageMetadata; alt: string }[];
   /**
-   * Optional groups that this ad should automatically appear on.
-   * Examples: `"stations"`, `"lines"`, `"resources:canvas"`.
+   * Optional folder groups that this ad should automatically appear on.
+   * Examples: `"getting-started"`, `"de/getting-started"`.
    */
   groups?: string[];
 }
@@ -25,7 +25,8 @@ export const ads: Record<string, Ad> = {
     images: [
       { src: logo, alt: 'Scrimba' },
       { src: person, alt: '' }
-    ]
+    ],
+    groups: ['getting-started']
   },
   community: {
     headline: 'Join the APIOps Community',
@@ -33,40 +34,44 @@ export const ads: Record<string, Ad> = {
     ctaHref: 'https://osaango.kit.com/dfc21aabae',
     ctaText: 'Join mailing list',
     images: [{ src: person, alt: 'APIOps users' }],
-    groups: [
-      'stations',
-      'lines',
-      'resources:canvas',
-      'resources:guideline',
-      'resources:tool'
-    ]
+    groups: ['de/getting-started']
   }
 };
 
 /**
- * Determine which ad (if any) should be shown for the current page.
- * Respects explicit `ad` frontmatter and falls back to group-based matching.
+ * Determine which ad (if any) should be shown for the current page based on
+ * the directory groups the page belongs to.
  */
-export function selectAd(pathname: string, entry?: any): Ad | undefined {
-  const adId = entry?.data?.ad as string | undefined;
-  if (adId && ads[adId]) return ads[adId];
-
-  const groups = pageGroups(pathname, entry);
-  return Object.values(ads).find((ad) => ad.groups?.some((g) => groups.includes(g)));
+export function selectAd(entry?: any): Ad | undefined {
+  const groups = entryGroups(entry);
+  let best: { ad: Ad; score: number } | undefined;
+  for (const ad of Object.values(ads)) {
+    if (!ad.groups) continue;
+    for (const tag of ad.groups) {
+      if (groups.includes(tag)) {
+        const score = tag.split('/').length;
+        if (!best || score > best.score) {
+          best = { ad, score };
+        }
+      }
+    }
+  }
+  return best?.ad;
 }
 
-function pageGroups(pathname: string, entry?: any): string[] {
-  const groups: string[] = [];
+function entryGroups(entry?: any): string[] {
+  const id = entry?.id as string | undefined;
+  if (!id) return [];
 
-  const normalized = pathname.replace(/^\/[a-z]{2}(?=\/)/, '');
-  if (normalized.startsWith('/method/')) groups.push('stations');
-  if (normalized.startsWith('/lines/')) groups.push('lines');
-  if (normalized.startsWith('/resources/')) {
-    const category = entry?.data?.category;
-    if (category) groups.push(`resources:${category}`);
-    groups.push('resources');
+  const parts = id.split('/');
+  parts.pop(); // remove filename
+  const set = new Set<string>();
+
+  for (let i = 0; i < parts.length; i++) {
+    set.add(parts[i]);
+    set.add(parts.slice(0, i + 1).join('/'));
   }
 
-  return groups;
+  return Array.from(set);
 }
 
