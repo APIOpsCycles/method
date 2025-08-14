@@ -42,8 +42,8 @@ export const ads: Record<string, Ad> = {
  * Determine which ad (if any) should be shown for the current page based on
  * the directory groups the page belongs to.
  */
-export function selectAd(entry?: any): Ad | undefined {
-  const groups = entryGroups(entry);
+export function selectAd(entry?: any, pathname?: string): Ad | undefined {
+  const groups = pageGroups(entry, pathname);
   let best: { ad: Ad; score: number } | undefined;
   for (const ad of Object.values(ads)) {
     if (!ad.groups) continue;
@@ -59,19 +59,25 @@ export function selectAd(entry?: any): Ad | undefined {
   return best?.ad;
 }
 
-function entryGroups(entry?: any): string[] {
+function pageGroups(entry?: any, pathname?: string): string[] {
+  let parts: string[] | undefined;
   const id = entry?.id as string | undefined;
-  if (!id) return [];
+  if (id) {
+    parts = id.split('/');
+    parts.pop(); // remove filename
+  } else if (pathname) {
+    const trimmed = pathname.replace(/^\/|\/$/g, '');
+    if (!trimmed) return [];
+    parts = trimmed.split('/');
+  } else {
+    return [];
+  }
 
-  const parts = id.split('/');
-  parts.pop(); // remove filename
   const set = new Set<string>();
-
   for (let i = 0; i < parts.length; i++) {
     set.add(parts[i]);
     set.add(parts.slice(0, i + 1).join('/'));
   }
-
   return Array.from(set);
 }
 
