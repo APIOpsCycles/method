@@ -1,7 +1,9 @@
 ---
-title: "APIOps Cycles: Start Where It Matters Most"
+title: "Start Where It Matters Most"
 draft: false
 slug: the-method
+sidebar:
+  order: 1
 ---
 
 APIOps Cycles is a Lean and service design–inspired method for designing, improving, and scaling APIs.

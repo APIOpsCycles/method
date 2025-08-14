@@ -1,7 +1,9 @@
 ---
-title: "APIOps Cycles : commencez là où cela compte le plus"
+title: "Commencez là où cela compte le plus"
 draft: false
 slug: fr/the-method
+sidebar:
+  order: 1
 ---
 
 APIOps Cycles est une méthode inspirée du Lean et de la conception de services pour concevoir, améliorer et faire évoluer les API.

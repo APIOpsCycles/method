@@ -1,6 +1,8 @@
 ---
-title: "Usein kysyttyjä kysymyksiä kokeneille APIOps Cycles -käyttäjille"
+title: "UKK kokeneille käyttäjille"
 draft: false
+sidebar:
+  order: 10
 ---
 
 Oletko jo perehtynyt [APIOps Cycles -perusteisiin](../getting-started/)?

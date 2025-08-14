@@ -1,7 +1,9 @@
 ---
-title: "APIOps Cycles: Aloita tärkeimmästä"
+title: "Aloita tärkeimmästä"
 draft: false
 slug: fi/the-method
+sidebar:
+  order: 1
 ---
 APIOps Cycles on Lean- ja palvelusuunnittelusta inspiroitu menetelmä API-rajapintojen suunnitteluun, parantamiseen ja skaalaamiseen.
 APIOps Cycles on vapaasti käytettävissä, muokattavissa ja jaettavissa [Creative Commons Attribution–ShareAlike 4.0 -lisenssin](https://creativecommons.org/licenses/by-sa/4.0/) nojalla. APIOps Cycles on kehitetty [vuodesta 2017](../changelog/) lähtien, ja se on kasvanut yhteisön panoksella ja eri toimialojen käytännön projekteissa.

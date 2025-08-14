@@ -1,6 +1,8 @@
 ---
-title: "Perguntas frequentes para usuários experientes do APIOps Cycles"
+title: "FAQ para usuários experientes"
 draft: false
+sidebar:
+  order: 10
 ---
 
 Já está familiarizado com os [conceitos básicos do APIOps Cycles](../getting-started/)?

@@ -18,7 +18,8 @@ export default defineConfig({
                 {
                 tag: 'script',
                 attrs: {
-                src: `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`,
+                  src: `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`,
+                  defer: true,
                 },
                 },
                 {
@@ -31,6 +32,15 @@ export default defineConfig({
                 gtag('config', '${googleAnalyticsId}');
                 `,
                 },
+                {
+                        tag: 'script',
+                        attrs: {
+                                src: 'https://osaango.kit.com/dfc21aabae/index.js',
+                                'data-uid': 'dfc21aabae',
+                                async: true,
+                        }
+
+                }
         ],
           title: {
                 'en': 'APIOps Cycles'
@@ -77,28 +87,7 @@ export default defineConfig({
                               {
                                       label: 'Start Here',
                                       translations: { 'fi': 'Aloita tästä', 'fr': 'Commencez ici', 'de': 'Hier anfangen', 'pt': 'Comece aqui' },
-                                      items: [
-                                                { 
-                                                label: 'Getting Started', 
-                                                translations: { 'fi': 'Kuinka pääset alkuun', 'fr': 'Comment commencer', 'de': 'Erste Schritte', 'pt': 'Começando' }, 
-                                                slug: 'the-method'
-                                                },
-                                                {
-                                                        label: 'Advanced Topics',
-                                                        translations: { 'fi': 'Edistyneet aiheet', 'fr': 'Sujets avancés', 'de': 'Fortgeschrittene Themen', 'pt': 'Tópicos Avançados' },
-                                                        link: '/advanced-topics/',
-                                                },
-                                                {
-                                                        label: 'Partners & Community',
-                                                        translations: { 'fi': 'Kumppanit ja yhteisö', 'fr': 'Partenaires et communauté', 'de': 'Partner & Gemeinschaft', 'pt': 'Parceiros e Comunidade' },
-                                                        link: '/partners/',
-                                                },
-                                                {
-                                                        label: 'Changelog',
-                                                        translations: { 'fi': 'Muutokset', 'fr': 'Journal des modifications', 'de': 'Änderungsprotokoll', 'pt': 'Registro de alterações' },
-                                                        link: '/changelog/',
-                                                }
-                                        ],
+                                      autogenerate: { directory: 'getting-started' },
                                 },
                                 {
                                       label: 'Method',
@@ -112,7 +101,7 @@ export default defineConfig({
                                                                 autogenerate: { directory: 'lines' },
                                                         },                                                {
                                                                 label: 'Core Stations',
-                                                                translations: { 'fi': 'Ydinasemat', 'fr': 'Stations principales', 'de': 'Kernstationen', 'pt': 'Estações principais' },
+                                                                translations: { 'fi': 'Ydinasemat', 'fr': 'Stations principales', 'de': 'Kernstationen', 'pt': 'Estações centrais' },
                                                                 autogenerate: { directory: 'core-stations' },
                                                         },
                                                         {

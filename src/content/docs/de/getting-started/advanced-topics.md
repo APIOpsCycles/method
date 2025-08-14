@@ -1,6 +1,8 @@
 ---
-title: "FAQs für erfahrene Benutzer von APIOps Cycles"
+title: "HGF für erfahrene Benutzer"
 draft: false
+sidebar:
+  order: 10
 ---
 Sind Sie bereits mit den Grundlagen von APIOps Cycles vertraut?
 
