@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+
+interface AdImage {
+  src: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  images?: AdImage[];
+  headline: string;
+  text: string;
+  ctaHref: string;
+  ctaText: string;
+}
+
+const { images = [], headline, text, ctaHref, ctaText } = Astro.props as Props;
+---
+<aside class="ad-banner">
+  {images.length > 0 && (
+    <div class="graphics">
+      {images.map((img, i) => (
+        <Image src={img.src} alt={img.alt} width={72} height={72} class:list={[i > 0 && 'offset']} />
+      ))}
+    </div>
+  )}
+  <h2 class="headline"><strong>{headline}</strong></h2>
+  <p>{text}</p>
+  <a class="sl-link-button not-content primary cta" href={ctaHref} target="_blank" rel="noopener noreferrer">{ctaText}</a>
+</aside>
+
+<style>
+  @layer components {
+    .ad-banner {
+      padding: 1rem 0;
+    }
+    .graphics {
+      display: flex;
+      margin-bottom: 0.5rem;
+    }
+    .graphics :global(img) {
+      border-radius: 50%;
+      border: 2px solid var(--sl-color-bg);
+    }
+    .graphics :global(img.offset) {
+      margin-left: -0.5rem;
+    }
+    .headline {
+      font-size: var(--sl-text-h5);
+      margin-bottom: 0.25rem;
+    }
+    .cta {
+      margin-top: 0.5rem;
+    }
+  }
+</style>

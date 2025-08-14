@@ -4,6 +4,7 @@ draft: false
 slug: the-method
 sidebar:
   order: 1
+ad: scrimba
 ---
 
 APIOps Cycles is a Lean and service design–inspired method for designing, improving, and scaling APIs.
