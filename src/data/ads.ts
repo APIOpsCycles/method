@@ -2,6 +2,7 @@ import type { ImageMetadata } from 'astro';
 
 import logo from '../assets/apiops-cycles-logo2025-blue.svg';
 import person from '../assets/apiopscycles-users-2025-nobg.png';
+import apiopsWS from '../assets/ads/accelerate-your-apis-with-apiops-cycles.png';
 
 export interface Ad {
   headline: string;
@@ -9,6 +10,7 @@ export interface Ad {
   ctaHref: string;
   ctaText: string;
   images?: { src: ImageMetadata; alt: string }[];
+  bgcolor?: string; // Optional color for the ad, e.g., `#ff0000` used in border and button background
   /**
    * Optional folder groups that this ad should automatically appear on.
    * Examples: `"getting-started"`, `"de/getting-started"`.
@@ -17,16 +19,16 @@ export interface Ad {
 }
 
 export const ads: Record<string, Ad> = {
-  scrimba: {
-    headline: 'Learn Astro with James Q Quick',
-    text: 'Build your first site with 35 interactive Scrimba lessons',
-    ctaHref: 'https://scrimba.com/intro-to-astro-c00ar0fi5u?via=astro',
-    ctaText: 'Get 20% off',
+  apiopsWS: {
+    headline: 'Accelerate Your APIs with APIOps Cycles Workshop',
+    text: 'A compact, high-impact 2-hour online or onsite workshop for API product owners, architects, platform teams, and IT leaders. ',
+    ctaHref: 'https://www.osaango.com/services/accelerate-your-apis-with-apiops-cycles/',
+    ctaText: 'Learn more',
     images: [
-      { src: logo, alt: 'Scrimba' },
-      { src: person, alt: '' }
+      { src: apiopsWS, alt: 'APIOps Cycles Workshop' }
     ],
-    groups: ['getting-started']
+    groups: ['getting-started', 'resources'],
+    bgcolor: '#21ce94ff' // Light background color for the ad
   },
   community: {
     headline: 'Join the APIOps Community',
@@ -34,7 +36,8 @@ export const ads: Record<string, Ad> = {
     ctaHref: 'https://osaango.kit.com/dfc21aabae',
     ctaText: 'Join mailing list',
     images: [{ src: person, alt: 'APIOps users' }],
-    groups: ['de/getting-started']
+    groups: ['method', 'lines', 'sub-stations'],
+        bgcolor: 'var(--color-accent-600)' // Light background color for the ad
   }
 };
 

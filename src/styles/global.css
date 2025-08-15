@@ -78,6 +78,7 @@
     background-color: var(--color-accent-100);
     border: 0;
     border-radius: var(--border-radius);
+    box-shadow: none !important;
   }
     [data-theme='dark'] .pagination-links a{
       background-color: var(--color-accent-950);
