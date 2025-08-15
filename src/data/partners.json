@@ -2,7 +2,7 @@
   {
     "title": "Osaango",
     "href": "https://www.osaango.com",
-    "logo": "/partners/osaango.svg",
+    "logo": "/partners/osaango-black.svg",
     "description": "Coordinates the global APIOps Cycles community and method development. Provides consulting, training and method support globally, main partner in the Nordics."
   },
   {
@@ -22,5 +22,17 @@
     "href": "https://qriarlabs.com/qap-canvas/",
     "logo": "/partners/konneqt.svg",
     "description": "Offers advanced API and integration platforms and supports QAP Canvas development."
+  },
+  {
+    "title": "API Evangelist",
+    "href": "https://apievangelist.com/",
+    "logo": "/partners/api-evangelist-logo-butterfly-transparent.png",
+    "description": "API Evangelist is committed to helping your teams focus on the fundamentals of APIs, while also working with you to make sense of the leading edge of APIs, and where all of this is going."
+  },
+  {
+    "title": "You?",
+    "href": "getting-started/partners/",
+    "logo": "/favicon.svg",
+    "description": "Join the APIOps Cycles community as a partner! Click to learn more..."
   }
 ]
