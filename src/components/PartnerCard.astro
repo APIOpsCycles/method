@@ -10,6 +10,33 @@ const { title, href, logo, description } = Astro.props as Props;
 ---
 
 <a href={href} class="partnercard flex flex-col items-center text-center p-4 gap-2">
-  <p class="text-lg font-semibold">{title}</p>
+  <img src={logo} alt={title} class="" />
   <p class="text-sm">{description}</p>
 </a>
+
+<style>
+  .partnercard {
+    background-color: var(--color-gray-200);
+    border-radius: 0.5rem;
+  }
+  .partnercard:hover {
+    background-color: var(--color-accent-200);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  .partnercard:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  
+  .partnercard img {
+    width: 8rem;
+    height: 4rem;
+    margin-bottom: 0.5rem;
+    object-fit: contain;
+  }
+  
+  .partnercard p {
+    color: var(--color-gray-900);
+  }

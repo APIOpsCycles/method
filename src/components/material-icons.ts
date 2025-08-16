@@ -20,7 +20,6 @@ import deployedCodeOutline from '~icons/material-symbols-light/deployed-code-out
 import deployedCodeUpdateOutline from '~icons/material-symbols-light/deployed-code-update-outline';
 import designServicesOutline from '~icons/material-symbols-light/design-services-outline';
 import editDocumentOutline from '~icons/material-symbols-light/edit-document-outline';
-import flag2Outline from '~icons/material-symbols-light/flag-2-outline';
 import folderCodeOutline from '~icons/material-symbols-light/folder-code-outline';
 import gavelRounded from '~icons/material-symbols-light/gavel-rounded';
 import globeBookRounded from '~icons/material-symbols-light/globe-book-rounded';
@@ -33,7 +32,6 @@ import psychologyOutline from '~icons/material-symbols-light/psychology-outline'
 import rocketLaunchOutline from '~icons/material-symbols-light/rocket-launch-outline';
 import schoolOutline from '~icons/material-symbols-light/school-outline';
 import strategyOutline from '~icons/material-symbols-light/strategy-outline';
-import trainOutline from '~icons/material-symbols-light/train-outline';
 import trophyOutline from '~icons/material-symbols-light/trophy-outline';
 import userAttributesOutline from '~icons/material-symbols-light/user-attributes-outline';
 
@@ -58,7 +56,6 @@ export const materialIcons = {
   'deployed-code-update-outline': deployedCodeUpdateOutline,
   'design-services-outline': designServicesOutline,
   'edit-document-outline': editDocumentOutline,
-  'flag-2-outline': flag2Outline,
   'folder-code-outline': folderCodeOutline,
   'gavel-rounded': gavelRounded,
   'globe-book-rounded': globeBookRounded,
@@ -71,7 +68,6 @@ export const materialIcons = {
   'rocket-launch-outline': rocketLaunchOutline,
   'school-outline': schoolOutline,
   'strategy-outline': strategyOutline,
-  'train-outline': trainOutline,
   'trophy-outline': trophyOutline,
   'user-attributes-outline': userAttributesOutline,
 };
