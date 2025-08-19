@@ -1,0 +1,159 @@
+---
+interface Option {
+  text: string;
+}
+interface Question {
+  question: string;
+  options: string[];
+  answer: number[];
+  correct: string;
+  incorrect: string;
+  multiple?: boolean;
+}
+const { questions, id } = Astro.props as { questions: Question[]; id: string };
+---
+<div id="quiz"></div>
+<script type="module" define:vars={{ questions, id }}>
+  let index = 0;
+  let score = 0;
+  const key = `quiz-${id}`;
+  const container = document.getElementById('quiz');
+
+  const saved = localStorage.getItem(key);
+  if (saved) {
+    const { score: savedScore } = JSON.parse(saved);
+    showResults(savedScore);
+  } else {
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = questions[index];
+    container.innerHTML = '';
+    const form = document.createElement('form');
+    form.className = 'bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4';
+    const prompt = document.createElement('p');
+    prompt.textContent = q.question;
+    form.appendChild(prompt);
+    const qwrapper = document.createElement('div');
+    qwrapper.className = 'mt-6 space-y-6';
+    q.options.forEach((opt, i) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'option flex items-center gap-x-3';
+      const label = document.createElement('label');
+      label.className = 'block';
+      const input = document.createElement('input');
+      input.className = 'relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden';
+      input.type = q.multiple ? 'checkbox' : 'radio';
+      input.name = 'option';
+      input.value = i.toString();
+      wrapper.appendChild(label);
+      label.appendChild(input);
+      wrapper.appendChild(document.createTextNode(opt));
+      qwrapper.appendChild(wrapper);
+    });
+    const submit = document.createElement('button');
+    submit.className = 'rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600';    submit.type = 'submit';
+    submit.textContent = 'Submit';
+    form.appendChild(qwrapper);
+    form.appendChild(submit);
+
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const selected = Array.from(form.querySelectorAll('input:checked')).map((el) =>
+        Number(el.value)
+      );
+      const correct =
+        selected.length === q.answer.length && selected.every((v) => q.answer.includes(v));
+      if (correct) score++;
+
+      Array.from(form.querySelectorAll('.option')).forEach((optEl, i) => {
+        const input = optEl.querySelector('input');
+        if (input) input.disabled = true;
+        const span = document.createElement('span');
+        span.textContent = q.answer.includes(i) ? '✅' : '❌';
+        span.className = q.answer.includes(i) ? 'icon correct' : 'icon incorrect';
+        optEl.appendChild(span);
+        if (selected.includes(i)) optEl.classList.add('chosen');
+      });
+
+      const feedback = document.createElement('div');
+      feedback.innerHTML = correct ? q.correct : q.incorrect;
+      feedback.className = `explanation ${correct ? 'correct' : 'incorrect'}`;
+      form.appendChild(feedback);
+
+      submit.style.display = 'none';
+      const next = document.createElement('button');
+      next.type = 'button';
+      next.textContent = index === questions.length - 1 ? 'Finish' : 'Next';
+      next.addEventListener('click', () => {
+        index++;
+        if (index < questions.length) {
+          renderQuestion();
+        } else {
+          finish();
+        }
+      });
+      form.appendChild(next);
+    });
+
+    container.appendChild(form);
+  }
+
+  function finish() {
+    container.innerHTML = '';
+    localStorage.setItem(key, JSON.stringify({ score }));
+    showResults(score);
+  }
+
+  function showResults(finalScore) {
+    container.innerHTML = '';
+    const msg = document.createElement('p');
+    msg.textContent = `Quiz complete! You scored ${finalScore}/${questions.length}.`;
+    container.appendChild(msg);
+    const reset = document.createElement('button');
+    reset.textContent = 'Reset quiz';
+    reset.addEventListener('click', () => {
+      localStorage.removeItem(key);
+      index = 0;
+      score = 0;
+      renderQuestion();
+    });
+    container.appendChild(reset);
+  }
+</script>
+<style>
+  #quiz form div {
+  }
+  #quiz button {
+    margin-top: 1rem;
+  }
+  .icon {
+    margin-left: 0.5rem;
+  }
+  .icon.correct {
+    color: green;
+  }
+  .icon.incorrect {
+    color: red;
+  }
+  .option.chosen {
+    font-weight: bold;
+  }
+  .explanation {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-left: 4px solid;
+    background: #f9f9f9;
+  }
+  .explanation.correct {
+    border-color: green;
+  }
+  .explanation.incorrect {
+    border-color: red;
+  }
+    form, label, input {
+    cursor: pointer;
+  }
+</style>

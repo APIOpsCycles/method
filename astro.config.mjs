@@ -22,25 +22,6 @@ export default defineConfig({
                   defer: true,
                 },
                 },
-                {
-                tag: 'script',
-                content: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', '${googleAnalyticsId}');
-                `,
-                },
-                {
-                        tag: 'script',
-                        attrs: {
-                                src: 'https://osaango.kit.com/dfc21aabae/index.js',
-                                'data-uid': 'dfc21aabae',
-                                async: true,
-                        }
-
-                }
         ],
           title: {
                 'en': 'APIOps Cycles'

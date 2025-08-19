@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import logo from '../assets/apiops-cycles-logo2025-blue.svg';
 import person from '../assets/apiopscycles-users-2025-nobg.png';
 import apiopsWS from '../assets/ads/accelerate-your-apis-with-apiops-cycles.png';
+import apiops from '../assets/apiops-logo.png';
 
 export interface Ad {
   headline: string;
@@ -33,9 +34,9 @@ export const ads: Record<string, Ad> = {
   community: {
     headline: 'Join the APIOps Community',
     text: 'Connect with practitioners and get the latest updates.',
-    ctaHref: 'https://osaango.kit.com/dfc21aabae',
-    ctaText: 'Join mailing list',
-    images: [{ src: person, alt: 'APIOps users' }],
+    ctaHref: 'https://apiops.info/',
+    ctaText: 'See meetups and more',
+    images: [{ src: logo, alt: 'APIOps Cycles logo' }, { src: apiops, alt: 'APIOps logo' }],
     groups: ['method', 'lines', 'sub-stations'],
         bgcolor: 'var(--color-accent-600)' // Light background color for the ad
   }
