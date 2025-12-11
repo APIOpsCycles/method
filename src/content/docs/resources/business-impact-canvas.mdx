@@ -1,20 +1,45 @@
 ---
 title: Business Impact Canvas
-description: Assess risks, mitigations, and value impacts across the API platform.
+slug: resources/business-impact-canvas
+sidebar:
+  order: 4
+icon: dashboard-outline
+category: canvas
 canvasId: businessImpactCanvas
+image: /assets/resource/Canvas_businessImpactCanvas.png
 ---
 
-import CanvasCreator from '../../components/CanvasCreator.astro';
+import { Aside } from '@astrojs/starlight/components';
+import CanvasCreator from '../../../components/CanvasCreator.astro';
 
-const { canvasId } = frontmatter;
+Design a scalable and secure API platform architecture that meets business and technical requirements.
 
-The Business Impact Canvas highlights risks, mitigation actions, and expected business outcomes for your API initiatives. Use it to make informed trade-offs and ensure governance teams stay aligned.
+## Outcomes
 
-{canvasId ? (
-  <CanvasCreator canvasId={canvasId} />
-) : (
-  <p>
-    Open the canvas in Canvas Creator at{' '}
-    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
-  </p>
-)}
+- Scalable API infrastructure
+
+## How it works
+
+![Business Impact Canvas](../../../assets/resource/Canvas_businessImpactCanvas.svg)
+
+[SVG](../../../assets/resource/Canvas_businessImpactCanvas.svg) | [PNG](../../../assets/resource/Canvas_businessImpactCanvas.png) | [JSON](../../../assets/resource/Canvas_businessImpactCanvas.json)
+
+### Steps
+
+1. Availability Risks: Identify risks and impacts.
+2. Ways to Mitigate Availability Risks: Define mitigation measures.
+3. Security Risks: Document security-related risks.
+4. Ways to Mitigate Security Risks: Propose strategies to mitigate security risks.
+5. Data Risks: Identify risks to data accuracy or availability.
+6. Ways to Mitigate Data Risks: Plan strategies to address data risks.
+
+<Aside type="tip">
+
+- Involve architects and developers in the design process
+- Use past incidents to identify potential risks
+- Prioritize critical APIs with the highest business impact
+</Aside>
+
+
+
+<CanvasCreator canvasId="businessImpactCanvas" />

@@ -1,20 +1,47 @@
 ---
 title: GraphQL Canvas
-description: Plan GraphQL schemas, query patterns, and resolvers.
+slug: resources/graphql-canvas
+sidebar:
+  order: 11
+icon: dashboard-outline
+category: canvas
 canvasId: graphqlCanvas
+image: /assets/resource/Canvas_graphqlCanvas.png
 ---
 
-import CanvasCreator from '../../components/CanvasCreator.astro';
+import { Aside } from '@astrojs/starlight/components';
+import CanvasCreator from '../../../components/CanvasCreator.astro';
 
-const { canvasId } = frontmatter;
+Design GraphQL APIs by defining types, queries, mutations, and subscriptions.
 
-Use the GraphQL Canvas to outline types, relationships, and resolver responsibilities. It keeps your schema design aligned with client use cases and backend capabilities.
+## Outcomes
 
-{canvasId ? (
-  <CanvasCreator canvasId={canvasId} />
-) : (
-  <p>
-    Open the canvas in Canvas Creator at{' '}
-    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
-  </p>
-)}
+- Structured GraphQL API design
+
+## How it works
+
+![GraphQL Canvas](../../../assets/resource/Canvas_graphqlCanvas.svg)
+
+[SVG](../../../assets/resource/Canvas_graphqlCanvas.svg) | [PNG](../../../assets/resource/Canvas_graphqlCanvas.png) | [JSON](../../../assets/resource/Canvas_graphqlCanvas.json)
+
+### Steps
+
+1. What problems are API consumers trying to solve? What data do they need?
+2. Define GraphQL types and their attributes: What are the core types exposed (e.g., User, Order, Product)?
+3. Map relationships between types: How do types relate to each other in nested queries?
+4. Specify queries for data retrieval
+5. Define mutations for data modification: What operations will modify data (e.g., create, update, delete)?
+6. Outline subscriptions for real-time updates
+7. Define authentication and authorization: Who can access which fields or types?
+8. Consider if there are any pagination, filtering, or rate-limiting constraints
+
+<Aside type="tip">
+
+- Use introspection to validate type definitions
+- document example queries and mutations
+- Ensure type names are descriptive and consistent
+</Aside>
+
+
+
+<CanvasCreator canvasId="graphqlCanvas" />

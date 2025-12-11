@@ -4,9 +4,9 @@ description: Plan where data, services, and workloads live across environments.
 canvasId: locationsCanvas
 ---
 
-import CanvasCreator from '../../components/CanvasCreator.astro';
+import CanvasCreator from '../../../components/CanvasCreator.astro';
 
-const { canvasId } = frontmatter;
+export const canvasId = 'locationsCanvas';
 
 Use the Locations Canvas to document data residency, deployment targets, and latency considerations. It keeps platform and product teams aligned on where critical components will run.
 

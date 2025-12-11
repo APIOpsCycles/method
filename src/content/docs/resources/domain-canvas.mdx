@@ -1,20 +1,39 @@
 ---
 title: Domain Canvas
-description: Align shared terminology and domain boundaries for your APIs.
+slug: resources/domain-canvas
+sidebar:
+  order: 152
+icon: dashboard-outline
+category: canvas
 canvasId: domainCanvas
+image: /assets/resource/Canvas_domainCanvas.png
 ---
 
-import CanvasCreator from '../../components/CanvasCreator.astro';
+import { Aside } from '@astrojs/starlight/components';
+import CanvasCreator from '../../../components/CanvasCreator.astro';
 
-const { canvasId } = frontmatter;
+A modeling tool to define and communicate the key entities and relationships in your domain, ensuring semantic consistency across APIs.
 
-Use the Domain Canvas to capture core concepts, bounded contexts, and ubiquitous language. It ensures teams share a common model before designing APIs and contracts.
+## Outcomes
 
-{canvasId ? (
-  <CanvasCreator canvasId={canvasId} />
-) : (
-  <p>
-    Open the canvas in Canvas Creator at{' '}
-    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
-  </p>
-)}
+- Better understanding of domain canvas principles
+
+## How it works
+
+![Domain Canvas](../../../assets/resource/Canvas_domainCanvas.svg)
+
+[SVG](../../../assets/resource/Canvas_domainCanvas.svg) | [PNG](../../../assets/resource/Canvas_domainCanvas.png) | [JSON](../../../assets/resource/Canvas_domainCanvas.json)
+
+### Steps
+
+1. Define core entities, their attributes, and relationships to create a shared conceptual understanding across APIs.
+
+<Aside type="tip">
+
+- Customize the Domain Canvas for your domain
+- Use it collaboratively across business and tech roles
+</Aside>
+
+
+
+<CanvasCreator canvasId="domainCanvas" />
