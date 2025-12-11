@@ -1,0 +1,20 @@
+---
+title: Locations Canvas
+description: Plan where data, services, and workloads live across environments.
+canvasId: locationsCanvas
+---
+
+import CanvasCreator from '../../../components/CanvasCreator.astro';
+
+export const canvasId = 'locationsCanvas';
+
+Use the Locations Canvas to document data residency, deployment targets, and latency considerations. It keeps platform and product teams aligned on where critical components will run.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}
