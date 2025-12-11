@@ -38,6 +38,7 @@ export default defineConfig({
             PageTitle: './src/components/PageTitle.astro',
             PageSidebar: './src/components/PageSidebar.astro',
             Footer: './src/components/Footer.astro',
+            Header: './src/components/Header.astro',
           },
           social: [
                 { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/apiopscycles/' },
