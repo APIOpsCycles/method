@@ -70,11 +70,13 @@ export default defineConfig({
                               {
                                       label: 'Start Here',
                                       translations: { 'fi': 'Aloita tästä', 'fr': 'Commencez ici', 'de': 'Hier anfangen', 'pt': 'Comece aqui' },
+                                      collapsed: true,
                                       autogenerate: { directory: 'getting-started' },
                                 },
                                 {
                                       label: 'Method',
                                       translations: { 'fi': 'Menetelmä', 'fr': 'Méthode', 'de': 'Methode', 'pt': 'Método' },
+                                          collapsed: true,
                                           items: [
 
                                                         {
@@ -85,6 +87,7 @@ export default defineConfig({
                                                         },                                                {
                                                                 label: 'Core Stations',
                                                                 translations: { 'fi': 'Ydinasemat', 'fr': 'Stations principales', 'de': 'Kernstationen', 'pt': 'Estações centrais' },
+                                                                collapsed: true,
                                                                 autogenerate: { directory: 'core-stations' },
                                                         },
                                                         {
