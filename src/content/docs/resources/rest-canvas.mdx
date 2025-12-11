@@ -1,0 +1,20 @@
+---
+title: REST Canvas
+description: Capture resources, operations, and contracts for RESTful APIs.
+canvasId: restCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+Use the REST Canvas to define resources, representations, and lifecycle considerations for REST APIs. It keeps teams aligned on boundaries, error handling, and performance expectations.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}

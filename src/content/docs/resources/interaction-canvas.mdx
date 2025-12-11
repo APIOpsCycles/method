@@ -1,0 +1,20 @@
+---
+title: Interaction Canvas
+description: Design interaction patterns between consumers and APIs.
+canvasId: interactionCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+The Interaction Canvas helps teams align on flows, responsibilities, and touchpoints across systems. Use it to validate how consumers will interact with your APIs or services.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}

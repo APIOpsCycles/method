@@ -1,0 +1,20 @@
+---
+title: Business Impact Canvas
+description: Assess risks, mitigations, and value impacts across the API platform.
+canvasId: businessImpactCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+The Business Impact Canvas highlights risks, mitigation actions, and expected business outcomes for your API initiatives. Use it to make informed trade-offs and ensure governance teams stay aligned.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}

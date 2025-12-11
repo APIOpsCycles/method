@@ -1,0 +1,20 @@
+---
+title: Customer Journey Canvas
+description: Map user journeys and needs before committing to specific APIs.
+canvasId: customerJourneyCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+The Customer Journey Canvas captures the steps, needs, and pain points of your target users. Use it to validate where APIs add value and to prioritize improvements along the journey.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}

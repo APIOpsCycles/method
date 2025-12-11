@@ -1,0 +1,20 @@
+---
+title: API Value Proposition Canvas
+description: Clarify the pains, gains, and jobs your API solves for consumers.
+canvasId: apiValuePropositionCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+Use the API Value Proposition Canvas to align API capabilities with consumer needs. Capture the jobs to be done, pains, gains, and supporting features so you can prioritize a compelling, validated offering.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}

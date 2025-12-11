@@ -1,0 +1,20 @@
+---
+title: Event Canvas
+description: Capture event flows and behaviors for event-driven APIs.
+canvasId: eventCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+The Event Canvas helps you design event-driven interactions, producers, consumers, and schemas. Use it to validate event shapes and responsibilities before implementing streaming APIs.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}

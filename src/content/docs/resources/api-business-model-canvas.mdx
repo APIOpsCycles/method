@@ -1,0 +1,20 @@
+---
+title: API Business Model Canvas
+description: Model the viability, costs, and value streams for an API product.
+canvasId: apiBusinessModelCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+The API Business Model Canvas helps you map value propositions, customer segments, revenue streams, and supporting capabilities for an API product. Use it to validate business viability before investing further in design or implementation.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}

@@ -1,0 +1,20 @@
+---
+title: Domain Canvas
+description: Align shared terminology and domain boundaries for your APIs.
+canvasId: domainCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+Use the Domain Canvas to capture core concepts, bounded contexts, and ubiquitous language. It ensures teams share a common model before designing APIs and contracts.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}

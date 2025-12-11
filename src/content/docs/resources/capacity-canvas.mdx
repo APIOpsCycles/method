@@ -1,0 +1,20 @@
+---
+title: Capacity Canvas
+description: Plan scalability, throughput, and operational readiness for APIs.
+canvasId: capacityCanvas
+---
+
+import CanvasCreator from '../../components/CanvasCreator.astro';
+
+const { canvasId } = frontmatter;
+
+Use the Capacity Canvas to outline performance targets, scaling approaches, and operational safeguards. It helps teams plan capacity that matches expected demand and resilience requirements.
+
+{canvasId ? (
+  <CanvasCreator canvasId={canvasId} />
+) : (
+  <p>
+    Open the canvas in Canvas Creator at{' '}
+    <a href="https://canvascreator.apiopscycles.com" target="_blank" rel="noreferrer">canvascreator.apiopscycles.com</a>.
+  </p>
+)}
