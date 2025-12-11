@@ -5,6 +5,7 @@ import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
 import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import SocialIcons from 'virtual:starlight/components/SocialIcons';
+import MobileMenuToggle from 'virtual:starlight/components/MobileMenuToggle';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
 /**
@@ -12,6 +13,8 @@ import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
  */
 const shouldRenderSearch =
   config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+
+const { hasSidebar } = Astro.locals.starlightRoute;
 ---
 
 <div class="header">
@@ -31,6 +34,11 @@ const shouldRenderSearch =
     <ThemeSelect />
     <LanguageSelect />
   </div>
+  {hasSidebar && (
+    <div class="sl-flex md:sl-hidden print:hidden mobile-toggle">
+      <MobileMenuToggle />
+    </div>
+  )}
 </div>
 
 <style>
@@ -72,6 +80,14 @@ const shouldRenderSearch =
     .mobile-social :global(a) {
       display: inline-flex;
       align-items: center;
+    }
+
+    .mobile-toggle {
+      align-items: center;
+    }
+
+    :global(nav starlight-menu-button) {
+      display: none;
     }
 
     @media (min-width: 50rem) {
