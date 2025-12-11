@@ -1,4 +1,6 @@
 ---
+import initCanvasCreator from '../scripts/init-canvascreator.js?url';
+
 interface Props {
   canvasId: string;
 }
@@ -7,7 +9,9 @@ const { canvasId } = Astro.props as Props;
 ---
 
 <div id={canvasId}></div>
-<script define:vars={{ canvasId }} type="module" client:load>
-  import canvascreator from 'canvascreator';
-  canvascreator.initialize({ canvasId });
-</script>
+<script
+  type="module"
+  src={initCanvasCreator}
+  data-canvas-id={canvasId}
+  client:load
+></script>
