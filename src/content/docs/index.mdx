@@ -10,24 +10,20 @@ hero:
     dark: ../../assets/apiops-cycles-logo2025-white.svg
     light: ../../assets/apiops-cycles-logo2025-blue.svg
   actions:
-    - text: Getting Started
+    - text: Start where it matters most
       link: /the-method/
       icon: right-arrow
-    - text: Deutsch
-      link: /de/the-method/
-      variant: secondary
-    - text: Français
-      link: /fr/the-method/
-      variant: secondary
-    - text: Português
-      link: /pt/the-method/
-      variant: secondary
-    - text: Suomi
-      link: /fi/the-method/
-      variant: secondary
 ---
 
 import PartnerGrid from '../../components/PartnerGrid.astro';
+import HomeHighlights from '../../components/HomeHighlights.astro';
+import HomeSecondaryCta from '../../components/HomeSecondaryCta.astro';
 import partners from '../../data/partners.json';
 
-<PartnerGrid partners={partners} />
+<h2 class="home-section-title">Official method partners</h2>
+
+<PartnerGrid partners={partners.filter((partner) => partner.title !== 'You?')} />
+
+<HomeHighlights />
+
+<HomeSecondaryCta />

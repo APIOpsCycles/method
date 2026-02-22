@@ -17,7 +17,7 @@ interface Props {
 
 const { images = [], headline, text, ctaHref, ctaText, bgcolor } = Astro.props as Props;
 ---
-<aside class="ad-banner" style={bgcolor ? `border: ${bgcolor}, solid 2px;` : ''}>
+<aside class="ad-banner" style={bgcolor ? `border: 2px solid ${bgcolor};` : ''}>
   {images.length > 0 && (
     <div class="graphics">
       {images.map((img, i) => (
