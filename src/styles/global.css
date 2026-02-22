@@ -39,6 +39,9 @@
   --sl-color-bg: #16131f;
   --sl-color-bg-nav: #1d1928;
   --sl-color-bg-sidebar: #1b1724;
+  --sl-color-hairline: #2f2940;
+  --sl-color-text: #ece8f8;
+  --sl-color-text-accent: #c6b4f4;
 }
 
 @layer components {
@@ -113,11 +116,38 @@
     background: #fcfbff;
   }
 
+  [data-theme='dark'] .content-panel,
+  [data-theme='dark'] .main-pane,
+  [data-theme='dark'] .main-frame,
+  [data-theme='dark'] .sl-markdown-content,
+  [data-theme='dark'] .sl-container {
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+  }
+
+  [data-theme='dark'] .right-sidebar-panel,
+  [data-theme='dark'] .sidebar-pane {
+    background: var(--sl-color-bg-sidebar);
+  }
+
+  [data-theme='dark'] .right-sidebar-panel :global(:where(a)),
+  [data-theme='dark'] .sl-mobile-toc :global(:where(a)),
+  [data-theme='dark'] [data-mobile-starlight-toc] :global(:where(a)) {
+    color: var(--sl-color-text);
+  }
+
   .right-sidebar-panel :global(h2),
   h1.page-title,
   .main-pane :global(h2),
   .main-pane :global(h3) {
     color: #1f1a29;
+  }
+
+  [data-theme='dark'] .right-sidebar-panel :global(h2),
+  [data-theme='dark'] h1.page-title,
+  [data-theme='dark'] .main-pane :global(h2),
+  [data-theme='dark'] .main-pane :global(h3) {
+    color: #ece8f8;
   }
 
   .main-pane :global(.card),
@@ -127,6 +157,15 @@
     border: 1px solid var(--sl-color-hairline);
     border-radius: 0.75rem;
     box-shadow: 0 4px 18px rgba(37, 25, 79, 0.06);
+  }
+
+  [data-theme='dark'] .main-pane :global(.card),
+  [data-theme='dark'] .partnercard,
+  [data-theme='dark'] .ad-banner,
+  [data-theme='dark'] .content-panel {
+    background: #1d1928;
+    border-color: var(--sl-color-hairline);
+    box-shadow: none;
   }
 
   .partnercard:hover {
