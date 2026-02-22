@@ -154,15 +154,16 @@ function stationBody(
   }
   if (Array.isArray(lines) && lines.length) {
     out += `## ${t('related_metrolines', labels)}\n\n`;
+    out += '<ul class="related-metrolines-list">\n';
     lines.forEach((id) => {
       const line = lineMap[id];
       if (!line) return;
       const prefix = locale ? `/${locale}` : '';
       const title = translate(line.title, labels);
       const color = line.color || '#000';
-      out += `- <a href="${prefix}/lines/${line.slug}/" style="text-decoration-color:${color};text-decoration-thickness:4px">${title}</a>\n`;
+      out += `<li style="--line-color: ${color}"><a href="${prefix}/lines/${line.slug}/" style="text-decoration-color:${color};text-decoration-thickness:4px">${title}</a></li>\n`;
     });
-    out += '\n';
+    out += '</ul>\n\n';
   }
   if (data.why_it_matters) out += `## ${t('why_it_matters', labels)}\n\n${translate(data.why_it_matters, labels)}\n\n`;
   if (Array.isArray(entryCriteria) && entryCriteria.length) {
