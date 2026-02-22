@@ -229,6 +229,81 @@
     background: #fff;
   }
 
+
+  /* Robust selectors for Starlight heading wrappers */
+  .sl-markdown-content .sl-heading-wrapper:has(> #related-metrolines) + ul {
+    list-style: none;
+    margin: 0 0 1.4rem;
+    padding: 0;
+    border-bottom: 1px solid #ece7f3;
+  }
+
+  .sl-markdown-content .sl-heading-wrapper:has(> #related-metrolines) + ul > li {
+    position: relative;
+    padding-left: 2rem;
+    margin: 0.8rem 0;
+  }
+
+  .sl-markdown-content .sl-heading-wrapper:has(> #related-metrolines) + ul > li::marker {
+    content: '';
+  }
+
+  .sl-markdown-content .sl-heading-wrapper:has(> #related-metrolines) + ul > li::before {
+    content: '';
+    position: absolute;
+    left: 0.15rem;
+    top: 0.48em;
+    width: 0.95rem;
+    height: 0.95rem;
+    border-radius: 999px;
+    border: 1px solid rgba(84, 62, 145, 0.35);
+    background: #89dbc8;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.45);
+  }
+
+  .sl-markdown-content .sl-heading-wrapper:has(> #related-metrolines) + ul > li:nth-child(2)::before { background: #c9b0f0; }
+  .sl-markdown-content .sl-heading-wrapper:has(> #related-metrolines) + ul > li:nth-child(3)::before { background: #d5c7ad; }
+
+  .sl-markdown-content .sl-heading-wrapper:has(> #related-metrolines) + ul > li a {
+    color: #6b4abc;
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    line-height: 1.35;
+    text-decoration-color: #ebe3fa !important;
+    text-decoration-thickness: 2px !important;
+  }
+
+  .sl-markdown-content .sl-heading-wrapper:has(> #why-it-matters) {
+    margin-top: 1.6rem;
+    margin-bottom: 0;
+    padding: 1rem 1.2rem 0.15rem;
+    border: 1px solid #ebe5f2;
+    border-bottom: 0;
+    border-radius: 0.6rem 0.6rem 0 0;
+    background: linear-gradient(180deg, #fff, #fbf9fd);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .sl-markdown-content .sl-heading-wrapper:has(> #why-it-matters) + p,
+  .sl-markdown-content .sl-heading-wrapper:has(> #why-it-matters) + p + p {
+    margin: 0;
+    padding: 0.45rem 1.2rem;
+    border-left: 1px solid #ebe5f2;
+    border-right: 1px solid #ebe5f2;
+    background: linear-gradient(180deg, #fff, #fbf9fd);
+    color: #4f4761;
+    font-size: clamp(1.05rem, 1.4vw, 1.65rem);
+    line-height: 1.5;
+  }
+
+  .sl-markdown-content .sl-heading-wrapper:has(> #why-it-matters) + p + p {
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid #ebe5f2;
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.85rem;
+  }
+
   /* Bottom previous/next nav */
   .pagination-links {
     grid-template-columns: 1fr 1fr;
