@@ -1,0 +1,63 @@
+---
+import metroMap from '../assets/metro_map.svg';
+---
+
+<section class="home-secondary-cta">
+  <div class="cta-copy">
+    <h2>Start where it matters most</h2>
+    <p>Learn the essentials of APIOps Cycles and focus on what drives the most value.</p>
+    <a class="cta-button" href="/the-method/">
+      Start where it matters most
+    </a>
+  </div>
+  <div class="cta-image" aria-hidden="true">
+    <img src={metroMap.src} alt="" loading="lazy" />
+  </div>
+</section>
+
+<style>
+  .home-secondary-cta {
+    margin-top: 2rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    padding-top: 2rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    align-items: center;
+    overflow: hidden;
+  }
+  @media (min-width: 64rem) {
+    .home-secondary-cta {
+      grid-template-columns: 1.1fr 1fr;
+      min-height: 18rem;
+    }
+  }
+  .cta-copy h2 {
+    margin: 0;
+    color: #241c33;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+  }
+  .cta-copy p {
+    margin: 1rem 0 1.5rem;
+    max-width: 40ch;
+    color: #5f5872;
+  }
+  .cta-image {
+    justify-self: end;
+    opacity: 0.5;
+  }
+  .cta-image img {
+    max-width: min(100%, 34rem);
+    transform: translate(8%, 8%);
+  }
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.55rem;
+    background: linear-gradient(135deg, #6e4ad0, #5a35b0);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+  }
+</style>

@@ -9,34 +9,45 @@ interface Props {
 const { title, href, logo, description } = Astro.props as Props;
 ---
 
-<a href={href} class="partnercard flex flex-col items-center text-center p-4 gap-2">
-  <img src={logo} alt={title} class="" />
-  <p class="text-sm">{description}</p>
+<a href={href} class="partnercard">
+  <img src={logo} alt={title} loading="lazy" />
+  <p>{description}</p>
 </a>
 
 <style>
   .partnercard {
-    background-color: var(--color-gray-200);
-    border-radius: 0.5rem;
-  }
-  .partnercard:hover {
-    background-color: var(--color-accent-200);
-    transform: translateY(-0.125rem);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  .partnercard:active {
-    transform: translateY(0);
-    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #e5e1ef;
+    border-radius: 0.45rem;
+    padding: 1.25rem 1rem;
+    min-height: 13rem;
+    box-shadow: 0 2px 12px rgba(32, 23, 61, 0.06);
+    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
   }
 
-  
+  .partnercard:hover {
+    transform: translateY(-2px);
+    border-color: #cec2ea;
+    box-shadow: 0 8px 22px rgba(32, 23, 61, 0.1);
+  }
+
   .partnercard img {
-    width: 8rem;
-    height: 4rem;
-    margin-bottom: 0.5rem;
+    width: 11rem;
+    height: 3.25rem;
     object-fit: contain;
+    margin-bottom: 0.2rem;
   }
-  
+
   .partnercard p {
-    color: var(--color-gray-900);
+    margin: 0;
+    color: #4f4763;
+    font-size: 0.98rem;
+    line-height: 1.45;
   }
+</style>
