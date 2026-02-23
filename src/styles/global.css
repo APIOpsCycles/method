@@ -36,12 +36,16 @@
 }
 
 [data-theme='dark'] {
+  --sl-color-accent-low: #2c273d;
+  --sl-color-accent: #5d3db2;
+  --sl-color-accent-high: #efe9fe;
   --sl-color-bg: #16131f;
   --sl-color-bg-nav: #1d1928;
   --sl-color-bg-sidebar: #1b1724;
   --sl-color-hairline: #2f2940;
   --sl-color-text: #ece8f8;
   --sl-color-text-accent: #c6b4f4;
+  --sl-color-text-invert: #1f1a29;
 }
 
 @layer components {
@@ -63,7 +67,9 @@
     border: 0;
     border-radius: 0;
     padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 8vw, 6rem);
-    background: linear-gradient(100deg, #ffffff 12%, #f4eefc 58%, #ece3ff 100%);
+    background-image: url('/metro-bg.jpg');
+    background-size: cover;
+    /* background: linear-gradient(100deg, #ffffff 12%, #f4eefc 58%, #ece3ff 100%); */
     box-shadow: inset 0 -1px 0 var(--sl-color-hairline);
     overflow: hidden;
   }
@@ -186,7 +192,6 @@
     margin-bottom: 0.6rem;
     text-align: center;
     font-size: clamp(2rem, 3vw, 3.1rem);
-    color: #221d30;
   }
   .pagination-links a {
     background: #efe9fe;
@@ -235,14 +240,10 @@
   }
 
   .sl-markdown-content .starlight-aside .starlight-aside__title {
-    color: #2d243f;
     font-size: clamp(1.25rem, 2vw, 1.9rem);
     font-weight: 600;
   }
 
-  .sl-markdown-content .starlight-aside .starlight-aside__content {
-    color: #4d4562;
-  }
 
   /* How-it-works resource cards */
   .sl-markdown-content .sl-link-card {
@@ -297,7 +298,6 @@
   }
 
   .sl-markdown-content .related-metrolines-list > li a {
-    color: #6b4abc;
     font-size: clamp(1.2rem, 2vw, 2rem);
     line-height: 1.35;
     text-decoration-color: color-mix(in srgb, var(--line-color) 65%, #ffffff 35%) !important;
@@ -308,10 +308,10 @@
     margin-top: 1.6rem;
     margin-bottom: 0;
     padding: 1rem 1.2rem 0.15rem;
-    border: 1px solid #ebe5f2;
+    border: 1px solid var(--sl-color-accent);
     border-bottom: 0;
     border-radius: 0.6rem 0.6rem 0 0;
-    background: linear-gradient(180deg, #fff, #fbf9fd);
+    background: var(--sl-color-accent-low);
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -321,30 +321,29 @@
   .sl-markdown-content .sl-heading-wrapper:has(> #why-it-matters) + p + p {
     margin: 0;
     padding: 0.45rem 1.2rem;
-    border-left: 1px solid #ebe5f2;
-    border-right: 1px solid #ebe5f2;
-    background: linear-gradient(180deg, #fff, #fbf9fd);
-    color: #4f4761;
+    border-left: 1px solid var(--sl-color-accent);
+    border-right: 1px solid var(--sl-color-accent);
+    background: var(--sl-color-accent-low);
     font-size: clamp(1.05rem, 1.4vw, 1.65rem);
     line-height: 1.5;
   }
 
   .sl-markdown-content .sl-heading-wrapper:has(> #why-it-matters) + p + p {
     padding-bottom: 1.15rem;
-    border-bottom: 1px solid #ebe5f2;
+    border-bottom: 1px solid var(--sl-color-accent);
     border-radius: 0 0 0.6rem 0.6rem;
     margin-bottom: 0.85rem;
   }
 
   /* Line pages: preserve per-line metadata color on numbered station flow */
   .line-steps > li::before {
-    background-color: color-mix(in srgb, var(--line-color) 88%, white 12%) !important;
+    background-color: color-mix(in srgb, var(--line-color) 65%, white 35%) !important;
     border-color: color-mix(in srgb, var(--line-color) 75%, #2f2750 25%) !important;
     color: #101018 !important;
   }
 
   .line-steps > li::after {
-    background-color: color-mix(in srgb, var(--line-color) 72%, white 28%) !important;
+    background-color: color-mix(in srgb, var(--line-color) 65%, white 35%) !important;
   }
 
   .line-steps > li .sl-markdown-content .starlight-aside,
