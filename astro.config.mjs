@@ -7,10 +7,12 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 import tailwindcss from '@tailwindcss/vite';
 
 const googleAnalyticsId = 'G-W8SLMJSV4E'
+const site = 'https://www.apiopscycles.com'
+const defaultSocialImageUrl = new URL('/social/default-og.png', site).toString()
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.apiopscycles.com',
+  site,
   integrations: [
       starlight({
         head: [
@@ -20,6 +22,41 @@ export default defineConfig({
                 attrs: {
                   src: `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`,
                   defer: true,
+                },
+                },
+                {
+                tag: 'meta',
+                attrs: {
+                  property: 'og:image',
+                  content: defaultSocialImageUrl,
+                },
+                },
+                {
+                tag: 'meta',
+                attrs: {
+                  property: 'og:image:width',
+                  content: '1200',
+                },
+                },
+                {
+                tag: 'meta',
+                attrs: {
+                  property: 'og:image:height',
+                  content: '630',
+                },
+                },
+                {
+                tag: 'meta',
+                attrs: {
+                  name: 'twitter:card',
+                  content: 'summary_large_image',
+                },
+                },
+                {
+                tag: 'meta',
+                attrs: {
+                  name: 'twitter:image',
+                  content: defaultSocialImageUrl,
                 },
                 },
         ],
