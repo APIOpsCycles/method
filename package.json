@@ -14,6 +14,7 @@
     "copy:resources": "node scripts/copy-resources.mjs"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.7",
     "@astrojs/starlight": "^0.35.0",
     "@astrojs/starlight-tailwind": "^4.0.1",
     "@iconify-json/material-symbols-light": "^1.2.30",

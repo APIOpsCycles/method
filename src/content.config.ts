@@ -11,6 +11,7 @@ export const collections = {
                                 metrolines: z.array(z.string()).optional(),
                                 stations: z.array(z.string()).optional(),
                                 category: z.string().optional(),
+                                socialImage: z.string().optional(),
                                 canvasId: z.string().optional(),
                                 // Add a default value to the built-in `banner` field.
                                 banner: z.object({ content: z.string() }).default({

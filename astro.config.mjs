@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import Icons from 'unplugin-icons/vite';
-import { cloudflare } from "@cloudflare/vite-plugin";
+import cloudflareAdapter from '@astrojs/cloudflare';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -13,6 +13,13 @@ const defaultSocialImageUrl = new URL('/social/default-og.png', site).toString()
 // https://astro.build/config
 export default defineConfig({
   site,
+  output: 'server',
+  adapter: cloudflareAdapter(),
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
   integrations: [
       starlight({
         head: [
@@ -145,10 +152,13 @@ export default defineConfig({
                               }
                       ],
       }),
-	],
+    ],
 
   vite: {
+    ssr: {
+      external: ['node:fs/promises', 'node:path'],
+    },
     // @ts-ignore
-    plugins: [tailwindcss(),Icons({ compiler: 'astro' }),cloudflare()],
+    plugins: [tailwindcss(), Icons({ compiler: 'astro' })],
   },
 });
