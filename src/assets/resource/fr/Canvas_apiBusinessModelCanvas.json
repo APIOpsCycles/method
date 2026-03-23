@@ -1,6 +1,6 @@
 {
   "templateId": "apiBusinessModelCanvas",
-  "locale": "fr-FR",
+  "locale": "fr",
   "metadata": {
     "source": "",
     "license": "",
@@ -10,93 +10,39 @@
   "sections": [
     {
       "sectionId": "keyPartners",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "keyActivities",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "keyResources",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "apiValueProposition",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "developerRelations",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "channels",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "apiConsumerSegments",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "costs",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "benefits",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     }
   ]
 }

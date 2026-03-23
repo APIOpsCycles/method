@@ -235,10 +235,17 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
       out += `![${alt}](${svg})\n\n`;
       const links = [
         `[SVG](${svg})`,
-        `[PNG](${prefix}${path.posix.join(baseDir, fileBase + '.png')})`,
         `[JSON](${prefix}${path.posix.join(baseDir, fileBase + '.json')})`,
-      ].join(' | ');
-      out += links + '\n\n';
+      ];
+      const pngPath = path.join(rootDir, 'src', baseDir, fileBase + '.png');
+      try {
+        await fsPromises.access(pngPath);
+        links.push(`[PNG](${prefix}${path.posix.join(baseDir, fileBase + '.png')})`);
+      } catch {
+        // PNG export depends on the optional canvas module; omit the link when unavailable.
+      }
+      out += links.join(' | ');
+      out += '\n\n';
     } else if (res.image) {
       let img = res.image.replace(/^\//, '');
       if (locale) {
@@ -674,7 +681,7 @@ async function generateResource(resource, labelsLocales) {
   if (resource.category) fm.category = resource.category;
   if (resource.canvas) {
     fm.canvasId = resource.canvas;
-    fm.image = `/assets/resource/Canvas_${resource.canvas}.png`;
+    fm.image = `/assets/resource/Canvas_${resource.canvas}.svg`;
   } else if (resource.image) {
     fm.image = resource.image;
   }
@@ -691,7 +698,7 @@ async function generateResource(resource, labelsLocales) {
     if (resource.category) locFm.category = resource.category;
     if (resource.canvas) {
       locFm.canvasId = resource.canvas;
-      locFm.image = `/assets/resource/${locale}/Canvas_${resource.canvas}.png`;
+      locFm.image = `/assets/resource/${locale}/Canvas_${resource.canvas}.svg`;
     } else if (resource.image) {
       locFm.image = resource.image;
     }
