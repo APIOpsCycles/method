@@ -1,6 +1,6 @@
 {
   "templateId": "capacityCanvas",
-  "locale": "de-DE",
+  "locale": "de",
   "metadata": {
     "source": "",
     "license": "",
@@ -10,63 +10,27 @@
   "sections": [
     {
       "sectionId": "currentBusinessVolumes",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "futureConsumptionTrends",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "peakLoadAndAvailabilityRequirements",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "cachingStrategies",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "rateLimitingStrategies",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "scalingStrategies",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     }
   ]
 }

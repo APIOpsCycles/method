@@ -1,6 +1,6 @@
 {
   "templateId": "locationsCanvas",
-  "locale": "en-US",
+  "locale": "en",
   "metadata": {
     "source": "",
     "license": "",
@@ -10,83 +10,35 @@
   "sections": [
     {
       "sectionId": "locationGroups",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "locationGroupCharacteristics",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "locations",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "locationCharacteristics",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "locationDistances",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "locationDistanceCharacteristics",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "locationEndpoints",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "locationEndpointCharacteristics",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     }
   ]
 }

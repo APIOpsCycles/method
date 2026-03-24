@@ -1,6 +1,6 @@
 {
   "templateId": "restCanvas",
-  "locale": "fi-FI",
+  "locale": "fi",
   "metadata": {
     "source": "",
     "license": "",
@@ -10,43 +10,19 @@
   "sections": [
     {
       "sectionId": "apiResources",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "apiResourceModel",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "apiVerbs",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "apiVerbExample",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     }
   ]
 }

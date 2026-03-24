@@ -1,6 +1,6 @@
 {
   "templateId": "graphqlCanvas",
-  "locale": "fi-FI",
+  "locale": "fi",
   "metadata": {
     "source": "",
     "license": "",
@@ -10,103 +10,43 @@
   "sections": [
     {
       "sectionId": "apiName",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "consumerGoals",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "keyTypes",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "relationships",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "queries",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "mutations",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "subscriptions",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "authorizationRules",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "consumerConstraints",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     },
     {
       "sectionId": "openQuestions",
-      "stickyNotes": [
-        {
-          "content": "Placeholder",
-          "size": 80,
-          "color": "#FFF399"
-        }
-      ]
+      "stickyNotes": []
     }
   ]
 }
