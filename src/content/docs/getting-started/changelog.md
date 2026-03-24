@@ -7,6 +7,17 @@ draft: false
 
 ### Latest Updates
 
+**August 2025 - March 2026**
+
+* Improved instructions for Interaction Canvas, Localization Canvas, as well as API Design station and API Delivery station
+* Improved detailed instructions for API Delivery station i.e how to start the API Delivery work based on the previous "stations" and canvas outputs
+* Improved flow on customer experience station i.e. how to validate API Value Proposition Canvas from API consumer point of view, and use the Customer Journey Canvas for desining API consumer (customer / partner) onboarding journey and lifecycle.
+* Fixed localizations of API Style Guide and Finnish translation of steps in labels
+* Various small improvements to other texts and translations
+* Fixes to related metrolines texts by @mniinio in #2
+* Typo fixes to labels and German name for API Delivery line
+* Static canvas assets regenerated for all supported languages in SVG, JSON, and PNG formats.
+
 **July 2025**
 
 * New fully static and version controlled website launched with

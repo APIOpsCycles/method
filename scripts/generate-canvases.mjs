@@ -7,8 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const require = createRequire(import.meta.url);
 
-const { buildContent, renderSVG, writePNG } = require('../node_modules/canvascreator/scripts/export.js');
-const { exportJSON } = require('../node_modules/canvascreator/scripts/noteManager.js');
+const { buildContent, renderSVG, writePNG, exportJSON } = require('canvascreator/node-export');
 const canvasData = require('apiops-cycles-method-data/canvasData.json');
 const localizedData = require('apiops-cycles-method-data/localizedData.json');
 const resourcesData = require('apiops-cycles-method-data/method/resources.json');
