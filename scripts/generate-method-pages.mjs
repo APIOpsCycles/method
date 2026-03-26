@@ -95,7 +95,13 @@ async function resolveMethodDataPath(fileName) {
   }
 }
 
-function deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaData, resourcesData) {
+function deriveStationRuntimeState(
+  stationsData,
+  stationCriteriaData,
+  criteriaData,
+  resourcesData,
+  userProgress = {}
+) {
   const orderedStations = [
     ...(stationsData['core-stations']?.items || []),
     ...(stationsData['sub-stations']?.items || []),
@@ -108,11 +114,83 @@ function deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaDa
     criteriaLabelsById[criterion.id] = criterion.description;
   }
 
-  const requiredEntryChecksByStationId = stationCriteriaData || {};
+  const criteriaIds = new Set((criteriaData || []).map((criterion) => criterion.id));
+  const requiredEntryChecksByStationId = {};
+  for (const [stationId, criterionIdsForStation] of Object.entries(stationCriteriaData || {})) {
+    requiredEntryChecksByStationId[stationId] = (criterionIdsForStation || []).filter((criterionId) =>
+      criteriaIds.has(criterionId)
+    );
+  }
 
   const resourcesById = {};
   for (const resource of resourcesData.resources || []) {
     resourcesById[resource.id] = resource;
+  }
+
+  const stationStepArtifactActionsById = {};
+  for (const station of orderedStations) {
+    const howItWorksSteps = station.how_it_works || station['how-it-works'] || [];
+    const stepArtifactActions = [];
+
+    for (const [stepIndex, step] of howItWorksSteps.entries()) {
+      if (!step?.resource) continue;
+      const resource = resourcesById[step.resource];
+      if (!resource) continue;
+
+      if (resource.category === 'canvas' && resource.canvas) {
+        stepArtifactActions.push({
+          stepIndex,
+          resourceId: resource.id,
+          resourceCategory: resource.category,
+          canvasId: resource.canvas,
+          artifactActions: [
+            { type: 'canvas-json', format: 'json', canvasId: resource.canvas },
+            { type: 'canvas-svg', format: 'svg', canvasId: resource.canvas },
+            { type: 'canvas-png', format: 'png', canvasId: resource.canvas },
+          ],
+        });
+      } else if (resource.category === 'guideline') {
+        stepArtifactActions.push({
+          stepIndex,
+          resourceId: resource.id,
+          resourceCategory: resource.category,
+          artifactActions: [{ type: 'guidance-read-and-acknowledge' }],
+        });
+      }
+    }
+
+    stationStepArtifactActionsById[station.id] = stepArtifactActions;
+  }
+
+  const completedCriteriaIds = new Set(
+    (userProgress.completedCriteriaIds || []).filter((criterionId) => criteriaIds.has(criterionId))
+  );
+  const doneStationsById = userProgress.doneStationsById || {};
+  const stationArtifactsById = userProgress.stationArtifactsById || {};
+
+  const stationStateById = {};
+  for (const stationId of stationIdsInOrder) {
+    const requiredCriteriaIds = requiredEntryChecksByStationId[stationId] || [];
+    const missingCriteriaIds = requiredCriteriaIds.filter((criterionId) => !completedCriteriaIds.has(criterionId));
+    const allEntryCriteriaMet = missingCriteriaIds.length === 0;
+    const artifacts = Array.isArray(stationArtifactsById[stationId]) ? stationArtifactsById[stationId] : [];
+    const hasArtifacts = artifacts.length > 0;
+    const isMarkedDone = Boolean(doneStationsById[stationId]);
+
+    let status = 'blocked';
+    if (allEntryCriteriaMet) status = 'ready';
+    if (allEntryCriteriaMet && isMarkedDone && hasArtifacts) status = 'completed';
+
+    stationStateById[stationId] = {
+      status,
+      requiredCriteriaIds,
+      missingCriteriaIds,
+      completedCriteriaIds: requiredCriteriaIds.filter((criterionId) => completedCriteriaIds.has(criterionId)),
+      isMarkedDone,
+      hasArtifacts,
+      artifacts,
+      stepArtifactActions: stationStepArtifactActionsById[stationId] || [],
+    };
   }
 
   return {
@@ -120,6 +198,8 @@ function deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaDa
     requiredEntryChecksByStationId,
     criteriaLabelsById,
     resourcesById,
+    stationStepArtifactActionsById,
+    stationStateById,
   };
 }
 
