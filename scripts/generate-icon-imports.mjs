@@ -8,8 +8,20 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const docsDir = path.join(rootDir, 'src/content/docs');
 const dataDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/src/data/method/');
+const methodDataPackage = 'apiops-cycles-method-data/method';
 const outFile = path.join(rootDir, 'src/components/material-icons.ts');
 const available = new Set(Object.keys(iconsData.icons));
+
+
+async function resolveMethodDataPath(fileName) {
+  const packageSpecifier = `${methodDataPackage}/${fileName}`;
+  try {
+    const resolved = import.meta.resolve(packageSpecifier);
+    return fileURLToPath(resolved);
+  } catch {
+    return path.join(dataDir, fileName);
+  }
+}
 
 function toVarName(name) {
   return name
@@ -55,11 +67,12 @@ function extractIcons(obj, set) {
   }
 }
 
-async function gatherIconsFromData(dataDir, set) {
+async function gatherIconsFromData(set) {
   const files = ['stations.json', 'resources.json', 'lines.json'];
   for (const file of files) {
     try {
-      const content = await fs.readFile(path.join(dir, file), 'utf8');
+      const filePath = await resolveMethodDataPath(file);
+      const content = await fs.readFile(filePath, 'utf8');
       const data = JSON.parse(content);
       extractIcons(data, set);
     } catch {}
@@ -68,7 +81,7 @@ async function gatherIconsFromData(dataDir, set) {
 
 async function generate() {
   const icons = new Set();
-  await gatherIconsFromData(dataDir, icons);
+  await gatherIconsFromData(icons);
   await gatherIcons(docsDir, icons);
   const names = Array.from(icons).sort();
 

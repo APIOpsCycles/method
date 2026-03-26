@@ -8,6 +8,7 @@ import { dump } from 'js-yaml';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/src/data/method');
+const methodDataPackage = 'apiops-cycles-method-data/method';
 const snippetDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/src/snippets');
 const defaultLocale = 'en';
 const defaultLocaleDir = path.join(dataDir, defaultLocale);
@@ -82,6 +83,45 @@ function expandTranslations(keys, labels) {
 }
 
 const defaultBody = 'Content coming soon.';
+
+
+async function resolveMethodDataPath(fileName) {
+  const packageSpecifier = `${methodDataPackage}/${fileName}`;
+  try {
+    const resolved = import.meta.resolve(packageSpecifier);
+    return fileURLToPath(resolved);
+  } catch {
+    return path.join(dataDir, fileName);
+  }
+}
+
+function deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaData, resourcesData) {
+  const orderedStations = [
+    ...(stationsData['core-stations']?.items || []),
+    ...(stationsData['sub-stations']?.items || []),
+  ];
+
+  const stationIdsInOrder = orderedStations.map((station) => station.id);
+
+  const criteriaLabelsById = {};
+  for (const criterion of criteriaData || []) {
+    criteriaLabelsById[criterion.id] = criterion.description;
+  }
+
+  const requiredEntryChecksByStationId = stationCriteriaData || {};
+
+  const resourcesById = {};
+  for (const resource of resourcesData.resources || []) {
+    resourcesById[resource.id] = resource;
+  }
+
+  return {
+    stationIdsInOrder,
+    requiredEntryChecksByStationId,
+    criteriaLabelsById,
+    resourcesById,
+  };
+}
 
 function slugify(str) {
   return str
@@ -371,11 +411,11 @@ async function generate() {
   const cache = await loadCache();
   const newCache = {};
 
-  const stationsPath = path.join(dataDir, 'stations.json');
-  const linesPath = path.join(dataDir, 'lines.json');
-  const resourcesPath = path.join(dataDir, 'resources.json');
-  const criteriaPath = path.join(dataDir, 'criteria.json');
-  const stationCriteriaPath = path.join(dataDir, 'station-criteria.json');
+  const stationsPath = await resolveMethodDataPath('stations.json');
+  const linesPath = await resolveMethodDataPath('lines.json');
+  const resourcesPath = await resolveMethodDataPath('resources.json');
+  const criteriaPath = await resolveMethodDataPath('criteria.json');
+  const stationCriteriaPath = await resolveMethodDataPath('station-criteria.json');
   const baseLabelFiles = [
     'labels.json',
     'labels.lines.json',
@@ -413,35 +453,33 @@ async function generate() {
   const criteriaData = JSON.parse(criteriaDataRaw);
   const stationCriteriaData = JSON.parse(stationCriteriaRaw);
 
-  const resourceMap = {};
-  if (Array.isArray(resourcesData.resources)) {
-    for (const res of resourcesData.resources) {
-      const slug = res.slug;
-      let image = res.image;
-      const canvas = res.canvas;
-      if (image) {
-        const imgPath = path.join(rootDir, 'src', image.replace(/^\//, ''));
-        try {
-          await fsPromises.access(imgPath);
-        } catch {
-          image = undefined;
-        }
-      }
-      resourceMap[res.id] = { ...res, slug, image, canvas };
-    }
-  }
+  const {
+    stationIdsInOrder,
+    requiredEntryChecksByStationId: stationCriteria,
+    criteriaLabelsById: criteriaMap,
+    resourcesById,
+  } = deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaData, resourcesData);
 
-  const criteriaMap = {};
-  for (const c of criteriaData) {
-    criteriaMap[c.id] = c.description;
+  const resourceMap = {};
+  for (const [resourceId, resource] of Object.entries(resourcesById)) {
+    const slug = resource.slug;
+    let image = resource.image;
+    const canvas = resource.canvas;
+    if (image) {
+      const imgPath = path.join(rootDir, 'src', image.replace(/^\//, ''));
+      try {
+        await fsPromises.access(imgPath);
+      } catch {
+        image = undefined;
+      }
+    }
+    resourceMap[resourceId] = { ...resource, slug, image, canvas };
   }
 
   const lineMap = {};
   for (const ln of linesData.lines.items) {
     lineMap[ln.id] = ln;
   }
-
-  const stationCriteria = stationCriteriaData || {};
 
   const nextStationCriteria = {};
   const coreItems = stationsData['core-stations'].items;
@@ -452,11 +490,12 @@ async function generate() {
   }
 
   const stationMap = {};
-  for (const st of stationsData['core-stations'].items) {
-    stationMap[st.id] = st;
-  }
-  for (const st of stationsData['sub-stations'].items) {
-    stationMap[st.id] = st;
+  const orderedStations = [
+    ...(stationsData['core-stations'].items || []),
+    ...(stationsData['sub-stations'].items || []),
+  ];
+  for (const station of orderedStations) {
+    stationMap[station.id] = station;
   }
 
   let regenerate = false;
