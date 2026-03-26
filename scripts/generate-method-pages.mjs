@@ -13,6 +13,7 @@ const snippetDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/sr
 const defaultLocale = 'en';
 const defaultLocaleDir = path.join(dataDir, defaultLocale);
 const docsDir = path.join(rootDir, 'src/content/docs');
+const generatedDataDir = path.join(rootDir, 'src/data/generated');
 const cacheFile = path.join(__dirname, '.method-checksums.json');
 
 const baseLabels = {
@@ -562,6 +563,7 @@ async function generate() {
     requiredEntryChecksByStationId: stationCriteria,
     criteriaLabelsById: criteriaMap,
     resourcesById,
+    stationStateById,
   } = deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaData, resourcesData);
 
   const resourceMap = {};
@@ -605,6 +607,44 @@ async function generate() {
   for (const station of orderedStations) {
     stationMap[station.id] = station;
   }
+
+  const journeyRuntime = {
+    stationIdsInOrder,
+    stationStateById,
+    criteriaLabelsById: criteriaMap,
+    stationMetaById: Object.fromEntries(
+      orderedStations.map((station) => [
+        station.id,
+        {
+          id: station.id,
+          title: translate(station.title, baseLabels),
+          slug: station.slug,
+          stationType: stationsData['core-stations'].items.some((item) => item.id === station.id)
+            ? 'core'
+            : 'suburb',
+        },
+      ])
+    ),
+    resourcesById: Object.fromEntries(
+      Object.values(resourceMap).map((resource) => [
+        resource.id,
+        {
+          id: resource.id,
+          title: translate(resource.title, baseLabels),
+          description: resource.description ? translate(resource.description, baseLabels) : '',
+          category: resource.category,
+          canvas: resource.canvas || null,
+          slug: resource.slug,
+        },
+      ])
+    ),
+  };
+
+  await ensureDir(generatedDataDir);
+  await fsPromises.writeFile(
+    path.join(generatedDataDir, 'journey-runtime.json'),
+    JSON.stringify(journeyRuntime, null, 2) + '\n'
+  );
 
   let regenerate = false;
   if (

@@ -1,0 +1,124 @@
+---
+import JourneyIntake from './JourneyIntake.astro';
+import StationChecklist from './StationChecklist.astro';
+import ArtifactPanel from './ArtifactPanel.astro';
+import NextStationCard from './NextStationCard.astro';
+import journeyRuntime from '../../data/generated/journey-runtime.json';
+
+const { stationIdsInOrder, stationStateById, stationMetaById, criteriaLabelsById, resourcesById } = journeyRuntime;
+
+const readyStationIds = stationIdsInOrder.filter((stationId) => stationStateById[stationId]?.status === 'ready');
+const recommendedStationIds = readyStationIds.length ? readyStationIds.slice(0, 2) : stationIdsInOrder.slice(0, 2);
+const focusStationId = recommendedStationIds[0] || stationIdsInOrder[0];
+const focusStation = stationMetaById[focusStationId];
+const focusStationState = stationStateById[focusStationId] || {
+  requiredCriteriaIds: [],
+  missingCriteriaIds: [],
+  stepArtifactActions: [],
+};
+
+const criteria = (focusStationState.requiredCriteriaIds || []).map((criterionId) => ({
+  label: criteriaLabelsById[criterionId] || criterionId,
+  done: !(focusStationState.missingCriteriaIds || []).includes(criterionId),
+}));
+
+const artifacts = (focusStationState.stepArtifactActions || [])
+  .map((action) => {
+    const resource = resourcesById[action.resourceId];
+    if (!resource) return null;
+    return {
+      name: resource.title,
+      description: resource.description || `Required ${resource.category} artifact.`,
+      canvasUrl: resource.canvas
+        ? `https://canvascreator.apiopscycles.com/?canvas=${resource.canvas}`
+        : `/${resource.slug}/`,
+    };
+  })
+  .filter(Boolean);
+
+const previewCanvasId = artifacts.length
+  ? resourcesById[(focusStationState.stepArtifactActions || [])[0]?.resourceId]?.canvas || undefined
+  : undefined;
+
+const focusIndex = stationIdsInOrder.indexOf(focusStationId);
+const nextStationId =
+  stationIdsInOrder
+    .slice(focusIndex + 1)
+    .find((stationId) => ['ready', 'blocked'].includes(stationStateById[stationId]?.status || '')) ||
+  stationIdsInOrder.find((stationId) => stationStateById[stationId]?.status !== 'completed');
+const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
+---
+
+<JourneyIntake
+  initiative="Select your API journey focus"
+  context="Journey recommendations below are generated from method station order, entry criteria status, and linked station artifacts."
+  goals={[
+    'Find where to start based on readiness in the method graph',
+    'Complete entry criteria before moving station-by-station',
+    'Open required method artifacts directly from each step',
+  ]}
+  constraints={[
+    'Recommendations currently use generated default locale data',
+    'You can begin from any ready station and iterate in cycles',
+    'Use station output artifacts as completion evidence',
+  ]}
+/>
+
+<h2>Step 2 — Recommended first station(s)</h2>
+<div class="journey-grid">
+  {recommendedStationIds.map((stationId, index) => (
+    <NextStationCard
+      step={index === 0 ? 'Recommended start' : 'Parallel station'}
+      station={stationMetaById[stationId]?.title || stationId}
+      rationale={
+        readyStationIds.length
+          ? 'This station is currently ready based on generated entry-criteria status and journey ordering.'
+          : 'No stations are marked ready yet; this recommendation follows the default journey ordering.'
+      }
+      linkLabel="Open station"
+      linkHref={`/${stationMetaById[stationId]?.slug || ''}/`}
+    />
+  ))}
+</div>
+
+<StationChecklist
+  stationName={focusStation?.title || focusStationId}
+  criteria={criteria.length ? criteria : [{ label: 'No entry criteria required for this station.', done: true }]}
+/>
+
+<ArtifactPanel
+  artifacts={
+    artifacts.length
+      ? artifacts
+      : [
+          {
+            name: 'No required artifacts detected',
+            description: 'This station currently has no artifact action requirements in generated runtime data.',
+            canvasUrl: '/resources/',
+          },
+        ]
+  }
+  previewCanvasId={previewCanvasId}
+/>
+
+<h2>Step 5 — Completion + next station recommendation</h2>
+{nextStation ? (
+  <NextStationCard
+    step="Next station"
+    station={nextStation.title}
+    rationale="This is the first eligible station after your focus station that is not yet completed in runtime status."
+    linkLabel="Continue to next station"
+    linkHref={`/${nextStation.slug}/`}
+  />
+) : (
+  <p>All stations are currently marked as completed in the generated runtime state.</p>
+)}
+
+<style>
+  .journey-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+</style>
