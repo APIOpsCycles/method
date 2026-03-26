@@ -27,6 +27,32 @@ const baseLabels = {
   related_metrolines: 'Related metrolines',
 };
 
+const DEFAULT_NEW_API_JOURNEY_ORDER = [
+  'api-product-strategy',
+  'api-consumer-experience',
+  'api-platform-architecture',
+  'api-design',
+  'api-delivery',
+  'api-audit',
+  'api-publishing',
+  'monitoring-and-improving',
+];
+
+function buildDefaultJourneyOrder(coreStations = [], subStations = []) {
+  const coreStationMap = new Map(coreStations.map((station) => [station.id, station]));
+  const orderedCoreStationIds = DEFAULT_NEW_API_JOURNEY_ORDER.filter((stationId) =>
+    coreStationMap.has(stationId)
+  );
+
+  const remainingCoreStationIds = coreStations
+    .map((station) => station.id)
+    .filter((stationId) => !orderedCoreStationIds.includes(stationId));
+
+  const subStationIds = subStations.map((station) => station.id);
+
+  return [...orderedCoreStationIds, ...remainingCoreStationIds, ...subStationIds];
+}
+
 function flatten(obj, prefix = '', out = {}) {
   for (const [key, val] of Object.entries(obj)) {
     const full = prefix ? `${prefix}.${key}` : key;
@@ -102,12 +128,10 @@ function deriveStationRuntimeState(
   resourcesData,
   userProgress = {}
 ) {
-  const orderedStations = [
-    ...(stationsData['core-stations']?.items || []),
-    ...(stationsData['sub-stations']?.items || []),
-  ];
-
-  const stationIdsInOrder = orderedStations.map((station) => station.id);
+  const coreStations = stationsData['core-stations']?.items || [];
+  const subStations = stationsData['sub-stations']?.items || [];
+  const orderedStations = [...coreStations, ...subStations];
+  const stationIdsInOrder = buildDefaultJourneyOrder(coreStations, subStations);
 
   const criteriaLabelsById = {};
   for (const criterion of criteriaData || []) {
@@ -563,10 +587,14 @@ async function generate() {
 
   const nextStationCriteria = {};
   const coreItems = stationsData['core-stations'].items;
-  for (let i = 0; i < coreItems.length; i++) {
-    const currentId = coreItems[i].id;
-    const nextId = coreItems[(i + 1) % coreItems.length].id;
-    nextStationCriteria[currentId] = stationCriteria[nextId] || [];
+  const coreStationOrder = buildDefaultJourneyOrder(coreItems, []).filter((stationId) =>
+    coreItems.some((station) => station.id === stationId)
+  );
+
+  for (let i = 0; i < coreStationOrder.length; i++) {
+    const currentId = coreStationOrder[i];
+    const nextId = coreStationOrder[i + 1];
+    nextStationCriteria[currentId] = nextId ? stationCriteria[nextId] || [] : [];
   }
 
   const stationMap = {};
