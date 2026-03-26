@@ -95,7 +95,13 @@ async function resolveMethodDataPath(fileName) {
   }
 }
 
-function deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaData, resourcesData) {
+function deriveStationRuntimeState(
+  stationsData,
+  stationCriteriaData,
+  criteriaData,
+  resourcesData,
+  userProgress = {}
+) {
   const orderedStations = [
     ...(stationsData['core-stations']?.items || []),
     ...(stationsData['sub-stations']?.items || []),
@@ -108,11 +114,47 @@ function deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaDa
     criteriaLabelsById[criterion.id] = criterion.description;
   }
 
-  const requiredEntryChecksByStationId = stationCriteriaData || {};
+  const criteriaIds = new Set((criteriaData || []).map((criterion) => criterion.id));
+  const requiredEntryChecksByStationId = {};
+  for (const [stationId, criterionIdsForStation] of Object.entries(stationCriteriaData || {})) {
+    requiredEntryChecksByStationId[stationId] = (criterionIdsForStation || []).filter((criterionId) =>
+      criteriaIds.has(criterionId)
+    );
+  }
 
   const resourcesById = {};
   for (const resource of resourcesData.resources || []) {
     resourcesById[resource.id] = resource;
+  }
+
+  const completedCriteriaIds = new Set(
+    (userProgress.completedCriteriaIds || []).filter((criterionId) => criteriaIds.has(criterionId))
+  );
+  const doneStationsById = userProgress.doneStationsById || {};
+  const stationArtifactsById = userProgress.stationArtifactsById || {};
+
+  const stationStateById = {};
+  for (const stationId of stationIdsInOrder) {
+    const requiredCriteriaIds = requiredEntryChecksByStationId[stationId] || [];
+    const missingCriteriaIds = requiredCriteriaIds.filter((criterionId) => !completedCriteriaIds.has(criterionId));
+    const allEntryCriteriaMet = missingCriteriaIds.length === 0;
+    const artifacts = Array.isArray(stationArtifactsById[stationId]) ? stationArtifactsById[stationId] : [];
+    const hasArtifacts = artifacts.length > 0;
+    const isMarkedDone = Boolean(doneStationsById[stationId]);
+
+    let status = 'blocked';
+    if (allEntryCriteriaMet) status = 'ready';
+    if (allEntryCriteriaMet && isMarkedDone && hasArtifacts) status = 'completed';
+
+    stationStateById[stationId] = {
+      status,
+      requiredCriteriaIds,
+      missingCriteriaIds,
+      completedCriteriaIds: requiredCriteriaIds.filter((criterionId) => completedCriteriaIds.has(criterionId)),
+      isMarkedDone,
+      hasArtifacts,
+      artifacts,
+    };
   }
 
   return {
@@ -120,6 +162,7 @@ function deriveStationRuntimeState(stationsData, stationCriteriaData, criteriaDa
     requiredEntryChecksByStationId,
     criteriaLabelsById,
     resourcesById,
+    stationStateById,
   };
 }
 
