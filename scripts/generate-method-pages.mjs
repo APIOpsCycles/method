@@ -127,6 +127,41 @@ function deriveStationRuntimeState(
     resourcesById[resource.id] = resource;
   }
 
+  const stationStepArtifactActionsById = {};
+  for (const station of orderedStations) {
+    const howItWorksSteps = station.how_it_works || station['how-it-works'] || [];
+    const stepArtifactActions = [];
+
+    for (const [stepIndex, step] of howItWorksSteps.entries()) {
+      if (!step?.resource) continue;
+      const resource = resourcesById[step.resource];
+      if (!resource) continue;
+
+      if (resource.category === 'canvas' && resource.canvas) {
+        stepArtifactActions.push({
+          stepIndex,
+          resourceId: resource.id,
+          resourceCategory: resource.category,
+          canvasId: resource.canvas,
+          artifactActions: [
+            { type: 'canvas-json', format: 'json', canvasId: resource.canvas },
+            { type: 'canvas-svg', format: 'svg', canvasId: resource.canvas },
+            { type: 'canvas-png', format: 'png', canvasId: resource.canvas },
+          ],
+        });
+      } else if (resource.category === 'guideline') {
+        stepArtifactActions.push({
+          stepIndex,
+          resourceId: resource.id,
+          resourceCategory: resource.category,
+          artifactActions: [{ type: 'guidance-read-and-acknowledge' }],
+        });
+      }
+    }
+
+    stationStepArtifactActionsById[station.id] = stepArtifactActions;
+  }
+
   const completedCriteriaIds = new Set(
     (userProgress.completedCriteriaIds || []).filter((criterionId) => criteriaIds.has(criterionId))
   );
@@ -154,6 +189,7 @@ function deriveStationRuntimeState(
       isMarkedDone,
       hasArtifacts,
       artifacts,
+      stepArtifactActions: stationStepArtifactActionsById[stationId] || [],
     };
   }
 
@@ -162,6 +198,7 @@ function deriveStationRuntimeState(
     requiredEntryChecksByStationId,
     criteriaLabelsById,
     resourcesById,
+    stationStepArtifactActionsById,
     stationStateById,
   };
 }
