@@ -28,7 +28,7 @@ Use this guided page to move from initiative intake to recommended next stations
 
 ## Step 2 — Recommended first station(s)
 
-<div class="journey-grid">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.75rem;margin-bottom:1rem;">
   <NextStationCard
     step="Recommended start"
     station="Business Opportunity"
@@ -85,12 +85,3 @@ Use this guided page to move from initiative intake to recommended next stations
   linkLabel="Continue to next station"
   linkHref="/the-method/"
 />
-
-<style>
-  .journey-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-</style>
