@@ -16,16 +16,7 @@ interface Props {
 
 const { selectedIntents: selectedIntentsFromProps = [] } = Astro.props as Props;
 const { stationIdsInOrder, stationStateById, stationMetaById, criteriaLabelsById, resourcesById } = journeyRuntime;
-
-const selectedIntentsFromQuery = normalizeJourneyIntentTags(
-  Astro.url.searchParams
-    .getAll('intent')
-    .flatMap((intent) => intent.split(','))
-    .map((intent) => intent.trim())
-    .filter(Boolean)
-);
-const selectedIntents =
-  selectedIntentsFromProps.length > 0 ? selectedIntentsFromProps : selectedIntentsFromQuery;
+const selectedIntents = normalizeJourneyIntentTags(selectedIntentsFromProps);
 
 const rankedStations = rankStationsForJourneyIntent({
   stationIdsInOrder,
