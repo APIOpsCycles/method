@@ -4,11 +4,35 @@ import StationChecklist from './StationChecklist.astro';
 import ArtifactPanel from './ArtifactPanel.astro';
 import NextStationCard from './NextStationCard.astro';
 import journeyRuntime from '../../data/generated/journey-runtime.json';
+import {
+  normalizeJourneyIntentTags,
+  rankStationsForJourneyIntent,
+  type JourneyIntentTag,
+} from '../../data/journey-intents';
 
+interface Props {
+  selectedIntents?: JourneyIntentTag[];
+}
+
+const { selectedIntents: selectedIntentsFromProps = [] } = Astro.props as Props;
 const { stationIdsInOrder, stationStateById, stationMetaById, criteriaLabelsById, resourcesById } = journeyRuntime;
 
-const readyStationIds = stationIdsInOrder.filter((stationId) => stationStateById[stationId]?.status === 'ready');
-const recommendedStationIds = readyStationIds.length ? readyStationIds.slice(0, 2) : stationIdsInOrder.slice(0, 2);
+const selectedIntentsFromQuery = normalizeJourneyIntentTags(
+  Astro.url.searchParams
+    .getAll('intent')
+    .flatMap((intent) => intent.split(','))
+    .map((intent) => intent.trim())
+    .filter(Boolean)
+);
+const selectedIntents =
+  selectedIntentsFromProps.length > 0 ? selectedIntentsFromProps : selectedIntentsFromQuery;
+
+const rankedStations = rankStationsForJourneyIntent({
+  stationIdsInOrder,
+  stationStateById,
+  selectedIntents,
+});
+const recommendedStationIds = rankedStations.slice(0, 3).map((rankedStation) => rankedStation.stationId);
 const focusStationId = recommendedStationIds[0] || stationIdsInOrder[0];
 const focusStation = stationMetaById[focusStationId];
 const focusStationState = stationStateById[focusStationId] || {
@@ -51,9 +75,13 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
 
 <JourneyIntake
   initiative="Select your API journey focus"
-  context="Journey recommendations below are generated from method station order, entry criteria status, and linked station artifacts."
+  context={
+    selectedIntents.length
+      ? `Active journey intents: ${selectedIntents.join(', ')}. Recommendations are scored by intent weights, readiness, and station order.`
+      : 'No intent selected. Recommendations below follow default station order from generated method runtime data.'
+  }
   goals={[
-    'Find where to start based on readiness in the method graph',
+    'Find where to start based on intent + readiness + position scoring',
     'Complete entry criteria before moving station-by-station',
     'Open required method artifacts directly from each step',
   ]}
@@ -68,12 +96,12 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
 <div class="journey-grid">
   {recommendedStationIds.map((stationId, index) => (
     <NextStationCard
-      step={index === 0 ? 'Recommended start' : 'Parallel station'}
+      step={index === 0 ? 'Recommended start' : `Candidate ${index + 1}`}
       station={stationMetaById[stationId]?.title || stationId}
       rationale={
-        readyStationIds.length
-          ? 'This station is currently ready based on generated entry-criteria status and journey ordering.'
-          : 'No stations are marked ready yet; this recommendation follows the default journey ordering.'
+        selectedIntents.length
+          ? `Score breakdown — intent: ${rankedStations[index]?.intentScore || 0}, readiness: ${rankedStations[index]?.readinessScore || 0}, position: ${Math.round(rankedStations[index]?.positionScore || 0)}.`
+          : 'No intent selected, so this follows default journey order from generated station sequencing.'
       }
       linkLabel="Open station"
       linkHref={`/${stationMetaById[stationId]?.slug || ''}/`}
