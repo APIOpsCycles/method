@@ -1,0 +1,2359 @@
+{
+  "stationIdsInOrder": [
+    "api-product-strategy",
+    "api-consumer-experience",
+    "api-platform-architecture",
+    "api-design",
+    "api-delivery",
+    "api-audit",
+    "api-publishing",
+    "monitoring-and-improving",
+    "user-experience",
+    "market-insights",
+    "business-goals",
+    "competitive-analysis",
+    "ecosystem-vision",
+    "scalable-infrastructure",
+    "legal-and-compliance",
+    "security-and-privacy",
+    "design-standards",
+    "vendor-management",
+    "contract-design",
+    "development",
+    "ci-cd",
+    "test-automation",
+    "release-management",
+    "service-agreements",
+    "api-consumer-adoption",
+    "api-promotion",
+    "partner-integration",
+    "api-mindset",
+    "roles-and-responsibilities",
+    "upskilling",
+    "operating-guidelines",
+    "portfolio-management",
+    "budget-and-resource-management"
+  ],
+  "stationStateById": {
+    "api-product-strategy": {
+      "status": "blocked",
+      "requiredCriteriaIds": [
+        "metrics-feedback-available",
+        "business-goals-defined",
+        "market-research-done",
+        "stakeholder-approval"
+      ],
+      "missingCriteriaIds": [
+        "metrics-feedback-available",
+        "business-goals-defined",
+        "market-research-done",
+        "stakeholder-approval"
+      ],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "customer-journey-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "customerJourneyCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "customerJourneyCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "domain-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "domainCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "domainCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "domainCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "domainCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-value-proposition-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "apiValuePropositionCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "apiValuePropositionCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "apiValuePropositionCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "apiValuePropositionCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 3,
+          "resourceId": "api-business-model-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "apiBusinessModelCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "apiBusinessModelCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "apiBusinessModelCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "apiBusinessModelCanvas"
+            }
+          ]
+        }
+      ]
+    },
+    "api-consumer-experience": {
+      "status": "blocked",
+      "requiredCriteriaIds": [
+        "api-opportunity-documented",
+        "api-reusability",
+        "hide-backend-discrepancies",
+        "value-prop-validated",
+        "consumer-segments-identified",
+        "api-roadmap-defined"
+      ],
+      "missingCriteriaIds": [
+        "api-opportunity-documented",
+        "api-reusability",
+        "hide-backend-discrepancies",
+        "value-prop-validated",
+        "consumer-segments-identified",
+        "api-roadmap-defined"
+      ],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-value-proposition-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "apiValuePropositionCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "apiValuePropositionCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "apiValuePropositionCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "apiValuePropositionCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "customer-journey-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "customerJourneyCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "customerJourneyCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-onboarding-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "api-platform-architecture": {
+      "status": "blocked",
+      "requiredCriteriaIds": [
+        "api-reusability",
+        "hide-backend-discrepancies",
+        "value-prop-validated",
+        "consumer-segments-identified",
+        "api-roadmap-defined"
+      ],
+      "missingCriteriaIds": [
+        "api-reusability",
+        "hide-backend-discrepancies",
+        "value-prop-validated",
+        "consumer-segments-identified",
+        "api-roadmap-defined"
+      ],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "business-impact-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "businessImpactCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "businessImpactCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "businessImpactCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "businessImpactCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "location-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "locationsCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "locationsCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "locationsCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "locationsCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "capacity-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "capacityCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "capacityCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "capacityCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "capacityCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 3,
+          "resourceId": "api-metrics-and-analytics",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "api-design": {
+      "status": "blocked",
+      "requiredCriteriaIds": [
+        "architecture-patterns-validated",
+        "hide-backend-discrepancies",
+        "design-reflects-business-value",
+        "api-consistency"
+      ],
+      "missingCriteriaIds": [
+        "architecture-patterns-validated",
+        "hide-backend-discrepancies",
+        "design-reflects-business-value",
+        "api-consistency"
+      ],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "domain-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "domainCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "domainCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "domainCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "domainCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "interaction-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "interactionCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "interactionCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "interactionCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "interactionCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "rest-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "restCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "restCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "restCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "restCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 3,
+          "resourceId": "event-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "eventCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "eventCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "eventCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "eventCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 4,
+          "resourceId": "graphql-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "graphqlCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "graphqlCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "graphqlCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "graphqlCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 5,
+          "resourceId": "api-design-principles",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 6,
+          "resourceId": "contract-first-design",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "api-delivery": {
+      "status": "blocked",
+      "requiredCriteriaIds": [
+        "architecture-patterns-validated",
+        "hide-backend-discrepancies",
+        "design-reflects-business-value",
+        "api-consistency"
+      ],
+      "missingCriteriaIds": [
+        "architecture-patterns-validated",
+        "hide-backend-discrepancies",
+        "design-reflects-business-value",
+        "api-consistency"
+      ],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-development-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-development-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-testing-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 3,
+          "resourceId": "apiops-CI-CD-for-apis",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 4,
+          "resourceId": "api-security-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "api-audit": {
+      "status": "blocked",
+      "requiredCriteriaIds": [
+        "architecture-patterns-validated",
+        "design-reflects-business-value",
+        "api-description-available",
+        "api-consistency",
+        "api-contract-tested"
+      ],
+      "missingCriteriaIds": [
+        "architecture-patterns-validated",
+        "design-reflects-business-value",
+        "api-description-available",
+        "api-consistency",
+        "api-contract-tested"
+      ],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 1,
+          "resourceId": "api-compliance-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "api-publishing": {
+      "status": "blocked",
+      "requiredCriteriaIds": [
+        "audit-passed",
+        "audit-reports-shared",
+        "api-ready-for-publishing",
+        "api-documentation-ready"
+      ],
+      "missingCriteriaIds": [
+        "audit-passed",
+        "audit-reports-shared",
+        "api-ready-for-publishing",
+        "api-documentation-ready"
+      ],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 1,
+          "resourceId": "api-onboarding-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "monitoring-and-improving": {
+      "status": "blocked",
+      "requiredCriteriaIds": [
+        "api-documentation-ready",
+        "consumer-support-ready",
+        "legal-compliance-clear"
+      ],
+      "missingCriteriaIds": [
+        "api-documentation-ready",
+        "consumer-support-ready",
+        "legal-compliance-clear"
+      ],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-metrics-and-analytics",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-community-engagement-strategies",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "user-experience": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "customer-journey-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "customerJourneyCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "customerJourneyCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "customer-journey-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "customerJourneyCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "customerJourneyCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "customer-journey-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "customerJourneyCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "customerJourneyCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "customerJourneyCanvas"
+            }
+          ]
+        }
+      ]
+    },
+    "market-insights": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "ecosystem-vision-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "competitor-analysis-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "industry-standards-and-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "business-goals": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-business-model-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "apiBusinessModelCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "apiBusinessModelCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "apiBusinessModelCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "apiBusinessModelCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-metrics-and-analytics",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "stakeholder-engagement-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "competitive-analysis": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "competitor-analysis-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "ecosystem-vision-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "ecosystem-vision-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "ecosystem-vision": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "ecosystem-vision-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "ecosystem-vision-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "ecosystem-vision-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "scalable-infrastructure": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "scalable-infrastructure-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "capacity-canvas",
+          "resourceCategory": "canvas",
+          "canvasId": "capacityCanvas",
+          "artifactActions": [
+            {
+              "type": "canvas-json",
+              "format": "json",
+              "canvasId": "capacityCanvas"
+            },
+            {
+              "type": "canvas-svg",
+              "format": "svg",
+              "canvasId": "capacityCanvas"
+            },
+            {
+              "type": "canvas-png",
+              "format": "png",
+              "canvasId": "capacityCanvas"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "scalable-infrastructure-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "legal-and-compliance": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-compliance-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-compliance-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-compliance-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "security-and-privacy": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-security-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "data-privacy-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "design-standards": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-design-principles",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "vendor-management": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "vendor-management-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "vendor-management-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "vendor-management-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "contract-design": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "contract-first-design",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "contract-first-design",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "development": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-development-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "contract-first-design",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-development-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "ci-cd": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "apiops-CI-CD-for-apis",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-testing-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-security-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "test-automation": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-testing-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-testing-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "apiops-CI-CD-for-apis",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "release-management": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-versioning-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "apiops-CI-CD-for-apis",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "service-agreements": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "service-agreement-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "service-agreement-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "service-agreement-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "api-consumer-adoption": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-onboarding-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-community-engagement-strategies",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-community-engagement-strategies",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "api-promotion": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-community-engagement-strategies",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-community-engagement-strategies",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-community-engagement-strategies",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "partner-integration": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "ecosystem-vision-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "partner-integration-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "partner-integration-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "api-mindset": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "ecosystem-vision-template",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "cross-functional-collaboration-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-training-programs",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "roles-and-responsibilities": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-team-structure-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "role-communication-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "role-communication-best-practices",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "upskilling": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-training-programs",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-training-programs",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-training-programs",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "operating-guidelines": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 2,
+          "resourceId": "api-metrics-and-analytics",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "portfolio-management": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-portfolio-management-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-portfolio-management-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-portfolio-management-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    },
+    "budget-and-resource-management": {
+      "status": "ready",
+      "requiredCriteriaIds": [],
+      "missingCriteriaIds": [],
+      "completedCriteriaIds": [],
+      "isMarkedDone": false,
+      "hasArtifacts": false,
+      "artifacts": [],
+      "stepArtifactActions": [
+        {
+          "stepIndex": 0,
+          "resourceId": "api-portfolio-management-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 1,
+          "resourceId": "api-portfolio-management-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        },
+        {
+          "stepIndex": 2,
+          "resourceId": "api-portfolio-management-guidelines",
+          "resourceCategory": "guideline",
+          "artifactActions": [
+            {
+              "type": "guidance-read-and-acknowledge"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "criteriaLabelsById": {
+    "metrics-feedback-available": "Insights from metrics and feedback are available to optimize existing APIs.",
+    "business-goals-defined": "Business goals are defined.",
+    "market-research-done": "Market research identifies API opportunities.",
+    "stakeholder-approval": "Stakeholders approve strategy discussions.",
+    "api-opportunity-documented": "Individual API opportunities are identified and documented.",
+    "api-reusability": "The API meets a clear business need and is reusable for multiple API consumers.",
+    "hide-backend-discrepancies": "The goal of the API is to hide backend data models and discrepancies.",
+    "value-prop-validated": "The value proposition validates with key stakeholders.",
+    "consumer-segments-identified": "API consumer segments (internal and external) are identified.",
+    "api-roadmap-defined": "High-level roadmaps for API development are established.",
+    "architecture-patterns-validated": "The API architecture uses patterns that promote reusability and integration, and is validated with stakeholders.",
+    "design-reflects-business-value": "The API's design and endpoints have a clear connection to their business value and features.",
+    "api-consistency": "API has a consistent design with our other API products.",
+    "api-contract-tested": "The API contract is tested and meets functional and non-functional requirements.",
+    "api-description-available": "The API and its endpoints have descriptions that explain their business value and features.",
+    "audit-passed": "The API passes compliance, security, and audit checks.",
+    "audit-reports-shared": "Audit reports are shared with stakeholders.",
+    "api-ready-for-publishing": "The API is ready to be published to the appropriate gateways and environments to support reusability for multiple API consumers.",
+    "api-documentation-ready": "API documentation is complete and ready for publishing.",
+    "consumer-support-ready": "API registration, support, and communication processes are in place.",
+    "legal-compliance-clear": "Legal and compliance requirements are precise enough for publishing."
+  },
+  "stationMetaById": {
+    "api-product-strategy": {
+      "id": "api-product-strategy",
+      "title": "API Product Strategy - Turn APIs Into Strategic Products",
+      "slug": "method/api-product-strategy",
+      "stationType": "core"
+    },
+    "api-consumer-experience": {
+      "id": "api-consumer-experience",
+      "title": "API Consumer Experience - Design for Your API’s Real Users",
+      "slug": "method/api-consumer-experience",
+      "stationType": "core"
+    },
+    "api-platform-architecture": {
+      "id": "api-platform-architecture",
+      "title": "API Platform Architecture - Architect APIs for Scalability and Reuse",
+      "slug": "method/api-platform-architecture",
+      "stationType": "core"
+    },
+    "api-design": {
+      "id": "api-design",
+      "title": "API Design - Design APIs That Deliver Value",
+      "slug": "method/api-design",
+      "stationType": "core"
+    },
+    "api-delivery": {
+      "id": "api-delivery",
+      "title": "API Delivery - Deliver Secure and Reliable APIs",
+      "slug": "method/api-delivery",
+      "stationType": "core"
+    },
+    "api-audit": {
+      "id": "api-audit",
+      "title": "API Audit - Audit APIs for Compliance and Quality",
+      "slug": "method/api-audit",
+      "stationType": "core"
+    },
+    "api-publishing": {
+      "id": "api-publishing",
+      "title": "API Publishing - Publish APIs with Confidence",
+      "slug": "method/api-publishing",
+      "stationType": "core"
+    },
+    "monitoring-and-improving": {
+      "id": "monitoring-and-improving",
+      "title": "Monitoring and Improving - for API Value",
+      "slug": "method/monitoring-and-improving",
+      "stationType": "core"
+    },
+    "user-experience": {
+      "id": "user-experience",
+      "title": "User Experience - Design APIs with the User in Mind",
+      "slug": "method/user-experience",
+      "stationType": "suburb"
+    },
+    "market-insights": {
+      "id": "market-insights",
+      "title": "Market Insights - Understand the API Landscape",
+      "slug": "method/market-insights",
+      "stationType": "suburb"
+    },
+    "business-goals": {
+      "id": "business-goals",
+      "title": "Business Goals - Align APIs with Business Objectives",
+      "slug": "method/business-goals",
+      "stationType": "suburb"
+    },
+    "competitive-analysis": {
+      "id": "competitive-analysis",
+      "title": "Competitive Analysis - Stay Ahead in the API Market",
+      "slug": "method/competitive-analysis",
+      "stationType": "suburb"
+    },
+    "ecosystem-vision": {
+      "id": "ecosystem-vision",
+      "title": "Ecosystem Vision - Build APIs for a Thriving Ecosystem",
+      "slug": "method/ecosystem-vision",
+      "stationType": "suburb"
+    },
+    "scalable-infrastructure": {
+      "id": "scalable-infrastructure",
+      "title": "Scalable Infrastructure - Build APIs on a Solid Foundation",
+      "slug": "method/scalable-infrastructure",
+      "stationType": "suburb"
+    },
+    "legal-and-compliance": {
+      "id": "legal-and-compliance",
+      "title": "Legal and Compliance - Ensure APIs Meet Regulatory Standards",
+      "slug": "method/legal-and-compliance",
+      "stationType": "suburb"
+    },
+    "security-and-privacy": {
+      "id": "security-and-privacy",
+      "title": "Security and Privacy - Protect Your APIs and Users",
+      "slug": "method/security-and-privacy",
+      "stationType": "suburb"
+    },
+    "design-standards": {
+      "id": "design-standards",
+      "title": "Design Standards - Ensure Consistent and High-Quality API Design",
+      "slug": "method/design-standards",
+      "stationType": "suburb"
+    },
+    "vendor-management": {
+      "id": "vendor-management",
+      "title": "Vendor Management - Manage Third-Party API Integrations",
+      "slug": "method/vendor-management",
+      "stationType": "suburb"
+    },
+    "contract-design": {
+      "id": "contract-design",
+      "title": "Contract Design - Define Clear API Contracts",
+      "slug": "method/contract-design",
+      "stationType": "suburb"
+    },
+    "development": {
+      "id": "development",
+      "title": "Development - Build APIs with Best Practices",
+      "slug": "method/development",
+      "stationType": "suburb"
+    },
+    "ci-cd": {
+      "id": "ci-cd",
+      "title": "CI/CD - Automate API Delivery",
+      "slug": "method/ci-cd",
+      "stationType": "suburb"
+    },
+    "test-automation": {
+      "id": "test-automation",
+      "title": "Test Automation - Ensure API Quality",
+      "slug": "method/test-automation",
+      "stationType": "suburb"
+    },
+    "release-management": {
+      "id": "release-management",
+      "title": "Release Management - Manage API Releases Effectively",
+      "slug": "method/release-management",
+      "stationType": "suburb"
+    },
+    "service-agreements": {
+      "id": "service-agreements",
+      "title": "Service Agreements - Define API Service Levels",
+      "slug": "method/service-agreements",
+      "stationType": "suburb"
+    },
+    "api-consumer-adoption": {
+      "id": "api-consumer-adoption",
+      "title": "API Consumer Adoption - Drive API Usage",
+      "slug": "method/api-consumer-adoption",
+      "stationType": "suburb"
+    },
+    "api-promotion": {
+      "id": "api-promotion",
+      "title": "API Promotion - Increase API Visibility and Usage",
+      "slug": "method/api-promotion",
+      "stationType": "suburb"
+    },
+    "partner-integration": {
+      "id": "partner-integration",
+      "title": "Partner Integration - Collaborate with Partners",
+      "slug": "method/partner-integration",
+      "stationType": "suburb"
+    },
+    "api-mindset": {
+      "id": "api-mindset",
+      "title": "API Mindset - Foster an API-First Culture",
+      "slug": "method/api-mindset",
+      "stationType": "suburb"
+    },
+    "roles-and-responsibilities": {
+      "id": "roles-and-responsibilities",
+      "title": "Roles and Responsibilities - Define API Team Structures",
+      "slug": "method/roles-and-responsibilities",
+      "stationType": "suburb"
+    },
+    "upskilling": {
+      "id": "upskilling",
+      "title": "Upskilling - Enhance API Skills and Knowledge",
+      "slug": "method/upskilling",
+      "stationType": "suburb"
+    },
+    "operating-guidelines": {
+      "id": "operating-guidelines",
+      "title": "Operating Guidelines - Establish API Governance",
+      "slug": "method/operating-guidelines",
+      "stationType": "suburb"
+    },
+    "portfolio-management": {
+      "id": "portfolio-management",
+      "title": "Portfolio Management - Manage API Portfolio Effectively",
+      "slug": "method/portfolio-management",
+      "stationType": "suburb"
+    },
+    "budget-and-resource-management": {
+      "id": "budget-and-resource-management",
+      "title": "Budget and Resource Management - Optimize API Investments",
+      "slug": "method/budget-and-resource-management",
+      "stationType": "suburb"
+    }
+  },
+  "resourcesById": {
+    "api-community-engagement-strategies": {
+      "id": "api-community-engagement-strategies",
+      "title": "API Community Engagement Strategies",
+      "description": "A playbook for fostering API adoption by cultivating communities through content, support channels, feedback loops, and social engagement strategies.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-community-engagement-strategies"
+    },
+    "api-compliance-best-practices": {
+      "id": "api-compliance-best-practices",
+      "title": "API Compliance Best Practices",
+      "description": "Ensure APIs meet legal, regulatory, and internal compliance through documentation, controls, and automated validations.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-compliance-best-practices"
+    },
+    "api-development-best-practices": {
+      "id": "api-development-best-practices",
+      "title": "API Development Best Practices",
+      "description": "Implementation guidance for turning a validated API contract into a consistent, maintainable API codebase using standard libraries, reusable patterns, and aligned development workflows.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-development-best-practices"
+    },
+    "api-metrics-and-analytics": {
+      "id": "api-metrics-and-analytics",
+      "title": "API Metrics And Analytics",
+      "description": "A resource for defining, collecting, and analyzing API performance and usage data to align technical KPIs with business outcomes.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-metrics-and-analytics"
+    },
+    "api-onboarding-best-practices": {
+      "id": "api-onboarding-best-practices",
+      "title": "API Onboarding Best Practices",
+      "description": "Best practices to streamline API consumer onboarding journeys with step-by-step registration, discovery, and first-call guidance.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-onboarding-best-practices"
+    },
+    "api-portfolio-management-guidelines": {
+      "id": "api-portfolio-management-guidelines",
+      "title": "API Portfolio Management Guidelines",
+      "description": "A guide to strategically manage an organization's API suite—prioritizing APIs, allocating resources, and monitoring performance across lifecycles.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-portfolio-management-guidelines"
+    },
+    "api-security-best-practices": {
+      "id": "api-security-best-practices",
+      "title": "API Security Best Practices",
+      "description": "A set of actionable controls for securing APIs, including authentication, authorization, encryption, rate-limiting, and pipeline-level compliance checks.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-security-best-practices"
+    },
+    "api-team-structure-guidelines": {
+      "id": "api-team-structure-guidelines",
+      "title": "API Team Structure Guidelines",
+      "description": "Organizational guidance for defining roles and responsibilities within API teams to ensure clarity, collaboration, and accountability.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-team-structure-guidelines"
+    },
+    "api-testing-best-practices": {
+      "id": "api-testing-best-practices",
+      "title": "API Testing Best Practices",
+      "description": "Guidelines for implementing automated functional, performance, and security testing throughout the API lifecycle.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-testing-best-practices"
+    },
+    "api-training-programs": {
+      "id": "api-training-programs",
+      "title": "API Training Programs",
+      "description": "A roadmap for upskilling teams with structured learning paths in API design, governance, performance, and security.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-training-programs"
+    },
+    "api-versioning-best-practices": {
+      "id": "api-versioning-best-practices",
+      "title": "API Versioning Best Practices",
+      "description": "Strategies for introducing, maintaining, and retiring API versions while preserving backward compatibility and consumer trust.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-versioning-best-practices"
+    },
+    "apiops-CI-CD-for-apis": {
+      "id": "apiops-CI-CD-for-apis",
+      "title": "APIOps CI/CD For APIs",
+      "description": "Deployment guidance that integrates API lifecycle tasks—design, testing, governance—into continuous integration and delivery pipelines.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/apiops-CI-CD-for-apis"
+    },
+    "competitor-analysis-template": {
+      "id": "competitor-analysis-template",
+      "title": "Competitor Analysis Template",
+      "description": "A structured worksheet to benchmark your API offerings against competitors by mapping strengths, weaknesses, and value differentiators.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/competitor-analysis-template"
+    },
+    "contract-first-design": {
+      "id": "contract-first-design",
+      "title": "Contract First Design",
+      "description": "A guideline advocating for API-first approaches using formal contracts (e.g., OpenAPI) to align stakeholders before development.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/contract-first-design"
+    },
+    "cross-functional-collaboration-best-practices": {
+      "id": "cross-functional-collaboration-best-practices",
+      "title": "Cross Functional Collaboration Best Practices",
+      "description": "Practices to facilitate communication and alignment between business and tech teams when planning or delivering APIs.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/cross-functional-collaboration-best-practices"
+    },
+    "data-privacy-guidelines": {
+      "id": "data-privacy-guidelines",
+      "title": "Data Privacy Guidelines",
+      "description": "Design considerations to ensure APIs meet data protection regulations like GDPR through anonymization and access controls.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/data-privacy-guidelines"
+    },
+    "domain-canvas": {
+      "id": "domain-canvas",
+      "title": "Domain Canvas",
+      "description": "A modeling tool to define and communicate the key entities and relationships in your domain, ensuring semantic consistency across APIs.",
+      "category": "canvas",
+      "canvas": "domainCanvas",
+      "slug": "resources/domain-canvas"
+    },
+    "ecosystem-vision-template": {
+      "id": "ecosystem-vision-template",
+      "title": "Ecosystem Vision Template",
+      "description": "A strategic planning tool to define the API ecosystem, including target partners, value chains, and integration opportunities.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/ecosystem-vision-template"
+    },
+    "industry-standards-and-best-practices": {
+      "id": "industry-standards-and-best-practices",
+      "title": "Industry Standards And Best Practices",
+      "description": "A reference resource for aligning API design and operation with widely recognized industry frameworks and specifications.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/industry-standards-and-best-practices"
+    },
+    "partner-integration-guidelines": {
+      "id": "partner-integration-guidelines",
+      "title": "Partner Integration Guidelines",
+      "description": "Integration checklists and communication patterns to manage technical and legal aspects of third-party API relationships.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/partner-integration-guidelines"
+    },
+    "role-communication-best-practices": {
+      "id": "role-communication-best-practices",
+      "title": "Role Communication Best Practices",
+      "description": "Tools to define and document who is responsible for what within API initiatives, ensuring handoffs and accountability are clear.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/role-communication-best-practices"
+    },
+    "scalable-infrastructure-best-practices": {
+      "id": "scalable-infrastructure-best-practices",
+      "title": "Scalable Infrastructure Best Practices",
+      "description": "Architectural guidance to ensure APIs are deployed on infrastructure that can elastically handle usage spikes and growth.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/scalable-infrastructure-best-practices"
+    },
+    "service-agreement-template": {
+      "id": "service-agreement-template",
+      "title": "Service Agreement Template",
+      "description": "A customizable agreement format that defines expectations, SLAs, responsibilities, and access terms for API consumption.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/service-agreement-template"
+    },
+    "stakeholder-engagement-best-practices": {
+      "id": "stakeholder-engagement-best-practices",
+      "title": "Stakeholder Engagement Best Practices",
+      "description": "Engagement tactics for aligning internal and external stakeholders around shared API goals, value, and governance.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/stakeholder-engagement-best-practices"
+    },
+    "test-automation-frameworks": {
+      "id": "test-automation-frameworks",
+      "title": "Test Automation Frameworks",
+      "description": "Recommended tools and patterns for automating API contract, regression, and integration testing across environments.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/test-automation-frameworks"
+    },
+    "vendor-management-best-practices": {
+      "id": "vendor-management-best-practices",
+      "title": "Vendor Management Best Practices",
+      "description": "Framework for evaluating and managing external API vendors and third-party integrations based on risk, performance, and compliance.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/vendor-management-best-practices"
+    },
+    "api-audit-checklist": {
+      "id": "api-audit-checklist",
+      "title": "API Audit Checklist",
+      "description": "A comprehensive checklist to verify API readiness before publishing, covering design, documentation, security, and policy compliance.",
+      "category": "checklist",
+      "canvas": null,
+      "slug": "resources/api-audit-checklist"
+    },
+    "api-business-model-canvas": {
+      "id": "api-business-model-canvas",
+      "title": "API Business Model Canvas",
+      "description": "Strategically assess API business viability by mapping value propositions, consumer segments, and key resources.",
+      "category": "canvas",
+      "canvas": "apiBusinessModelCanvas",
+      "slug": "resources/api-business-model-canvas"
+    },
+    "api-design-principles": {
+      "id": "api-design-principles",
+      "title": "API Design Principles",
+      "description": "A concise guide to API usability, discoverability, and consistency grounded in proven design philosophies and user needs.",
+      "category": "guideline",
+      "canvas": null,
+      "slug": "resources/api-design-principles"
+    },
+    "api-value-proposition-canvas": {
+      "id": "api-value-proposition-canvas",
+      "title": "API Value Proposition Canvas",
+      "description": "Align API features with user needs by mapping tasks, pains, and gains to API products.",
+      "category": "canvas",
+      "canvas": "apiValuePropositionCanvas",
+      "slug": "resources/api-value-proposition-canvas"
+    },
+    "business-impact-canvas": {
+      "id": "business-impact-canvas",
+      "title": "Business Impact Canvas",
+      "description": "Design a scalable and secure API platform architecture that meets business and technical requirements.",
+      "category": "canvas",
+      "canvas": "businessImpactCanvas",
+      "slug": "resources/business-impact-canvas"
+    },
+    "capacity-canvas": {
+      "id": "capacity-canvas",
+      "title": "Capacity Canvas",
+      "description": "Plan API capacity to meet current and future business demands, ensuring scalability and performance.",
+      "category": "canvas",
+      "canvas": "capacityCanvas",
+      "slug": "resources/capacity-canvas"
+    },
+    "customer-journey-canvas": {
+      "id": "customer-journey-canvas",
+      "title": "Customer Journey Canvas",
+      "description": "Map customer journeys to identify needs and pain points, enhancing API design and user experience.",
+      "category": "canvas",
+      "canvas": "customerJourneyCanvas",
+      "slug": "resources/customer-journey-canvas"
+    },
+    "event-canvas": {
+      "id": "event-canvas",
+      "title": "Event Canvas",
+      "description": "Design event-driven APIs by defining events, triggers, and processing logic.",
+      "category": "canvas",
+      "canvas": "eventCanvas",
+      "slug": "resources/event-canvas"
+    },
+    "graphql-canvas": {
+      "id": "graphql-canvas",
+      "title": "GraphQL Canvas",
+      "description": "Design GraphQL APIs by defining types, queries, mutations, and subscriptions.",
+      "category": "canvas",
+      "canvas": "graphqlCanvas",
+      "slug": "resources/graphql-canvas"
+    },
+    "interaction-canvas": {
+      "id": "interaction-canvas",
+      "title": "Interaction Canvas",
+      "description": "Define API interactions, workflows, and expected responses to ensure a consistent API consumer experience.",
+      "category": "canvas",
+      "canvas": "interactionCanvas",
+      "slug": "resources/interaction-canvas"
+    },
+    "location-canvas": {
+      "id": "location-canvas",
+      "title": "Location Canvas",
+      "description": "Map API provider and consumer locations to ensure compliance and performance across regions.",
+      "category": "canvas",
+      "canvas": "locationsCanvas",
+      "slug": "resources/location-canvas"
+    },
+    "rest-canvas": {
+      "id": "rest-canvas",
+      "title": "REST Canvas",
+      "description": "Design APIs using RESTful principles, defining resources, verbs, and example requests and responses.",
+      "category": "canvas",
+      "canvas": "restCanvas",
+      "slug": "resources/rest-canvas"
+    }
+  },
+  "stationLinesById": {
+    "monitoring-and-improving": [
+      "business-opportunities-line",
+      "publishing-and-adoption-line"
+    ],
+    "api-product-strategy": [
+      "business-opportunities-line",
+      "platform-architecture-line",
+      "operating-model-line"
+    ],
+    "user-experience": [
+      "business-opportunities-line"
+    ],
+    "market-insights": [
+      "business-opportunities-line"
+    ],
+    "business-goals": [
+      "business-opportunities-line"
+    ],
+    "competitive-analysis": [
+      "business-opportunities-line"
+    ],
+    "ecosystem-vision": [
+      "business-opportunities-line"
+    ],
+    "api-consumer-experience": [
+      "platform-architecture-line"
+    ],
+    "api-platform-architecture": [
+      "platform-architecture-line",
+      "api-design-line"
+    ],
+    "scalable-infrastructure": [
+      "platform-architecture-line"
+    ],
+    "legal-and-compliance": [
+      "platform-architecture-line"
+    ],
+    "security-and-privacy": [
+      "platform-architecture-line"
+    ],
+    "design-standards": [
+      "platform-architecture-line"
+    ],
+    "vendor-management": [
+      "platform-architecture-line"
+    ],
+    "api-design": [
+      "api-design-line"
+    ],
+    "api-delivery": [
+      "api-design-line",
+      "delivery-line"
+    ],
+    "api-audit": [
+      "api-design-line",
+      "publishing-and-adoption-line"
+    ],
+    "contract-design": [
+      "delivery-line"
+    ],
+    "development": [
+      "delivery-line"
+    ],
+    "ci-cd": [
+      "delivery-line"
+    ],
+    "test-automation": [
+      "delivery-line"
+    ],
+    "release-management": [
+      "delivery-line"
+    ],
+    "api-publishing": [
+      "publishing-and-adoption-line"
+    ],
+    "service-agreements": [
+      "publishing-and-adoption-line"
+    ],
+    "api-consumer-adoption": [
+      "publishing-and-adoption-line"
+    ],
+    "api-promotion": [
+      "publishing-and-adoption-line"
+    ],
+    "partner-integration": [
+      "publishing-and-adoption-line"
+    ],
+    "api-mindset": [
+      "operating-model-line"
+    ],
+    "roles-and-responsibilities": [
+      "operating-model-line"
+    ],
+    "upskilling": [
+      "operating-model-line"
+    ],
+    "operating-guidelines": [
+      "operating-model-line"
+    ],
+    "portfolio-management": [
+      "operating-model-line"
+    ],
+    "budget-and-resource-management": [
+      "operating-model-line"
+    ]
+  },
+  "lineMetaById": {
+    "business-opportunities-line": {
+      "id": "business-opportunities-line",
+      "title": "Business Opportunities Line",
+      "slug": "business-opportunities-line",
+      "color": "#26b309"
+    },
+    "platform-architecture-line": {
+      "id": "platform-architecture-line",
+      "title": "Platform Architecture Line",
+      "slug": "platform-architecture-line",
+      "color": "#933469"
+    },
+    "api-design-line": {
+      "id": "api-design-line",
+      "title": "API Design Line",
+      "slug": "api-design-line",
+      "color": "#FFC647"
+    },
+    "delivery-line": {
+      "id": "delivery-line",
+      "title": "Delivery Line",
+      "slug": "delivery-line",
+      "color": "#FFC647"
+    },
+    "publishing-and-adoption-line": {
+      "id": "publishing-and-adoption-line",
+      "title": "Publishing and Adoption Line",
+      "slug": "publishing-and-adoption-line",
+      "color": "#17C6E9"
+    },
+    "operating-model-line": {
+      "id": "operating-model-line",
+      "title": "Operating Model Line",
+      "slug": "operating-model-line",
+      "color": "#1a3987"
+    }
+  }
+}
