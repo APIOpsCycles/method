@@ -121,9 +121,12 @@ const criteriaOptions = Object.entries(criteriaLabelsById);
       (sum, intent) => sum + (journeyIntentMappings[intent]?.[stationId] || 0),
       0
     );
-    const readinessScore = simulatedState[stationId]?.status === 'ready' ? 100 : 0;
+    const requiredCount = simulatedState[stationId]?.requiredCriteriaIds?.length || 0;
+    const completedCount = simulatedState[stationId]?.completedCriteriaIds?.length || 0;
+    const completionRatio = requiredCount === 0 ? 1 : completedCount / requiredCount;
+    const readinessScore = Math.round(completionRatio * 100);
     const positionScore = Math.max(stationIdsInOrder.length - stationIndex, 0);
-    if (!selectedIntents.length) return positionScore;
+    if (!selectedIntents.length) return readinessScore + positionScore * 0.25;
     return intentScore * 1.5 + readinessScore + positionScore * 0.25;
   };
 
@@ -152,10 +155,9 @@ const criteriaOptions = Object.entries(criteriaLabelsById);
     const recommended = ranked.slice(0, 3).map((item) => item.stationId);
     const focusStationId = recommended[0];
     const nextStationId =
-      stationIdsInOrder
-        .slice(stationIdsInOrder.indexOf(focusStationId) + 1)
-        .find((stationId) => simulatedState[stationId]?.status === 'ready') ||
-      stationIdsInOrder.find((stationId) => simulatedState[stationId]?.status !== 'completed');
+      ranked.find(
+        (item) => item.stationId !== focusStationId && simulatedState[item.stationId]?.status !== 'completed'
+      )?.stationId || null;
 
     return { simulatedState, recommended, focusStationId, nextStationId };
   };
@@ -205,7 +207,9 @@ const criteriaOptions = Object.entries(criteriaLabelsById);
           .map((stationId) => {
             const station = stationMetaById[stationId];
             const stationLink = station ? `<a href="/${station.slug}/">${station.title}</a>` : stationId;
-            return `<li>${stationLink} (${simulatedState[stationId]?.status})</li>`;
+            const required = simulatedState[stationId]?.requiredCriteriaIds?.length || 0;
+            const completed = simulatedState[stationId]?.completedCriteriaIds?.length || 0;
+            return `<li>${stationLink} (${simulatedState[stationId]?.status}, ${completed}/${required} criteria met)</li>`;
           })
           .join('')}
       </ol>
