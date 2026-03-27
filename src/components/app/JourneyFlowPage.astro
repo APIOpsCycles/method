@@ -1,5 +1,4 @@
 ---
-import JourneyIntake from './JourneyIntake.astro';
 import journeyRuntime from '../../data/generated/journey-runtime.json';
 import {
   journeyIntentMappings,
@@ -22,27 +21,8 @@ const {
   lineMetaById,
 } = journeyRuntime;
 const selectedIntents = normalizeJourneyIntentTags(selectedIntentsFromProps);
-const criteriaOptions = Object.entries(criteriaLabelsById).sort((a, b) => a[1].localeCompare(b[1]));
+const criteriaOptions = Object.entries(criteriaLabelsById);
 ---
-
-<JourneyIntake
-  initiative="Select your API journey focus"
-  context={
-    selectedIntents.length
-      ? `Active journey intents: ${selectedIntents.join(', ')}. Recommendations are scored by intent weights, readiness, and station order.`
-      : 'No intent selected. Recommendations below follow default station order from generated method runtime data.'
-  }
-  goals={[
-    'Find where to start based on intent + readiness + position scoring',
-    'Complete entry criteria before moving station-by-station',
-    'Open required method artifacts directly from each step',
-  ]}
-  constraints={[
-    'Recommendations currently use generated default locale data',
-    'You can begin from any ready station and iterate in cycles',
-    'Use station output artifacts as completion evidence',
-  ]}
-/>
 
 <section class="journey-planner">
   <h2>Journey planner (quiz-style intake)</h2>
@@ -102,8 +82,6 @@ const criteriaOptions = Object.entries(criteriaLabelsById).sort((a, b) => a[1].l
 
   .journey-planner__criteria-grid {
     margin-top: 0.5rem;
-    max-height: 16rem;
-    overflow: auto;
     padding-right: 0.25rem;
   }
 
