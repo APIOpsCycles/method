@@ -586,6 +586,13 @@ async function generate() {
   for (const ln of linesData.lines.items) {
     lineMap[ln.id] = ln;
   }
+  const stationLinesById = {};
+  for (const line of linesData.lines.items) {
+    for (const stationId of line.stations || []) {
+      if (!stationLinesById[stationId]) stationLinesById[stationId] = [];
+      stationLinesById[stationId].push(line.id);
+    }
+  }
 
   const nextStationCriteria = {};
   const coreItems = stationsData['core-stations'].items;
@@ -635,6 +642,18 @@ async function generate() {
           category: resource.category,
           canvas: resource.canvas || null,
           slug: resource.slug,
+        },
+      ])
+    ),
+    stationLinesById,
+    lineMetaById: Object.fromEntries(
+      linesData.lines.items.map((line) => [
+        line.id,
+        {
+          id: line.id,
+          title: translate(line.title, baseLabels),
+          slug: line.slug,
+          color: line.color || '#000000',
         },
       ])
     ),

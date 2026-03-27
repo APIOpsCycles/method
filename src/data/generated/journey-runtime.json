@@ -2210,5 +2210,150 @@
       "canvas": "restCanvas",
       "slug": "resources/rest-canvas"
     }
+  },
+  "stationLinesById": {
+    "monitoring-and-improving": [
+      "business-opportunities-line",
+      "publishing-and-adoption-line"
+    ],
+    "api-product-strategy": [
+      "business-opportunities-line",
+      "platform-architecture-line",
+      "operating-model-line"
+    ],
+    "user-experience": [
+      "business-opportunities-line"
+    ],
+    "market-insights": [
+      "business-opportunities-line"
+    ],
+    "business-goals": [
+      "business-opportunities-line"
+    ],
+    "competitive-analysis": [
+      "business-opportunities-line"
+    ],
+    "ecosystem-vision": [
+      "business-opportunities-line"
+    ],
+    "api-consumer-experience": [
+      "platform-architecture-line"
+    ],
+    "api-platform-architecture": [
+      "platform-architecture-line",
+      "api-design-line"
+    ],
+    "scalable-infrastructure": [
+      "platform-architecture-line"
+    ],
+    "legal-and-compliance": [
+      "platform-architecture-line"
+    ],
+    "security-and-privacy": [
+      "platform-architecture-line"
+    ],
+    "design-standards": [
+      "platform-architecture-line"
+    ],
+    "vendor-management": [
+      "platform-architecture-line"
+    ],
+    "api-design": [
+      "api-design-line"
+    ],
+    "api-delivery": [
+      "api-design-line",
+      "delivery-line"
+    ],
+    "api-audit": [
+      "api-design-line",
+      "publishing-and-adoption-line"
+    ],
+    "contract-design": [
+      "delivery-line"
+    ],
+    "development": [
+      "delivery-line"
+    ],
+    "ci-cd": [
+      "delivery-line"
+    ],
+    "test-automation": [
+      "delivery-line"
+    ],
+    "release-management": [
+      "delivery-line"
+    ],
+    "api-publishing": [
+      "publishing-and-adoption-line"
+    ],
+    "service-agreements": [
+      "publishing-and-adoption-line"
+    ],
+    "api-consumer-adoption": [
+      "publishing-and-adoption-line"
+    ],
+    "api-promotion": [
+      "publishing-and-adoption-line"
+    ],
+    "partner-integration": [
+      "publishing-and-adoption-line"
+    ],
+    "api-mindset": [
+      "operating-model-line"
+    ],
+    "roles-and-responsibilities": [
+      "operating-model-line"
+    ],
+    "upskilling": [
+      "operating-model-line"
+    ],
+    "operating-guidelines": [
+      "operating-model-line"
+    ],
+    "portfolio-management": [
+      "operating-model-line"
+    ],
+    "budget-and-resource-management": [
+      "operating-model-line"
+    ]
+  },
+  "lineMetaById": {
+    "business-opportunities-line": {
+      "id": "business-opportunities-line",
+      "title": "Business Opportunities Line",
+      "slug": "business-opportunities-line",
+      "color": "#26b309"
+    },
+    "platform-architecture-line": {
+      "id": "platform-architecture-line",
+      "title": "Platform Architecture Line",
+      "slug": "platform-architecture-line",
+      "color": "#933469"
+    },
+    "api-design-line": {
+      "id": "api-design-line",
+      "title": "API Design Line",
+      "slug": "api-design-line",
+      "color": "#FFC647"
+    },
+    "delivery-line": {
+      "id": "delivery-line",
+      "title": "Delivery Line",
+      "slug": "delivery-line",
+      "color": "#FFC647"
+    },
+    "publishing-and-adoption-line": {
+      "id": "publishing-and-adoption-line",
+      "title": "Publishing and Adoption Line",
+      "slug": "publishing-and-adoption-line",
+      "color": "#17C6E9"
+    },
+    "operating-model-line": {
+      "id": "operating-model-line",
+      "title": "Operating Model Line",
+      "slug": "operating-model-line",
+      "color": "#1a3987"
+    }
   }
 }

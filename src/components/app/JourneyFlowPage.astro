@@ -1,13 +1,9 @@
 ---
 import JourneyIntake from './JourneyIntake.astro';
-import StationChecklist from './StationChecklist.astro';
-import ArtifactPanel from './ArtifactPanel.astro';
-import NextStationCard from './NextStationCard.astro';
 import journeyRuntime from '../../data/generated/journey-runtime.json';
 import {
   journeyIntentMappings,
   normalizeJourneyIntentTags,
-  rankStationsForJourneyIntent,
   type JourneyIntentTag,
 } from '../../data/journey-intents';
 
@@ -16,54 +12,17 @@ interface Props {
 }
 
 const { selectedIntents: selectedIntentsFromProps = [] } = Astro.props as Props;
-const { stationIdsInOrder, stationStateById, stationMetaById, criteriaLabelsById, resourcesById } = journeyRuntime;
-const selectedIntents = normalizeJourneyIntentTags(selectedIntentsFromProps);
-const criteriaOptions = Object.entries(criteriaLabelsById).sort((a, b) => a[1].localeCompare(b[1]));
-
-const rankedStations = rankStationsForJourneyIntent({
+const {
   stationIdsInOrder,
   stationStateById,
-  selectedIntents,
-});
-const recommendedStationIds = rankedStations.slice(0, 3).map((rankedStation) => rankedStation.stationId);
-const focusStationId = recommendedStationIds[0] || stationIdsInOrder[0];
-const focusStation = stationMetaById[focusStationId];
-const focusStationState = stationStateById[focusStationId] || {
-  requiredCriteriaIds: [],
-  missingCriteriaIds: [],
-  stepArtifactActions: [],
-};
-
-const criteria = (focusStationState.requiredCriteriaIds || []).map((criterionId) => ({
-  label: criteriaLabelsById[criterionId] || criterionId,
-  done: !(focusStationState.missingCriteriaIds || []).includes(criterionId),
-}));
-
-const artifacts = (focusStationState.stepArtifactActions || [])
-  .map((action) => {
-    const resource = resourcesById[action.resourceId];
-    if (!resource) return null;
-    return {
-      name: resource.title,
-      description: resource.description || `Required ${resource.category} artifact.`,
-      canvasUrl: resource.canvas
-        ? `https://canvascreator.apiopscycles.com/?canvas=${resource.canvas}`
-        : `/${resource.slug}/`,
-    };
-  })
-  .filter(Boolean);
-
-const previewCanvasId = artifacts.length
-  ? resourcesById[(focusStationState.stepArtifactActions || [])[0]?.resourceId]?.canvas || undefined
-  : undefined;
-
-const focusIndex = stationIdsInOrder.indexOf(focusStationId);
-const nextStationId =
-  stationIdsInOrder
-    .slice(focusIndex + 1)
-    .find((stationId) => ['ready', 'blocked'].includes(stationStateById[stationId]?.status || '')) ||
-  stationIdsInOrder.find((stationId) => stationStateById[stationId]?.status !== 'completed');
-const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
+  stationMetaById,
+  criteriaLabelsById,
+  resourcesById,
+  stationLinesById,
+  lineMetaById,
+} = journeyRuntime;
+const selectedIntents = normalizeJourneyIntentTags(selectedIntentsFromProps);
+const criteriaOptions = Object.entries(criteriaLabelsById).sort((a, b) => a[1].localeCompare(b[1]));
 ---
 
 <JourneyIntake
@@ -119,56 +78,6 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
   <div id="journey-planner-output"></div>
 </section>
 
-<h2>Step 2 — Recommended first station(s)</h2>
-<div class="journey-grid">
-  {recommendedStationIds.map((stationId, index) => (
-    <NextStationCard
-      step={index === 0 ? 'Recommended start' : `Candidate ${index + 1}`}
-      station={stationMetaById[stationId]?.title || stationId}
-      rationale={
-        selectedIntents.length
-          ? `Score breakdown — intent: ${rankedStations[index]?.intentScore || 0}, readiness: ${rankedStations[index]?.readinessScore || 0}, position: ${Math.round(rankedStations[index]?.positionScore || 0)}.`
-          : 'No intent selected, so this follows default journey order from generated station sequencing.'
-      }
-      linkLabel="Open station"
-      linkHref={`/${stationMetaById[stationId]?.slug || ''}/`}
-    />
-  ))}
-</div>
-
-<StationChecklist
-  stationName={focusStation?.title || focusStationId}
-  criteria={criteria.length ? criteria : [{ label: 'No entry criteria required for this station.', done: true }]}
-/>
-
-<ArtifactPanel
-  artifacts={
-    artifacts.length
-      ? artifacts
-      : [
-          {
-            name: 'No required artifacts detected',
-            description: 'This station currently has no artifact action requirements in generated runtime data.',
-            canvasUrl: '/resources/',
-          },
-        ]
-  }
-  previewCanvasId={previewCanvasId}
-/>
-
-<h2>Step 5 — Completion + next station recommendation</h2>
-{nextStation ? (
-  <NextStationCard
-    step="Next station"
-    station={nextStation.title}
-    rationale="This is the first eligible station after your focus station that is not yet completed in runtime status."
-    linkLabel="Continue to next station"
-    linkHref={`/${nextStation.slug}/`}
-  />
-) : (
-  <p>All stations are currently marked as completed in the generated runtime state.</p>
-)}
-
 <style>
   .journey-planner {
     border: 1px solid var(--sl-color-hairline);
@@ -211,13 +120,6 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
   #journey-planner-output ul {
     margin-top: 0.4rem;
   }
-
-  .journey-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
 </style>
 
 <script
@@ -228,6 +130,8 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
     stationMetaById,
     criteriaLabelsById,
     resourcesById,
+    stationLinesById,
+    lineMetaById,
     journeyIntentMappings,
   }}
 >
@@ -278,6 +182,18 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
     return { simulatedState, recommended, focusStationId, nextStationId };
   };
 
+  const lineLinksMarkup = (stationId) => {
+    const lineIds = stationLinesById[stationId] || [];
+    if (!lineIds.length) return '<li>No connected metro lines found.</li>';
+    return lineIds
+      .map((lineId) => {
+        const line = lineMetaById[lineId];
+        if (!line) return '';
+        return `<li><a href="/lines/${line.slug}/" style="text-decoration-color:${line.color};text-decoration-thickness:3px;">${line.title}</a></li>`;
+      })
+      .join('');
+  };
+
   const renderJourney = ({ simulatedState, recommended, focusStationId, nextStationId }, selectedIntents) => {
     const focusStation = stationMetaById[focusStationId];
     const focusState = simulatedState[focusStationId];
@@ -299,13 +215,20 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
       })
       .join('');
 
+    const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
+    const nextStationLink = nextStation ? `<a href="/${nextStation.slug}/">${nextStation.title}</a>` : 'No next station found.';
+
     output.innerHTML = `
       <h3>Generated journey</h3>
       <p><strong>Intent tags:</strong> ${selectedIntents.length ? selectedIntents.join(', ') : 'none (default order fallback)'}</p>
       <h4>Recommended first station(s)</h4>
       <ol>
         ${recommended
-          .map((stationId) => `<li>${stationMetaById[stationId]?.title || stationId} (${simulatedState[stationId]?.status})</li>`)
+          .map((stationId) => {
+            const station = stationMetaById[stationId];
+            const stationLink = station ? `<a href="/${station.slug}/">${station.title}</a>` : stationId;
+            return `<li>${stationLink} (${simulatedState[stationId]?.status})</li>`;
+          })
           .join('')}
       </ol>
       <h4>${focusStation?.title || focusStationId} entry checklist</h4>
@@ -313,7 +236,9 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
       <h4>Required artifacts</h4>
       <ul>${artifacts || '<li>No required artifacts detected for this station.</li>'}</ul>
       <h4>Next station recommendation</h4>
-      <p>${nextStationId ? stationMetaById[nextStationId]?.title || nextStationId : 'No next station found.'}</p>
+      <p>${nextStationLink}</p>
+      <h4>Metro line pages to follow</h4>
+      <ul>${lineLinksMarkup(nextStationId || focusStationId)}</ul>
     `;
   };
 
