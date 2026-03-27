@@ -152,12 +152,24 @@ const criteriaOptions = Object.entries(criteriaLabelsById);
       }))
       .sort((a, b) => b.score - a.score);
 
-    const recommended = ranked.slice(0, 3).map((item) => item.stationId);
+    const readyInOrder = stationIdsInOrder.filter((stationId) => simulatedState[stationId]?.status === 'ready');
+    let recommended = ranked.slice(0, 3).map((item) => item.stationId);
+    if (!selectedIntents.length && readyInOrder.length) {
+      const frontierStationId = readyInOrder[readyInOrder.length - 1];
+      const frontierIndex = stationIdsInOrder.indexOf(frontierStationId);
+      const frontierCandidates = [
+        stationIdsInOrder[frontierIndex],
+        stationIdsInOrder[frontierIndex + 1],
+        stationIdsInOrder[frontierIndex + 2],
+      ].filter(Boolean);
+      recommended = Array.from(new Set(frontierCandidates)).slice(0, 3);
+    }
+
     const focusStationId = recommended[0];
     const nextStationId =
-      ranked.find(
-        (item) => item.stationId !== focusStationId && simulatedState[item.stationId]?.status !== 'completed'
-      )?.stationId || null;
+      stationIdsInOrder
+        .slice(stationIdsInOrder.indexOf(focusStationId) + 1)
+        .find((stationId) => simulatedState[stationId]?.status !== 'completed') || null;
 
     return { simulatedState, recommended, focusStationId, nextStationId };
   };
