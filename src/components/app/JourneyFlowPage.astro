@@ -5,6 +5,7 @@ import ArtifactPanel from './ArtifactPanel.astro';
 import NextStationCard from './NextStationCard.astro';
 import journeyRuntime from '../../data/generated/journey-runtime.json';
 import {
+  journeyIntentMappings,
   normalizeJourneyIntentTags,
   rankStationsForJourneyIntent,
   type JourneyIntentTag,
@@ -17,6 +18,7 @@ interface Props {
 const { selectedIntents: selectedIntentsFromProps = [] } = Astro.props as Props;
 const { stationIdsInOrder, stationStateById, stationMetaById, criteriaLabelsById, resourcesById } = journeyRuntime;
 const selectedIntents = normalizeJourneyIntentTags(selectedIntentsFromProps);
+const criteriaOptions = Object.entries(criteriaLabelsById).sort((a, b) => a[1].localeCompare(b[1]));
 
 const rankedStations = rankStationsForJourneyIntent({
   stationIdsInOrder,
@@ -83,6 +85,40 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
   ]}
 />
 
+<section class="journey-planner">
+  <h2>Journey planner (quiz-style intake)</h2>
+  <p>Select criteria your API initiative already meets, then generate a guided journey from pre-built station data.</p>
+
+  <form id="journey-planner-form">
+    <fieldset>
+      <legend>Optional intent tags</legend>
+      <div class="journey-planner__intent-grid">
+        <label><input type="checkbox" name="intent" value="new-api" /> New API</label>
+        <label><input type="checkbox" name="intent" value="major-redesign" /> Major redesign</label>
+        <label><input type="checkbox" name="intent" value="governance" /> Governance</label>
+        <label><input type="checkbox" name="intent" value="platform-scale" /> Platform scale</label>
+      </div>
+    </fieldset>
+
+    <details>
+      <summary>Entry criteria your initiative already meets</summary>
+      <div class="journey-planner__criteria-grid">
+        {
+          criteriaOptions.map(([criterionId, criterionLabel]) => (
+            <label>
+              <input type="checkbox" name="criterion" value={criterionId} /> {criterionLabel}
+            </label>
+          ))
+        }
+      </div>
+    </details>
+
+    <button type="submit">Generate guided journey</button>
+  </form>
+
+  <div id="journey-planner-output"></div>
+</section>
+
 <h2>Step 2 — Recommended first station(s)</h2>
 <div class="journey-grid">
   {recommendedStationIds.map((stationId, index) => (
@@ -134,6 +170,48 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
 )}
 
 <style>
+  .journey-planner {
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: var(--sl-color-bg-nav);
+  }
+
+  .journey-planner fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0 0 0.75rem;
+  }
+
+  .journey-planner__intent-grid,
+  .journey-planner__criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.35rem 0.8rem;
+  }
+
+  .journey-planner__criteria-grid {
+    margin-top: 0.5rem;
+    max-height: 16rem;
+    overflow: auto;
+    padding-right: 0.25rem;
+  }
+
+  .journey-planner button {
+    margin-top: 0.8rem;
+  }
+
+  #journey-planner-output {
+    margin-top: 1rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    padding-top: 0.8rem;
+  }
+
+  #journey-planner-output ul {
+    margin-top: 0.4rem;
+  }
+
   .journey-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -141,3 +219,110 @@ const nextStation = nextStationId ? stationMetaById[nextStationId] : undefined;
     margin-bottom: 1rem;
   }
 </style>
+
+<script
+  type="module"
+  define:vars={{
+    stationIdsInOrder,
+    stationStateById,
+    stationMetaById,
+    criteriaLabelsById,
+    resourcesById,
+    journeyIntentMappings,
+  }}
+>
+  const form = document.getElementById('journey-planner-form');
+  const output = document.getElementById('journey-planner-output');
+
+  const scoreStation = (stationId, stationIndex, simulatedState, selectedIntents) => {
+    const intentScore = selectedIntents.reduce(
+      (sum, intent) => sum + (journeyIntentMappings[intent]?.[stationId] || 0),
+      0
+    );
+    const readinessScore = simulatedState[stationId]?.status === 'ready' ? 100 : 0;
+    const positionScore = Math.max(stationIdsInOrder.length - stationIndex, 0);
+    if (!selectedIntents.length) return positionScore;
+    return intentScore * 1.5 + readinessScore + positionScore * 0.25;
+  };
+
+  const computeJourney = (selectedCriteriaIds, selectedIntents) => {
+    const selectedCriteria = new Set(selectedCriteriaIds);
+    const simulatedState = {};
+
+    stationIdsInOrder.forEach((stationId) => {
+      const requiredCriteriaIds = stationStateById[stationId]?.requiredCriteriaIds || [];
+      const missingCriteriaIds = requiredCriteriaIds.filter((criterionId) => !selectedCriteria.has(criterionId));
+      simulatedState[stationId] = {
+        ...stationStateById[stationId],
+        missingCriteriaIds,
+        completedCriteriaIds: requiredCriteriaIds.filter((criterionId) => selectedCriteria.has(criterionId)),
+        status: missingCriteriaIds.length === 0 ? 'ready' : 'blocked',
+      };
+    });
+
+    const ranked = stationIdsInOrder
+      .map((stationId, index) => ({
+        stationId,
+        score: scoreStation(stationId, index, simulatedState, selectedIntents),
+      }))
+      .sort((a, b) => b.score - a.score);
+
+    const recommended = ranked.slice(0, 3).map((item) => item.stationId);
+    const focusStationId = recommended[0];
+    const nextStationId =
+      stationIdsInOrder
+        .slice(stationIdsInOrder.indexOf(focusStationId) + 1)
+        .find((stationId) => simulatedState[stationId]?.status === 'ready') ||
+      stationIdsInOrder.find((stationId) => simulatedState[stationId]?.status !== 'completed');
+
+    return { simulatedState, recommended, focusStationId, nextStationId };
+  };
+
+  const renderJourney = ({ simulatedState, recommended, focusStationId, nextStationId }, selectedIntents) => {
+    const focusStation = stationMetaById[focusStationId];
+    const focusState = simulatedState[focusStationId];
+    const checklist = (focusState?.requiredCriteriaIds || [])
+      .map((criterionId) => {
+        const done = !(focusState?.missingCriteriaIds || []).includes(criterionId);
+        return `<li>${done ? '✅' : '⬜️'} ${criteriaLabelsById[criterionId] || criterionId}</li>`;
+      })
+      .join('');
+
+    const artifacts = (focusState?.stepArtifactActions || [])
+      .map((action) => resourcesById[action.resourceId])
+      .filter(Boolean)
+      .map((resource) => {
+        const href = resource.canvas
+          ? `https://canvascreator.apiopscycles.com/?canvas=${resource.canvas}`
+          : `/${resource.slug}/`;
+        return `<li><a href="${href}" target="_blank" rel="noreferrer">${resource.title}</a> (${resource.category})</li>`;
+      })
+      .join('');
+
+    output.innerHTML = `
+      <h3>Generated journey</h3>
+      <p><strong>Intent tags:</strong> ${selectedIntents.length ? selectedIntents.join(', ') : 'none (default order fallback)'}</p>
+      <h4>Recommended first station(s)</h4>
+      <ol>
+        ${recommended
+          .map((stationId) => `<li>${stationMetaById[stationId]?.title || stationId} (${simulatedState[stationId]?.status})</li>`)
+          .join('')}
+      </ol>
+      <h4>${focusStation?.title || focusStationId} entry checklist</h4>
+      <ul>${checklist || '<li>No required entry criteria.</li>'}</ul>
+      <h4>Required artifacts</h4>
+      <ul>${artifacts || '<li>No required artifacts detected for this station.</li>'}</ul>
+      <h4>Next station recommendation</h4>
+      <p>${nextStationId ? stationMetaById[nextStationId]?.title || nextStationId : 'No next station found.'}</p>
+    `;
+  };
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const selectedCriteriaIds = formData.getAll('criterion').map(String);
+    const selectedIntents = formData.getAll('intent').map(String);
+    const result = computeJourney(selectedCriteriaIds, selectedIntents);
+    renderJourney(result, selectedIntents);
+  });
+</script>
