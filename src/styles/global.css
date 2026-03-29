@@ -616,7 +616,7 @@
     padding: var(--border-radius);
     border: 1px solid rgba(141, 164, 211, 0.28);
     border-radius: var(--border-radius);
-    background: transparent;
+    background: var(--sl-color-bg-nav);
     box-shadow: 0 18px 40px rgba(29, 48, 94, 0.08);
   }
 
@@ -665,6 +665,11 @@
     display: grid;
     gap: 1rem;
     align-items: start;
+    padding: var(--border-radius);
+    border: 1px solid rgba(141, 164, 211, 0.28);
+    border-radius: var(--border-radius);
+    background: var(--sl-color-bg-nav);
+    box-shadow: 0 18px 40px rgba(29, 48, 94, 0.08);
   }
 
   @media (min-width: 72rem) {
@@ -705,11 +710,9 @@
     }
   }
 
-  .station-step-card,
   .station-step-rail {
     border: 1px solid rgba(141, 164, 211, 0.24);
     border-radius: 1.5rem;
-    background: rgba(255, 255, 255, 0.92);
     box-shadow: 0 18px 40px rgba(29, 48, 94, 0.08);
   }
 
