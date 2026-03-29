@@ -1,35 +1,80 @@
 ---
-
-title: Bem-vindo ao método {aberto} APIOps Cycles para APIs.
+title: Projete e entregue APIs melhores.
 draft: false
-description: Aprenda o método iterativo APIOps Cycles para criar APIs.
+description: Um metodo APIOps pratico para melhorar design, entrega, adocao e prontidao para IA em APIs.
 template: splash
 hero:
-  tagline: Descubra como o método aberto APIOps Cycles ajuda você a planejar, criar e desenvolver APIs.
+  tagline: Metodo estruturado - canvas - execucao assistida por IA
   image:
     alt: APIOps Cycles logo
-    dark: ../../../assets/apiops-cycles-logo-styled.svg
-    light: ../../../assets/apiops-cycles-logo-styled.svg
+    dark: ../../../assets/apiops-cycles-logo2025-white.svg
+    light: ../../../assets/apiops-cycles-logo2025-blue.svg
   actions:
-    - text: Começando
-      link: /pt/the-method/
+    - text: Explorar APIOps Cycles
+      link: /pt/lines/
       icon: right-arrow
-    - text: English
-      link: /the-method/
+    - text: Metodo
+      link: /pt/the-method/
       variant: secondary
-    - text: Deutsch
-      link: /de/the-method/
+    - text: Aplicar
+      link: /pt/resources/
       variant: secondary
-    - text: Français
-      link: /fr/the-method/
-      variant: secondary
-    - text: Suomi
-      link: /fi/the-method/
-      variant: secondary
-
 ---
 
+import HomeLandingSections from '../../../components/HomeLandingSections.astro';
 import PartnerGrid from '../../../components/PartnerGrid.astro';
 import partners from '../../../data/partners.json';
 
-<PartnerGrid partners={partners} />
+<HomeLandingSections
+  sectionEyebrow="Escolha como comecar"
+  sectionTitle="Tres caminhos claros para entrar"
+  sectionIntro="Comece pela direcao que faz mais sentido para sua equipe hoje e aprofunde a metodo conforme o trabalho evolui."
+  pathways={[
+    {
+      title: 'Entender o metodo',
+      description: 'Explore linhas, estacoes, canvas e orientacoes de ciclo de vida para entender rapidamente como tudo se conecta.',
+      href: '/pt/the-method/',
+      cta: 'Explorar',
+    },
+    {
+      title: 'Partir de um problema',
+      description: 'Use desafios comuns de API para encontrar a estacao, o fluxo de trabalho ou o canvas certo para o momento.',
+      href: '/pt/lines/',
+      cta: 'Comecar',
+    },
+    {
+      title: 'Aplicar agora',
+      description: 'Inicie um canvas, use execucao assistida por IA ou comece por um recurso que a equipe possa usar imediatamente.',
+      href: '/pt/resources/',
+      cta: 'Aplicar',
+    },
+  ]}
+  proofEyebrow="O que voce recebe"
+  proofTitle="Um metodo que transforma trabalho com APIs em progresso repetivel"
+  proofIntro="APIOps Cycles conecta um vocabulario compartilhado, canvas praticos e caminhos de execucao para unir estrategia, design, governanca e entrega."
+  proofPoints={[
+    {
+      title: 'Navegacao estruturada',
+      description: 'Linhas e estacoes ajudam a equipe a encontrar o foco certo sem se perder em teoria.',
+    },
+    {
+      title: 'Canvas praticos',
+      description: 'Ferramentas reutilizaveis transformam planejamento em workshops, decisoes e resultados documentados.',
+    },
+    {
+      title: 'Suporte a execucao',
+      description: 'Use o metodo com IA e em projetos reais para transformar insight em acao concreta.',
+    },
+  ]}
+  finalCtaTitle="Aplique APIOps Cycles do jeito que faz sentido para sua equipe"
+  finalCtaText="Use o metodo aberto para alinhar estrategia de APIs, consistencia de plataforma, governanca e entrega entre idiomas, equipes e niveis de maturidade."
+  finalPrimary={{ label: 'Aplicar APIOps Cycles', href: '/pt/resources/' }}
+  finalSecondary={{ label: 'Explorar o metodo', href: '/pt/the-method/' }}
+/>
+
+<div class="home-partners-block">
+  <p class="landing-eyebrow">Ecossistema</p>
+  <h2 class="home-section-title">Parceiros oficiais do metodo</h2>
+  <p class="home-section-intro">Organizacoes que usam, moldam e expandem o APIOps Cycles em trabalho real de entrega.</p>
+  <PartnerGrid partners={partners} />
+</div>

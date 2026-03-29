@@ -10,7 +10,7 @@ const { title, href, logo, description } = Astro.props as Props;
 ---
 
 <a href={href} class="partnercard">
-  <img src={logo} alt={title} loading="lazy" />
+  <img src={logo} alt={title} class="partner-logo" loading="lazy" />
   <p>{description}</p>
 </a>
 
@@ -22,22 +22,24 @@ const { title, href, logo, description } = Astro.props as Props;
     text-align: center;
     gap: 0.7rem;
     text-decoration: none;
-    background: #fff;
-    border: 1px solid #e5e1ef;
-    border-radius: 0.45rem;
-    padding: 1.25rem 1rem;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 248, 255, 0.94)),
+      rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(141, 164, 211, 0.24);
+    border-radius: 1.35rem;
+    padding: 1.4rem 1.1rem;
     min-height: 13rem;
-    box-shadow: 0 2px 12px rgba(32, 23, 61, 0.06);
-    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+    box-shadow: 0 18px 40px rgba(29, 48, 94, 0.08);
+    transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
   }
 
   .partnercard:hover {
     transform: translateY(-2px);
-    border-color: #cec2ea;
-    box-shadow: 0 8px 22px rgba(32, 23, 61, 0.1);
+    border-color: rgba(96, 114, 203, 0.32);
+    box-shadow: 0 22px 44px rgba(29, 48, 94, 0.12);
   }
 
-  .partnercard img {
+  .partnercard .partner-logo {
     width: 11rem;
     height: 3.25rem;
     object-fit: contain;
@@ -46,8 +48,20 @@ const { title, href, logo, description } = Astro.props as Props;
 
   .partnercard p {
     margin: 0;
-    color: #4f4763;
+    color: #5a6882;
     font-size: 0.98rem;
     line-height: 1.45;
+  }
+
+  :global([data-theme='dark']) .partnercard {
+    background:
+      linear-gradient(180deg, rgba(16, 24, 42, 0.96), rgba(17, 30, 54, 0.94)),
+      rgba(16, 24, 42, 0.94);
+    border-color: rgba(125, 146, 194, 0.24);
+    box-shadow: none;
+  }
+
+  :global([data-theme='dark']) .partnercard p {
+    color: #b7c2da;
   }
 </style>

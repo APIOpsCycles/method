@@ -1,29 +1,80 @@
 ---
-title: Open method for designing and evolving APIs
+title: Design and deliver better APIs.
 draft: false
-description: Learn the iterative APIOps Cycles method for building APIs.
+description: A practical APIOps method for improving API design, delivery, adoption, and AI readiness.
 template: splash
 hero:
-  tagline: Lean and service-design inspired
+  tagline: Structured method - canvases - AI-assisted execution
   image:
     alt: APIOps Cycles logo
-    dark: ../../assets/apiops-cycles-logo-styled.svg
-    light: ../../assets/apiops-cycles-logo-styled.svg
+    dark: ../../assets/apiops-cycles-logo2025-white.svg
+    light: ../../assets/apiops-cycles-logo2025-blue.svg
   actions:
-    - text: Get started
-      link: /the-method/
+    - text: Explore APIOps Cycles
+      link: /lines/
       icon: right-arrow
+    - text: Method
+      link: /the-method/
+      variant: secondary
+    - text: Apply
+      link: /resources/
+      variant: secondary
 ---
 
 import PartnerGrid from '../../components/PartnerGrid.astro';
-import HomeHighlights from '../../components/HomeHighlights.astro';
-import HomeSecondaryCta from '../../components/HomeSecondaryCta.astro';
+import HomeLandingSections from '../../components/HomeLandingSections.astro';
 import partners from '../../data/partners.json';
 
-<h2 class="home-section-title">Official method partners</h2>
+<HomeLandingSections
+  sectionEyebrow="Choose how to begin"
+  sectionTitle="Three clear ways in"
+  sectionIntro="Start from the direction that fits your team today, then move deeper into the method as your API work matures."
+  pathways={[
+    {
+      title: 'Understand the method',
+      description: 'Explore metro lines, stations, canvases, and lifecycle guidance to see how the method fits together.',
+      href: '/the-method/',
+      cta: 'Explore',
+    },
+    {
+      title: 'Start from a problem',
+      description: 'Use common API challenges to find the right station, workflow, or canvas for the work in front of you.',
+      href: '/lines/',
+      cta: 'Start',
+    },
+    {
+      title: 'Apply it now',
+      description: 'Run a canvas, use AI-assisted execution, or begin with a concrete resource your team can use immediately.',
+      href: '/resources/',
+      cta: 'Apply',
+    },
+  ]}
+  proofEyebrow="What you get"
+  proofTitle="A method that turns API work into repeatable progress"
+  proofIntro="APIOps Cycles combines a shared vocabulary, practical canvases, and execution paths so strategy, design, governance, and delivery can move together."
+  proofPoints={[
+    {
+      title: 'Structured navigation',
+      description: 'Metro lines and stations help teams find the right focus without getting lost in theory.',
+    },
+    {
+      title: 'Practical canvases',
+      description: 'Reusable tools turn abstract planning into workshops, decisions, and documented outcomes.',
+    },
+    {
+      title: 'Execution support',
+      description: 'Use the method with AI and real project work so insight turns into action instead of shelfware.',
+    },
+  ]}
+  finalCtaTitle="Apply APIOps Cycles in a way that fits your team"
+  finalCtaText="Use the open method to align API strategy, platform consistency, governance, and delivery across languages, teams, and maturity levels."
+  finalPrimary={{ label: 'Apply APIOps Cycles', href: '/resources/' }}
+  finalSecondary={{ label: 'Explore the method', href: '/the-method/' }}
+/>
 
-<PartnerGrid partners={partners.filter((partner) => partner.title !== 'You?')} />
-
-<HomeHighlights />
-
-<HomeSecondaryCta />
+<div class="home-partners-block">
+  <p class="landing-eyebrow">Ecosystem</p>
+  <h2 class="home-section-title">Official method partners</h2>
+  <p class="home-section-intro">Organizations using, shaping, and extending the APIOps Cycles method in real delivery work.</p>
+  <PartnerGrid partners={partners.filter((partner) => partner.title !== 'You?')} />
+</div>

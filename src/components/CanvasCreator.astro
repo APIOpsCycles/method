@@ -1,13 +1,12 @@
 ---
+import CanvasCreatorApp from './CanvasCreatorApp.astro';
+
 interface Props {
   canvasId: string;
+  locale?: string;
 }
 
-const { canvasId } = Astro.props as Props;
+const { canvasId, locale = 'en' } = Astro.props as Props;
 ---
 
-<div id={canvasId}></div>
-<script define:vars={{ canvasId }} type="module" client:load>
-  import canvascreator from 'canvascreator';
-  canvascreator.initialize({ canvasId });
-</script>
+<CanvasCreatorApp canvasId={canvasId} locale={locale} />

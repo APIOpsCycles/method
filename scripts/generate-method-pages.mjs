@@ -25,6 +25,72 @@ const baseLabels = {
   entry_criteria: 'Entry criteria',
   exit_criteria: 'Exit criteria',
   related_metrolines: 'Related metrolines',
+  see_example: 'See example',
+  download: 'Download',
+  use_with_ai: 'Use with AI',
+  step: 'Step',
+  of: 'of',
+  previous_step: 'Previous step',
+  continue_to: 'Continue to',
+  start: 'Start',
+  open: 'Open',
+  category_canvas: 'Canvas',
+  category_guideline: 'Guideline',
+};
+
+const customLocaleLabels = {
+  fi: {
+    see_example: 'Katso esimerkki',
+    download: 'Lataa',
+    use_with_ai: 'Käytä tekoälyn kanssa',
+    step: 'Vaihe',
+    of: '/',
+    previous_step: 'Edellinen vaihe',
+    continue_to: 'Jatka:',
+    start: 'Aloita',
+    open: 'Avaa',
+    category_canvas: 'Canvas',
+    category_guideline: 'Ohjeistus',
+  },
+  fr: {
+    see_example: "Voir l'exemple",
+    download: 'Télécharger',
+    use_with_ai: "Utiliser avec l'IA",
+    step: 'Étape',
+    of: 'sur',
+    previous_step: 'Étape précédente',
+    continue_to: 'Continuer vers',
+    start: 'Commencer',
+    open: 'Ouvrir',
+    category_canvas: 'Canvas',
+    category_guideline: 'Guide',
+  },
+  de: {
+    see_example: 'Beispiel ansehen',
+    download: 'Download',
+    use_with_ai: 'Mit KI nutzen',
+    step: 'Schritt',
+    of: 'von',
+    previous_step: 'Vorheriger Schritt',
+    continue_to: 'Weiter zu',
+    start: 'Start',
+    open: 'Öffnen',
+    category_canvas: 'Canvas',
+    category_guideline: 'Leitfaden',
+  },
+  pt: {
+    see_example: 'Ver exemplo',
+    download: 'Baixar',
+    use_with_ai: 'Usar com IA',
+    step: 'Etapa',
+    of: 'de',
+    previous_step: 'Etapa anterior',
+    continue_to: 'Continuar para',
+    start: 'Iniciar',
+    open: 'Abrir',
+    category_canvas: 'Canvas',
+    category_guideline: 'Guia',
+  },
 };
 
 const DEFAULT_NEW_API_JOURNEY_ORDER = [
@@ -267,6 +333,89 @@ function t(key, localeLabels) {
   return (localeLabels && localeLabels[key]) || baseLabels[key] || key;
 }
 
+function buildStationEyebrow(data, labels = baseLabels) {
+  if (!Array.isArray(data.outcomes) || data.outcomes.length === 0) return undefined;
+  const translated = expandTranslations(data.outcomes, labels)
+    .map((item) => String(item).trim())
+    .filter(Boolean);
+
+  return translated.length ? translated.join(' · ') : undefined;
+}
+
+function normalizeForComparison(value = '') {
+  return String(value)
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+function buildResourceCategoryLabel(resource, labels = baseLabels) {
+  if (!resource?.category) return undefined;
+  const translated = translate(`category_${resource.category}`, labels);
+  if (translated !== `category_${resource.category}`) return translated;
+  return resource.category.charAt(0).toUpperCase() + resource.category.slice(1);
+}
+
+function buildCanvasDownloadPath(canvasId, locale = '') {
+  const baseDir = locale ? `/assets/resource/${locale}` : '/assets/resource';
+  return `${baseDir}/Canvas_${canvasId}.json`;
+}
+
+function buildCanvasDownloads(canvasId, locale = '') {
+  const baseDir = locale ? `/assets/resource/${locale}` : '/assets/resource';
+  return [
+    { href: `${baseDir}/Canvas_${canvasId}.png`, label: 'PNG' },
+    { href: `${baseDir}/Canvas_${canvasId}.svg`, label: 'SVG' },
+    { href: `${baseDir}/Canvas_${canvasId}.json`, label: 'JSON' },
+  ];
+}
+
+function buildStationStepItems(data, resources, labels = baseLabels, locale = '') {
+  const how = data.how_it_works || data['how-it-works'];
+  if (!Array.isArray(how) || how.length === 0) return [];
+
+  const effectiveLocale = locale || defaultLocale;
+
+  return how.map((step, index) => {
+    const methodText = String(translateItem(step.step, index, labels) || '').trim();
+    const resource = step.resource ? resources[step.resource] : undefined;
+    const resourceTitle = resource ? String(translate(resource.title, labels) || '').trim() : '';
+    const resourceDescription = resource
+      ? String(translate(resource.description || '', labels) || '').trim()
+      : '';
+    const useResourceContent = Boolean(resourceTitle || resourceDescription);
+    const title = useResourceContent ? resourceTitle || methodText : methodText;
+    const description = useResourceContent ? resourceDescription || methodText : methodText;
+    const methodNote =
+      useResourceContent &&
+      methodText &&
+      normalizeForComparison(methodText) !== normalizeForComparison(description)
+        ? methodText
+        : undefined;
+
+    const resourceHref = resource ? `/${locale ? `${locale}/` : ''}${resource.slug}/` : undefined;
+    const isCanvas = Boolean(resource?.category === 'canvas' && resource?.canvas);
+
+    return {
+      title,
+      description,
+      methodNote,
+      resourceTypeLabel: buildResourceCategoryLabel(resource, labels),
+      resourceIcon: resource?.icon,
+      primaryAction: resource
+        ? {
+            href: isCanvas
+              ? `/canvas/?locale=${encodeURIComponent(effectiveLocale)}&canvas=${encodeURIComponent(resource.canvas)}`
+              : resourceHref,
+            label: `${t(isCanvas ? 'start' : 'open', labels)} ${title}`.trim(),
+          }
+        : undefined,
+      exampleAction: resourceHref ? { href: resourceHref, label: t('see_example', labels) } : undefined,
+      downloads: isCanvas && resource?.canvas ? buildCanvasDownloads(resource.canvas, locale) : undefined,
+    };
+  });
+}
+
 function frontmatter(obj) {
   return `---\n${dump(obj)}---\n`;
 }
@@ -286,18 +435,22 @@ function stationBody(
   exitCriteria = [],
   criteriaMap = {},
   lines = [],
-  lineMap = {}
+  lineMap = {},
+  stationTitle = ''
 ) {
-  let out = "import { Steps, LinkCard } from '@astrojs/starlight/components';\n\n";
-  if (data.description) out += `${translate(data.description, labels)}\n\n`;
-  if (Array.isArray(data.outcomes) && data.outcomes.length) {
-    out += `## ${t('outcomes', labels)}\n\n`;
-    const items = expandTranslations(data.outcomes, labels).map((i) => `- ${i}`);
-    out += items.join('\n');
-    out += '\n\n';
+  const componentPrefix = locale ? '../../../../components' : '../../../components';
+  let out = `import MaterialIcon from '${componentPrefix}/MaterialIcon.astro';\n`;
+  out += `import StationStepWorkspace from '${componentPrefix}/StationStepWorkspace.astro';\n\n`;
+  const hasLines = Array.isArray(lines) && lines.length;
+
+  if (data.description || hasLines) {
+    out += '<div class="station-summary">\n';
+    out += '<div class="station-summary-copy">\n\n';
+    if (data.description) out += `${translate(data.description, labels)}\n\n`;
+    out += '</div>\n';
   }
-  if (Array.isArray(lines) && lines.length) {
-    out += `## ${t('related_metrolines', labels)}\n\n`;
+  if (hasLines) {
+    out += `<aside class="station-related-panel">\n<h2>${t('related_metrolines', labels)}</h2>\n\n`;
     out += '<ul class="related-metrolines-list">\n';
     lines.forEach((id) => {
       const line = lineMap[id];
@@ -305,52 +458,66 @@ function stationBody(
       const prefix = locale ? `/${locale}` : '';
       const title = translate(line.title, labels);
       const color = line.color || '#000';
-      out += `<li style="--line-color: ${color}"><a href="${prefix}/lines/${line.slug}/" style="text-decoration-color:${color};text-decoration-thickness:4px">${title}</a></li>\n`;
+      out += `<li style="--line-color: ${color}"><a href="${prefix}/lines/${line.slug}/"><MaterialIcon name="train-outline" class="related-metrolines-icon" size="1.05em" /><span>${title}</span></a></li>\n`;
     });
-    out += '</ul>\n\n';
+    out += '</ul>\n</aside>\n';
   }
-  if (data.why_it_matters) out += `## ${t('why_it_matters', labels)}\n\n${translate(data.why_it_matters, labels)}\n\n`;
-  if (Array.isArray(entryCriteria) && entryCriteria.length) {
-    out += `:::note[${t('entry_criteria', labels)}]{icon="right-arrow"}\n\n`;
-    const items = entryCriteria.map((id) => {
-      const tr = translate('criterion.' + id, labels);
-      const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
-      return `- ${text}`;
-    });
-    out += items.join('\n');
-    out += '\n:::\n\n';
+  if (data.description || hasLines) {
+    out += '</div>\n\n';
   }
-  if (Array.isArray(exitCriteria) && exitCriteria.length) {
-    out += `:::note[${t('exit_criteria', labels)}]{icon="left-arrow"}\n\n`;
-    const items = exitCriteria.map((id) => {
-      const tr = translate('criterion.' + id, labels);
-      const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
-      return `- ${text}`;
-    });
-    out += items.join('\n');
-    out += '\n:::\n\n';
+  if (data.why_it_matters) {
+    out += `<section class="why-it-matters-card">\n`;
+    out += `<div class="why-it-matters"><h2>${t('why_it_matters', labels)}</h2></div>\n`;
+    out += `<div class="why-it-matters-body">\n\n${translate(data.why_it_matters, labels)}\n\n</div>\n`;
+    out += `</section>\n\n`;
   }
-  const how = data.how_it_works || data['how-it-works'];
-  if (Array.isArray(how) && how.length) {
+  if (data.apply_in_work) out += `## ${t('apply_in_work', labels)}\n\n${translate(data.apply_in_work, labels)}\n\n`;
+  if (
+    (Array.isArray(entryCriteria) && entryCriteria.length) ||
+    (Array.isArray(exitCriteria) && exitCriteria.length)
+  ) {
+    out += `<div class="station-criteria-grid">\n`;
+    if (Array.isArray(entryCriteria) && entryCriteria.length) {
+      out += `<section class="station-criteria-card is-entry">\n`;
+      out += `<div class="station-criteria-title"><MaterialIcon name="right-arrow" size="1.2em" /><h2>${t('entry_criteria', labels)}</h2></div>\n`;
+      out += '<ul>\n';
+      const items = entryCriteria.map((id) => {
+        const tr = translate('criterion.' + id, labels);
+        const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
+        return `<li>${text}</li>`;
+      });
+      out += items.join('\n');
+      out += '\n</ul>\n</section>\n';
+    }
+    if (Array.isArray(exitCriteria) && exitCriteria.length) {
+      out += `<section class="station-criteria-card is-exit">\n`;
+      out += `<div class="station-criteria-title"><MaterialIcon name="left-arrow" size="1.2em" /><h2>${t('exit_criteria', labels)}</h2></div>\n`;
+      out += '<ul>\n';
+      const items = exitCriteria.map((id) => {
+        const tr = translate('criterion.' + id, labels);
+        const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
+        return `<li>${text}</li>`;
+      });
+      out += items.join('\n');
+      out += '\n</ul>\n</section>\n';
+    }
+    out += '</div>\n\n';
+  }
+  const stepItems = buildStationStepItems(data, resources, labels, locale);
+  if (stepItems.length) {
     out += `## ${t('how_it_works', labels)}\n\n`;
-    out += '<Steps>\n';
-    let stepNum = 1;
-    how.forEach((step, i) => {
-      const text = translateItem(step.step, i, labels);
-      out += `${stepNum}. ${text}`;
-      if (step.resource && resources[step.resource]) {
-        const res = resources[step.resource];
-        const prefix = locale ? `/${locale}` : '';
-        const title = htmlEncode(translate(res.title, labels));
-        const desc = htmlEncode(translate(res.description || '', labels));
-        out += ` <LinkCard title="${title}" href="${prefix}/${res.slug}/" description="${desc}" />`;
-      }
-      out += '\n';
-      stepNum += 1;
-    });
-    out += '</Steps>\n\n';
+    const workspaceLabels = {
+      step: t('step', labels),
+      of: t('of', labels),
+      previousStep: t('previous_step', labels),
+      continueTo: t('continue_to', labels),
+      useWithAi: t('use_with_ai', labels),
+      download: t('download', labels),
+    };
+    out += `<StationStepWorkspace stationTitle=${JSON.stringify(
+      stationTitle
+    )} labels={${JSON.stringify(workspaceLabels)}} steps={${JSON.stringify(stepItems)}} />\n\n`;
   }
-  if (data.apply_in_work) out += `## ${t('apply_in_work', labels)}\n\n${translate(data.apply_in_work, labels)}\n`;
   return out.trim();
 }
 
@@ -451,7 +618,9 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
   }
   if (res.category === 'canvas') {
     const id = res.canvas || res.id;
-    out += `\n\n<CanvasCreator canvasId="${id}" />`;
+    out += locale
+      ? `\n\n<CanvasCreator canvasId="${id}" locale="${locale}" />`
+      : `\n\n<CanvasCreator canvasId="${id}" />`;
   }
   return out.trim();
 }
@@ -514,6 +683,8 @@ async function generateIndex(info, folder, locale, labels = baseLabels) {
 async function generate() {
   const cache = await loadCache();
   const newCache = {};
+  const generatorSource = await fsPromises.readFile(fileURLToPath(import.meta.url), 'utf8');
+  newCache['generate-method-pages.mjs'] = checksum(generatorSource);
 
   const stationsPath = await resolveMethodDataPath('stations.json');
   const linesPath = await resolveMethodDataPath('lines.json');
@@ -613,7 +784,8 @@ async function generate() {
     cache['resources.json'] !== newCache['resources.json'] ||
     cache['criteria.json'] !== newCache['criteria.json'] ||
     cache['station-criteria.json'] !== newCache['station-criteria.json'] ||
-    cache['labels.json'] !== newCache['labels.json']
+    cache['labels.json'] !== newCache['labels.json'] ||
+    cache['generate-method-pages.mjs'] !== newCache['generate-method-pages.mjs']
   ) {
     regenerate = true;
   }
@@ -651,6 +823,7 @@ async function generate() {
         }
       }
       labelsLocales[locale] = labels;
+      Object.assign(labelsLocales[locale], customLocaleLabels[locale] || {});
       locales.push(locale);
     }
   }
@@ -735,6 +908,7 @@ async function generateLine(line, stationMap, stationCriteria, criteriaMap, labe
     stations: line.stations,
     slug: baseSlug,
     color: line.color,
+    icon: 'train-outline',
     sidebar: { order: line.order },
   };
   const file = path.join(docsDir, 'lines', `${line.id}.mdx`);
@@ -746,6 +920,7 @@ async function generateLine(line, stationMap, stationCriteria, criteriaMap, labe
       stations: line.stations,
       slug: `${locale}/${baseSlug}`,
       color: line.color,
+      icon: 'train-outline',
       sidebar: { order: line.order },
     };
     const dest = path.join(docsDir, locale, 'lines', `${line.id}.mdx`);
@@ -765,12 +940,15 @@ async function generateStation(
   labelsLocales
 ) {
   const baseSlug = station.slug;
+  const eyebrow = buildStationEyebrow(station, baseLabels);
+  const baseTitle = translate(station.title, baseLabels).split(' - ')[0];
   const fm = {
-    title: translate(station.title, baseLabels).split(' - ')[0],
+    title: baseTitle,
     slug: baseSlug,
     sidebar: { order: station.order },
     icon: station.icon,
   };
+  if (eyebrow) fm.eyebrow = eyebrow;
   if (lines && lines.length) fm.metrolines = lines;
   const file = path.join(docsDir, folder, `${station.id}.mdx`);
   await writeMarkdown(
@@ -785,17 +963,21 @@ async function generateStation(
       exitCriteria,
       criteriaMap,
       lines,
-      lineMap
+      lineMap,
+      baseTitle
     )
   );
   for (const locale of Object.keys(labelsLocales)) {
     const labels = labelsLocales[locale] || baseLabels;
+    const locEyebrow = buildStationEyebrow(station, labels);
+    const localizedTitle = translate(station.title, labels).split(' - ')[0];
     const locFm = {
-      title: translate(station.title, labels).split(' - ')[0],
+      title: localizedTitle,
       slug: `${locale}/${baseSlug}`,
       sidebar: { order: station.order },
       icon: station.icon,
     };
+    if (locEyebrow) locFm.eyebrow = locEyebrow;
     if (lines && lines.length) locFm.metrolines = lines;
     const dest = path.join(docsDir, locale, folder, `${station.id}.mdx`);
     await writeMarkdown(
@@ -810,7 +992,8 @@ async function generateStation(
         exitCriteria,
         criteriaMap,
         lines,
-        lineMap
+        lineMap,
+        localizedTitle
       )
     );
   }

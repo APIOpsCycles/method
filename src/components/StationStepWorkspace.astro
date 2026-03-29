@@ -1,0 +1,238 @@
+---
+import MaterialIcon from './MaterialIcon.astro';
+
+interface ActionLink {
+  href: string;
+  label: string;
+}
+
+interface StepItem {
+  title: string;
+  description: string;
+  methodNote?: string;
+  resourceTypeLabel?: string;
+  resourceIcon?: string;
+  primaryAction?: ActionLink;
+  exampleAction?: ActionLink;
+  downloads?: ActionLink[];
+}
+
+interface Labels {
+  step: string;
+  of: string;
+  previousStep: string;
+  continueTo: string;
+  useWithAi: string;
+  download: string;
+}
+
+interface Props {
+  stationTitle: string;
+  labels: Labels;
+  steps: StepItem[];
+}
+
+const { stationTitle, labels, steps } = Astro.props as Props;
+const workspaceId = `step-workspace-${Math.random().toString(36).slice(2, 10)}`;
+---
+
+{steps.length > 0 && (
+  <section class="station-step-workspace" id={workspaceId} data-step-workspace>
+    <div class="station-step-layout">
+      <div class="station-step-main">
+        <div class="station-step-mobile-picker">
+          <label for={`${workspaceId}-select`}>{labels.step}</label>
+          <select id={`${workspaceId}-select`} data-step-select>
+            {steps.map((step, index) => (
+              <option value={index}>
+                {index + 1}/{steps.length} - {step.title}
+              </option>
+            ))}
+          </select>
+        </div>
+        {steps.map((step, index) => {
+          const previousStep = index > 0 ? steps[index - 1] : undefined;
+          const nextStep = index < steps.length - 1 ? steps[index + 1] : undefined;
+          return (
+            <article
+              class:list={['station-step-card', index === 0 && 'is-active']}
+              data-step-card
+              data-step-index={index}
+              hidden={index !== 0}
+            >
+              <div class="station-step-card-inner">
+                <div class="station-step-card-copy">
+                  <p class="station-step-counter">
+                    <span>{labels.step}</span>
+                    <span>{index + 1}/{steps.length}</span>
+                  </p>
+                  <div class="station-step-heading">
+                    <span class="station-step-badge">{index + 1}</span>
+                    <h3>{step.title}</h3>
+                  </div>
+                  <p class="station-step-description">{step.description}</p>
+                  {step.methodNote && <p class="station-step-note">{step.methodNote}</p>}
+                  {step.resourceTypeLabel && (
+                    <div class="station-step-pill">
+                      {step.resourceIcon && (
+                        <MaterialIcon
+                          name={step.resourceIcon}
+                          class="station-step-pill-icon"
+                          size="1.05em"
+                        />
+                      )}
+                      <span>{step.resourceTypeLabel}</span>
+                    </div>
+                  )}
+                  {(step.primaryAction || step.exampleAction || step.downloads?.length) && (
+                    <div class="station-step-actions">
+                      {step.primaryAction && (
+                        <a class="station-step-primary" href={step.primaryAction.href} target="_self">
+                          <span title={step.primaryAction.label}>{step.primaryAction.label}</span>
+                          <span aria-hidden="true">{'>'}</span>
+                        </a>
+                      )}
+                      <div class="station-step-secondary">
+                        {step.exampleAction && (
+                          <a class="station-step-secondary-link" href={step.exampleAction.href}>
+                            {step.exampleAction.label}
+                          </a>
+                        )}
+                        {step.downloads?.length ? (
+                          <details class="station-step-downloads">
+                            <summary class="station-step-secondary-link">{labels.download}</summary>
+                            <div class="station-step-download-menu">
+                              {step.downloads.map((download) => (
+                                <a href={download.href} download>
+                                  {download.label}
+                                </a>
+                              ))}
+                            </div>
+                          </details>
+                        ) : null}
+                        <button
+                          class="station-step-secondary-link is-placeholder"
+                          type="button"
+                          disabled
+                          aria-disabled="true"
+                        >
+                          {labels.useWithAi}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="station-step-footer">
+                {previousStep ? (
+                  <button
+                    class="station-step-nav previous"
+                    type="button"
+                    data-step-target={index - 1}
+                  >
+                    <span aria-hidden="true">{'<'}</span>
+                    <span>{labels.previousStep}</span>
+                  </button>
+                ) : (
+                  <span class="station-step-nav-spacer" aria-hidden="true"></span>
+                )}
+                {nextStep ? (
+                  <button class="station-step-nav next" type="button" data-step-target={index + 1}>
+                    <span class="station-step-nav-text">
+                      <span class="station-step-nav-label">{labels.continueTo}</span>
+                      <span>{index + 2}/{steps.length}</span>
+                    </span>
+                    <span aria-hidden="true">{'>'}</span>
+                  </button>
+                ) : (
+                  <span class="station-step-nav-spacer" aria-hidden="true"></span>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <aside class="station-step-rail" aria-label={`${stationTitle} ${labels.step}`}>
+        <p class="station-step-rail-title">{stationTitle}</p>
+        <p class="station-step-rail-progress">
+          <span>{labels.step}</span>
+          <span><span data-step-current>1</span>/{steps.length}</span>
+        </p>
+        <ol class="station-step-rail-list">
+          {steps.map((step, index) => (
+            <li>
+              <button
+                class:list={['station-step-rail-link', index === 0 && 'is-active']}
+                type="button"
+                data-step-link={index}
+                aria-current={index === 0 ? 'step' : undefined}
+              >
+                <span class="station-step-rail-number">{index + 1}</span>
+                <span class="station-step-rail-text">{step.title}</span>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </aside>
+    </div>
+  </section>
+)}
+
+<script define:vars={{ workspaceId }} is:inline>
+  (() => {
+    const root = document.getElementById(workspaceId);
+    if (!root) return;
+
+    const cards = Array.from(root.querySelectorAll('[data-step-card]'));
+    const railLinks = Array.from(root.querySelectorAll('[data-step-link]'));
+    const navButtons = Array.from(root.querySelectorAll('[data-step-target]'));
+    const currentEls = Array.from(root.querySelectorAll('[data-step-current]'));
+    const stepSelect = root.querySelector('[data-step-select]');
+
+    const setActiveStep = (index) => {
+      cards.forEach((card, cardIndex) => {
+        const isActive = cardIndex === index;
+        card.hidden = !isActive;
+        card.classList.toggle('is-active', isActive);
+      });
+
+      railLinks.forEach((link, linkIndex) => {
+        const isActive = linkIndex === index;
+        link.classList.toggle('is-active', isActive);
+        if (isActive) link.setAttribute('aria-current', 'step');
+        else link.removeAttribute('aria-current');
+      });
+
+      currentEls.forEach((el) => {
+        el.textContent = String(index + 1);
+      });
+
+      if (stepSelect instanceof HTMLSelectElement) {
+        stepSelect.value = String(index);
+      }
+    };
+
+    railLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const index = Number(link.getAttribute('data-step-link'));
+        if (!Number.isNaN(index)) setActiveStep(index);
+      });
+    });
+
+    navButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const index = Number(button.getAttribute('data-step-target'));
+        if (!Number.isNaN(index)) setActiveStep(index);
+      });
+    });
+
+    if (stepSelect instanceof HTMLSelectElement) {
+      stepSelect.addEventListener('change', () => {
+        const index = Number(stepSelect.value);
+        if (!Number.isNaN(index)) setActiveStep(index);
+      });
+    }
+  })();
+</script>

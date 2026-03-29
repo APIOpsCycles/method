@@ -2,17 +2,27 @@
 const PAGE_TITLE_ID = '_top';
 import MaterialIcon from './MaterialIcon.astro';
 
-const { title, icon } = Astro.locals.starlightRoute.entry.data;
+const { title, icon, eyebrow } = Astro.locals.starlightRoute.entry.data;
 ---
 
+{eyebrow && <p class="page-eyebrow">{eyebrow}</p>}
 <h1 id={PAGE_TITLE_ID} class="sl-flex page-title">
   {icon && <MaterialIcon name={icon} class="title-icon" size="1.5em" />} {title}
 </h1>
 
 <style>
   @layer starlight.core {
+    .page-eyebrow {
+      margin: 0 0 0.85rem;
+      color: var(--sl-color-text-accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
     h1.page-title {
-      margin-top: 1rem;
+      margin-top: 0;
       font-size: var(--sl-text-h1);
       line-height: var(--sl-line-height-headings);
       font-weight: 600;

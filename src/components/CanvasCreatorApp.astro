@@ -1,0 +1,175 @@
+---
+interface Props {
+  canvasId?: string;
+  locale?: string;
+  standalone?: boolean;
+}
+
+const { canvasId = '', locale = 'en', standalone = false } = Astro.props as Props;
+---
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="stylesheet" href="/canvascreator/canvascreator.min.css" />
+
+<div class:list={['canvas-creator-shell', standalone && 'is-standalone']}>
+  <div id="canvasContainer">
+    <header class="top-nav" aria-label="Canvas Creator navigation">
+      <a class="brand-link" href="/resources/customer-journey-canvas/">
+        <img
+          id="canvasCreatorBrandLogo"
+          class="brand-logo"
+          src="/canvascreator/img/apiops-cycles-logo-2025-64.png"
+          alt="APIOps Cycles logo"
+          width="64"
+          height="64"
+        />
+        <span>Canvas Creator</span>
+      </a>
+
+      <div class="header-actions">
+        <button
+          id="headerMoreToggle"
+          class="nav-icon-button header-more-toggle"
+          type="button"
+          aria-label="More links"
+          aria-expanded="false"
+          aria-controls="headerMorePanel"
+        >
+          <span aria-hidden="true">=</span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <nav id="headerMorePanel" class="header-more-panel" aria-label="External links" hidden>
+          <a href="/resources/">Resources</a>
+          <a href="/partners/">Partners</a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="toolContainer">
+      <button id="importButton" class="primary-action-button" type="button">
+        <span aria-hidden="true">-&gt;</span> Import canvas JSON...
+      </button>
+
+      <div class="selector-group" aria-label="Canvas selectors">
+        <div>or select...</div>
+        <div id="localeSelector" class="selector-item">
+          <label for="locale">Language</label>
+          <select id="locale"></select>
+        </div>
+
+        <div id="canvasSelector" class="selector-item">
+          <label for="canvas">Canvas Type</label>
+          <select id="canvas"></select>
+        </div>
+      </div>
+
+      <nav class="desktop-actions" aria-label="Canvas actions">
+        <div id="canvasToolGroup" class="action-menu">
+          <span>Export:</span>
+          <button
+            id="ToolsTitle"
+            type="button"
+            aria-label="Canvas actions"
+            aria-expanded="false"
+            aria-controls="canvasToolsMenu"
+          >
+            <span aria-hidden="true">...</span>
+            <span class="sr-only">Canvas actions</span>
+          </button>
+          <div class="canvas-tools" id="canvasToolsMenu" hidden>
+            <button id="metadataButton" class="canvas-tools-item" type="button">Edit Metadata</button>
+            <button id="exportButton" class="canvas-tools-item" type="button">Export JSON</button>
+            <button id="exportSVGButton" class="canvas-tools-item" type="button">Export SVG</button>
+            <button id="exportPNGButton" class="canvas-tools-item" type="button">Export PNG</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="help-container">
+        <button class="help-icon" id="helpToggle" type="button" aria-expanded="false" aria-controls="helpTooltip">?</button>
+        <div class="help-tooltip" id="helpTooltip" role="dialog" aria-label="Canvas help" hidden>
+          <strong>Canvas Help</strong>
+          <p>Choose a language and canvas, then add and edit sticky notes directly in the browser.</p>
+          <ul>
+            <li><b>Create:</b> Double-click the canvas to add a note.</li>
+            <li><b>Edit:</b> Double-click a note to edit it.</li>
+            <li><b>Export:</b> Save as JSON, SVG, or PNG.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="canvas-workspace">
+      <div id="canvasCreator">
+        <div id="metadataForm" style="display: none">
+          <h2>Content Metadata</h2>
+          <label for="source">Source:</label>
+          <input type="text" id="source" name="source" /><br /><br />
+          <label for="license">License:</label>
+          <input type="text" id="license" name="license" /><br /><br />
+          <label for="authors">Authors:</label>
+          <input type="text" id="authors" name="authors" /><br /><br />
+          <label for="website">Website:</label>
+          <input type="text" id="website" name="website" /><br /><br />
+          <button id="saveMetadata">Save Metadata</button>
+        </div>
+      </div>
+
+      <div id="colorPalette" aria-label="Sticky note colors" hidden>
+        <div class="themeSelector">
+          <label for="themeSelect">Theme</label>
+          <select id="themeSelect" aria-label="Sticky note theme"></select>
+        </div>
+        <div id="paletteSwatches" aria-label="Sticky note color swatches"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ canvasId, locale }} type="module">
+  import canvascreator from '/canvascreator/canvascreator.esm.min.js';
+
+  const params = new URLSearchParams(window.location.search);
+  if (!params.get('locale') && locale) params.set('locale', locale);
+  if (!params.get('canvas') && canvasId) params.set('canvas', canvasId);
+
+  const nextQuery = params.toString();
+  const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ''}${window.location.hash}`;
+  window.history.replaceState({}, '', nextUrl);
+
+  const applyResponsiveCanvasDefaults = () => {
+    const container = document.getElementById('canvasContainer');
+    const canvasHost = document.getElementById('canvasCreator');
+    const availableWidth = Math.max(
+      320,
+      Math.min(1000, Math.floor((container?.clientWidth || window.innerWidth) - (window.innerWidth < 768 ? 20 : 40)))
+    );
+    const scale = availableWidth / 1000;
+
+    Object.assign(canvascreator.defaultStyles, {
+      width: availableWidth,
+      height: Math.max(420, Math.round(712 * scale)),
+      headerHeight: Math.max(62, Math.round(80 * scale)),
+      footerHeight: Math.max(24, Math.round(30 * scale)),
+      fontSize: Math.max(10, Math.round(12 * scale)),
+      padding: Math.max(8, Math.round(10 * scale)),
+      circleRadius: Math.max(10, Math.round(14 * scale)),
+      stickyNoteSize: Math.max(58, Math.round(80 * scale)),
+      stickyNoteSpacing: Math.max(8, Math.round(10 * scale)),
+      maxLineWidth: Math.max(54, Math.round(70 * scale)),
+    });
+
+    if (canvasHost) {
+      const hostHeight = canvascreator.defaultStyles.height + Math.max(96, Math.round(120 * scale));
+      canvasHost.style.height = `${hostHeight}px`;
+    }
+  };
+
+  applyResponsiveCanvasDefaults();
+
+  canvascreator.initCanvasCreator({ assetBase: '/canvascreator' });
+  const stylesheet = document.querySelector('link[href="/canvascreator/canvascreator.min.css"]');
+  if (stylesheet) {
+    stylesheet.setAttribute('href', '/canvascreator/canvascreator.min.css?v=1.6.2');
+  }
+</script>
