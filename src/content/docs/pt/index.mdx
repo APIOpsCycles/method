@@ -1,35 +1,29 @@
 ---
-
-title: Bem-vindo ao método {aberto} APIOps Cycles para APIs.
+title: Projete e entregue APIs melhores.
 draft: false
-description: Aprenda o método iterativo APIOps Cycles para criar APIs.
+description: Um metodo APIOps pratico para melhorar design, entrega, adocao e prontidao para IA em APIs.
 template: splash
 hero:
-  tagline: Descubra como o método aberto APIOps Cycles ajuda você a planejar, criar e desenvolver APIs.
+  tagline: Metodo estruturado - canvas - execucao assistida por IA
   image:
     alt: APIOps Cycles logo
-    dark: ../../../assets/apiops-cycles-logo-styled.svg
-    light: ../../../assets/apiops-cycles-logo-styled.svg
+    dark: ../../../assets/apiops-cycles-logo2025-white.svg
+    light: ../../../assets/apiops-cycles-logo2025-blue.svg
   actions:
-    - text: Começando
-      link: /pt/the-method/
+    - text: Explorar APIOps Cycles
+      link: /pt/lines/
       icon: right-arrow
-    - text: English
-      link: /the-method/
+    - text: Metodo
+      link: /pt/the-method/
       variant: secondary
-    - text: Deutsch
-      link: /de/the-method/
-      variant: secondary
-    - text: Français
-      link: /fr/the-method/
-      variant: secondary
-    - text: Suomi
-      link: /fi/the-method/
-      variant: secondary
-
 ---
 
 import PartnerGrid from '../../../components/PartnerGrid.astro';
 import partners from '../../../data/partners.json';
 
-<PartnerGrid partners={partners} />
+<div class="home-partners-block">
+  <p class="landing-eyebrow">Ecossistema</p>
+  <h2 class="home-section-title">Parceiros oficiais do metodo</h2>
+  <p class="home-section-intro">Organizacoes que usam, moldam e expandem o APIOps Cycles em trabalho real de entrega.</p>
+  <PartnerGrid partners={partners} />
+</div>

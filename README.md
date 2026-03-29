@@ -17,7 +17,9 @@ npm install
 
 ### Canvas editor
 
-Interactive canvases on the site are powered by the [Canvas Creator](https://canvascreator.apiopscycles.com) tool. The component is installed from npm so make sure to run `npm install` before building or running the dev server.
+Interactive canvases on the site are powered by the [Canvas Creator](https://canvascreator.apiopscycles.com) tool. The site now embeds `canvascreator` directly in Astro using the package's configurable embed mode, so make sure to run `npm install` before building or running the dev server.
+
+The integration lives in [`src/components/CanvasCreator.astro`](./src/components/CanvasCreator.astro) and uses the package stylesheet plus the local `public/canvascreator/img/` assets. If you need to change the default canvas behavior, toolbar visibility, or sizing, adjust that component.
 
 ## Local development
 

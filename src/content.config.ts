@@ -8,6 +8,7 @@ export const collections = {
                 schema: docsSchema({
                         extend: z.object({
                                 icon: z.string().optional(),
+                                eyebrow: z.string().optional(),
                                 metrolines: z.array(z.string()).optional(),
                                 stations: z.array(z.string()).optional(),
                                 category: z.string().optional(),

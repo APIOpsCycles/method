@@ -42,3 +42,6 @@ scripts/.method-checksums.json
 # Cloudflare wrangler preview files
 .wrangler
 .dev.vars*
+
+# Temporary files
+.tmp/

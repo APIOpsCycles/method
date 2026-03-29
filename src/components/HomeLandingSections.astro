@@ -1,0 +1,296 @@
+---
+interface ActionLink {
+  label: string;
+  href: string;
+}
+
+interface Pathway {
+  title: string;
+  description: string;
+  href: string;
+  cta: string;
+}
+
+interface ProofPoint {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  sectionEyebrow: string;
+  sectionTitle: string;
+  sectionIntro: string;
+  pathways: Pathway[];
+  proofEyebrow: string;
+  proofTitle: string;
+  proofIntro: string;
+  proofPoints: ProofPoint[];
+  finalCtaTitle: string;
+  finalCtaText: string;
+  finalPrimary: ActionLink;
+  finalSecondary: ActionLink;
+}
+
+const {
+  sectionEyebrow,
+  sectionTitle,
+  sectionIntro,
+  pathways,
+  proofEyebrow,
+  proofTitle,
+  proofIntro,
+  proofPoints,
+  finalCtaTitle,
+  finalCtaText,
+  finalPrimary,
+  finalSecondary,
+} = Astro.props as Props;
+---
+
+<div class="landing-sections">
+  <section class="landing-section">
+    <p class="landing-eyebrow">{sectionEyebrow}</p>
+    <div class="landing-section-copy">
+      <h2>{sectionTitle}</h2>
+      <p>{sectionIntro}</p>
+    </div>
+    <div class="landing-path-grid">
+      {pathways.map((pathway) => (
+        <article class="landing-card">
+          <h3>{pathway.title}</h3>
+          <p>{pathway.description}</p>
+          <a href={pathway.href} class="landing-card-link">
+            {pathway.cta}
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="landing-section landing-proof">
+    <p class="landing-eyebrow">{proofEyebrow}</p>
+    <div class="landing-section-copy">
+      <h2>{proofTitle}</h2>
+      <p>{proofIntro}</p>
+    </div>
+    <div class="landing-proof-grid">
+      {proofPoints.map((item) => (
+        <article class="landing-proof-card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="landing-final-cta">
+    <div class="landing-final-copy">
+      <p class="landing-eyebrow">APIOps Cycles</p>
+      <h2>{finalCtaTitle}</h2>
+      <p>{finalCtaText}</p>
+    </div>
+    <div class="landing-final-actions">
+      <a href={finalPrimary.href} class="landing-button landing-button-primary">{finalPrimary.label}</a>
+      <a href={finalSecondary.href} class="landing-button landing-button-secondary">{finalSecondary.label}</a>
+    </div>
+  </section>
+</div>
+
+<style>
+  .landing-sections {
+    display: grid;
+    gap: clamp(2.75rem, 6vw, 4.5rem);
+    margin-top: clamp(3rem, 7vw, 5rem);
+  }
+
+  .landing-section {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .landing-eyebrow {
+    margin: 0;
+    color: var(--sl-color-text-accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .landing-section-copy {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 42rem;
+  }
+
+  .landing-section-copy h2,
+  .landing-final-copy h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4.2vw, 3.7rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    color: #14213d;
+  }
+
+  .landing-section-copy p,
+  .landing-final-copy p:last-child {
+    margin: 0;
+    font-size: 1.04rem;
+    line-height: 1.7;
+    color: #516079;
+  }
+
+  .landing-path-grid,
+  .landing-proof-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .landing-path-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .landing-proof-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 48rem) {
+    .landing-path-grid,
+    .landing-proof-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .landing-card,
+  .landing-proof-card {
+    display: grid;
+    gap: 1rem;
+    min-height: 100%;
+    padding: 1.6rem;
+    border: 1px solid rgba(141, 164, 211, 0.28);
+    border-radius: 1.5rem;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 248, 255, 0.9)),
+      rgba(255, 255, 255, 0.9);
+    box-shadow: 0 18px 40px rgba(29, 48, 94, 0.08);
+  }
+
+  .landing-card h3,
+  .landing-proof-card h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.15;
+    color: #14213d;
+  }
+
+  .landing-card p,
+  .landing-proof-card p {
+    margin: 0;
+    color: #5b6782;
+    line-height: 1.65;
+  }
+
+  .landing-card-link {
+    display: inline-flex;
+    align-items: center;
+    justify-self: start;
+    min-height: 2.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #4d63ff, #6f53ff);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 12px 26px rgba(88, 91, 255, 0.2);
+  }
+
+  .landing-card-link:hover,
+  .landing-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .landing-final-cta {
+    display: grid;
+    gap: 1.25rem;
+    align-items: center;
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+    border: 1px solid rgba(141, 164, 211, 0.28);
+    border-radius: 1.75rem;
+    background:
+      radial-gradient(circle at top left, rgba(98, 117, 255, 0.18), transparent 40%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(242, 246, 255, 0.92));
+    box-shadow: 0 22px 44px rgba(29, 48, 94, 0.1);
+  }
+
+  @media (min-width: 64rem) {
+    .landing-final-cta {
+      grid-template-columns: minmax(0, 1.4fr) auto;
+    }
+  }
+
+  .landing-final-copy {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 42rem;
+  }
+
+  .landing-final-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .landing-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(96, 114, 203, 0.22);
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+  }
+
+  .landing-button-primary {
+    background: linear-gradient(135deg, var(--sl-color-accent), var(--sl-color-accent-high));
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 16px 34px rgba(88, 91, 255, 0.24);
+  }
+
+  .landing-button-secondary {
+    background: rgba(255, 255, 255, 0.88);
+    color: #24375f;
+  }
+
+  :global([data-theme='dark']) .landing-section-copy h2,
+  :global([data-theme='dark']) .landing-final-copy h2,
+  :global([data-theme='dark']) .landing-card h3,
+  :global([data-theme='dark']) .landing-proof-card h3 {
+    color: #edf2ff;
+  }
+
+  :global([data-theme='dark']) .landing-section-copy p,
+  :global([data-theme='dark']) .landing-final-copy p:last-child,
+  :global([data-theme='dark']) .landing-card p,
+  :global([data-theme='dark']) .landing-proof-card p {
+    color: #b7c2da;
+  }
+
+  :global([data-theme='dark']) .landing-card,
+  :global([data-theme='dark']) .landing-proof-card,
+  :global([data-theme='dark']) .landing-final-cta {
+    border-color: rgba(125, 146, 194, 0.24);
+    background:
+      linear-gradient(180deg, rgba(16, 24, 42, 0.96), rgba(17, 30, 54, 0.94)),
+      rgba(16, 24, 42, 0.94);
+    box-shadow: none;
+  }
+
+  :global([data-theme='dark']) .landing-button-secondary {
+    background: rgba(20, 31, 56, 0.9);
+    color: #edf2ff;
+  }
+ </style>

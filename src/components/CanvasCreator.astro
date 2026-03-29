@@ -1,13 +1,85 @@
 ---
-interface Props {
-  canvasId: string;
-}
+import 'canvascreator/style.css';
+import canvasCreatorClientUrl from '../scripts/canvasCreatorClient.ts?url';
 
-const { canvasId } = Astro.props as Props;
+const props = Astro.props;
+const canvasId = props.canvasId || '';
+const locale = props.locale || 'en';
+const assetBase = props.assetBase || '/canvascreator';
+const mode = props.mode || 'embed';
+const fitToContainer = props.fitToContainer === false ? 'false' : 'true';
+const compact = props.compact === false ? 'false' : 'true';
+const maxWidth = props.maxWidth ? String(props.maxWidth) : '';
+const maxHeight = props.maxHeight ? String(props.maxHeight) : '';
+const toolbarProps = props.toolbar || {};
+const toolbarImport = toolbarProps['import'] === false ? 'false' : 'true';
+const toolbarMetadata = toolbarProps.metadata === false ? 'false' : 'true';
+const toolbarExport = toolbarProps['export'] === false ? 'false' : 'true';
+const toolbarThemePicker = toolbarProps.themePicker === false ? 'false' : 'true';
+const toolbarHelp = toolbarProps.help === true ? 'true' : 'false';
+const toolbarHeaderLinks = toolbarProps.headerLinks === true ? 'true' : 'false';
 ---
 
-<div id={canvasId}></div>
-<script define:vars={{ canvasId }} type="module" client:load>
-  import canvascreator from 'canvascreator';
-  canvascreator.initialize({ canvasId });
-</script>
+<div
+  class="canvas-creator-host"
+  data-canvas-id={canvasId}
+  data-locale={locale}
+  data-asset-base={assetBase}
+  data-mode={mode}
+  data-fit-to-container={fitToContainer}
+  data-compact={compact}
+  data-max-width={maxWidth}
+  data-max-height={maxHeight}
+  data-toolbar-import={toolbarImport}
+  data-toolbar-metadata={toolbarMetadata}
+  data-toolbar-export={toolbarExport}
+  data-toolbar-theme-picker={toolbarThemePicker}
+  data-toolbar-help={toolbarHelp}
+  data-toolbar-header-links={toolbarHeaderLinks}
+></div>
+
+<script type="module" src={canvasCreatorClientUrl}></script>
+
+<style>
+  .canvas-creator-host {
+    font-family: 'Aptos', 'Segoe UI Variable Display', 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    color: inherit;
+  }
+
+  .canvas-creator-host :global(.cc-root) {
+    font: inherit;
+    line-height: 1.2;
+  }
+
+  .canvas-creator-host :global(.cc-root button),
+  .canvas-creator-host :global(.cc-root input),
+  .canvas-creator-host :global(.cc-root select),
+  .canvas-creator-host :global(.cc-root textarea) {
+    font: inherit;
+    line-height: 1.1;
+  }
+
+  .canvas-creator-host :global(.cc-toolbar) {
+    align-items: center;
+  }
+
+  .canvas-creator-host :global(.cc-button),
+  .canvas-creator-host :global(.cc-dialog-actions button),
+  .canvas-creator-host :global(.cc-field input),
+  .canvas-creator-host :global(.cc-field select) {
+    box-sizing: border-box;
+    line-height: 1.1;
+  }
+
+  .canvas-creator-host :global(.cc-note),
+  .canvas-creator-host :global(.cc-note-editor) {
+    line-height: 1.15;
+  }
+
+  .canvas-creator-host :global(.cc-swatch) {
+    box-sizing: border-box;
+    padding: 0;
+  }
+</style>

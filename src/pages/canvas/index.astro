@@ -1,0 +1,20 @@
+---
+import CanvasCreator from '../../components/CanvasCreator.astro';
+import '../../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canvas Creator | APIOps Cycles</title>
+  </head>
+  <body class="canvas-page">
+    <CanvasCreator
+      mode="standalone"
+      compact={true}
+      toolbar={{ help: true, headerLinks: true }}
+    />
+  </body>
+</html>
