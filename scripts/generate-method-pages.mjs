@@ -479,7 +479,7 @@ function stationBody(
     out += `<div class="station-criteria-grid">\n`;
     if (Array.isArray(entryCriteria) && entryCriteria.length) {
       out += `<section class="station-criteria-card is-entry">\n`;
-      out += `<div class="station-criteria-title"><MaterialIcon name="right-arrow" size="1.2em" /><h2>${t('entry_criteria', labels)}</h2></div>\n`;
+      out += `<div class="station-criteria-title"><MaterialIcon name="right-arrow" size="1.2em" /><h3>${t('entry_criteria_title', labels)}</h3><span class="station-criteria-subtitle">(${t('entry_criteria', labels)})</span></div>\n`;
       out += '<ul>\n';
       const items = entryCriteria.map((id) => {
         const tr = translate('criterion.' + id, labels);
@@ -491,7 +491,7 @@ function stationBody(
     }
     if (Array.isArray(exitCriteria) && exitCriteria.length) {
       out += `<section class="station-criteria-card is-exit">\n`;
-      out += `<div class="station-criteria-title"><MaterialIcon name="left-arrow" size="1.2em" /><h2>${t('exit_criteria', labels)}</h2></div>\n`;
+      out += `<div class="station-criteria-title"><MaterialIcon name="left-arrow" size="1.2em" /><h3>${t('exit_criteria_title', labels)}</h3><span class="station-criteria-subtitle">(${t('exit_criteria', labels)})</span></div>\n`;
       out += '<ul>\n';
       const items = exitCriteria.map((id) => {
         const tr = translate('criterion.' + id, labels);
