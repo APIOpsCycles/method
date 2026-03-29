@@ -1,5 +1,5 @@
 ---
-import CanvasCreatorApp from '../../components/CanvasCreatorApp.astro';
+import CanvasCreator from '../../components/CanvasCreator.astro';
 import '../../styles/global.css';
 ---
 
@@ -11,6 +11,10 @@ import '../../styles/global.css';
     <title>Canvas Creator | APIOps Cycles</title>
   </head>
   <body class="canvas-page">
-    <CanvasCreatorApp standalone={true} />
+    <CanvasCreator
+      mode="standalone"
+      compact={true}
+      toolbar={{ help: true, headerLinks: true }}
+    />
   </body>
 </html>

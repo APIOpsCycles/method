@@ -243,13 +243,6 @@
     color: #24375f;
   }
 
-/*   .content-panel {
-    border-radius: 1.5rem;
-    border: 1px solid rgba(141, 164, 211, 0.18);
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(18px);
-  } */
-
   .sidebar-pane {
     border-right: 1px solid var(--sl-color-hairline);
     background: color-mix(in srgb, var(--sl-color-bg-sidebar) 92%, transparent);
@@ -893,6 +886,7 @@
   .station-step-secondary-link.is-placeholder[disabled] {
     opacity: 0.72;
     cursor: not-allowed;
+    visibility: hidden;
   }
 
   .station-step-footer {
@@ -1045,28 +1039,6 @@
       linear-gradient(180deg, #fbfcff 0%, #f2f6fd 100%);
   }
 
-  .canvas-creator-shell.is-standalone {
-    padding: 0.75rem;
-  }
-
-  .canvas-creator-shell .brand-link {
-    text-decoration: none;
-  }
-
-  .canvas-creator-shell #canvasContainer {
-    width: min(100%, 1180px);
-  }
-
-  .canvas-creator-shell #toolContainer {
-    align-items: center;
-  }
-
-  .canvas-creator-shell #canvasCreator {
-    width: min(100%, 1000px);
-    height: min(70vh, 720px);
-    min-height: 34rem;
-  }
-
   html:has(.canvas-creator-shell) .right-sidebar-container,
   html:has(.canvas-creator-shell) mobile-starlight-toc,
   html:has(.canvas-creator-shell) .sidebar {
@@ -1151,8 +1123,8 @@
   /* Line pages: preserve per-line metadata color on numbered station flow */
   .line-steps > li::before {
     background-color: color-mix(in srgb, var(--line-color) 65%, white 35%) !important;
-    border-color: color-mix(in srgb, var(--line-color) 75%, #2f2750 25%) !important;
-    color: #101018 !important;
+    border-color: var(--line-color) !important;
+    color: var(--sl-color-text) !important;
   }
 
   .line-steps > li::after {
@@ -1161,7 +1133,18 @@
 
   .line-steps > li .sl-markdown-content .starlight-aside,
   .line-steps > li :is(a[href]) {
-    text-decoration-color: color-mix(in srgb, var(--line-color) 65%, white 35%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: small;
+    min-height: 2rem;
+    background: color-mix(in srgb, var(--line-color) 30%, #ffffff 30%);
+    /* border: 1px solid color-mix(in srgb, var(--line-color) 24%, rgba(141, 164, 211, 0.35)); */
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+    text-decoration: none;
+    color: var(--sl-color-text);
+    box-shadow: 0 8px 18px rgba(29, 48, 94, 0.06);
   }
 
   /* Bottom previous/next nav */
@@ -1197,5 +1180,17 @@
   .pagination-links svg {
     color: var(--sl-color-text);
   }
+
+  /* Remove first-child "jumping" or "stretching higher than others in display */
+  .sl-markdown-content :not(a, strong, em, del, span, input, code, br) + :not(a, strong, em, del, span, input, code, br, :where(.not-content *)) {
+      margin-top: 0 !important;
+      padding-bottom: 1rem !important;
+  }
+  
+  .cc-shell {
+    max-width: min(88rem, calc(100vw - 2rem)) !important;
+    padding: var(--cc-space-lg) !important;
+    background-color: var(--sl-color-bg) !important;
+}
 
 }

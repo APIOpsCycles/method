@@ -525,16 +525,16 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
   let out = "import { Aside } from '@astrojs/starlight/components';\n";
   if (res.category === 'canvas') {
     const prefix = locale ? '../../../../components' : '../../../components';
-    out += `import CanvasCreator from '${prefix}/CanvasCreator.astro';\n`;
+    // out += `import CanvasCreator from '${prefix}/CanvasCreator.astro';\n`;
   }
   out += "\n";
   if (res.description) out += `${translate(res.description, labels)}\n\n`;
-  if (Array.isArray(res.outcomes) && res.outcomes.length) {
+/*   if (Array.isArray(res.outcomes) && res.outcomes.length) {
     out += `## ${t('outcomes', labels)}\n\n`;
     const items = expandTranslations(res.outcomes, labels).map((i) => `- ${i}`);
     out += items.join('\n');
     out += '\n\n';
-  }
+  } */
   if (res.how_it_works && (res.how_it_works.steps || res.how_it_works.tips)) {
     out += `## ${t('how_it_works', labels)}\n\n`;
     if (res.canvas) {
@@ -616,12 +616,12 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
       console.warn(`Snippet file not found: ${snippetPath}`);
     }
   }
-  if (res.category === 'canvas') {
+/*   if (res.category === 'canvas') {
     const id = res.canvas || res.id;
     out += locale
       ? `\n\n<CanvasCreator canvasId="${id}" locale="${locale}" />`
       : `\n\n<CanvasCreator canvasId="${id}" />`;
-  }
+  } */
   return out.trim();
 }
 
@@ -1001,13 +1001,16 @@ async function generateStation(
 
 async function generateResource(resource, labelsLocales) {
   const baseSlug = resource.slug;
+  const eyebrow = buildStationEyebrow(resource, baseLabels);
+  const baseTitle = translate(resource.title, baseLabels).split(' - ')[0];
   const fileSlug = baseSlug.toLowerCase();
   const fm = {
-    title: translate(resource.title, baseLabels),
+    title: baseTitle,
     slug: baseSlug,
     sidebar: { order: resource.order },
     icon: resource.icon,
   };
+  if (eyebrow) fm.eyebrow = eyebrow;
   if (resource.category) fm.category = resource.category;
   if (resource.canvas) {
     fm.canvasId = resource.canvas;
