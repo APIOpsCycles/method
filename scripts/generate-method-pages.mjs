@@ -405,7 +405,7 @@ function buildStationStepItems(data, resources, labels = baseLabels, locale = ''
       primaryAction: resource
         ? {
             href: isCanvas
-              ? `/canvas/?locale=${encodeURIComponent(effectiveLocale)}&canvas=${encodeURIComponent(resource.canvas)}`
+              ? `https://canvascreator.apiopscycles.com?locale=${encodeURIComponent(effectiveLocale)}&canvas=${encodeURIComponent(resource.canvas)}`
               : resourceHref,
             label: `${t(isCanvas ? 'start' : 'open', labels)} ${title}`.trim(),
           }

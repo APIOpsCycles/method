@@ -87,7 +87,7 @@ const workspaceId = `step-workspace-${Math.random().toString(36).slice(2, 10)}`;
                   {(step.primaryAction || step.exampleAction || step.downloads?.length) && (
                     <div class="station-step-actions">
                       {step.primaryAction && (
-                        <a class="station-step-primary" href={step.primaryAction.href} target="_self">
+                        <a class="station-step-primary" href={step.primaryAction.href} target="_blank">
                           <span title={step.primaryAction.label}>{step.primaryAction.label}</span>
                           <span aria-hidden="true">{'>'}</span>
                         </a>
