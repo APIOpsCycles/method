@@ -16,61 +16,10 @@ hero:
     - text: Metodo
       link: /pt/the-method/
       variant: secondary
-    - text: Aplicar
-      link: /pt/resources/
-      variant: secondary
 ---
 
-import HomeLandingSections from '../../../components/HomeLandingSections.astro';
 import PartnerGrid from '../../../components/PartnerGrid.astro';
 import partners from '../../../data/partners.json';
-
-<HomeLandingSections
-  sectionEyebrow="Escolha como comecar"
-  sectionTitle="Tres caminhos claros para entrar"
-  sectionIntro="Comece pela direcao que faz mais sentido para sua equipe hoje e aprofunde a metodo conforme o trabalho evolui."
-  pathways={[
-    {
-      title: 'Entender o metodo',
-      description: 'Explore linhas, estacoes, canvas e orientacoes de ciclo de vida para entender rapidamente como tudo se conecta.',
-      href: '/pt/the-method/',
-      cta: 'Explorar',
-    },
-    {
-      title: 'Partir de um problema',
-      description: 'Use desafios comuns de API para encontrar a estacao, o fluxo de trabalho ou o canvas certo para o momento.',
-      href: '/pt/lines/',
-      cta: 'Comecar',
-    },
-    {
-      title: 'Aplicar agora',
-      description: 'Inicie um canvas, use execucao assistida por IA ou comece por um recurso que a equipe possa usar imediatamente.',
-      href: '/pt/resources/',
-      cta: 'Aplicar',
-    },
-  ]}
-  proofEyebrow="O que voce recebe"
-  proofTitle="Um metodo que transforma trabalho com APIs em progresso repetivel"
-  proofIntro="APIOps Cycles conecta um vocabulario compartilhado, canvas praticos e caminhos de execucao para unir estrategia, design, governanca e entrega."
-  proofPoints={[
-    {
-      title: 'Navegacao estruturada',
-      description: 'Linhas e estacoes ajudam a equipe a encontrar o foco certo sem se perder em teoria.',
-    },
-    {
-      title: 'Canvas praticos',
-      description: 'Ferramentas reutilizaveis transformam planejamento em workshops, decisoes e resultados documentados.',
-    },
-    {
-      title: 'Suporte a execucao',
-      description: 'Use o metodo com IA e em projetos reais para transformar insight em acao concreta.',
-    },
-  ]}
-  finalCtaTitle="Aplique APIOps Cycles do jeito que faz sentido para sua equipe"
-  finalCtaText="Use o metodo aberto para alinhar estrategia de APIs, consistencia de plataforma, governanca e entrega entre idiomas, equipes e niveis de maturidade."
-  finalPrimary={{ label: 'Aplicar APIOps Cycles', href: '/pt/resources/' }}
-  finalSecondary={{ label: 'Explorar o metodo', href: '/pt/the-method/' }}
-/>
 
 <div class="home-partners-block">
   <p class="landing-eyebrow">Ecossistema</p>

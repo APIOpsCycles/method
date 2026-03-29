@@ -16,61 +16,11 @@ hero:
     - text: Menetelma
       link: /fi/the-method/
       variant: secondary
-    - text: Ota kayttoon
-      link: /fi/resources/
-      variant: secondary
 ---
 
-import HomeLandingSections from '../../../components/HomeLandingSections.astro';
 import PartnerGrid from '../../../components/PartnerGrid.astro';
 import partners from '../../../data/partners.json';
 
-<HomeLandingSections
-  sectionEyebrow="Valitse aloitustapa"
-  sectionTitle="Kolme selkeaa tapaa aloittaa"
-  sectionIntro="Aloita siita suunnasta, joka sopii tiimillesi juuri nyt, ja etene syvemmalle menetelmaan tarpeen kasvaessa."
-  pathways={[
-    {
-      title: 'Ymmarra menetelma',
-      description: 'Tutki metrolinjoja, asemia, canvaksia ja elinkaariohjeita, jotta kokonaisuus tulee nopeasti tutuksi.',
-      href: '/fi/the-method/',
-      cta: 'Tutki',
-    },
-    {
-      title: 'Aloita ongelmasta',
-      description: 'Loyda oikea asema, workflow tai canvas yleisten API-haasteiden perusteella.',
-      href: '/fi/lines/',
-      cta: 'Aloita',
-    },
-    {
-      title: 'Sovella heti',
-      description: 'Kaynnista canvas, hyodynna AI-avusteista toteutusta tai aloita resurssista, jota tiimi voi kayttaa heti.',
-      href: '/fi/resources/',
-      cta: 'Sovella',
-    },
-  ]}
-  proofEyebrow="Mita saat"
-  proofTitle="Menetelma, joka muuttaa API-tyon toistettavaksi etenemiseksi"
-  proofIntro="APIOps Cycles yhdistaa yhteisen kielen, kaytannolliset canvas-tyokalut ja toteutuspolut, jotta strategia, suunnittelu, hallinta ja toimitus etenevat yhdessa."
-  proofPoints={[
-    {
-      title: 'Selkea rakenne',
-      description: 'Metrolinjat ja asemat auttavat loytamaan oikean fokuksen ilman, etta kokonaisuus hajoaa teoriaksi.',
-    },
-    {
-      title: 'Kaytannolliset canvaksit',
-      description: 'Uudelleenkaytettavat tyokalut muuttavat suunnittelun fasilitoinniksi, paatoksiksi ja dokumentoiduiksi lopputuloksiksi.',
-    },
-    {
-      title: 'Tuki toteutukseen',
-      description: 'Kayta menetelmaa AI:n ja oikeiden projektien kanssa, jotta oivallukset muuttuvat teoiksi.',
-    },
-  ]}
-  finalCtaTitle="Ota APIOps Cycles kayttoon tavalla, joka sopii tiimillesi"
-  finalCtaText="Hyodynna avointa menetelmaa API-strategian, alustan yhtenaisyyden, hallinnan ja toimituksen yhdistamiseen eri kielissa, tiimeissa ja kypsyystasoissa."
-  finalPrimary={{ label: 'Ota APIOps Cycles kayttoon', href: '/fi/resources/' }}
-  finalSecondary={{ label: 'Tutki menetelmaa', href: '/fi/the-method/' }}
-/>
 
 <div class="home-partners-block">
   <p class="landing-eyebrow">Ekosysteemi</p>
