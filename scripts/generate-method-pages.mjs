@@ -478,28 +478,26 @@ function stationBody(
   ) {
     out += `<div class="station-criteria-grid">\n`;
     if (Array.isArray(entryCriteria) && entryCriteria.length) {
-      out += `<section class="station-criteria-card is-entry">\n`;
-      out += `<div class="station-criteria-title"><MaterialIcon name="right-arrow" size="1.2em" /><h3>${t('entry_criteria_title', labels)}</h3><span class="station-criteria-subtitle">(${t('entry_criteria', labels)})</span></div>\n`;
-      out += '<ul>\n';
-      const items = entryCriteria.map((id) => {
-        const tr = translate('criterion.' + id, labels);
-        const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
-        return `<li>${text}</li>`;
-      });
-      out += items.join('\n');
-      out += '\n</ul>\n</section>\n';
+      out += `\n\n<details class="criteria-details is-entry">\n<summary class="criteria-summary">${t('entry_criteria_title', labels)} <span class="station-criteria-subtitle">(${t('entry_criteria', labels)})</span></summary>\n`;
+        const items = entryCriteria
+          .map((c) => {
+            const tr = translate('criterion.' + c, labels);
+            const text = tr === 'criterion.' + c ? criteriaMap[c] || c : tr;
+            return `<li>${text}</li>`;
+          })
+          .join('');
+      out += '<div class="criteria-content">\n<ul class="criteria-list">' + items + '</ul>\n</div>\n</details>\n'
     }
     if (Array.isArray(exitCriteria) && exitCriteria.length) {
-      out += `<section class="station-criteria-card is-exit">\n`;
-      out += `<div class="station-criteria-title"><MaterialIcon name="left-arrow" size="1.2em" /><h3>${t('exit_criteria_title', labels)}</h3><span class="station-criteria-subtitle">(${t('exit_criteria', labels)})</span></div>\n`;
-      out += '<ul>\n';
-      const items = exitCriteria.map((id) => {
-        const tr = translate('criterion.' + id, labels);
-        const text = tr === 'criterion.' + id ? criteriaMap[id] || id : tr;
-        return `<li>${text}</li>`;
-      });
-      out += items.join('\n');
-      out += '\n</ul>\n</section>\n';
+      out += `\n\n<details class="criteria-details is-exit">\n<summary class="criteria-summary">${t('exit_criteria_title', labels)} <span class="station-criteria-subtitle">(${t('exit_criteria', labels)})</span></summary>\n`;
+        const items = exitCriteria
+          .map((c) => {
+            const tr = translate('criterion.' + c, labels);
+            const text = tr === 'criterion.' + c ? criteriaMap[c] || c : tr;
+            return `<li>${text}</li>`;
+          })
+          .join('');
+      out += '<div class="criteria-content">\n<ul class="criteria-list">' + items + '</ul>\n</div>\n</details>\n'
     }
     out += '</div>\n\n';
   }
@@ -647,15 +645,15 @@ function lineBody(
       out += `<li>\n${link}`;
       const criteria = stationCriteria[id] || [];
       if (criteria.length) {
-        out += `\n\n:::note[${t('entry_criteria', labels)}]{icon="right-arrow"}\n\n`;
+        out += `\n\n<details class="criteria-details is-entry">\n<summary class="criteria-summary">${t('entry_criteria', labels)}</summary>\n`;
         const items = criteria
           .map((c) => {
             const tr = translate('criterion.' + c, labels);
             const text = tr === 'criterion.' + c ? criteriaMap[c] || c : tr;
-            return `- ${text}`;
+            return `<li>${text}</li>`;
           })
-          .join('\n');
-        out += items + '\n:::';
+          .join('');
+        out +='<div class="criteria-content">\n<ul class="criteria-list">' + items + '</ul>\n</div>\n</details>\n';
       }
       out += `\n</li>\n`;
     });
