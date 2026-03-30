@@ -9,6 +9,12 @@ This repository contains the source for the APIOps Cycles documentation site bui
 - **Node.js 22** or newer
 - npm
 
+If you use `nvm`, this repo now includes `.nvmrc` (and `.node-version`) pinned to `22.12.0`, so you can switch quickly with:
+
+```bash
+nvm use
+```
+
 Install dependencies once with:
 
 ```bash

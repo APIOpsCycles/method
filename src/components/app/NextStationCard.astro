@@ -1,0 +1,61 @@
+---
+import MaterialIcon from '../MaterialIcon.astro';
+
+interface Props {
+  step: string;
+  station: string;
+  rationale: string;
+  linkLabel: string;
+  linkHref: string;
+}
+
+const { step, station, rationale, linkLabel, linkHref } = Astro.props as Props;
+---
+
+<article class="next-station-card">
+  <header>
+    <p>{step}</p>
+    <h3>{station}</h3>
+  </header>
+
+  <p>{rationale}</p>
+  <a href={linkHref}>
+    <MaterialIcon name="train-outline" class="next-station-card__icon" />
+    <span>{linkLabel}</span>
+  </a>
+</article>
+
+<style>
+  .next-station-card {
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background: var(--sl-color-bg-nav);
+  }
+
+  .next-station-card header p,
+  .next-station-card header h3 {
+    margin: 0;
+  }
+
+  .next-station-card header p {
+    color: var(--sl-color-text-accent);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .next-station-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 0.35rem;
+  }
+
+  .next-station-card__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+</style>
