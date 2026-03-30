@@ -527,12 +527,6 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
   }
   out += "\n";
   if (res.description) out += `${translate(res.description, labels)}\n\n`;
-/*   if (Array.isArray(res.outcomes) && res.outcomes.length) {
-    out += `## ${t('outcomes', labels)}\n\n`;
-    const items = expandTranslations(res.outcomes, labels).map((i) => `- ${i}`);
-    out += items.join('\n');
-    out += '\n\n';
-  } */
   if (res.how_it_works && (res.how_it_works.steps || res.how_it_works.tips)) {
     out += `## ${t('how_it_works', labels)}\n\n`;
     if (res.canvas) {
