@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 const googleAnalyticsId = 'G-W8SLMJSV4E'
 const site = 'https://www.apiopscycles.com'
-const defaultSocialImageUrl = new URL('/social/default-og.png', site).toString()
+const defaultSocialImageUrl = new URL('/social/default-og.jpg', site).toString()
 
 // https://astro.build/config
 export default defineConfig({
