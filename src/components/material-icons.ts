@@ -7,7 +7,7 @@ import brandAwarenessOutline from '~icons/material-symbols-light/brand-awareness
 import businessCenterOutline from '~icons/material-symbols-light/business-center-outline';
 import casesOutline from '~icons/material-symbols-light/cases-outline';
 import chartDataOutline from '~icons/material-symbols-light/chart-data-outline';
-import checkBoxOutline from '~icons/material-symbols-light/check-box-outline';
+import checkBoxOutline from '~icons/material-symbols-light/check-circle';
 import cloudDoneOutline from '~icons/material-symbols-light/cloud-done-outline';
 import cloudLockOutline from '~icons/material-symbols-light/cloud-lock-outline';
 import code from '~icons/material-symbols-light/code';

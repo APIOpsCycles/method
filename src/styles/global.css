@@ -642,13 +642,44 @@
     color: var(--sl-color-text);
   }
 
-  .sl-markdown-content .station-criteria-card ul {
+  .sl-markdown-content .criteria-details .criteria-list,
+  .sl-markdown-content .station-criteria-card .criteria-list {
+    display: grid;
+    gap: 0.55rem;
     margin: 0;
-    padding-left: 1.3rem;
+    padding: 0;
+    list-style: none;
   }
 
-  .sl-markdown-content .station-criteria-card li + li {
-    margin-top: 0.55rem;
+  .sl-markdown-content .criteria-details .criteria-list > li,
+  .sl-markdown-content .station-criteria-card .criteria-list > li {
+    display: grid;
+    grid-template-columns: 1.05rem minmax(0, 1fr);
+    gap: 0.55rem;
+    align-items: start;
+  }
+
+  .sl-markdown-content .criteria-details .criteria-list > li::before,
+  .sl-markdown-content .station-criteria-card .criteria-list > li::before {
+    content: '';
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.2rem;
+    background-color: rgba(61, 125, 31, 1);
+    opacity: 0.72;
+    -webkit-mask-image: url('/icons/check-circle.svg');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-image: url('/icons/check-circle.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+
+  .sl-markdown-content .criteria-details .criteria-list > li + li,
+  .sl-markdown-content .station-criteria-card .criteria-list > li + li {
+    margin-top: 0;
   }
 
   [data-theme='dark'] .sl-markdown-content .station-criteria-card {
