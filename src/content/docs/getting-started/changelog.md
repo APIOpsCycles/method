@@ -7,6 +7,14 @@ draft: false
 
 ### Latest Updates
 
+**April 2026**
+* support method-data v3.4.2. The method now supports linting, auditing with APIOps Cycles coverage report, command line or lib controlled process, and agentic skills (for AI-enabled design).  Try `npm create apiops@latest` (the design process requires Node.js but APIs can be implemented with any technoglogy)
+* CanvasCreator 1.7.3 supports better exports, and better automatic alignment and coloring of sticky notes when importing and exporting canvases, or using AI to help fill them in.
+* Home page fixes for method home page
+* API audit improvements to support lifecycle
+* API style guide changes (MUST, SHOULD, COULD format, better alignment with API Audit)
+* First filled in example canvases
+
 **August 2025 - March 2026**
 
 * Improved instructions for Interaction Canvas, Localization Canvas, as well as API Design station and API Delivery station

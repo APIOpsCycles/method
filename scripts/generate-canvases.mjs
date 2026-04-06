@@ -24,6 +24,24 @@ function getOutputBaseName(canvasId) {
   return `Canvas_${canvasId}`;
 }
 
+function getExampleInputPath(canvasId, locale) {
+  const localizedPath = path.join(rootDir, 'src/assets/resource', locale, `${canvasId}.example.json`);
+  const defaultPath = path.join(rootDir, 'src/assets/resource', `${canvasId}.example.json`);
+  return locale !== 'en' ? [localizedPath, defaultPath] : [defaultPath];
+}
+
+async function readExampleContent(canvasId, locale) {
+  for (const candidate of getExampleInputPath(canvasId, locale)) {
+    try {
+      const raw = await fs.readFile(candidate, 'utf8');
+      return JSON.parse(raw);
+    } catch {
+      // try next candidate
+    }
+  }
+  return null;
+}
+
 async function generate() {
   const canvases = resourcesData.resources.filter((resource) => resource.category === 'canvas' && resource.canvas);
 
@@ -47,6 +65,19 @@ async function generate() {
         exportJSON(content)
       );
       await writePNG(svg, path.join(destDir, `${outputBaseName}.png`));
+
+      const exampleContent = await readExampleContent(canvas.canvas, locale);
+      if (exampleContent) {
+        const exampleRenderContent = buildContent(canvasData, canvas.canvas, locale, false, exampleContent, true);
+        const exampleSvg = renderSVG(canvasData[canvas.canvas], localizedData, exampleRenderContent);
+
+        await fs.writeFile(path.join(destDir, `${outputBaseName}.example.svg`), exampleSvg);
+        await fs.writeFile(
+          path.join(destDir, `${outputBaseName}.example.json`),
+          exportJSON(exampleRenderContent)
+        );
+        await writePNG(exampleSvg, path.join(destDir, `${outputBaseName}.example.png`));
+      }
     }
   }
 

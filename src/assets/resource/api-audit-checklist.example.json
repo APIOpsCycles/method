@@ -1,0 +1,1263 @@
+{
+  "profile": "read-only",
+  "generatedAt": "2026-04-06T21:06:36.908Z",
+  "openApiPath": "specs\\openapi\\api.yaml",
+  "checklistPath": "specs\\audit\\api-audit-checklist.json",
+  "checklistSource": "local-override",
+  "spectral": {
+    "status": "pass",
+    "code": 0,
+    "errors": 0,
+    "warnings": 0,
+    "findings": []
+  },
+  "summary": {
+    "pass": 14,
+    "partial": 7,
+    "gap": 12,
+    "na": 4,
+    "total": 37
+  },
+  "stageSummary": [
+    {
+      "id": "strategy",
+      "title": "Strategy",
+      "pass": 1,
+      "partial": 1,
+      "gap": 0,
+      "na": 0,
+      "total": 2
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture",
+      "pass": 0,
+      "partial": 2,
+      "gap": 1,
+      "na": 0,
+      "total": 3
+    },
+    {
+      "id": "design",
+      "title": "Design",
+      "pass": 11,
+      "partial": 2,
+      "gap": 3,
+      "na": 3,
+      "total": 19
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "pass": 2,
+      "partial": 1,
+      "gap": 4,
+      "na": 1,
+      "total": 8
+    },
+    {
+      "id": "publishing",
+      "title": "Publishing",
+      "pass": 0,
+      "partial": 1,
+      "gap": 4,
+      "na": 0,
+      "total": 5
+    },
+    {
+      "id": "improving",
+      "title": "Improving",
+      "pass": 0,
+      "partial": 0,
+      "gap": 0,
+      "na": 0,
+      "total": 0
+    }
+  ],
+  "stages": [
+    {
+      "id": "strategy",
+      "title": "Strategy",
+      "readinessLabel": "Strategy is Ready When...",
+      "order": 1,
+      "summary": {
+        "pass": 1,
+        "partial": 1,
+        "gap": 0,
+        "na": 0,
+        "total": 2
+      },
+      "items": [
+        {
+          "id": "based-on-clear-business-needs",
+          "label": "API is based on clear business needs",
+          "kind": "manual",
+          "primaryStage": "strategy",
+          "producedByStation": [
+            "api-product-strategy"
+          ],
+          "producedByStationCriteria": [
+            "business-goals-defined",
+            "market-research-done",
+            "stakeholder-approval",
+            "metrics-feedback-available"
+          ],
+          "guidelines": [
+            "REST-DOMAIN-01"
+          ],
+          "expectedEvidenceTags": [
+            "design-artifact",
+            "documentation",
+            "research"
+          ],
+          "expectedEvidence": [
+            "specs/canvases/api-product-strategy/apiValuePropositionCanvas.empty.json",
+            "specs/canvases/api-product-strategy/apiBusinessModelCanvas.empty.json"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "partial",
+          "reason": ""
+        },
+        {
+          "id": "concept-items-audited",
+          "label": "All concept checklist items are audited",
+          "kind": "aggregate",
+          "primaryStage": "strategy",
+          "producedByStation": [
+            "api-product-strategy",
+            "api-consumer-experience"
+          ],
+          "producedByStationCriteria": [
+            "business-goals-defined",
+            "market-research-done",
+            "stakeholder-approval",
+            "metrics-feedback-available",
+            "api-opportunity-documented",
+            "api-reusability",
+            "value-prop-validated",
+            "consumer-segments-identified"
+          ],
+          "guidelines": [
+            "REST-AUDIT-02"
+          ],
+          "expectedEvidenceTags": [
+            "report"
+          ],
+          "expectedEvidence": [
+            "audit/concept-review-report.json"
+          ],
+          "actualEvidenceFound": [
+            "strategy"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture",
+      "readinessLabel": "Architecture is Ready When...",
+      "order": 2,
+      "summary": {
+        "pass": 0,
+        "partial": 2,
+        "gap": 1,
+        "na": 0,
+        "total": 3
+      },
+      "items": [
+        {
+          "id": "versioning-decided",
+          "label": "Versioning strategy decided and supported by gateway",
+          "kind": "manual",
+          "primaryStage": "architecture",
+          "producedByStation": [
+            "api-platform-architecture",
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "api-roadmap-defined",
+            "api-reusability",
+            "api-ready-for-publishing"
+          ],
+          "guidelines": [
+            "REST-VERSION-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "ci-cd",
+            "gateway-config"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml",
+            "docs/api/architecture/README.md",
+            "docs/api/publishing/README.md"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "partial",
+          "reason": ""
+        },
+        {
+          "id": "only-via-gateway",
+          "label": "Only accessible via API gateway",
+          "kind": "manual",
+          "primaryStage": "architecture",
+          "producedByStation": [
+            "api-platform-architecture",
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "api-reusability",
+            "api-ready-for-publishing",
+            "audit-passed"
+          ],
+          "guidelines": [
+            "REST-PUBLISH-02",
+            "REST-CAPACITY-02"
+          ],
+          "expectedEvidenceTags": [
+            "gateway-config",
+            "infra-config",
+            "security-config"
+          ],
+          "expectedEvidence": [
+            "docs/api/architecture/README.md",
+            "docs/api/publishing/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "gap",
+          "reason": ""
+        },
+        {
+          "id": "rate-limits-enforced",
+          "label": "Rate limits are enforced",
+          "kind": "manual",
+          "primaryStage": "architecture",
+          "producedByStation": [
+            "api-platform-architecture"
+          ],
+          "producedByStationCriteria": [
+            "api-roadmap-defined",
+            "api-reusability"
+          ],
+          "guidelines": [
+            "REST-CAPACITY-01",
+            "REST-OBS-01",
+            "REST-SEC-04"
+          ],
+          "expectedEvidenceTags": [
+            "gateway-config",
+            "runtime",
+            "monitoring"
+          ],
+          "expectedEvidence": [
+            "specs/canvases/api-platform-architecture/capacityCanvas.empty.json",
+            "docs/api/architecture/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "partial",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "title": "Design",
+      "readinessLabel": "Design is Ready When...",
+      "order": 3,
+      "summary": {
+        "pass": 11,
+        "partial": 2,
+        "gap": 3,
+        "na": 3,
+        "total": 19
+      },
+      "items": [
+        {
+          "id": "endpoint-descriptions-present",
+          "label": "Endpoints have business value and feature descriptions",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design",
+            "api-consumer-experience"
+          ],
+          "producedByStationCriteria": [
+            "design-reflects-business-value",
+            "value-prop-validated",
+            "api-opportunity-documented"
+          ],
+          "guidelines": [
+            "REST-CX-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "design-artifact"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml",
+            "specs/canvases/api-product-strategy/apiValuePropositionCanvas.empty.json"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "hides-raw-backend-data",
+          "label": "API hides raw backend data and is designed for shared use",
+          "kind": "manual",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "hide-backend-discrepancies",
+            "design-reflects-business-value"
+          ],
+          "guidelines": [
+            "REST-DOMAIN-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "design-artifact"
+          ],
+          "expectedEvidence": [
+            "specs/canvases/api-product-strategy/domainCanvas.empty.json",
+            "specs/canvases/api-design/interactionCanvas.empty.json",
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "partial",
+          "reason": ""
+        },
+        {
+          "id": "design-consistent",
+          "label": "API design is consistent with other APIs",
+          "kind": "manual",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design",
+            "api-platform-architecture"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency",
+            "architecture-patterns-validated",
+            "api-reusability"
+          ],
+          "guidelines": [
+            "REST-DOMAIN-02",
+            "REST-CX-03"
+          ],
+          "expectedEvidenceTags": [
+            "documentation",
+            "design-artifact"
+          ],
+          "expectedEvidence": [
+            "specs/canvases/api-design/restCanvas.empty.json",
+            "docs/api/design/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "partial",
+          "reason": ""
+        },
+        {
+          "id": "descriptive-english-naming",
+          "label": "Data and attribute naming uses descriptive English",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-NAMING-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "mandatory-fields-specified",
+          "label": "Mandatory fields are specified",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-VALIDATION-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "contract"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "dates-use-iso",
+          "label": "Dates use ISO format with timezone",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-DATA-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "gap",
+          "reason": "",
+          "evaluation": false
+        },
+        {
+          "id": "general-data-uses-standard-values",
+          "label": "General data uses standard values",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency",
+            "design-reflects-business-value"
+          ],
+          "guidelines": [
+            "REST-DATA-02"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "field-names-avoid-acronyms",
+          "label": "Field names avoid acronyms and use full words",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-NAMING-02"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "paths-max-two-resources",
+          "label": "Endpoint paths contain max two resources or sub-resources",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-PATH-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "examples-present",
+          "label": "Endpoints and attributes include examples",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design",
+            "api-consumer-experience"
+          ],
+          "producedByStationCriteria": [
+            "design-reflects-business-value",
+            "value-prop-validated"
+          ],
+          "guidelines": [
+            "REST-CX-02"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "get-no-request-body",
+          "label": "GET has no request body and returns content",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-HTTP-GET-01",
+            "REST-RESP-200-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "get-empty-returns-204",
+          "label": "GET returns 204 if response body is empty",
+          "kind": "n/a",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design",
+            "api-consumer-experience"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency",
+            "value-prop-validated"
+          ],
+          "guidelines": [
+            "REST-RESP-204-02"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "na",
+          "reason": "The current contract returns content for all GET operations."
+        },
+        {
+          "id": "400-errors-specific",
+          "label": "400 errors provide specific error information",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design",
+            "api-consumer-experience"
+          ],
+          "producedByStationCriteria": [
+            "design-reflects-business-value",
+            "api-consistency",
+            "value-prop-validated"
+          ],
+          "guidelines": [
+            "REST-ERROR-400-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "GET /items/by-slug/{slug}",
+            "GET /categories/{categoryId}/items"
+          ],
+          "currentStatus": "gap",
+          "reason": "",
+          "evaluation": false
+        },
+        {
+          "id": "401-unauthorized",
+          "label": "401 Unauthorized for wrong credentials",
+          "kind": "n/a",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design",
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency",
+            "api-ready-for-publishing"
+          ],
+          "guidelines": [
+            "REST-ERROR-401-01",
+            "REST-SEC-01",
+            "REST-SEC-03"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "security-config",
+            "gateway-config"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "na",
+          "reason": "The current public storefront contract is intentionally unauthenticated."
+        },
+        {
+          "id": "403-forbidden",
+          "label": "403 Forbidden for unauthorized operations",
+          "kind": "n/a",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design",
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency",
+            "api-ready-for-publishing"
+          ],
+          "guidelines": [
+            "REST-ERROR-403-01",
+            "REST-SEC-03"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "security-config",
+            "gateway-config"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "na",
+          "reason": "The current profile is public read-only and exposes no unauthorized operations."
+        },
+        {
+          "id": "spec-contains-schemas",
+          "label": "Spec contains request and response schema",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-CONTRACT-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "contract"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "pseudo-identifiers",
+          "label": "UUIDs or pseudo-identifiers instead of DB IDs",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "hide-backend-discrepancies",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-SEC-07"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "productId",
+            "variantId",
+            "categoryId"
+          ],
+          "currentStatus": "gap",
+          "reason": "",
+          "evaluation": false
+        },
+        {
+          "id": "no-sensitive-data-in-urls",
+          "label": "No sensitive data in URLs",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "hide-backend-discrepancies",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-SEC-06",
+            "REST-SEC-04"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "http-methods-match-resources",
+          "label": "HTTP methods only for intended resources",
+          "kind": "openapi",
+          "primaryStage": "design",
+          "producedByStation": [
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-HTTP-GET-01",
+            "REST-HTTP-POST-01",
+            "REST-HTTP-PUT-01",
+            "REST-HTTP-DELETE-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "readinessLabel": "Delivery is Ready When...",
+      "order": 4,
+      "summary": {
+        "pass": 2,
+        "partial": 1,
+        "gap": 4,
+        "na": 1,
+        "total": 8
+      },
+      "items": [
+        {
+          "id": "design-items-audited",
+          "label": "All prototype and design items are audited",
+          "kind": "aggregate",
+          "primaryStage": "delivery",
+          "producedByStation": [
+            "api-design",
+            "api-delivery"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "design-reflects-business-value",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-AUDIT-02"
+          ],
+          "expectedEvidenceTags": [
+            "report"
+          ],
+          "expectedEvidence": [
+            "audit/production-readiness-review.json"
+          ],
+          "actualEvidenceFound": [
+            "design"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "spec-validated-on-change",
+          "label": "Spec validated on every change",
+          "kind": "openapi",
+          "primaryStage": "delivery",
+          "producedByStation": [
+            "api-delivery"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-AUDIT-01"
+          ],
+          "expectedEvidenceTags": [
+            "ci-cd",
+            "spec",
+            "test"
+          ],
+          "expectedEvidence": [
+            ".github/workflows/openapi-lint.yml",
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "gap",
+          "reason": "",
+          "evaluation": false
+        },
+        {
+          "id": "schema-and-examples-pass",
+          "label": "Schema and examples pass validation",
+          "kind": "openapi",
+          "primaryStage": "delivery",
+          "producedByStation": [
+            "api-delivery",
+            "api-design"
+          ],
+          "producedByStationCriteria": [
+            "api-consistency",
+            "architecture-patterns-validated",
+            "api-contract-tested"
+          ],
+          "guidelines": [
+            "REST-AUDIT-01",
+            "REST-CONTRACT-01"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "test"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "pass",
+          "reason": "",
+          "evaluation": true
+        },
+        {
+          "id": "uses-https",
+          "label": "Uses HTTPS or encrypted protocols",
+          "kind": "manual",
+          "primaryStage": "delivery",
+          "producedByStation": [
+            "api-delivery",
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "api-ready-for-publishing"
+          ],
+          "guidelines": [
+            "REST-SEC-05"
+          ],
+          "expectedEvidenceTags": [
+            "security-config",
+            "gateway-config"
+          ],
+          "expectedEvidence": [
+            "docs/api/delivery/README.md",
+            "docs/api/publishing/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "gap",
+          "reason": ""
+        },
+        {
+          "id": "inputs-auto-validated",
+          "label": "Inputs auto-validated by framework",
+          "kind": "manual",
+          "primaryStage": "delivery",
+          "producedByStation": [
+            "api-delivery"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-VALIDATION-01"
+          ],
+          "expectedEvidenceTags": [
+            "code",
+            "test",
+            "spec"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml",
+            "docs/api/delivery/README.md"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "partial",
+          "reason": ""
+        },
+        {
+          "id": "outputs-auto-escaped",
+          "label": "Outputs auto-escaped by framework",
+          "kind": "n/a",
+          "primaryStage": "delivery",
+          "producedByStation": [
+            "api-delivery"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-SEC-04"
+          ],
+          "expectedEvidenceTags": [
+            "code"
+          ],
+          "expectedEvidence": [
+            "docs/api/delivery/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "na",
+          "reason": "JSON APIs do not typically require output escaping in the same way as HTML rendering."
+        },
+        {
+          "id": "encryption-in-transit",
+          "label": "Encryption for data in transit and storage",
+          "kind": "manual",
+          "primaryStage": "delivery",
+          "producedByStation": [
+            "api-delivery",
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "api-ready-for-publishing",
+            "audit-passed"
+          ],
+          "guidelines": [
+            "REST-SEC-05"
+          ],
+          "expectedEvidenceTags": [
+            "security-config",
+            "infra-config",
+            "documentation"
+          ],
+          "expectedEvidence": [
+            "docs/api/delivery/README.md",
+            "docs/api/publishing/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "gap",
+          "reason": ""
+        },
+        {
+          "id": "message-integrity",
+          "label": "Message integrity implemented",
+          "kind": "manual",
+          "primaryStage": "delivery",
+          "producedByStation": [
+            "api-delivery"
+          ],
+          "producedByStationCriteria": [
+            "architecture-patterns-validated",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-OBS-01",
+            "REST-SEC-04"
+          ],
+          "expectedEvidenceTags": [
+            "security-config",
+            "monitoring",
+            "documentation"
+          ],
+          "expectedEvidence": [
+            "docs/api/delivery/README.md",
+            "docs/api/architecture/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "gap",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "publishing",
+      "title": "Publishing",
+      "readinessLabel": "Publishing is Ready When...",
+      "order": 5,
+      "summary": {
+        "pass": 0,
+        "partial": 1,
+        "gap": 4,
+        "na": 0,
+        "total": 5
+      },
+      "items": [
+        {
+          "id": "published-via-api-management",
+          "label": "Published via API management",
+          "kind": "manual",
+          "primaryStage": "publishing",
+          "producedByStation": [
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "api-ready-for-publishing",
+            "audit-passed"
+          ],
+          "guidelines": [
+            "REST-PUBLISH-01"
+          ],
+          "expectedEvidenceTags": [
+            "gateway-config",
+            "ci-cd",
+            "documentation"
+          ],
+          "expectedEvidence": [
+            ".github/workflows/openapi-lint.yml",
+            "docs/api/publishing/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "gap",
+          "reason": ""
+        },
+        {
+          "id": "visible-in-dev-portal",
+          "label": "Visible in developer portal",
+          "kind": "manual",
+          "primaryStage": "publishing",
+          "producedByStation": [
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "api-documentation-ready",
+            "api-ready-for-publishing"
+          ],
+          "guidelines": [
+            "REST-PUBLISH-03"
+          ],
+          "expectedEvidenceTags": [
+            "documentation",
+            "runtime"
+          ],
+          "expectedEvidence": [
+            "docs/api/publishing/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "gap",
+          "reason": ""
+        },
+        {
+          "id": "docs-auto-generated",
+          "label": "Docs auto-generated from spec and schema",
+          "kind": "manual",
+          "primaryStage": "publishing",
+          "producedByStation": [
+            "api-publishing",
+            "api-delivery"
+          ],
+          "producedByStationCriteria": [
+            "api-documentation-ready",
+            "api-ready-for-publishing",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-CONTRACT-02",
+            "REST-PUBLISH-03"
+          ],
+          "expectedEvidenceTags": [
+            "spec",
+            "documentation",
+            "ci-cd"
+          ],
+          "expectedEvidence": [
+            "specs/openapi/api.yaml",
+            "docs/api/publishing/README.md",
+            "docs/api/audit/design-audit.read-only.md"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "partial",
+          "reason": ""
+        },
+        {
+          "id": "spec-auto-updated",
+          "label": "Spec auto-updated to gateway and dev portal",
+          "kind": "manual",
+          "primaryStage": "publishing",
+          "producedByStation": [
+            "api-publishing",
+            "api-delivery"
+          ],
+          "producedByStationCriteria": [
+            "api-ready-for-publishing",
+            "audit-passed",
+            "api-consistency"
+          ],
+          "guidelines": [
+            "REST-CONTRACT-02"
+          ],
+          "expectedEvidenceTags": [
+            "ci-cd",
+            "gateway-config",
+            "documentation"
+          ],
+          "expectedEvidence": [
+            ".github/workflows/openapi-lint.yml",
+            "docs/api/publishing/README.md",
+            "specs/openapi/api.yaml"
+          ],
+          "actualEvidenceFound": [
+            "specs/openapi/api.yaml"
+          ],
+          "currentStatus": "gap",
+          "reason": ""
+        },
+        {
+          "id": "official-domain",
+          "label": "Published under official organization domain",
+          "kind": "manual",
+          "primaryStage": "publishing",
+          "producedByStation": [
+            "api-publishing"
+          ],
+          "producedByStationCriteria": [
+            "api-ready-for-publishing",
+            "audit-passed"
+          ],
+          "guidelines": [
+            "REST-PUBLISH-04"
+          ],
+          "expectedEvidenceTags": [
+            "documentation",
+            "runtime"
+          ],
+          "expectedEvidence": [
+            "docs/api/publishing/README.md"
+          ],
+          "actualEvidenceFound": [],
+          "currentStatus": "gap",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "id": "improving",
+      "title": "Improving",
+      "readinessLabel": "Improving is Ready When...",
+      "order": 6,
+      "summary": {
+        "pass": 0,
+        "partial": 0,
+        "gap": 0,
+        "na": 0,
+        "total": 0
+      },
+      "items": []
+    }
+  ]
+}

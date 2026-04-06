@@ -1,0 +1,207 @@
+{
+  "templateId": "businessImpactCanvas",
+  "locale": "en",
+  "metadata": {
+    "source": "APIOps Cycles",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Osaango Ltd"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-03-30T21:10:16.829Z"
+  },
+  "sections": [
+    {
+      "sectionId": "availabilityRisks",
+      "stickyNotes": [
+        {
+          "content": "Search outage blocks discovery",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 99,
+            "y": 132
+          }
+        },
+        {
+          "content": "Traffic spikes overload search",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 184,
+            "y": 132
+          }
+        },
+        {
+          "content": "Slow responses hurt UX",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 141,
+            "y": 217
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "securityRisks",
+      "stickyNotes": [
+        {
+          "content": "Public API abused by bots",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 422,
+            "y": 132
+          }
+        },
+        {
+          "content": "Internal fields exposed",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 507,
+            "y": 132
+          }
+        },
+        {
+          "content": "Query logs leak user intent",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 464,
+            "y": 217
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "dataRisks",
+      "stickyNotes": [
+        {
+          "content": "Stale index shows wrong results",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 745,
+            "y": 132
+          }
+        },
+        {
+          "content": "Hidden products appear in results",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 830,
+            "y": 132
+          }
+        },
+        {
+          "content": "Inconsistent IDs break linking",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 787,
+            "y": 217
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "mitigateAvailabilityRisks",
+      "stickyNotes": [
+        {
+          "content": "Cache popular queries",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 99,
+            "y": 413
+          }
+        },
+        {
+          "content": "Autoscale search services",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 184,
+            "y": 413
+          }
+        },
+        {
+          "content": "Graceful fallback results",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 141,
+            "y": 498
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "mitigateSecurityRisks",
+      "stickyNotes": [
+        {
+          "content": "Rate limit public access",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 422,
+            "y": 413
+          }
+        },
+        {
+          "content": "Filter response fields",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 507,
+            "y": 413
+          }
+        },
+        {
+          "content": "Sanitize logs and queries",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 464,
+            "y": 498
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "mitigateDataRisks",
+      "stickyNotes": [
+        {
+          "content": "Validate indexed data",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 745,
+            "y": 413
+          }
+        },
+        {
+          "content": "Enforce visibility rules",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 830,
+            "y": 413
+          }
+        },
+        {
+          "content": "Monitor index freshness",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 787,
+            "y": 498
+          }
+        }
+      ]
+    }
+  ]
+}

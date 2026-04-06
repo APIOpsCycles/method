@@ -4,12 +4,12 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { createHash } from 'crypto';
 import { dump } from 'js-yaml';
+import { renderSnippet } from 'apiops-cycles-method-data/snippet-engine';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/src/data/method');
 const methodDataPackage = 'apiops-cycles-method-data/method';
-const snippetDir = path.join(rootDir, 'node_modules/apiops-cycles-method-data/src/snippets');
 const defaultLocale = 'en';
 const defaultLocaleDir = path.join(dataDir, defaultLocale);
 const docsDir = path.join(rootDir, 'src/content/docs');
@@ -370,6 +370,25 @@ function buildCanvasDownloads(canvasId, locale = '') {
   ];
 }
 
+async function resolveCanvasExampleAssets(canvasId, locale = '') {
+  const relativeDir = locale ? path.posix.join('assets/resource', locale) : 'assets/resource';
+  const diskDir = path.join(rootDir, 'src', relativeDir);
+  const fileBase = `Canvas_${canvasId}.example`;
+  const assets = {};
+
+  for (const ext of ['svg', 'json', 'png']) {
+    const diskPath = path.join(diskDir, `${fileBase}.${ext}`);
+    try {
+      await fsPromises.access(diskPath);
+      assets[ext] = path.posix.join(relativeDir, `${fileBase}.${ext}`);
+    } catch {
+      // asset missing
+    }
+  }
+
+  return assets;
+}
+
 function buildStationStepItems(data, resources, labels = baseLabels, locale = '') {
   const how = data.how_it_works || data['how-it-works'];
   if (!Array.isArray(how) || how.length === 0) return [];
@@ -418,6 +437,201 @@ function buildStationStepItems(data, resources, labels = baseLabels, locale = ''
 
 function frontmatter(obj) {
   return `---\n${dump(obj)}---\n`;
+}
+
+function snippetLanguageFromPath(snippetPath = '') {
+  const extension = path.extname(snippetPath).toLowerCase();
+  if (extension === '.md' || extension === '.mdx') return 'markdown';
+  if (extension === '.yml') return 'yaml';
+  if (extension === '.json') return 'json';
+  return extension.replace(/^\./, '') || 'text';
+}
+
+function escapeTableCell(value) {
+  return String(value ?? '')
+    .replace(/\|/g, '\\|')
+    .replace(/\n/g, '<br />');
+}
+
+function formatInlineList(values = []) {
+  if (!Array.isArray(values) || values.length === 0) return '';
+  return values.map((value) => `\`${String(value)}\``).join(', ');
+}
+
+function toSentenceCaseSlug(value = '') {
+  return String(value)
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
+function renderMarkdownTable(headers, rows) {
+  if (!Array.isArray(rows) || rows.length === 0) return '';
+  const headerRow = `| ${headers.map(escapeTableCell).join(' | ')} |`;
+  const separatorRow = `| ${headers.map(() => '---').join(' | ')} |`;
+  const bodyRows = rows.map((row) => `| ${row.map(escapeTableCell).join(' | ')} |`);
+  return [headerRow, separatorRow, ...bodyRows].join('\n');
+}
+
+function renderProfilesMarkdown(profiles = {}) {
+  const rows = Object.entries(profiles).map(([profileId, profile]) => [
+    `\`${profileId}\``,
+    profile?.description || '',
+  ]);
+  if (!rows.length) return '';
+  return `## Profiles\n\n${renderMarkdownTable(['Profile', 'Description'], rows)}\n`;
+}
+
+function renderAuditSummaryMarkdown(summary = {}) {
+  const rows = [
+    ['Pass', summary.pass ?? ''],
+    ['Partial', summary.partial ?? ''],
+    ['Gap', summary.gap ?? ''],
+    ['N/A', summary.na ?? ''],
+    ['Total', summary.total ?? ''],
+  ].filter(([, value]) => value !== '');
+  if (!rows.length) return '';
+  return `## Summary\n\n${renderMarkdownTable(['Status', 'Count'], rows)}\n`;
+}
+
+function renderAuditStageSummaryMarkdown(stageSummary = []) {
+  if (!Array.isArray(stageSummary) || stageSummary.length === 0) return '';
+  const rows = stageSummary.map((stage) => [
+    stage.title || toSentenceCaseSlug(stage.id),
+    stage.pass ?? '',
+    stage.partial ?? '',
+    stage.gap ?? '',
+    stage.na ?? '',
+    stage.total ?? '',
+  ]);
+  return `## Stage Summary\n\n${renderMarkdownTable(['Stage', 'Pass', 'Partial', 'Gap', 'N/A', 'Total'], rows)}\n`;
+}
+
+function renderAuditItemsTableMarkdown(stages = []) {
+  if (!Array.isArray(stages) || stages.length === 0) return '';
+  const rows = [];
+
+  for (const stage of stages) {
+    for (const item of stage.items || []) {
+      rows.push([
+        stage.title || toSentenceCaseSlug(stage.id),
+        `\`${item.id}\``,
+        item.label || '',
+        item.currentStatus || '',
+        item.kind || '',
+        formatInlineList(item.guidelines),
+        formatInlineList(item.producedByStation),
+        formatInlineList(item.producedByStationCriteria),
+        formatInlineList(item.expectedEvidenceTags),
+        formatInlineList(item.expectedEvidence),
+        formatInlineList(item.actualEvidenceFound),
+        item.reason || '',
+      ]);
+    }
+  }
+
+  if (!rows.length) return '';
+  return `## Audit Items\n\n${renderMarkdownTable(
+    ['Stage', 'Id', 'Label', 'Status', 'Kind', 'Guidelines', 'Stations', 'Criteria', 'Evidence tags', 'Expected evidence', 'Actual evidence', 'Reason'],
+    rows
+  )}\n`;
+}
+
+async function renderAuditChecklistExampleMarkdown() {
+  const examplePath = path.join(rootDir, 'src/assets/resource/api-audit-checklist.example.json');
+  const example = JSON.parse(await fsPromises.readFile(examplePath, 'utf8'));
+
+  const metaRows = [
+    ['Profile', `\`${example.profile || ''}\``],
+    ['Generated at', example.generatedAt || ''],
+    ['OpenAPI path', `\`${example.openApiPath || ''}\``],
+    ['Checklist path', `\`${example.checklistPath || ''}\``],
+    ['Checklist source', example.checklistSource || ''],
+    ['Spectral status', example.spectral?.status || ''],
+    ['Spectral errors', example.spectral?.errors ?? ''],
+    ['Spectral warnings', example.spectral?.warnings ?? ''],
+  ].filter(([, value]) => value !== '');
+
+  return [
+    metaRows.length ? `## Example Run\n\n${renderMarkdownTable(['Field', 'Value'], metaRows)}` : '',
+    renderAuditSummaryMarkdown(example.summary),
+    renderAuditStageSummaryMarkdown(example.stageSummary),
+    renderAuditItemsTableMarkdown(example.stages),
+  ].filter(Boolean).join('\n\n');
+}
+
+function renderGuidelinesMarkdown(guidelines = [], heading = '## Guidelines') {
+  if (!Array.isArray(guidelines) || guidelines.length === 0) return '';
+  const rows = guidelines.map((guideline) => [
+    `\`${guideline.id}\``,
+    guideline.priority || '',
+    guideline.category || '',
+    guideline.requirement || '',
+    formatInlineList(guideline.relatedAuditItems),
+  ]);
+  return `${heading}\n\n${renderMarkdownTable(
+    ['Id', 'Priority', 'Category', 'Requirement', 'Related audit items'],
+    rows
+  )}\n`;
+}
+
+async function renderJsonSnippetAsMarkdown(resourceId, snippetPath, snippetContent) {
+  if (resourceId === 'api-audit-checklist') {
+    return renderAuditChecklistExampleMarkdown();
+  }
+
+  let parsed;
+  try {
+    parsed = JSON.parse(snippetContent);
+  } catch {
+    return `\`\`\`json\n${String(snippetContent).trim()}\n\`\`\``;
+  }
+
+  const sections = [];
+  if (parsed.profiles) {
+    sections.push(renderProfilesMarkdown(parsed.profiles));
+  }
+  if (parsed.sections) {
+    sections.push(renderChecklistSectionsMarkdown(parsed.sections));
+  }
+  if (parsed.guidelines) {
+    sections.push(renderGuidelinesMarkdown(parsed.guidelines));
+  }
+
+  if (sections.length > 0) {
+    return sections.filter(Boolean).join('\n\n').trim();
+  }
+
+  const topLevelRows = Object.entries(parsed).map(([key, value]) => [
+    toSentenceCaseSlug(key),
+    Array.isArray(value)
+      ? `${value.length} items`
+      : value && typeof value === 'object'
+        ? `${Object.keys(value).length} entries`
+        : String(value),
+  ]);
+
+  return [
+    `## ${toSentenceCaseSlug(path.basename(snippetPath, path.extname(snippetPath)))}`,
+    '',
+    renderMarkdownTable(['Property', 'Value'], topLevelRows),
+    '',
+    '```json',
+    String(snippetContent).trim(),
+    '```',
+  ].join('\n');
+}
+
+async function formatSnippetForMarkdown(resourceId, snippetPath, snippetContent) {
+  const language = snippetLanguageFromPath(snippetPath);
+  const trimmed = String(snippetContent || '').trim();
+
+  if (!trimmed) return '';
+  if (language === 'markdown') return trimmed;
+  if (language === 'json') return renderJsonSnippetAsMarkdown(resourceId, snippetPath, trimmed);
+
+  return `\`\`\`${language}\n${trimmed}\n\`\`\``;
 }
 
 async function writeMarkdown(file, fm, body) {
@@ -549,6 +763,22 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
       }
       out += links.join(' | ');
       out += '\n\n';
+
+      const exampleAssets = await resolveCanvasExampleAssets(res.canvas, locale);
+      if (exampleAssets.svg) {
+        const exampleSvg = `${prefix}${exampleAssets.svg}`;
+        out += `### ${t('see_example', labels)}\n\n`;
+        out += `![${alt} example](${exampleSvg})\n\n`;
+
+        const exampleLinks = [];
+        if (exampleAssets.svg) exampleLinks.push(`[SVG](${exampleSvg})`);
+        if (exampleAssets.json) exampleLinks.push(`[JSON](${prefix}${exampleAssets.json})`);
+        if (exampleAssets.png) exampleLinks.push(`[PNG](${prefix}${exampleAssets.png})`);
+        if (exampleLinks.length) {
+          out += exampleLinks.join(' | ');
+          out += '\n\n';
+        }
+      }
     } else if (res.image) {
       let img = res.image.replace(/^\//, '');
       if (locale) {
@@ -587,25 +817,15 @@ async function resourceBody(res, labels = baseLabels, locale = '') {
     }
   }
   if (res.snippet) {
-    const baseSnippet = res.snippet.replace(/^\//, '');
-    let snippetPath = path.join(snippetDir, baseSnippet);
-    if (locale) {
-      const rel = baseSnippet.startsWith('snippets/')
-        ? baseSnippet.slice('snippets/'.length)
-        : baseSnippet;
-      const locPath = path.join(snippetDir, locale, rel);
-      try {
-        await fsPromises.access(locPath);
-        snippetPath = locPath;
-      } catch {
-        // fall back to default path
-      }
-    }
     try {
-      const snippetContent = await fsPromises.readFile(snippetPath, 'utf8');
-      out += '\n\n' + snippetContent.trim();
-  } catch {
-      console.warn(`Snippet file not found: ${snippetPath}`);
+      const snippetContent = renderSnippet(res.id, locale || defaultLocale, { forceUnicode: true });
+      const formattedSnippet = await formatSnippetForMarkdown(res.id, res.snippet, snippetContent);
+      if (formattedSnippet) {
+        out += '\n\n' + formattedSnippet;
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.warn(`Snippet render failed for resource ${res.id}: ${message}`);
     }
   }
 /*   if (res.category === 'canvas') {

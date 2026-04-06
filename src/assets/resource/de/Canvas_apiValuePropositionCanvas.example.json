@@ -1,0 +1,197 @@
+{
+  "templateId": "apiValuePropositionCanvas",
+  "locale": "en",
+  "metadata": {
+    "source": "APIOps Cycles",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Osaango Ltd"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-03-30T21:10:16.824Z"
+  },
+  "sections": [
+    {
+      "sectionId": "tasks",
+      "stickyNotes": [
+        {
+          "content": "Search catalog",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 66,
+            "y": 171
+          }
+        },
+        {
+          "content": "Filter results",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 258,
+            "y": 171
+          }
+        },
+        {
+          "content": "Open product",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 450,
+            "y": 171
+          }
+        },
+        {
+          "content": "Check price and stock (out of scope)",
+          "size": 80,
+          "color": "#DDDDDD",
+          "position": {
+            "x": 642,
+            "y": 171
+          }
+        },
+        {
+          "content": "Add variant to cart",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 834,
+            "y": 171
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "gainEnablingFeatures",
+      "stickyNotes": [
+        {
+          "content": "Fast full-text search",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 50,
+            "y": 319
+          }
+        },
+        {
+          "content": "Rich facets and filters",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 135,
+            "y": 319
+          }
+        },
+        {
+          "content": "Relevant ranking",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 220,
+            "y": 319
+          }
+        },
+        {
+          "content": "Market-aware variants",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 305,
+            "y": 319
+          }
+        },
+        {
+          "content": "Cached and resizable images",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 390,
+            "y": 319
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "painRelievingFeatures",
+      "stickyNotes": [
+        {
+          "content": "Hide stale or unpublished products",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 572,
+            "y": 319
+          }
+        },
+        {
+          "content": "Keep filters simple",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 657,
+            "y": 319
+          }
+        },
+        {
+          "content": "Return relevant results",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 742,
+            "y": 319
+          }
+        },
+        {
+          "content": "Return consistent slugs and ids",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 827,
+            "y": 319
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "apiProducts",
+      "stickyNotes": [
+        {
+          "content": "Product Search",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 332,
+            "y": 506
+          }
+        },
+        {
+          "content": "Product Detail",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 417,
+            "y": 506
+          }
+        },
+        {
+          "content": "Category Browse",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 502,
+            "y": 506
+          }
+        },
+        {
+          "content": "Facet and Filter",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 587,
+            "y": 506
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "templateId": "customerJourneyCanvas",
+  "locale": "en",
+  "metadata": {
+    "source": "APIOps Cycles",
+    "license": "CC-BY-SA 4.0",
+    "authors": [
+      "Osaango Ltd"
+    ],
+    "website": "www.apiopscycles.com",
+    "date": "2026-03-30T21:10:16.816Z"
+  },
+  "sections": [
+    {
+      "sectionId": "customerDiscoversNeed",
+      "stickyNotes": [
+        {
+          "content": "Need to find the right product",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 75,
+            "y": 132
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "persona",
+      "stickyNotes": [
+        {
+          "content": "Mobile shopper comparing options",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 412,
+            "y": 132
+          }
+        },
+        {
+          "content": "Wants quick, confident choice",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 497,
+            "y": 132
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "pains",
+      "stickyNotes": [
+        {
+          "content": "Too many irrelevant results",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 32,
+            "y": 272
+          }
+        },
+        {
+          "content": "Filters are hard to understand",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 117,
+            "y": 272
+          }
+        },
+        {
+          "content": "Price or stock looks stale",
+          "size": 80,
+          "color": "#FFAFAF",
+          "position": {
+            "x": 75,
+            "y": 357
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "journeySteps",
+      "stickyNotes": [
+        {
+          "content": "Search catalog",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 217,
+            "y": 404
+          }
+        },
+        {
+          "content": "Filter results",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 331,
+            "y": 404
+          }
+        },
+        {
+          "content": "Compare options",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 445,
+            "y": 404
+          }
+        },
+        {
+          "content": "Open product",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 559,
+            "y": 404
+          }
+        },
+        {
+          "content": "Add variant to cart",
+          "size": 80,
+          "color": "#7DC9E7",
+          "position": {
+            "x": 673,
+            "y": 404
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "customerNeedIsResolved",
+      "stickyNotes": [
+        {
+          "content": "Find the right product fast",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 835,
+            "y": 132
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "gains",
+      "stickyNotes": [
+        {
+          "content": "Relevant results quickly",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 792,
+            "y": 272
+          }
+        },
+        {
+          "content": "Easy comparison on mobile",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 877,
+            "y": 272
+          }
+        },
+        {
+          "content": "Confident variant choice",
+          "size": 80,
+          "color": "#C0EB6A",
+          "position": {
+            "x": 835,
+            "y": 357
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "inputsOutputs",
+      "stickyNotes": [
+        {
+          "content": "Inputs: need, keyword, filters",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 222,
+            "y": 552
+          }
+        },
+        {
+          "content": "Outputs: options, detail, choice",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 307,
+            "y": 552
+          }
+        }
+      ]
+    },
+    {
+      "sectionId": "interactionProcessingRules",
+      "stickyNotes": [
+        {
+          "content": "Show relevant results first",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 560,
+            "y": 552
+          }
+        },
+        {
+          "content": "Keep filters simple",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 645,
+            "y": 552
+          }
+        },
+        {
+          "content": "Hide unavailable options",
+          "size": 80,
+          "color": "#DFDDC5",
+          "position": {
+            "x": 730,
+            "y": 552
+          }
+        }
+      ]
+    }
+  ]
+}
