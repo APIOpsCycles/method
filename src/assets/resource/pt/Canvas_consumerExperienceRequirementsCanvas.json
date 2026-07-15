@@ -1,0 +1,52 @@
+{
+  "templateId": "consumerExperienceRequirementsCanvas",
+  "locale": "pt",
+  "metadata": {
+    "source": "",
+    "license": "",
+    "authors": [],
+    "website": ""
+  },
+  "sections": [
+    {
+      "sectionId": "consumerGoals",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "availabilityAndTimeliness",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "volumeAndPerformance",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "dataQualityAndConsistency",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "securityPrivacyAndCompliance",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "onboardingAndAccess",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "changeAndVersioning",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "observabilityAndSupport",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "recoveryAndContinuity",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "architectureImplications",
+      "stickyNotes": []
+    }
+  ]
+}

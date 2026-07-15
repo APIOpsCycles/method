@@ -108,7 +108,7 @@ export default defineConfig({
                                       label: 'Start Here',
                                       translations: { 'fi': 'Aloita tästä', 'fr': 'Commencez ici', 'de': 'Hier anfangen', 'pt': 'Comece aqui' },
                                       collapsed: true,
-                                      autogenerate: { directory: 'getting-started' },
+                                      items: [{ autogenerate: { directory: 'getting-started' } }],
                                 },
                                 {
                                       label: 'Method',
@@ -120,24 +120,24 @@ export default defineConfig({
                                                                 label: 'Metro Lines',
                                                                 translations: { 'fi': 'Metrolinjat', 'fr': 'Lignes de métro', 'de': 'Metro-Linien', 'pt': 'Linhas de metrô' },
                                                                 collapsed: true,
-                                                                autogenerate: { directory: 'lines' },
+                                                                items: [{ autogenerate: { directory: 'lines' } }],
                                                         },                                                {
                                                                 label: 'Core Stations',
                                                                 translations: { 'fi': 'Ydinasemat', 'fr': 'Stations principales', 'de': 'Kernstationen', 'pt': 'Estações centrais' },
                                                                 collapsed: true,
-                                                                autogenerate: { directory: 'core-stations' },
+                                                                items: [{ autogenerate: { directory: 'core-stations' } }],
                                                         },
                                                         {
                                                                 label: 'Suburb Stations',
                                                                 translations: { 'fi': 'Lähiöasemat', 'fr': 'Stations suburbaines', 'de': 'Vorortstationen', 'pt': 'Estações suburbanas' },
                                                                 collapsed: true,
-                                                                autogenerate: { directory: 'suburb-stations' },
+                                                                items: [{ autogenerate: { directory: 'suburb-stations' } }],
                                                         },
                                                         {
                                                                 label: 'Resources',
                                                                 translations: { 'fi': 'Resurssit', 'fr': 'Ressources', 'de': 'Ressourcen', 'pt': 'Recursos' },
                                                                 collapsed: true,
-                                                                autogenerate: { directory: 'resources' },
+                                                                items: [{ autogenerate: { directory: 'resources' } }],
                                                         },
 
 

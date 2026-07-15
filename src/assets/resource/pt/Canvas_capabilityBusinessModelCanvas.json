@@ -1,0 +1,48 @@
+{
+  "templateId": "capabilityBusinessModelCanvas",
+  "locale": "pt",
+  "metadata": {
+    "source": "",
+    "license": "",
+    "authors": [],
+    "website": ""
+  },
+  "sections": [
+    {
+      "sectionId": "keyPartners",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "keyActivities",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "keyResources",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "capabilityValueProposition",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "consumerEngagement",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "channels",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "capabilityConsumerSegments",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "costs",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "benefits",
+      "stickyNotes": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "templateId": "capabilityValuePropositionCanvas",
+  "locale": "fr",
+  "metadata": {
+    "source": "",
+    "license": "",
+    "authors": [],
+    "website": ""
+  },
+  "sections": [
+    {
+      "sectionId": "consumerTasks",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "gainEnablingCapabilities",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "painRelievingCapabilities",
+      "stickyNotes": []
+    },
+    {
+      "sectionId": "reusableCapabilities",
+      "stickyNotes": []
+    }
+  ]
+}

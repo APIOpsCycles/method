@@ -15,22 +15,22 @@
     "copy:resources": "node scripts/copy-resources.mjs"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.38.1",
+    "@astrojs/starlight": "^0.41.3",
     "@astrojs/starlight-tailwind": "^5.0.0",
-    "@iconify-json/material-symbols-light": "^1.2.30",
-    "@tailwindcss/vite": "^4.1.11",
-    "apiops-cycles-method-data": "^3.4.2",
-    "astro": "^6.0.4",
-    "canvascreator": "^1.7.3",
+    "@iconify-json/material-symbols-light": "^1.2.85",
+    "@tailwindcss/vite": "^4.3.2",
+    "apiops-cycles-method-data": "^4.0.0",
+    "astro": "^7.0.9",
+    "canvascreator": "^1.8.0",
     "flat": "^6.0.1",
     "sharp": "^0.34.2",
-    "tailwindcss": "^4.1.11",
-    "unplugin-icons": "^22.1.0"
+    "tailwindcss": "^4.3.2",
+    "unplugin-icons": "^23.0.1"
   },
   "engines": {
     "node": ">=22"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.29.0"
+    "@cloudflare/vite-plugin": "^1.45.0"
   }
 }
