@@ -1,0 +1,98 @@
+---
+import CanvasCreator from '../CanvasCreator.astro';
+import MaterialIcon from '../MaterialIcon.astro';
+
+interface Artifact {
+  name: string;
+  description: string;
+  canvasUrl: string;
+}
+
+interface Props {
+  artifacts: Artifact[];
+  previewCanvasId?: string;
+}
+
+const { artifacts, previewCanvasId } = Astro.props as Props;
+---
+
+<section class="app-card">
+  <header class="app-card__header">
+    <MaterialIcon name="edit-document-outline" class="app-card__icon" />
+    <div>
+      <p class="app-card__eyebrow">Step 4</p>
+      <h2>Required artifacts and canvas links</h2>
+    </div>
+  </header>
+
+  <div class="artifact-grid">
+    {artifacts.map((artifact) => (
+      <article>
+        <h3>{artifact.name}</h3>
+        <p>{artifact.description}</p>
+        <a href={artifact.canvasUrl} target="_blank" rel="noreferrer">Open canvas</a>
+      </article>
+    ))}
+  </div>
+
+  {
+    previewCanvasId && (
+      <div class="canvas-preview">
+        <p class="canvas-preview__title">Live canvas preview</p>
+        <CanvasCreator canvasId={previewCanvasId} />
+      </div>
+    )
+  }
+</section>
+
+<style>
+  .app-card {
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background: var(--sl-color-bg-nav);
+    margin-bottom: 1rem;
+  }
+
+  .app-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .app-card__icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    color: var(--sl-color-text-accent);
+  }
+
+  .artifact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .artifact-grid article {
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.6rem;
+    padding: 0.75rem;
+    background: color-mix(in srgb, var(--sl-color-accent-low) 30%, transparent);
+  }
+
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  .canvas-preview {
+    margin-top: 1rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    padding-top: 1rem;
+  }
+
+  .canvas-preview__title {
+    font-weight: 600;
+  }
+</style>

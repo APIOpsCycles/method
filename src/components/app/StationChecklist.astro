@@ -1,0 +1,93 @@
+---
+import MaterialIcon from '../MaterialIcon.astro';
+
+interface ChecklistItem {
+  label: string;
+  done: boolean;
+}
+
+interface Props {
+  stationName: string;
+  criteria: ChecklistItem[];
+}
+
+const { stationName, criteria } = Astro.props as Props;
+const completion = criteria.length
+  ? Math.round((criteria.filter((item) => item.done).length / criteria.length) * 100)
+  : 0;
+---
+
+<section class="app-card">
+  <header class="app-card__header">
+    <MaterialIcon name="check-box-outline" class="app-card__icon" />
+    <div>
+      <p class="app-card__eyebrow">Step 3</p>
+      <h2>{stationName} entry criteria checklist</h2>
+    </div>
+  </header>
+
+  <p class="app-card__progress">Checklist completion: {completion}%</p>
+
+  <ul class="checklist">
+    {criteria.map((criterion) => (
+      <li class={criterion.done ? 'done' : ''}>
+        <MaterialIcon
+          name={criterion.done ? 'cloud-done-outline' : 'list-alt-outline'}
+          class="checklist__icon"
+        />
+        <span>{criterion.label}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .app-card {
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background: var(--sl-color-bg-nav);
+    margin-bottom: 1rem;
+  }
+
+  .app-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .app-card__icon,
+  .checklist__icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    color: var(--sl-color-text-accent);
+    flex-shrink: 0;
+  }
+
+  .app-card__eyebrow,
+  .app-card__progress {
+    margin: 0;
+    color: var(--sl-color-text-accent);
+  }
+
+  .checklist {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--sl-color-accent-low) 50%, transparent);
+  }
+
+  .checklist li.done {
+    background: color-mix(in srgb, var(--sl-color-accent-low) 75%, transparent);
+  }
+</style>

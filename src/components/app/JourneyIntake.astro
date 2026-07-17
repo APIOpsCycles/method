@@ -1,0 +1,81 @@
+---
+import MaterialIcon from '../MaterialIcon.astro';
+
+interface Props {
+  initiative: string;
+  context: string;
+  goals: string[];
+  constraints: string[];
+}
+
+const { initiative, context, goals, constraints } = Astro.props as Props;
+---
+
+<section class="app-card">
+  <header class="app-card__header">
+    <MaterialIcon name="flag-2-outline" class="app-card__icon" />
+    <div>
+      <p class="app-card__eyebrow">Step 1</p>
+      <h2>Initiative & context intake</h2>
+    </div>
+  </header>
+
+  <p><strong>Initiative:</strong> {initiative}</p>
+  <p><strong>Context:</strong> {context}</p>
+
+  <div class="app-card__columns">
+    <div>
+      <h3>Primary goals</h3>
+      <ul>
+        {goals.map((goal) => <li>{goal}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h3>Known constraints</h3>
+      <ul>
+        {constraints.map((constraint) => <li>{constraint}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .app-card {
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background: var(--sl-color-bg-nav);
+    margin-bottom: 1rem;
+  }
+
+  .app-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .app-card__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--sl-color-text-accent);
+  }
+
+  .app-card__eyebrow {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--sl-color-text-accent);
+    text-transform: uppercase;
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  .app-card__columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+</style>
